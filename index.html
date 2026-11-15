@@ -9,7 +9,7 @@
     <title>Klasifikasi Bahan Halal BPJPH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
       :root {
         --green: #007a33;
@@ -18,6 +18,7 @@
         --forest: #0a3524;
         --forest-2: #0e4a30;
         --gold: #c9a86a;
+        --gold-ink: #7a5c14;
         --gold-soft: #e9dcc0;
         --ink: #14231b;
         --muted: #55645c;
@@ -36,7 +37,7 @@
         --shadow-lg: 0 24px 60px -16px rgba(10,53,36,.35);
         --radius: 18px;
         --font-display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
-        --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Noto Naskh Arabic", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+        --font-sans: "Plus Jakarta Sans", "Segoe UI", Tahoma, -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Noto Naskh Arabic", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
         --ease-out: cubic-bezier(.22,.8,.32,1);
       }
       :root[data-theme="dark"] {
@@ -46,6 +47,7 @@
           --forest: #0a2a1e;
           --forest-2: #0f3d2b;
           --gold: #d3ba85;
+          --gold-ink: #e6cb8d;
           --gold-soft: #4a3f27;
           --ink: #edf3ee;
           --muted: #a9bcab;
@@ -77,6 +79,7 @@
         font-size: 16px;
         line-height: 1.65;
         -webkit-font-smoothing: antialiased;
+        transition: background-color .2s ease, color .2s ease;
       }
       .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
       a { color: var(--green); text-underline-offset: 3px; }
@@ -92,17 +95,19 @@
         background: color-mix(in srgb, var(--bg) 82%, transparent);
         backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--line);
+        transition: background-color .2s ease, border-color .2s ease;
       }
       .topbar-in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
-      .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.02rem; letter-spacing: -.01em; color: var(--ink); margin-inline-end: auto; line-height: 1.25; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.14rem; letter-spacing: -.02em; color: var(--ink); margin-inline-end: auto; line-height: 1.25; }
+      .brand .brand-accent { color: var(--gold-ink); }
       .brand .mark {
-        width: 42px; height: 42px; flex: none; border-radius: 12px;
-        background: linear-gradient(135deg, var(--green-bright), var(--green-strong));
-        box-shadow: 0 6px 16px -4px rgba(0,122,51,.55), inset 0 1px 0 rgba(255,255,255,.35);
+        width: 44px; height: 44px; flex: none; border-radius: 14px;
+        background: linear-gradient(140deg, var(--forest-2), var(--forest));
+        box-shadow: 0 6px 16px -4px rgba(10,53,36,.55), inset 0 1px 0 rgba(255,255,255,.18);
         display: grid; place-items: center;
       }
       .brand small { display: block; font-weight: 500; font-size: .76rem; color: var(--muted); letter-spacing: .01em; }
-      nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+      nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; transition: background-color .2s ease, border-color .2s ease; }
       nav.main-nav button {
         min-height: 40px; padding: 7px 16px; border: 0; border-radius: 999px;
         background: transparent; color: var(--muted); font-weight: 700; font-size: .92rem;
@@ -113,25 +118,26 @@
       nav.main-nav button[aria-current="page"] { background: var(--forest); color: #fff; box-shadow: 0 4px 12px -4px rgba(10,53,36,.5); }
       :root[data-theme="dark"] nav.main-nav button[aria-current="page"] { background: #007a33; }
 
-      main { padding: 26px 0 8px; }
-      h1 { font-family: var(--font-display); font-optical-sizing: auto; font-size: clamp(2rem, 1.55rem + 2.4vw, 3.15rem); line-height: 1.08; font-weight: 600; letter-spacing: -.01em; margin: 0 0 12px; }
-      h2 { font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.5rem; line-height: 1.25; font-weight: 600; letter-spacing: -.005em; margin: 0 0 10px; }
+      main { padding: 18px 0 8px; }
+      h1 { font-family: var(--font-display); font-optical-sizing: auto; font-size: clamp(2rem, 1.55rem + 2.4vw, 3.15rem); line-height: 1.06; font-weight: 600; letter-spacing: -.02em; margin: 0 0 10px; }
+      h2 { font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.5rem; line-height: 1.25; font-weight: 600; letter-spacing: -.01em; margin: 0 0 10px; }
       h3 { font-size: 1.08rem; line-height: 1.4; font-weight: 700; margin: 0; }
       .lede { color: var(--muted); margin: 0 0 20px; max-width: 64ch; font-size: 1.02rem; }
       .view[hidden] { display: none; }
       .view { animation: viewIn .28s var(--ease-out) backwards; }
-      @keyframes viewIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
       /* ---------- Hero ---------- */
       .hero {
         position: relative; overflow: hidden; isolation: isolate;
         background: linear-gradient(128deg, var(--forest) 0%, var(--forest-2) 58%, #14663f 115%);
         color: #f2f7f2; border-radius: 28px;
-        padding: clamp(28px, 5vw, 52px) clamp(22px, 5vw, 54px) clamp(64px, 7vw, 84px);
+        padding: clamp(24px, 4vw, 40px) clamp(22px, 5vw, 54px) clamp(36px, 4.5vw, 48px);
         box-shadow: var(--shadow-lg);
       }
       .hero::before {
         content: ""; position: absolute; inset: 0; z-index: -1; opacity: .13;
+        animation: heroPattern 7s ease-in-out infinite alternate;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M36 6 L42 30 L66 36 L42 42 L36 66 L30 42 L6 36 L30 30 Z'/%3E%3Ccircle cx='36' cy='36' r='7'/%3E%3C/g%3E%3C/svg%3E");
         background-size: 72px 72px;
       }
@@ -141,19 +147,19 @@
         background: radial-gradient(circle, rgba(201,168,106,.38), transparent 65%);
       }
       .hero .kicker {
-        display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px;
+        display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px;
         font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft);
       }
       :root[data-theme="dark"] .hero .kicker { color: var(--gold); }
       .hero .kicker::before { content: ""; width: 26px; height: 2px; background: var(--gold); border-radius: 2px; }
-      .hero h1 { color: #ffffff; max-width: 18ch; font-size: clamp(2.1rem, 1.5rem + 3vw, 3.5rem); }
+      .hero h1 { color: #ffffff; max-width: 18ch; font-size: clamp(2.1rem, 1.5rem + 3vw, 3.5rem); letter-spacing: -.02em; }
       .hero h1 em { font-style: italic; color: #9fe3b6; position: relative; white-space: nowrap; }
       .hero .lede { color: #cfdfd2; max-width: 58ch; margin-bottom: 0; }
       .hero-tagline {
         font-family: var(--font-display); font-optical-sizing: auto;
         font-size: clamp(1.55rem, 1.28rem + 1.5vw, 1.95rem);
         line-height: 1.22; font-weight: 600; letter-spacing: -.01em;
-        color: #ffffff; margin: 2px 0 14px; max-width: 30ch;
+        color: #ffffff; margin: 0 0 10px; max-width: 30ch;
       }
       .hero-tagline .tagline-accent {
         font-style: italic; color: var(--gold-soft); white-space: nowrap;
@@ -162,19 +168,25 @@
         text-decoration-skip-ink: none;
       }
       :root[data-theme="dark"] .hero-tagline .tagline-accent { color: var(--gold); }
-      /* Masuk hero: judul mask reveal per baris; elemen lain fade + naik halus (transform/opacity saja) */
-      .hero .kicker, .hero-tagline, .hero .lede, .hero-stats, .search-box { animation: fadeRise .3s var(--ease-out) backwards; }
+      /* Masuk hero: judul mask reveal per baris; elemen lain fade + naik halus (transform/opacity saja).
+         Stat masuk berjenjang per ubin (stagger), bukan serentak. */
+      .hero .kicker, .hero-tagline, .hero .lede, .search-box { animation: fadeRise .3s var(--ease-out) backwards; }
       .hero-tagline { animation-delay: .24s; }
       .hero .lede { animation-delay: .3s; }
-      .hero-stats { animation-delay: .4s; }
       .search-box { animation-delay: .2s; }
+      .hero-stats .hstat { animation: fadeRise .35s var(--ease-out) backwards; }
+      .hero-stats .hstat:nth-child(1) { animation-delay: .38s; }
+      .hero-stats .hstat:nth-child(2) { animation-delay: .44s; }
+      .hero-stats .hstat:nth-child(3) { animation-delay: .50s; }
+      .hero-stats .hstat:nth-child(4) { animation-delay: .56s; }
+      @keyframes heroPattern { from { opacity: .11; } to { opacity: .16; } }
       .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; }
       .hero h1 .line-in { display: inline-block; animation: maskUp .55s var(--ease-out) backwards; will-change: transform; }
       .hero h1 .line:nth-child(2) .line-in { animation-delay: .09s; }
       .hero h1 .line:nth-child(3) .line-in { animation-delay: .18s; }
       @keyframes maskUp { from { transform: translateY(112%); } to { transform: translateY(0); } }
       @keyframes fadeRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-      .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 28px; }
+      .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 20px; }
       .hstat { padding-inline-end: 26px; margin-inline-end: 26px; border-inline-end: 1px solid rgba(255,255,255,.18); }
       .hstat:last-child { border-inline-end: 0; margin-inline-end: 0; padding-inline-end: 0; }
       .hstat b { display: block; font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.75rem; font-weight: 600; letter-spacing: 0; color: #fff; line-height: 1.15; font-variant-numeric: tabular-nums; }
@@ -183,6 +195,7 @@
         position: relative; overflow: hidden;
         background: var(--card); border: 1px solid var(--line); border-radius: 24px;
         padding: clamp(24px, 4vw, 38px); box-shadow: var(--shadow-sm); margin-bottom: 8px;
+        transition: background-color .2s ease, border-color .2s ease;
       }
       .page-head::before { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 6px; background: linear-gradient(180deg, var(--green-bright), var(--gold)); }
       .page-head .kicker { display: block; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
@@ -194,7 +207,8 @@
         position: relative; z-index: 2;
         background: var(--card); border: 1px solid var(--line); border-radius: 22px;
         padding: clamp(20px, 3.5vw, 30px); box-shadow: var(--shadow-md);
-        margin: -44px clamp(0px, 3vw, 34px) 0;
+        margin: -30px clamp(0px, 3vw, 34px) 0;
+        transition: background-color .2s ease, border-color .2s ease;
       }
       .search-box label { display: block; font-weight: 800; font-size: 1.02rem; margin-bottom: 10px; letter-spacing: -.01em; }
       .search-row { display: flex; gap: 10px; }
@@ -257,7 +271,7 @@
         animation: cardIn .28s var(--ease-out) backwards;
       }
       .to-top {
-        position: fixed; inset-inline-end: 20px; bottom: 20px; z-index: 40;
+        position: fixed; inset-inline-end: 20px; bottom: 88px; z-index: 40;
         width: 48px; height: 48px; border-radius: 50%;
         display: grid; place-items: center;
         background: var(--forest); color: #ffffff;
@@ -273,14 +287,14 @@
 
       /* ---------- Result cards ---------- */
       #results { margin-top: 10px; }
-      .group-head { margin: 32px 0 4px; font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.45rem; font-weight: 600; letter-spacing: 0; display: flex; align-items: center; gap: 10px; }
+      .group-head { margin: 24px 0 4px; font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.45rem; font-weight: 600; letter-spacing: 0; display: flex; align-items: center; gap: 10px; }
       .group-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
       .group-sub { margin: 0 0 8px; color: var(--muted); font-size: .92rem; max-width: 68ch; }
       .card {
         background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
         box-shadow: var(--shadow-md); padding: 0; margin: 16px 0; overflow: hidden;
         animation: cardIn .28s var(--ease-out) backwards;
-        transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out);
+        transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out), background-color .2s ease, border-color .2s ease;
       }
       .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
       @keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -318,6 +332,7 @@
       }
       .btn-pdf:hover { background: var(--ok-bg); transform: translateY(-2px); }
       .btn-pdf:active { transform: scale(.97); }
+      .btn-pdf:active { transform: scale(.97); }
       .note-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-top: 14px; font-size: .95rem; }
       .note-box p { margin: 0 0 6px; }
       .note-box p:last-child { margin-bottom: 0; }
@@ -348,7 +363,7 @@
       .error-box p { margin: 0; }
 
       /* ---------- Status tiles (empty state) ---------- */
-      .empty-state { padding: 30px 0 4px; }
+      .empty-state { padding: 22px 0 4px; }
       .empty-state > p { color: var(--muted); margin: 0 0 16px; }
       .empty-state > p strong { color: var(--ink); }
       .status-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -373,7 +388,7 @@
       .tile-belum .t-tag { background: var(--belum-bg); color: var(--belum-ink); }
 
       /* ---------- How it works ---------- */
-      .how { margin: 34px 0 6px; }
+      .how { margin: 26px 0 6px; }
       .how-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
       .how-head h2 { margin: 0; }
       .how-head p { margin: 0; color: var(--muted); font-size: .95rem; }
@@ -392,7 +407,7 @@
       .quick-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
       /* ---------- Browse ---------- */
-      .browse-section { margin-bottom: 34px; }
+      .browse-section { margin-bottom: 26px; }
       .browse-section > h2 { display: flex; align-items: center; gap: 12px; }
       .browse-section > h2 .b-badge { font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--forest); color: #fff; padding: 4px 11px; border-radius: 999px; }
       :root[data-theme="dark"] .browse-section > h2 .b-badge { background: #007a33; }
@@ -532,7 +547,7 @@
       }
 
       footer {
-        margin-top: 44px; color: #c4d6c7; font-size: .9rem;
+        margin-top: 36px; color: #c4d6c7; font-size: .9rem;
         background: linear-gradient(140deg, var(--forest), #081f15);
         border-radius: 28px 28px 0 0;
       }
@@ -598,9 +613,9 @@
       }
       .tool-btn:hover { border-color: var(--green); background: var(--ok-bg); }
       .tool-btn:active { transform: scale(.97); }
-      #theme-toggle .ic-sun { display: none; }
-      :root[data-theme="dark"] #theme-toggle .ic-sun { display: block; }
-      :root[data-theme="dark"] #theme-toggle .ic-moon { display: none; }
+      .theme-toggle .ic-sun { display: none; }
+      :root[data-theme="dark"] .theme-toggle .ic-sun { display: block; }
+      :root[data-theme="dark"] .theme-toggle .ic-moon { display: none; }
       .lang-wrap { position: relative; }
       .lang-btn .chev { transition: transform .18s ease; color: var(--muted); }
       .lang-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
@@ -619,6 +634,9 @@
         transition: background .14s ease;
       }
       .lang-menu button:hover { background: var(--surface); }
+      .lang-menu button:active { transform: scale(.97); }
+      .lm-flag { font-size: 1.15rem; line-height: 1; flex: none; }
+      .lang-btn .lm-flag { font-size: 1.05rem; }
       .lang-menu button .lm-check { margin-inline-start: auto; color: var(--green); visibility: hidden; flex: none; }
       .lang-menu button[aria-selected="true"] { color: var(--green-strong); }
       .lang-menu button[aria-selected="true"] .lm-check { visibility: visible; }
@@ -643,8 +661,6 @@
         .search-row { flex-direction: column; }
         .btn-primary { width: 100%; }
         .search-box { margin-left: 0; margin-right: 0; }
-        .brand small { display: none; }
-        nav.main-nav { width: 100%; }
         nav.main-nav button { flex: 1; padding-left: 8px; padding-right: 8px; }
         .status-banner { flex-wrap: wrap; }
         .status-banner .tag { margin-inline-start: 0; }
@@ -749,6 +765,115 @@
       .auth-info { color: var(--ok-ink); background: var(--ok-bg); border: 1px solid var(--ok-solid); border-radius: 10px; padding: 10px 12px; font-size: .92rem; margin: 0 0 12px; }
       .auth-foot { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: center; margin-top: 14px; }
       .auth-foot .btn-text { min-height: 44px; }
+
+      /* ---------- Header kanan: pil emas login + menu pengguna ---------- */
+      .auth-wrap { position: relative; }
+      .auth-pill {
+        min-height: 44px; padding: 8px 18px;
+        background: linear-gradient(135deg, #eec25e, #cf9418);
+        border: 1px solid #a87608; color: #241a02;
+        box-shadow: 0 6px 16px -6px rgba(169,118,8,.55);
+      }
+      .auth-pill:hover { filter: brightness(1.07); border-color: #8a6408; background: linear-gradient(135deg, #eec25e, #cf9418); }
+      .auth-pill .auth-avatar {
+        width: 26px; height: 26px; border-radius: 50%; flex: none;
+        background: var(--forest); color: #ffffff;
+        display: grid; place-items: center; font-size: .85rem; font-weight: 800;
+      }
+      .auth-pill.is-user { padding-inline-start: 10px; }
+      .auth-pill .auth-name { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .user-menu {
+        position: absolute; top: calc(100% + 8px); inset-inline-end: 0; z-index: 50;
+        min-width: 240px; padding: 10px;
+        background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+        box-shadow: var(--shadow-lg);
+        animation: fadeRise .18s var(--ease-out) backwards;
+      }
+      .user-menu .um-name, .drawer-user .um-name { margin: 4px 8px 0; font-weight: 800; overflow-wrap: anywhere; }
+      .user-menu .um-email, .drawer-user .um-email { margin: 2px 8px 10px; font-size: .88rem; color: var(--muted); overflow-wrap: anywhere; }
+      .user-menu .um-logout, .drawer-user .um-logout {
+        width: 100%; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 9px 12px; border-radius: 11px; border: 1.5px solid var(--wajib-solid);
+        background: transparent; color: var(--wajib-ink); font-weight: 700; font-size: .95rem;
+        transition: background .14s ease, transform .14s ease;
+      }
+      .user-menu .um-logout:hover, .drawer-user .um-logout:hover { background: var(--wajib-bg); }
+      .user-menu .um-logout:active, .drawer-user .um-logout:active { transform: scale(.97); }
+
+      /* ---------- Drawer mobile (geser dari inline-start) ---------- */
+      .menu-btn { display: none; }
+      .drawer-backdrop {
+        position: fixed; inset: 0; z-index: 55; background: rgba(8, 24, 16, .55);
+        opacity: 0; transition: opacity .25s ease;
+      }
+      .drawer-backdrop.show { opacity: 1; }
+      .drawer {
+        position: fixed; top: 0; bottom: 0; inset-inline-start: 0; z-index: 60;
+        width: min(320px, 86vw); background: var(--card); color: var(--ink);
+        border-inline-end: 1px solid var(--line); box-shadow: var(--shadow-lg);
+        display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain;
+        transform: translateX(-105%); visibility: hidden;
+        transition: transform .25s var(--ease-out), visibility 0s linear .25s;
+      }
+      [dir="rtl"] .drawer { transform: translateX(105%); }
+      .drawer.open { transform: translateX(0); visibility: visible; transition: transform .25s var(--ease-out), visibility 0s; }
+      .drawer-head { display: flex; align-items: center; gap: 10px; padding: 16px 16px 12px; border-bottom: 1px solid var(--line); }
+      .drawer-head .brand { font-size: 1.02rem; margin-inline-end: auto; }
+      .drawer-head .brand .mark { width: 36px; height: 36px; border-radius: 11px; }
+      .drawer-nav { display: flex; flex-direction: column; gap: 2px; padding: 12px; }
+      .drawer-nav button {
+        min-height: 48px; display: flex; align-items: center; gap: 10px; text-align: start;
+        padding: 10px 14px; border: 0; border-radius: 12px; background: transparent;
+        color: var(--ink); font-weight: 700; font-size: 1rem;
+        transition: background .14s ease;
+      }
+      .drawer-nav button:hover { background: var(--surface); }
+      .drawer-nav button:active { transform: scale(.97); }
+      .drawer-nav button[aria-current="page"] { background: var(--forest); color: #ffffff; }
+      :root[data-theme="dark"] .drawer-nav button[aria-current="page"] { background: #007a33; }
+      .drawer-user { padding: 4px 2px 2px; }
+      .drawer-tools { margin-top: auto; padding: 14px 16px 20px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+      .drawer-section-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 2px 2px; }
+      .drawer-tools .auth-pill, .drawer-tools .theme-toggle { width: 100%; justify-content: center; }
+      .drawer-lang { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .drawer-lang button {
+        min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 8px 10px; border-radius: 12px; border: 1px solid var(--line);
+        background: var(--surface); color: var(--ink); font-weight: 700; font-size: .92rem;
+        transition: background .14s ease, border-color .14s ease;
+      }
+      .drawer-lang button:hover { border-color: var(--green); background: var(--ok-bg); }
+      .drawer-lang button:active { transform: scale(.97); }
+      .drawer-lang button[aria-selected="true"] { border-color: var(--green); background: var(--ok-bg); color: var(--ok-ink); }
+
+      /* ---------- Tombol WhatsApp mengambang ---------- */
+      .wa-float {
+        position: fixed; inset-inline-end: 18px; bottom: 18px; z-index: 45;
+        width: 56px; height: 56px; border-radius: 50%;
+        display: grid; place-items: center;
+        background: #25D366; color: #ffffff;
+        box-shadow: 0 10px 24px -6px rgba(18,140,74,.6);
+        transition: transform .18s var(--ease-out), filter .18s ease;
+        animation: waPulse 2.6s ease-out infinite;
+      }
+      .wa-float:hover { filter: brightness(1.08); transform: translateY(-2px); }
+      .wa-float:active { transform: scale(.94); }
+      @keyframes waPulse {
+        0% { box-shadow: 0 10px 24px -6px rgba(18,140,74,.6), 0 0 0 0 rgba(37,211,102,.45); }
+        70% { box-shadow: 0 10px 24px -6px rgba(18,140,74,.6), 0 0 0 16px rgba(37,211,102,0); }
+        100% { box-shadow: 0 10px 24px -6px rgba(18,140,74,.6), 0 0 0 0 rgba(37,211,102,0); }
+      }
+      @media (max-width: 560px) {
+        .wa-float { width: 52px; height: 52px; inset-inline-end: 14px; bottom: 14px; }
+      }
+
+      /* ---------- Mobile: nav desktop + alat header pindah ke drawer ---------- */
+      @media (max-width: 760px) {
+        nav.main-nav { display: none; }
+        .header-tools { display: none; }
+        .menu-btn { display: inline-flex; }
+        .topbar-in { gap: 10px; }
+      }
       @media (max-width: 560px) {
         .f2-field textarea { min-height: 130px; }
         .gate-panel { padding: 18px; }
@@ -776,43 +901,102 @@
   <body>
     <header class="topbar">
       <div class="wrap topbar-in">
+        <button type="button" class="tool-btn menu-btn" id="menu-btn" aria-controls="mobile-drawer" aria-expanded="false" data-i18n-aria="menu_label" aria-label="Buka menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
         <div class="brand">
           <span class="mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4A8.6 8.6 0 1 1 10.6 3.4a6.9 6.9 0 0 0 10 10z" fill="#d3ba85"/><path d="M17.2 2.6l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75z" fill="#d3ba85"/></svg>
           </span>
-          <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span><small data-i18n="brand_sub">Badan Penyelenggara Jaminan Produk Halal (BPJPH)</small></span>
+          <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span></span>
         </div>
         <nav class="main-nav" data-i18n-aria="nav_label" aria-label="Navigasi utama">
           <button type="button" data-nav="cari" aria-current="page" data-i18n="nav_cari">Pencarian</button>
+          <button type="button" data-nav="tanya" data-i18n="nav_tanya">Tanya Jawab</button>
+          <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
           <button type="button" data-nav="jelajah" data-i18n="nav_jelajah">Jelajah Kategori</button>
           <button type="button" data-nav="regulasi" data-i18n="nav_regulasi">Regulasi</button>
           <button type="button" data-nav="lhln" data-i18n="nav_lhln">Lembaga Halal Luar Negeri</button>
-          <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
-          <button type="button" data-nav="tanya" data-i18n="nav_tanya">Tanya Jawab</button>
           <button type="button" data-nav="kontak" data-i18n="nav_kontak">Kontak</button>
         </nav>
         <div class="header-tools">
-          <button type="button" class="tool-btn" id="auth-btn" data-i18n="auth_btn_login">Masuk</button>
-          <button type="button" class="tool-btn" id="theme-toggle" data-i18n-aria="theme_label" aria-label="Ganti tema gelap atau terang">
+          <div class="auth-wrap">
+            <button type="button" class="tool-btn auth-pill" id="auth-btn" aria-haspopup="true" aria-expanded="false" aria-label="Masuk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+              <span>Masuk</span>
+            </button>
+            <div class="user-menu" id="user-menu" hidden>
+              <p class="um-name" id="user-menu-name"></p>
+              <p class="um-email" id="user-menu-email"></p>
+              <button type="button" class="um-logout" id="user-logout" data-i18n="auth_btn_logout">Keluar</button>
+            </div>
+          </div>
+          <button type="button" class="tool-btn theme-toggle" id="theme-toggle" data-i18n-aria="theme_label" aria-label="Ganti tema gelap atau terang">
             <svg class="ic-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.2A8.5 8.5 0 1 1 10.8 4a7 7 0 0 0 9.2 9.2z"/></svg>
             <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
           </button>
           <div class="lang-wrap">
             <button type="button" class="tool-btn lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria="lang_label" aria-label="Pilih bahasa">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.6 5.6 3.6 9S14.4 18.5 12 21c-2.4-2.5-3.6-5.6-3.6-9S9.6 5.5 12 3z"/></svg>
+              <span class="lm-flag" id="lang-flag" aria-hidden="true">&#127470;&#127465;</span>
               <span class="lang-name" id="lang-current">Bahasa Indonesia</span>
               <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
             </button>
             <ul class="lang-menu" id="lang-menu" role="listbox" data-i18n-aria="lang_label" aria-label="Pilih bahasa" hidden>
-              <li><button type="button" role="option" data-lang-opt="id" aria-selected="true">Bahasa Indonesia<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="en" aria-selected="false">English<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="ar" aria-selected="false">العربية<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="zh" aria-selected="false">中文<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true">&#127470;&#127465;</span>Bahasa Indonesia<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127468;&#127463;</span>English<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127480;&#127462;</span>العربية<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127464;&#127475;</span>中文<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
             </ul>
           </div>
         </div>
       </div>
     </header>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <nav class="drawer" id="mobile-drawer" data-i18n-aria="drawer_label" aria-label="Menu navigasi">
+      <div class="drawer-head">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4A8.6 8.6 0 1 1 10.6 3.4a6.9 6.9 0 0 0 10 10z" fill="#d3ba85"/><path d="M17.2 2.6l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75z" fill="#d3ba85"/></svg>
+          </span>
+          <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span></span>
+        </div>
+        <button type="button" class="tool-btn" id="drawer-close" data-i18n-aria="menu_close" aria-label="Tutup menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-nav">
+        <button type="button" data-nav="cari" data-i18n="nav_cari">Pencarian</button>
+        <button type="button" data-nav="tanya" data-i18n="nav_tanya">Tanya Jawab</button>
+        <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
+        <button type="button" data-nav="jelajah" data-i18n="nav_jelajah">Jelajah Kategori</button>
+        <button type="button" data-nav="regulasi" data-i18n="nav_regulasi">Regulasi</button>
+        <button type="button" data-nav="lhln" data-i18n="nav_lhln">Lembaga Halal Luar Negeri</button>
+        <button type="button" data-nav="kontak" data-i18n="nav_kontak">Kontak</button>
+      </div>
+      <div class="drawer-tools">
+        <p class="drawer-section-label" data-i18n="drawer_tools">Akun &amp; tampilan</p>
+        <button type="button" class="tool-btn auth-pill" id="auth-btn-drawer" aria-haspopup="true" aria-expanded="false" aria-label="Masuk">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+          <span>Masuk</span>
+        </button>
+        <div class="drawer-user" id="drawer-user" hidden>
+          <p class="um-name" id="drawer-user-name"></p>
+          <p class="um-email" id="drawer-user-email"></p>
+          <button type="button" class="um-logout" id="user-logout-drawer" data-i18n="auth_btn_logout">Keluar</button>
+        </div>
+        <button type="button" class="tool-btn theme-toggle" id="theme-toggle-drawer" data-i18n-aria="theme_label" aria-label="Ganti tema gelap atau terang">
+          <svg class="ic-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.2A8.5 8.5 0 1 1 10.8 4a7 7 0 0 0 9.2 9.2z"/></svg>
+          <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        </button>
+        <div class="drawer-lang" role="group" data-i18n-aria="lang_label" aria-label="Pilih bahasa">
+          <button type="button" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true">&#127470;&#127465;</span>Bahasa Indonesia</button>
+          <button type="button" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127468;&#127463;</span>English</button>
+          <button type="button" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127480;&#127462;</span>العربية</button>
+          <button type="button" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127464;&#127475;</span>中文</button>
+        </div>
+      </div>
+    </nav>
 
     <main class="wrap">
       <!-- ================= VIEW: PENCARIAN ================= -->
@@ -1167,6 +1351,10 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5L12 5l6.5 6.5"/></svg>
     </button>
 
+    <a class="wa-float" href="https://wa.me/628999099708" target="_blank" rel="noopener" data-i18n-aria="wa_float" aria-label="Chat WhatsApp">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
     <script src="config.public.js"></script>
     <script>
 "use strict";
@@ -1194,10 +1382,15 @@ var LANG = "id";
 try { var savedLang = localStorage.getItem("kbh-lang"); if (["id", "en", "ar", "zh"].indexOf(savedLang) >= 0) LANG = savedLang; } catch (e) {}
 var LOCALES = { id: "id-ID", en: "en-US", ar: "ar-EG", zh: "zh-CN" };
 var LANG_NAMES = { id: "Bahasa Indonesia", en: "English", ar: "العربية", zh: "中文" };
+var LANG_FLAGS = { id: "🇮🇩", en: "🇬🇧", ar: "🇸🇦", zh: "🇨🇳" };
 var I18N = { id: {
   doc_title: "Klasifikasi Bahan Halal BPJPH",
   brand_title: "Klasifikasi Bahan Halal",
-  brand_sub: "Badan Penyelenggara Jaminan Produk Halal (BPJPH)",
+  menu_label: "Buka menu",
+  menu_close: "Tutup menu",
+  drawer_label: "Menu navigasi",
+  drawer_tools: "Akun & tampilan",
+  wa_float: "Chat WhatsApp",
   nav_label: "Navigasi utama", nav_cari: "Pencarian", nav_jelajah: "Jelajah Kategori", nav_regulasi: "Regulasi", nav_kontak: "Kontak",
   theme_label: "Ganti tema gelap atau terang", lang_label: "Pilih bahasa",
   hero_kicker: "Basis data resmi BPJPH",
@@ -1245,7 +1438,7 @@ var I18N = { id: {
   foot_src_label: "Sumber data:",
   foot_src: "Lampiran Keputusan Kepala BPJPH Nomor 20 Tahun 2023, Nomor 301 Tahun 2026, dan Nomor 387 Tahun 2026, diekstrak dari salinan PDF resmi pada 14 November 2026. Sinonim dan CAS tambahan berasal dari PubChem (NIH) dan selalu diberi label sumber PubChem.",
   foot_limit_label: "Batas data:",
-  foot_limit: "Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen dan Tanya Jawab ada di tab Analisis Dokumen dan Tanya Jawab — perlu daftar/masuk.",
+  foot_limit: "Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen dan AI Halal ada di tab Analisis Dokumen dan AI Halal — perlu daftar/masuk.",
   foot_verify: "Hasil pencarian adalah alat bantu klasifikasi, bukan keputusan sertifikasi resmi. Verifikasi akhir melalui BPJPH atau Lembaga Pemeriksa Halal (LPH). Situs resmi JDIH BPJPH:",
   data_meta: "Data lampiran: {pl} bahan positive list (301/2026), {w} jenis produk wajib (387/2026). Ekstrak 14 November 2026.",
   status_searching: "Mencari di lampiran Kepkaban 301/2026 dan 387/2026…",
@@ -1318,7 +1511,11 @@ function tt(k, params) {
 I18N.en = {
   doc_title: "Halal Ingredient Classification — BPJPH",
   brand_title: "Halal Ingredient Classification",
-  brand_sub: "Halal Product Assurance Organizing Agency (BPJPH)",
+  menu_label: "Open menu",
+  menu_close: "Close menu",
+  drawer_label: "Navigation menu",
+  drawer_tools: "Account & appearance",
+  wa_float: "Chat on WhatsApp",
   nav_label: "Main navigation", nav_cari: "Search", nav_jelajah: "Browse Categories", nav_regulasi: "Regulations", nav_kontak: "Contact",
   theme_label: "Switch dark or light theme", lang_label: "Choose language",
   hero_kicker: "Official BPJPH database",
@@ -1366,7 +1563,7 @@ I18N.en = {
   foot_src_label: "Data sources:",
   foot_src: "Appendices of BPJPH Head Decrees No. 20 of 2023, No. 301 of 2026, and No. 387 of 2026, extracted from the official PDF copies on 14 November 2026. Additional synonyms and CAS numbers come from PubChem (NIH) and are always labeled as PubChem-sourced.",
   foot_limit_label: "Data limits:",
-  foot_limit: "BPJPH Head Decree No. 378 of 2026 (positive list amendment) is not yet included in this page's data. Document analysis and Q&A are in the Document Analysis and Q&A tabs — sign-in required.",
+  foot_limit: "BPJPH Head Decree No. 378 of 2026 (positive list amendment) is not yet included in this page's data. Document analysis and AI Halal are in the Document Analysis and AI Halal tabs — sign-in required.",
   foot_verify: "Search results are a classification aid, not an official certification decision. Final verification is through BPJPH or a Halal Inspection Body (LPH). Official BPJPH JDIH website:",
   data_meta: "Appendix data: {pl} positive list ingredients (301/2026), {w} product types requiring certification (387/2026). Extracted 14 November 2026.",
   status_searching: "Searching the appendices of Kepkaban 301/2026 and 387/2026…",
@@ -1433,7 +1630,11 @@ I18N.en = {
 I18N.ar = {
   doc_title: "تصنيف المواد الحلال — BPJPH",
   brand_title: "تصنيف المواد الحلال",
-  brand_sub: "هيئة تنظيم ضمان المنتجات الحلال (BPJPH)",
+  menu_label: "فتح القائمة",
+  menu_close: "إغلاق القائمة",
+  drawer_label: "قائمة التنقل",
+  drawer_tools: "الحساب والمظهر",
+  wa_float: "محادثة واتساب",
   nav_label: "التنقل الرئيسي", nav_cari: "البحث", nav_jelajah: "تصفح الفئات", nav_regulasi: "اللوائح", nav_kontak: "اتصل بنا",
   theme_label: "تبديل السمة الداكنة أو الفاتحة", lang_label: "اختيار اللغة",
   hero_kicker: "قاعدة بيانات BPJPH الرسمية",
@@ -1481,7 +1682,7 @@ I18N.ar = {
   foot_src_label: "مصادر البيانات:",
   foot_src: "ملاحق قرارات رئيس BPJPH رقم 20 لسنة 2023 ورقم 301 لسنة 2026 ورقم 387 لسنة 2026، استُخرجت من النسخ الرسمية بصيغة PDF في 14 نوفمبر 2026. وتأتي المرادفات وأرقام CAS الإضافية من PubChem (NIH) وتُوسم دائمًا بمصدر PubChem.",
   foot_limit_label: "حدود البيانات:",
-  foot_limit: "قرار رئيس BPJPH رقم 378 لسنة 2026 (تعديل القائمة الإيجابية) غير مُدرج بعد في بيانات هذه الصفحة. تحليل المستندات والأسئلة والأجوبة في تبويبي تحليل المستندات والأسئلة والأجوبة — ويتطلبان تسجيل الدخول.",
+  foot_limit: "قرار رئيس BPJPH رقم 378 لسنة 2026 (تعديل القائمة الإيجابية) غير مُدرج بعد في بيانات هذه الصفحة. تحليل المستندات والذكاء الاصطناعي الحلال في تبويبي تحليل المستندات والذكاء الاصطناعي الحلال — ويتطلبان تسجيل الدخول.",
   foot_verify: "نتائج البحث أداة مساعدة للتصنيف، وليست قرار شهادة رسميًا. والتحقق النهائي عبر BPJPH أو هيئة فحص الحلال (LPH). الموقع الرسمي JDIH BPJPH:",
   data_meta: "بيانات الملاحق: {pl} مادة في القائمة الإيجابية (301/2026)، و{w} نوع منتج ملزم بالشهادة (387/2026). استُخرجت في 14 نوفمبر 2026.",
   status_searching: "جارٍ البحث في ملاحق القرارين 301/2026 و387/2026…",
@@ -1548,7 +1749,11 @@ I18N.ar = {
 I18N.zh = {
   doc_title: "清真原料分类 — BPJPH",
   brand_title: "清真原料分类",
-  brand_sub: "清真产品保障局 (BPJPH)",
+  menu_label: "打开菜单",
+  menu_close: "关闭菜单",
+  drawer_label: "导航菜单",
+  drawer_tools: "账户与外观",
+  wa_float: "WhatsApp 聊天",
   nav_label: "主导航", nav_cari: "搜索", nav_jelajah: "浏览类别", nav_regulasi: "法规", nav_kontak: "联系我们",
   theme_label: "切换深色或浅色主题", lang_label: "选择语言",
   hero_kicker: "BPJPH 官方数据库",
@@ -1596,7 +1801,7 @@ I18N.zh = {
   foot_src_label: "数据来源：",
   foot_src: "BPJPH 局长第 20/2023 号、第 301/2026 号和第 387/2026 号决定附录，于 2026 年 11 月 14 日从官方 PDF 副本中提取。其他同义词和 CAS 号来自 PubChem (NIH)，并始终标注 PubChem 来源。",
   foot_limit_label: "数据范围：",
-  foot_limit: "BPJPH 局长第 378/2026 号决定（正面清单修订）尚未纳入本页数据。文件分析与问答位于“文件分析”和“问答”选项卡——需要登录。",
+  foot_limit: "BPJPH 局长第 378/2026 号决定（正面清单修订）尚未纳入本页数据。文件分析与清真 AI 位于“文件分析”和“清真 AI”选项卡——需要登录。",
   foot_verify: "搜索结果是分类辅助工具，并非官方认证决定。最终核实请通过 BPJPH 或清真检验机构 (LPH)。BPJPH JDIH 官方网站：",
   data_meta: "附录数据：{pl} 种正面清单原料（301/2026），{w} 种须认证产品类型（387/2026）。提取于 2026 年 11 月 14 日。",
   status_searching: "正在第 301/2026 和 387/2026 号决定附录中搜索…",
@@ -1732,10 +1937,10 @@ Object.assign(I18N.zh, {
 
 /* Kunci Fase 2 — Analisis Dokumen, Tanya Jawab, login (Tiket 13a/13b) */
 Object.assign(I18N.id, {
-  nav_analisis: "Analisis Dokumen", nav_tanya: "Tanya Jawab",
+  nav_analisis: "Analisis Dokumen", nav_tanya: "AI Halal",
   auth_btn_login: "Masuk", auth_btn_logout: "Keluar",
   auth_title: "Masuk atau daftar",
-  auth_sub: "Satu akun gratis untuk memakai Analisis Dokumen dan Tanya Jawab. Pencarian tetap bisa dipakai tanpa akun.",
+  auth_sub: "Satu akun gratis untuk memakai Analisis Dokumen dan AI Halal. Pencarian tetap bisa dipakai tanpa akun.",
   auth_google: "Lanjutkan dengan Google", auth_or: "atau dengan email",
   auth_email: "Email", auth_password: "Kata sandi",
   auth_login_btn: "Masuk", auth_register_btn: "Daftar akun baru",
@@ -1749,7 +1954,7 @@ Object.assign(I18N.id, {
   gate_btn: "Masuk / Daftar",
   analisis_kicker: "Fase 2 · Perlu daftar / masuk", analisis_title: "Analisis Dokumen",
   analisis_lede: "Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.",
-  ask_kicker: "Fase 2 · Perlu daftar / masuk", ask_title: "Tanya Jawab",
+  ask_kicker: "Fase 2 · Perlu daftar / masuk", ask_title: "AI Halal",
   ask_lede: "Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus regulasi JDIH BPJPH, lengkap dengan sitasinya.",
   ask_label: "Pertanyaan Anda", ask_ph: "Contoh: Apa saja syarat sertifikasi halal untuk UMKM?", ask_btn: "Tanya",
   ask_count: "Sisa {n} dari 2.000 karakter",
@@ -1805,10 +2010,10 @@ Object.assign(I18N.id, {
   prio_wajib: "Wajib", prio_disarankan: "Disarankan", prio_opsional: "Opsional"
 });
 Object.assign(I18N.en, {
-  nav_analisis: "Document Analysis", nav_tanya: "Q&A",
+  nav_analisis: "Document Analysis", nav_tanya: "AI Halal",
   auth_btn_login: "Sign in", auth_btn_logout: "Sign out",
   auth_title: "Sign in or register",
-  auth_sub: "One free account for Document Analysis and Q&A. Search works without an account.",
+  auth_sub: "One free account for Document Analysis and AI Halal. Search works without an account.",
   auth_google: "Continue with Google", auth_or: "or with email",
   auth_email: "Email", auth_password: "Password",
   auth_login_btn: "Sign in", auth_register_btn: "Create account",
@@ -1822,7 +2027,7 @@ Object.assign(I18N.en, {
   gate_btn: "Sign in / Register",
   analisis_kicker: "Phase 2 · Sign-in required", analisis_title: "Document Analysis",
   analisis_lede: "Upload a CoA, MSDS, or halal certificate (PDF), or paste its text. The system reads the ingredients, checks their classification in the BPJPH annexes, then explains the critical points and next steps for each ingredient.",
-  ask_kicker: "Phase 2 · Sign-in required", ask_title: "Questions & Answers",
+  ask_kicker: "Phase 2 · Sign-in required", ask_title: "AI Halal",
   ask_lede: "Ask about halal and halal rules in Indonesia: certification requirements, process and timelines, SJPH, RSHLN, halal labels, or business obligations. Answers come from the BPJPH JDIH regulation corpus, with citations.",
   ask_label: "Your question", ask_ph: "Example: What are the halal certification requirements for MSMEs?", ask_btn: "Ask",
   ask_count: "{n} of 2,000 characters remaining",
@@ -1878,10 +2083,10 @@ Object.assign(I18N.en, {
   prio_wajib: "Must do", prio_disarankan: "Recommended", prio_opsional: "Optional"
 });
 Object.assign(I18N.ar, {
-  nav_analisis: "تحليل المستندات", nav_tanya: "الأسئلة والأجوبة",
+  nav_analisis: "تحليل المستندات", nav_tanya: "الذكاء الاصطناعي الحلال",
   auth_btn_login: "تسجيل الدخول", auth_btn_logout: "تسجيل الخروج",
   auth_title: "تسجيل الدخول أو إنشاء حساب",
-  auth_sub: "حساب مجاني واحد لاستخدام تحليل المستندات والأسئلة والأجوبة. البحث يعمل دون حساب.",
+  auth_sub: "حساب مجاني واحد لاستخدام تحليل المستندات والذكاء الاصطناعي الحلال. البحث يعمل دون حساب.",
   auth_google: "المتابعة عبر Google", auth_or: "أو عبر البريد الإلكتروني",
   auth_email: "البريد الإلكتروني", auth_password: "كلمة المرور",
   auth_login_btn: "تسجيل الدخول", auth_register_btn: "إنشاء حساب",
@@ -1895,7 +2100,7 @@ Object.assign(I18N.ar, {
   gate_btn: "تسجيل الدخول / التسجيل",
   analisis_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", analisis_title: "تحليل المستندات",
   analisis_lede: "ارفع شهادة تحليل (CoA) أو نشرة بيانات السلامة (MSDS) أو شهادة حلال (PDF)، أو الصق نصها. يقرأ النظام المكونات ويتحقق من تصنيفها في ملاحق BPJPH، ثم يشرح النقاط الحرجة والخطوات التالية لكل مكون.",
-  ask_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", ask_title: "الأسئلة والأجوبة",
+  ask_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", ask_title: "الذكاء الاصطناعي الحلال",
   ask_lede: "اسأل عن الحلال وقواعد الحلال في إندونيسيا: شروط الشهادة، والإجراءات والمدد، ونظام SJPH، وRSHLN، وملصق الحلال، أو التزامات أصحاب الأعمال. الإجابات من مجموعة لوائح JDIH الخاصة بـ BPJPH مع الاستشهادات.",
   ask_label: "سؤالك", ask_ph: "مثال: ما شروط شهادة الحلال للمؤسسات الصغيرة والمتوسطة؟", ask_btn: "اسأل",
   ask_count: "تبقى {n} من 2,000 حرف",
@@ -1951,10 +2156,10 @@ Object.assign(I18N.ar, {
   prio_wajib: "إلزامي", prio_disarankan: "مُوصى به", prio_opsional: "اختياري"
 });
 Object.assign(I18N.zh, {
-  nav_analisis: "文件分析", nav_tanya: "问答",
+  nav_analisis: "文件分析", nav_tanya: "清真 AI",
   auth_btn_login: "登录", auth_btn_logout: "退出登录",
   auth_title: "登录或注册",
-  auth_sub: "一个免费账号即可使用文件分析和问答功能。搜索无需账号。",
+  auth_sub: "一个免费账号即可使用文件分析和清真 AI 功能。搜索无需账号。",
   auth_google: "使用 Google 继续", auth_or: "或使用电子邮箱",
   auth_email: "电子邮箱", auth_password: "密码",
   auth_login_btn: "登录", auth_register_btn: "创建账号",
@@ -1968,7 +2173,7 @@ Object.assign(I18N.zh, {
   gate_btn: "登录 / 注册",
   analisis_kicker: "第二阶段 · 需要登录", analisis_title: "文件分析",
   analisis_lede: "上传 CoA、MSDS 或清真证书（PDF），或粘贴其文本。系统会读取其中的成分，对照 BPJPH 附录核查分类，并说明每种成分的关键点和下一步措施。",
-  ask_kicker: "第二阶段 · 需要登录", ask_title: "问答",
+  ask_kicker: "第二阶段 · 需要登录", ask_title: "清真 AI",
   ask_lede: "咨询有关清真及印尼清真法规的问题——认证条件、流程与时限、SJPH、RSHLN、清真标签或经营者义务。答案来自 BPJPH 的 JDIH 法规库，并附引用来源。",
   ask_label: "您的问题", ask_ph: "例如：中小企业申请清真认证需要什么条件？", ask_btn: "提问",
   ask_count: "还剩 {n} / 2,000 字符",
@@ -2979,7 +3184,22 @@ Promise.resolve()
 /* ---------------- tema & bahasa: penerapan ---------------- */
 function applyStaticTexts() {
   document.querySelectorAll("[data-i18n]").forEach(function (n) {
-    n.textContent = t(n.getAttribute("data-i18n"));
+    var key = n.getAttribute("data-i18n");
+    if (key === "brand_title") {
+      /* Aksen emas pada kata "Halal" (atau padanannya) di judul brand. */
+      var title = t("brand_title");
+      var words = ["Halal", "الحلال", "清真"];
+      var word = null, i;
+      for (i = 0; i < words.length; i++) { if (title.indexOf(words[i]) >= 0) { word = words[i]; break; } }
+      if (word) {
+        var idx = title.indexOf(word);
+        n.innerHTML = esc(title.slice(0, idx)) + '<span class="brand-accent">' + esc(word) + "</span>" + esc(title.slice(idx + word.length));
+      } else {
+        n.textContent = title;
+      }
+      return;
+    }
+    n.textContent = t(key);
   });
   document.querySelectorAll("[data-i18n-ph]").forEach(function (n) {
     n.setAttribute("placeholder", t(n.getAttribute("data-i18n-ph")));
@@ -3058,10 +3278,38 @@ function f2InitAuth() {
    bahasa tidak mengembalikan tombol ke teks default. */
 function f2SyncAuthUI() {
   var logged = f2IsLoggedIn();
-  var btn = el("auth-btn");
-  if (btn) {
-    btn.textContent = logged ? t("auth_btn_logout") : t("auth_btn_login");
-    btn.title = logged && f2User && f2User.email ? f2User.email : "";
+  var firstName = "", fullName = "", email = "";
+  if (logged && f2User) {
+    email = f2User.email || "";
+    var meta = f2User.user_metadata || {};
+    fullName = meta.full_name || meta.name || "";
+    firstName = fullName ? fullName.split(/\s+/)[0] : "";
+    if (!firstName && email) firstName = email.split("@")[0];
+  }
+  [el("auth-btn"), el("auth-btn-drawer")].forEach(function (btn) {
+    if (!btn) return;
+    btn.classList.toggle("is-user", logged);
+    if (logged) {
+      var initial = firstName ? firstName.charAt(0).toUpperCase() : "?";
+      btn.innerHTML = '<span class="auth-avatar" aria-hidden="true">' + esc(initial) + '</span><span class="auth-name">' + esc(firstName) + "</span>";
+      btn.setAttribute("aria-label", fullName || email);
+    } else {
+      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg><span>' + esc(t("auth_btn_login")) + "</span>";
+      btn.setAttribute("aria-label", t("auth_btn_login"));
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+  var menuName = el("user-menu-name");
+  if (menuName) menuName.textContent = fullName || email;
+  var menuEmail = el("user-menu-email");
+  if (menuEmail) menuEmail.textContent = email;
+  var userMenu = el("user-menu");
+  if (userMenu && !logged) userMenu.hidden = true;
+  var drawerUser = el("drawer-user");
+  if (drawerUser) {
+    if (!logged) drawerUser.hidden = true;
+    var dn = el("drawer-user-name"); if (dn) dn.textContent = fullName || email;
+    var de = el("drawer-user-email"); if (de) de.textContent = email;
   }
   ["analisis", "tanya"].forEach(function (v) {
     var gate = el("gate-" + v);
@@ -3563,14 +3811,44 @@ function f2RunAsk() {
 }
 
 /* ---------- wiring Fase 2 ---------- */
+/* Keluar memakai alur sign-out yang sudah ada (Supabase) — dipakai tombol
+   "Keluar" di menu pengguna header dan di drawer. */
+function f2SignOut() {
+  f2EnsureSupabase().then(function (sb) {
+    if (sb) sb.auth.signOut();
+    f2User = null;
+    f2SyncAuthUI();
+  });
+}
+function toggleUserMenu() {
+  var menu = el("user-menu");
+  if (!menu) return;
+  var open = menu.hidden;
+  menu.hidden = !open;
+  el("auth-btn").setAttribute("aria-expanded", String(open));
+}
 el("auth-btn").addEventListener("click", function () {
+  if (f2IsLoggedIn()) toggleUserMenu();
+  else f2OpenAuth();
+});
+var userLogout = el("user-logout");
+if (userLogout) userLogout.addEventListener("click", function () {
+  el("user-menu").hidden = true;
+  el("auth-btn").setAttribute("aria-expanded", "false");
+  f2SignOut();
+});
+var drawerLogout = el("user-logout-drawer");
+if (drawerLogout) drawerLogout.addEventListener("click", function () {
+  closeDrawer();
+  f2SignOut();
+});
+var drawerAuthBtn = el("auth-btn-drawer");
+if (drawerAuthBtn) drawerAuthBtn.addEventListener("click", function () {
   if (f2IsLoggedIn()) {
-    f2EnsureSupabase().then(function (sb) {
-      if (sb) sb.auth.signOut();
-      f2User = null;
-      f2SyncAuthUI();
-    });
+    var du = el("drawer-user");
+    if (du) du.hidden = !du.hidden;
   } else {
+    closeDrawer();
     f2OpenAuth();
   }
 });
@@ -3651,6 +3929,8 @@ function applyLanguage(lang, rerender) {
   document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   document.title = t("doc_title");
   el("lang-current").textContent = LANG_NAMES[lang];
+  var langFlag = el("lang-flag");
+  if (langFlag) langFlag.textContent = LANG_FLAGS[lang] || "";
   document.querySelectorAll("[data-lang-opt]").forEach(function (b) {
     b.setAttribute("aria-selected", String(b.getAttribute("data-lang-opt") === lang));
   });
@@ -3671,11 +3951,11 @@ function applyLanguage(lang, rerender) {
   if (rerender && LHLN) { buildLhlnFilters(); renderLhln(); }
   if (typeof f2AfterLanguage === "function") f2AfterLanguage();
 }
-el("theme-toggle").addEventListener("click", function () {
+document.querySelectorAll(".theme-toggle").forEach(function (btn) { btn.addEventListener("click", function () {
   var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", next);
   try { localStorage.setItem("kbh-theme", next); } catch (e) {}
-});
+}); });
 var langBtn = el("lang-btn"), langMenu = el("lang-menu");
 function closeLangMenu() {
   langMenu.hidden = true;
@@ -3697,6 +3977,58 @@ document.addEventListener("click", function (ev) {
 });
 document.addEventListener("keydown", function (ev) {
   if (ev.key === "Escape" && !langMenu.hidden) { closeLangMenu(); langBtn.focus(); }
+});
+/* ---------- drawer mobile ---------- */
+var drawer = el("mobile-drawer"), drawerBackdrop = el("drawer-backdrop"), menuBtn = el("menu-btn");
+function openDrawer() {
+  if (!drawer) return;
+  drawer.classList.add("open");
+  drawerBackdrop.hidden = false;
+  requestAnimationFrame(function () { drawerBackdrop.classList.add("show"); });
+  if (menuBtn) menuBtn.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+  var closeBtn = el("drawer-close");
+  if (closeBtn) closeBtn.focus();
+}
+function closeDrawer() {
+  if (!drawer) return;
+  drawer.classList.remove("open");
+  drawerBackdrop.classList.remove("show");
+  setTimeout(function () { drawerBackdrop.hidden = true; }, 260);
+  if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+}
+if (menuBtn) menuBtn.addEventListener("click", openDrawer);
+var drawerCloseBtn = el("drawer-close");
+if (drawerCloseBtn) drawerCloseBtn.addEventListener("click", closeDrawer);
+if (drawerBackdrop) drawerBackdrop.addEventListener("click", closeDrawer);
+document.querySelectorAll(".drawer-nav [data-nav]").forEach(function (b) {
+  b.addEventListener("click", closeDrawer);
+});
+document.querySelectorAll(".drawer-lang [data-lang-opt]").forEach(function (b) {
+  b.addEventListener("click", closeDrawer);
+});
+document.addEventListener("keydown", function (ev) {
+  if (ev.key === "Escape" && drawer && drawer.classList.contains("open")) {
+    closeDrawer();
+    if (menuBtn) menuBtn.focus();
+  }
+});
+/* Tutup menu pengguna saat klik di luar / tekan Escape. */
+document.addEventListener("click", function (ev) {
+  var menu = el("user-menu");
+  if (menu && !menu.hidden && !ev.target.closest(".auth-wrap")) {
+    menu.hidden = true;
+    el("auth-btn").setAttribute("aria-expanded", "false");
+  }
+});
+document.addEventListener("keydown", function (ev) {
+  var menu = el("user-menu");
+  if (ev.key === "Escape" && menu && !menu.hidden) {
+    menu.hidden = true;
+    el("auth-btn").setAttribute("aria-expanded", "false");
+    el("auth-btn").focus();
+  }
 });
 applyLanguage(LANG, false);
     </script>
