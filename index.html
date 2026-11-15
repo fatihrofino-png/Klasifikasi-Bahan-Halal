@@ -280,9 +280,9 @@
       .hero-stats .hstat:nth-child(3) { animation-delay: .50s; }
       .hero-stats .hstat:nth-child(4) { animation-delay: .56s; }
       @keyframes heroPop { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      .hero-side.hero-pop .tile { animation: heroPop .55s var(--ease-out) backwards; }
-      .hero-side.hero-pop .tile:nth-child(2) { animation-delay: .15s; }
-      .hero-side.hero-pop .tile:nth-child(3) { animation-delay: .3s; }
+      .hero-side.hero-pop .tile { animation: heroPop .6s var(--ease-out) backwards; }
+      .hero-side.hero-pop .tile:nth-child(2) { animation-delay: .2s; }
+      .hero-side.hero-pop .tile:nth-child(3) { animation-delay: .4s; }
       @keyframes heroPattern { from { opacity: .11; } to { opacity: .16; } }
       .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; text-wrap: balance; }
       .hero h1 .line-in { display: inline-block; animation: maskUp .55s var(--ease-out) backwards; will-change: transform; }
@@ -457,7 +457,7 @@
       .skel-bar.w40 { width: 40%; }
       .skel-bar.w80 { width: 80%; }
       @keyframes skelPulse { from { opacity: .55; } to { opacity: 1; } }
-      .results-summary { position: sticky; top: 8px; z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 10px 0 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); font-size: .88rem; font-weight: 600; }
+      .results-summary { position: sticky; top: calc(var(--topbar-h, 120px) + 10px); z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 10px 0 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); font-size: .88rem; font-weight: 600; }
       .results-summary .rs-item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
       .results-summary .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
       .dot-ok { background: #0e8a44; } .dot-wajib { background: #c23a28; } .dot-belum { background: #d9a514; }
@@ -4685,6 +4685,16 @@ window.addEventListener("load", function () {
     if (pwaIsIOS()) pwaShow();
   }, 2500);
 });
+/* Tinggi header sticky diukur JS ke --topbar-h supaya .results-summary
+   menempel TEPAT di bawah header, bukan di belakangnya (15 Nov 2026). */
+(function () {
+  var tb = document.querySelector(".topbar");
+  if (!tb) return;
+  function sync() { document.documentElement.style.setProperty("--topbar-h", tb.offsetHeight + "px"); }
+  sync();
+  if (window.ResizeObserver) new ResizeObserver(sync).observe(tb);
+  window.addEventListener("resize", sync);
+})();
 /* Pop-up kartu status hero: sekali saat load awal saja (item 11, 15 Nov 2026).
    Kelas dilepas setelah animasi selesai supaya pindah tab tidak memutar ulang. */
 (function () {
