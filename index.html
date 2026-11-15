@@ -212,6 +212,10 @@
       .hero-stats .hstat:nth-child(2) { animation-delay: .44s; }
       .hero-stats .hstat:nth-child(3) { animation-delay: .50s; }
       .hero-stats .hstat:nth-child(4) { animation-delay: .56s; }
+      @keyframes heroPop { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .hero-side.hero-pop .tile { animation: heroPop .5s var(--ease-out) backwards; }
+      .hero-side.hero-pop .tile:nth-child(2) { animation-delay: .12s; }
+      .hero-side.hero-pop .tile:nth-child(3) { animation-delay: .24s; }
       @keyframes heroPattern { from { opacity: .11; } to { opacity: .16; } }
       .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; text-wrap: balance; }
       .hero h1 .line-in { display: inline-block; animation: maskUp .55s var(--ease-out) backwards; will-change: transform; }
@@ -369,6 +373,37 @@
       }
       .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
       @keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+      /* ---- 10 saran tampilan (15 Nov 2026): strip status, tombol aksi kartu,
+         skeleton, bar ringkasan, timeline regulasi ---- */
+      .card.card-ok { border-inline-start: 6px solid #0e8a44; }
+      .card.card-wajib { border-inline-start: 6px solid #c23a28; }
+      .card.card-belum { border-inline-start: 6px solid #d9a514; }
+      .card:target { box-shadow: 0 0 0 3px var(--gold), var(--shadow-lg); }
+      .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+      .btn-mini { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: .85rem; font-weight: 600; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+      .btn-mini:hover { border-color: var(--gold); }
+      .btn-mini svg { flex: none; }
+      .btn-mini.is-copied { background: var(--ok-bg); border-color: var(--ok-solid); color: var(--ok-ink); }
+      .skel { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; margin: 16px 0; background: var(--card); }
+      .skel-bar { height: 14px; border-radius: 8px; background: var(--surface); margin: 10px 0; animation: skelPulse 1.2s ease-in-out infinite alternate; }
+      .skel-bar.w60 { width: 60%; height: 20px; }
+      .skel-bar.w40 { width: 40%; }
+      .skel-bar.w80 { width: 80%; }
+      @keyframes skelPulse { from { opacity: .55; } to { opacity: 1; } }
+      .results-summary { position: sticky; top: 8px; z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 10px 0 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); font-size: .88rem; font-weight: 600; }
+      .results-summary .rs-item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+      .results-summary .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+      .dot-ok { background: #0e8a44; } .dot-wajib { background: #c23a28; } .dot-belum { background: #d9a514; }
+      .reg-timeline { margin: 0 0 22px; }
+      .reg-timeline h2 { font-size: 1.15rem; margin: 0 0 12px; }
+      .reg-timeline ol { list-style: none; margin: 0; padding: 0 0 0 8px; border-inline-start: 2px solid var(--line); }
+      .reg-timeline li { position: relative; padding: 0 0 14px 20px; }
+      .reg-timeline li::before { content: ""; position: absolute; inset-inline-start: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid var(--card); box-shadow: 0 0 0 1px var(--gold); }
+      .reg-timeline .tl-year { font-weight: 800; color: #8a6a0a; margin-inline-end: 8px; }
+      :root[data-theme="dark"] .reg-timeline .tl-year { color: var(--gold); }
+      .reg-timeline .tl-name { font-weight: 700; }
+      .reg-timeline .tl-desc { color: var(--muted); font-size: .92rem; }
+      .reg-timeline .tl-tag { display: inline-block; margin-inline-start: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .04em; padding: 2px 8px; border-radius: 999px; background: #fbe9e7; color: #7e1d12; border: 1px solid #e8b4ac; }
       .card-body { padding: 20px 22px 22px; }
       .status-banner {
         display: flex; align-items: center; gap: 12px; padding: 15px 22px;
@@ -492,6 +527,13 @@
       .cat-head .count { margin-inline-start: auto; font-weight: 700; color: var(--ok-ink); background: var(--ok-bg); font-size: .82rem; white-space: nowrap; padding: 4px 11px; border-radius: 999px; }
       .cat-head .chev { transition: transform .18s ease; flex: none; color: var(--muted); }
       .cat-head[aria-expanded="true"] .chev { transform: rotate(180deg); }
+      #browse-301, #browse-387 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      @media (max-width: 760px) { #browse-301, #browse-387 { grid-template-columns: 1fr; } }
+      .cat-block { margin: 0; }
+      .cat-block.cat-pl { border-inline-start: 5px solid #0e8a44; }
+      .cat-block.cat-w { border-inline-start: 5px solid #c23a28; }
+      .lhln-flag { margin-inline-end: 6px; }
+      .badge-verified { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; white-space: nowrap; padding: 3px 10px; border-radius: 999px; background: var(--ok-bg); color: var(--ok-ink); border: 1px solid var(--ok-solid); }
       .cat-body { padding: 6px 18px 18px; }
       .cat-body[hidden] { display: none; }
       .cat-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
@@ -1149,6 +1191,10 @@
             <button type="button" class="chip" data-example="Kedelai">Kedelai</button>
             <button type="button" class="chip" data-example="Susu cair">Susu cair</button>
             <button type="button" class="chip" data-example="470-82-6">CAS 470-82-6</button>
+            <button type="button" class="chip" data-example="Gelatin">Gelatin</button>
+            <button type="button" class="chip" data-example="E471">E471</button>
+            <button type="button" class="chip" data-example="Carmine">Carmine</button>
+            <button type="button" class="chip" data-example="Asam Sitrat">Asam Sitrat</button>
           </p>
           <p class="search-meta" id="data-meta" data-i18n="data_loading">Memuat data lampiran…</p>
         </form>
@@ -1163,6 +1209,7 @@
         <div id="results-head" hidden>
           <h2 class="results-title" data-i18n="results_title">Hasil pencarian</h2>
           <p class="results-count" id="results-count"></p>
+          <div id="results-summary" class="results-summary" hidden></div>
         </div>
 
         <div id="results" aria-live="polite"></div>
@@ -1325,6 +1372,7 @@
                 <th scope="col" data-i18n="lhln_col_addr">Alamat</th>
                 <th scope="col" data-i18n="lhln_col_scope">Lingkup layanan</th>
                 <th scope="col" data-i18n="lhln_col_valid">Masa berlaku s.d.</th>
+                <th scope="col" data-i18n="lhln_col_status">Status</th>
               </tr>
             </thead>
             <tbody id="lhln-body"></tbody>
@@ -1543,7 +1591,7 @@ var I18N = { id: {
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
   popular_label: "Bahan populer:",
-  copy_cas: "Salin CAS", copied: "Tersalin",
+  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
   data_loading: "Memuat data lampiran…",
@@ -1683,7 +1731,7 @@ I18N.en = {
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
   popular_label: "Popular ingredients:",
-  copy_cas: "Copy CAS", copied: "Copied",
+  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
   data_loading: "Loading appendix data…",
@@ -1817,7 +1865,7 @@ I18N.ar = {
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
   popular_label: "مواد شائعة:",
-  copy_cas: "نسخ CAS", copied: "تم النسخ",
+  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
   data_loading: "جارٍ تحميل بيانات الملاحق…",
@@ -1951,7 +1999,7 @@ I18N.zh = {
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
   popular_label: "热门原料：",
-  copy_cas: "复制 CAS", copied: "已复制",
+  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
   data_loading: "正在加载附录数据…",
@@ -2567,7 +2615,15 @@ Promise.resolve()
     buildBrowse();
     buildRegulasi();
     var q0 = el("q").value.trim();
+    var deepHash = "";
+    try { deepHash = window.location.hash || ""; } catch (e) {}
     if (q0.length >= 2) runSearch(q0);
+    if (deepHash.indexOf("#hasil-") === 0) {
+      setTimeout(function () {
+        var target = document.getElementById(deepHash.slice(1));
+        if (target) target.scrollIntoView({ block: "start" });
+      }, 800);
+    }
   })
   .catch(function () {
     el("data-meta").textContent = "";
@@ -2758,7 +2814,8 @@ function cardPL(it, extraNote, matched) {
   var nomor = (e.nomor_lampiran && e.nomor_lampiran.length) ? e.nomor_lampiran.join(", ") : e.no;
   if (nomor) rows.push([t("f_number"), esc(nomor)]);
   if (e.sinonim && e.sinonim.length) rows.push([t("f_syn"), esc(e.sinonim.join(", "))]);
-  var h = '<article class="card" data-cas="' + esc(casKey(e.cas)) + '">' +
+  var ck = casKey(e.cas);
+  var h = '<article class="card card-ok"' + (ck ? ' id="hasil-' + esc(ck) + '"' : '') + ' data-cas="' + esc(ck) + '">' +
     '<div class="status-banner st-ok">' + ICO.ok + "<span>" + esc(t("banner_ok")) + "</span>" +
     '<span class="tag">' + esc(t("tag_pl")) + '</span></div><div class="card-body">' +
     "<h3>" + esc(e.nama_id) + "</h3>" +
@@ -2775,6 +2832,7 @@ function cardPL(it, extraNote, matched) {
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal301")) + "</p>" +
     pdfBtn(PDF_301, t("pdf301")) + "</div>" +
     '<div class="pubchem-slot"></div>' +
+    cardActionsHTML("pl", ck) +
     "</div></article>";
   return h;
 }
@@ -2786,7 +2844,7 @@ function cardW(it) {
     [t("f_type_product"), esc(e.jenis_produk)],
     [t("f_class"), esc(e.klasifikasi)]
   ];
-  var h = '<article class="card">' +
+  var h = '<article class="card card-wajib">' +
     '<div class="status-banner st-wajib">' + ICO.wajib + "<span>" + esc(t("banner_wajib")) + "</span>" +
     '<span class="tag">' + esc(t("tag_product")) + '</span></div><div class="card-body">' +
     "<h3>" + esc(it.title) + "</h3>" +
@@ -2796,6 +2854,7 @@ function cardW(it) {
     '<p class="source-line">' + esc(t("source387")) + "</p>" +
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal387")) + "</p>" +
     pdfBtn(PDF_387, t("pdf387")) + "</div>" +
+    cardActionsHTML("w") +
     "</div></article>";
   return h;
 }
@@ -2810,7 +2869,7 @@ function cardBelum(queryLabel, pc, pcError) {
   } else {
     rows.push([t("f_cas"), esc(t("f_cas_none2"))]);
   }
-  var h = '<article class="card">' +
+  var h = '<article class="card card-belum">' +
     '<div class="status-banner st-belum">' + ICO.belum + "<span>" + esc(t("banner_belum")) + "</span>" +
     '<span class="tag">' + esc(t("tag_none")) + '</span></div><div class="card-body">' +
     "<h3>" + esc(name) + "</h3>" +
@@ -2827,6 +2886,7 @@ function cardBelum(queryLabel, pc, pcError) {
   }
   h += '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal20")) + "</p>" +
     pdfBtn(PDF_20, t("pdf20")) + "</div>" +
+    cardActionsHTML("belum") +
     "</div></article>";
   return h;
 }
@@ -2889,6 +2949,116 @@ function syncUrlQuery(value) {
     window.history.replaceState(null, "", url);
   } catch (e) { /* riwayat tidak tersedia di konteks ini: abaikan */ }
 }
+/* ---------------- 10 saran tampilan (15 Nov 2026) ---------------- */
+/* Peta bendera negara untuk daftar LHLN (item 7). Kunci = nilai country
+   persis dari data (termasuk ejaan "Kolombia"/"Polandia" di sumber). */
+var LHLN_FLAG = {
+  "Argentina": "\u{1F1E6}\u{1F1F7}", "Australia": "\u{1F1E6}\u{1F1FA}", "Austria": "\u{1F1E6}\u{1F1F9}", "Belarus": "\u{1F1E7}\u{1F1FE}",
+  "Belgium": "\u{1F1E7}\u{1F1EA}", "Brazil": "\u{1F1E7}\u{1F1F7}", "Canada": "\u{1F1E8}\u{1F1E6}", "Chile": "\u{1F1E8}\u{1F1F1}",
+  "China": "\u{1F1E8}\u{1F1F3}", "Denmark": "\u{1F1E9}\u{1F1F0}", "France": "\u{1F1EB}\u{1F1F7}", "Germany": "\u{1F1E9}\u{1F1EA}",
+  "India": "\u{1F1EE}\u{1F1F3}", "Ireland": "\u{1F1EE}\u{1F1EA}", "Italy": "\u{1F1EE}\u{1F1F9}", "Japan": "\u{1F1EF}\u{1F1F5}",
+  "Kolombia": "\u{1F1E8}\u{1F1F4}", "Lithuania": "\u{1F1F1}\u{1F1F9}", "Malaysia": "\u{1F1F2}\u{1F1FE}", "Mexico": "\u{1F1F2}\u{1F1FD}",
+  "Netherlands": "\u{1F1F3}\u{1F1F1}", "New Zealand": "\u{1F1F3}\u{1F1FF}", "Pakistan": "\u{1F1F5}\u{1F1F0}", "Philippines": "\u{1F1F5}\u{1F1ED}",
+  "Polandia": "\u{1F1F5}\u{1F1F1}", "Portugal": "\u{1F1F5}\u{1F1F9}", "Russia": "\u{1F1F7}\u{1F1FA}", "Saudi Arabia": "\u{1F1F8}\u{1F1E6}",
+  "Singapore": "\u{1F1F8}\u{1F1EC}", "South Africa": "\u{1F1FF}\u{1F1E6}", "South Korea": "\u{1F1F0}\u{1F1F7}", "Spain": "\u{1F1EA}\u{1F1F8}",
+  "Sri Lanka": "\u{1F1F1}\u{1F1F0}", "Sweden": "\u{1F1F8}\u{1F1EA}", "Switzerland": "\u{1F1E8}\u{1F1ED}", "Taiwan": "\u{1F1F9}\u{1F1FC}",
+  "Thailand": "\u{1F1F9}\u{1F1ED}", "Tunisia": "\u{1F1F9}\u{1F1F3}", "Turkey": "\u{1F1F9}\u{1F1F7}", "United Arab Emirates": "\u{1F1E6}\u{1F1EA}",
+  "United Kingdom": "\u{1F1EC}\u{1F1E7}", "United States of America": "\u{1F1FA}\u{1F1F8}", "Uruguay": "\u{1F1FA}\u{1F1FE}", "Vietnam": "\u{1F1FB}\u{1F1F3}"
+};
+/* Baris tombol tiap kartu hasil (item 3 bagikan + item 10 unduh PNG). */
+var ICO_SHARE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>';
+var ICO_DL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+function cardActionsHTML(kind, casK) {
+  var sh = '<button type="button" class="btn-mini" data-share data-kind="' + kind + '"' + (casK ? ' data-cas="' + esc(casK) + '"' : "") + ">" + ICO_SHARE + "<span>" + esc(t("share_btn")) + "</span></button>";
+  var png = '<button type="button" class="btn-mini" data-png>' + ICO_DL + "<span>" + esc(t("png_btn")) + "</span></button>";
+  return '<div class="card-actions">' + sh + png + "</div>";
+}
+/* Bar ringkasan hasil (item 9): hanya kategori yang jumlahnya > 0. */
+function updateResultsSummary(plN, wN, belumN) {
+  var s = el("results-summary");
+  if (!s) return;
+  var items = [];
+  if (plN > 0) items.push('<span class="rs-item"><i class="dot dot-ok"></i>' + fmtNum(plN) + " " + esc(t("banner_ok")) + "</span>");
+  if (wN > 0) items.push('<span class="rs-item"><i class="dot dot-wajib"></i>' + fmtNum(wN) + " " + esc(t("banner_wajib")) + "</span>");
+  if (belumN > 0) items.push('<span class="rs-item"><i class="dot dot-belum"></i>' + fmtNum(belumN) + " " + esc(t("banner_belum")) + "</span>");
+  if (!items.length) { s.hidden = true; s.innerHTML = ""; return; }
+  s.innerHTML = items.join("");
+  s.hidden = false;
+}
+/* Kartu skeleton selama pencarian berjalan (item 8). */
+function skeletonHTML() {
+  var one = '<div class="skel" aria-hidden="true"><div class="skel-bar w60"></div><div class="skel-bar w80"></div><div class="skel-bar w40"></div></div>';
+  return '<div role="status" aria-label="' + esc(t("search_loading")) + '">' + one + one + one + "</div>";
+}
+/* Bungkus teks untuk canvas (item 10). lastY = y baris terakhir. */
+function wrapText(ctx, text, x0, y0, maxW, lineH, maxLines) {
+  var words = String(text || "").split(/\s+/).filter(Boolean);
+  var lines = [], line = "";
+  words.forEach(function (w) {
+    var test = line ? line + " " + w : w;
+    if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+    else line = test;
+  });
+  if (line) lines.push(line);
+  lines = lines.slice(0, maxLines);
+  lines.forEach(function (ln, i) { ctx.fillText(ln, x0, y0 + i * lineH); });
+  wrapText.lastY = y0 + (lines.length - 1) * lineH;
+  return wrapText.lastY;
+}
+/* Unduh kartu hasil sebagai PNG (item 10): digambar di canvas, tanpa
+   dependensi baru dan tanpa perubahan CSP. */
+function downloadCardPNG(card, btn) {
+  try {
+    var title = (card.querySelector("h3") || { textContent: "" }).textContent;
+    var banner = card.querySelector(".status-banner");
+    var status = banner ? banner.textContent.replace(/\s+/g, " ").trim() : "";
+    var cls = banner ? banner.className : "";
+    var color = cls.indexOf("st-wajib") >= 0 ? "#c23a28" : cls.indexOf("st-belum") >= 0 ? "#d9a514" : "#0e8a44";
+    var cas = card.getAttribute("data-cas") || "";
+    var src = (card.querySelector(".source-line") || { textContent: "" }).textContent.replace(/\s+/g, " ").trim();
+    var W = 1080, H = 640;
+    var cv = document.createElement("canvas");
+    cv.width = W; cv.height = H;
+    var x = cv.getContext("2d");
+    if (!x) { if (btn) btn.removeAttribute("data-busy"); return; }
+    x.fillStyle = "#ffffff"; x.fillRect(0, 0, W, H);
+    x.fillStyle = color; x.fillRect(0, 0, W, 14);
+    x.fillStyle = "#0a3524"; x.font = "800 26px 'Plus Jakarta Sans', sans-serif";
+    x.fillText("KLASIFIKASI BAHAN HALAL  \u2022  BPJPH", 64, 76);
+    x.fillStyle = "#0a3524"; x.font = "600 52px Fraunces, Georgia, serif";
+    var y = wrapText(x, title, 64, 170, W - 128, 62, 3) + 26;
+    x.font = "700 28px 'Plus Jakarta Sans', sans-serif";
+    var sw = x.measureText(status).width + 44;
+    x.fillStyle = color;
+    if (x.roundRect) { x.beginPath(); x.roundRect(64, y, sw, 52, 26); x.fill(); }
+    else x.fillRect(64, y, sw, 52);
+    x.fillStyle = "#ffffff"; x.fillText(status, 86, y + 36);
+    y += 96;
+    x.fillStyle = "#334155"; x.font = "400 30px 'Plus Jakarta Sans', sans-serif";
+    if (cas) { x.fillText("CAS  " + cas, 64, y); y += 48; }
+    if (src) {
+      x.fillStyle = "#64748b"; x.font = "400 24px 'Plus Jakarta Sans', sans-serif";
+      y = wrapText(x, src, 64, y, W - 128, 34, 2) + 40;
+    }
+    x.fillStyle = "#94a3b8"; x.font = "400 22px 'Plus Jakarta Sans', sans-serif";
+    var today = new Date().toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+    x.fillText("cek-bahan.vercel.app  \u2022  " + today, 64, H - 48);
+    cv.toBlob(function (blob) {
+      if (!blob) { if (btn) btn.removeAttribute("data-busy"); return; }
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "hasil-" + (cas ? cas.replace(/[^0-9A-Za-z-]/g, "-") : "klasifikasi-bahan") + ".png";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      if (btn) {
+        var orig = btn.innerHTML;
+        btn.innerHTML = ICO_DL + "<span>" + esc(t("png_saved")) + "</span>";
+        btn.classList.add("is-copied");
+        setTimeout(function () { btn.innerHTML = orig; btn.classList.remove("is-copied"); btn.removeAttribute("data-busy"); }, 1600);
+      }
+    }, "image/png");
+  } catch (e) { if (btn) btn.removeAttribute("data-busy"); /* canvas tidak tersedia: tombol diam */ }
+}
 function runSearch(raw) {
   if (!DATA) return;
   var q = norm(raw);
@@ -2905,9 +3075,13 @@ function runSearch(raw) {
   var qCasK = casKey(raw);
   if (!/^\d[\d\s-]*$/.test(String(raw).trim())) qCasK = "";
   setStatus(t("status_searching"));
-  var pl = searchPL(q, qTokens, qCasK);
-  var w = searchW(q, qTokens);
-  renderLocal(raw, pl, w);
+  resultsEl.innerHTML = skeletonHTML();
+  el("results-head").hidden = true;
+  setTimeout(function () {
+    if (seq !== searchSeq) return;
+    var pl = searchPL(q, qTokens, qCasK);
+    var w = searchW(q, qTokens);
+    renderLocal(raw, pl, w);
   /* Indikator muat PubChem di tempat datanya akan muncul: slot sinonim
      pada kartu lokal, atau kartu penampung bila belum ada hasil lokal —
      supaya area hasil tidak terlihat kosong/rusak di koneksi lambat. */
@@ -2930,6 +3104,7 @@ function runSearch(raw) {
       setStatus(null);
       handlePubchem(raw, pl, w, null, true);
     });
+  }, 120);
 }
 /* Kecocokan persis (nama bidang sama persis dengan kueri, skor 620,
    atau CAS persis, skor 1000) adalah jawaban pasti untuk kueri itu.
@@ -3004,6 +3179,7 @@ function renderLocal(raw, pl, w) {
   el("results").innerHTML = h;
   if (pl.length || w.length) showResultsHead(pl.length + w.length, raw);
   else el("results-head").hidden = true;
+  updateResultsSummary((pl.length && !demotePL) ? pl.length : 0, (w.length && !demoteW) ? w.length : 0, 0);
   bindResultButtons();
 }
 function handlePubchem(raw, pl, w, pc, pcError) {
@@ -3020,6 +3196,7 @@ function handlePubchem(raw, pl, w, pc, pcError) {
           (pc.cas ? " (CAS " + esc(pc.cas) + ")" : "") + esc(t("found_via_pc_tail")) + "</p>" +
           cardPL(local, esc(tt("pc_match_note", { cid: pc.cid })));
         showResultsHead(1, raw);
+        updateResultsSummary(1, 0, 0);
         bindResultButtons();
         return;
       }
@@ -3029,6 +3206,7 @@ function handlePubchem(raw, pl, w, pc, pcError) {
       resultsEl.innerHTML = cardBelum(raw, null, pcError);
       showResultsHead(0, raw);
     }
+    updateResultsSummary(0, 0, 1);
     bindResultButtons();
     return;
   }
@@ -3039,6 +3217,7 @@ function handlePubchem(raw, pl, w, pc, pcError) {
   if (!pl.length && w.length && pc && !matchLocalFromPubchem(pc)) {
     resultsEl.innerHTML = '<h2 class="group-head">' + esc(t("group_substance_head")) + "</h2>" + cardBelum(raw, pc, false) + resultsEl.innerHTML;
     bindResultButtons();
+    updateResultsSummary(0, w.length, 1);
   }
   /* Hasil lokal ada: perkaya kartu yang CAS-nya sama dengan hasil PubChem. */
   if (pc && pc.cas) {
@@ -3075,6 +3254,31 @@ function bindResultButtons() {
   var chips = el("results").querySelectorAll("[data-example]");
   chips.forEach(function (c) {
     c.addEventListener("click", function () { doSearch(c.getAttribute("data-example")); });
+  });
+  var shareBtns = el("results").querySelectorAll("[data-share]");
+  shareBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (b.getAttribute("data-busy") === "1") return;
+      var q = el("q").value.trim();
+      var base = (location.origin && location.origin !== "null") ? location.origin + location.pathname : location.href.split(/[?#]/)[0];
+      var url = base + (q ? "?q=" + encodeURIComponent(q) : "");
+      if (b.getAttribute("data-kind") === "pl" && b.getAttribute("data-cas")) url += "#hasil-" + b.getAttribute("data-cas");
+      copyText(url, function () {
+        b.setAttribute("data-busy", "1");
+        var orig = b.innerHTML;
+        b.innerHTML = ICO.check + "<span>" + esc(t("copied")) + "</span>";
+        b.classList.add("is-copied");
+        setTimeout(function () { b.innerHTML = orig; b.classList.remove("is-copied"); b.removeAttribute("data-busy"); }, 1600);
+      });
+    });
+  });
+  var pngBtns = el("results").querySelectorAll("[data-png]");
+  pngBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (b.getAttribute("data-busy") === "1") return;
+      var card = b.closest(".card");
+      if (card) { b.setAttribute("data-busy", "1"); downloadCardPNG(card, b); }
+    });
   });
   var casBtns = el("results").querySelectorAll("[data-copy-cas]");
   casBtns.forEach(function (b) {
@@ -3122,7 +3326,7 @@ function buildBrowseSection(container, groups, kind) {
     var key = kind + "-" + gi;
     browseState[key] = { shown: 60, filter: "", kelompok: null, entries: g[1], kind: kind };
     var block = document.createElement("div");
-    block.className = "cat-block";
+    block.className = "cat-block cat-" + kind;
     var kelompoks = [];
     if (kind === "pl") {
       var seen = {};
@@ -3218,11 +3422,34 @@ function renderBrowseList(key) {
 }
 
 /* ---------------- regulasi ---------------- */
+/* Linimasa 11 dokumen korpus (item 4). Deskripsi = judul resmi yang
+   dipersingkat dari korpus-regulasi.json; PP 39/2021 sudah dicabut. */
+var REG_TIMELINE = [
+  { y: "2014", n: "UU 33/2014", d: "Jaminan Produk Halal \u2014 undang-undang induk" },
+  { y: "2021", n: "PP 39/2021", d: "Penyelenggaraan Bidang Jaminan Produk Halal", tag: "revoked" },
+  { y: "2021", n: "PMA 20/2021", d: "Sertifikasi Halal bagi Pelaku Usaha Mikro dan Kecil" },
+  { y: "2022", n: "Kepkaban 40/2022", d: "Penetapan Label Halal" },
+  { y: "2023", n: "Kepkaban 20/2023", d: "Kriteria Sistem Jaminan Produk Halal" },
+  { y: "2024", n: "PP 42/2024", d: "Penyelenggaraan Bidang Jaminan Produk Halal \u2014 mencabut PP 39/2021" },
+  { y: "2026", n: "SE 2/2026", d: "Mekanisme Penentuan Kategori Produk dalam Registrasi Sertifikat Halal Luar Negeri" },
+  { y: "2026", n: "PerBPJPH 4/2026", d: "Pemastian Kesesuaian Produk Halal Luar Negeri" },
+  { y: "2026", n: "Kepkaban 328/2026", d: "SOP Layanan Pemastian Kesesuaian Produk Halal Luar Negeri" },
+  { y: "2026", n: "Kepkaban 301/2026", d: "Produk dan Bahan yang Dikecualikan dari Kewajiban Bersertifikat Halal" },
+  { y: "2026", n: "Kepkaban 387/2026", d: "Jenis Produk yang Wajib Bersertifikat Halal" }
+];
+function timelineHTML() {
+  var items = REG_TIMELINE.map(function (r) {
+    return "<li><span class=\"tl-year\">" + r.y + "</span><span class=\"tl-name\">" + esc(r.n) + "</span>" +
+      (r.tag === "revoked" ? '<span class="tl-tag">' + esc(t("reg_revoked")) + "</span>" : "") +
+      '<div class="tl-desc">' + esc(r.d) + "</div></li>";
+  }).join("");
+  return '<div class="reg-timeline"><h2>' + esc(t("reg_timeline_title")) + "</h2><ol>" + items + "</ol></div>";
+}
 function buildRegulasi() {
   var s = DATA.meta.sumber;
   var ringkas = [t("reg_sum_0"), t("reg_sum_1"), t("reg_sum_2")];
   var pdfs = [PDF_20, PDF_301, PDF_387];
-  var h = "";
+  var h = timelineHTML();
   s.forEach(function (src, i) {
     h += '<article class="reg-card"><h3>' + esc(src.keputusan) + "</h3><p>" + esc(ringkas[i]) + "</p>" +
       '<dl class="reg-facts"><dt>' + esc(t("reg_set")) + "</dt><dd>" + esc(src.ditetapkan) + "</dd>" +
@@ -3401,7 +3628,7 @@ function buildLhlnFilters() {
     r.scopes.forEach(function (s) { if (!scopes[s.key]) scopes[s.key] = s.label; });
   });
   cSel.innerHTML = '<option value="">' + esc(t("lhln_country_all")) + "</option>" +
-    Object.keys(countries).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + "</option>"; }).join("");
+    Object.keys(countries).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc((LHLN_FLAG[c] ? LHLN_FLAG[c] + " " : "") + c) + "</option>"; }).join("");
   sSel.innerHTML = '<option value="">' + esc(t("lhln_scope_all")) + "</option>" +
     Object.keys(scopes).sort().map(function (k) { return '<option value="' + esc(k) + '">' + esc(scopes[k]) + "</option>"; }).join("");
   cSel.value = cPrev; sSel.value = sPrev;
@@ -3419,15 +3646,16 @@ function renderLhln() {
   });
   var body = el("lhln-body");
   if (!filtered.length) {
-    body.innerHTML = '<tr><td colspan="5">' + esc(t("lhln_none")) + "</td></tr>";
+    body.innerHTML = '<tr><td colspan="6">' + esc(t("lhln_none")) + "</td></tr>";
   } else {
     body.innerHTML = filtered.map(function (r) {
       return "<tr>" +
         '<td class="c-no" data-th="' + esc(t("lhln_col_no")) + '">' + esc(r.no) + "</td>" +
         '<td class="c-name" data-th="' + esc(t("lhln_col_name")) + '">' + esc(r.nama) + "</td>" +
-        '<td data-th="' + esc(t("lhln_col_addr")) + '">' + esc(r.alamat) + "</td>" +
+        '<td data-th="' + esc(t("lhln_col_addr")) + '">' + (LHLN_FLAG[r.country] ? '<span class="lhln-flag">' + LHLN_FLAG[r.country] + "</span>" : "") + esc(r.alamat) + "</td>" +
         '<td data-th="' + esc(t("lhln_col_scope")) + '">' + esc(r.lingkup) + "</td>" +
         '<td class="c-valid" data-th="' + esc(t("lhln_col_valid")) + '">' + esc(r.berlaku) + "</td>" +
+        '<td data-th="' + esc(t("lhln_col_status")) + '"><span class="badge-verified">\u2713 ' + esc(t("lhln_verified")) + "</span></td>" +
         "</tr>";
     }).join("");
   }
@@ -4390,6 +4618,17 @@ window.addEventListener("load", function () {
     if (pwaIsIOS()) pwaShow();
   }, 2500);
 });
+/* Pop-up kartu status hero: sekali saat load awal saja (item 11, 15 Nov 2026).
+   Kelas dilepas setelah animasi selesai supaya pindah tab tidak memutar ulang. */
+(function () {
+  try {
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var side = document.querySelector(".hero-side");
+    if (!side) return;
+    side.classList.add("hero-pop");
+    setTimeout(function () { side.classList.remove("hero-pop"); }, 1400);
+  } catch (e) { /* animasi gagal: kartu tetap tampil normal */ }
+})();
 applyLanguage(LANG, false);
     </script>
   </body>
