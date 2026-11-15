@@ -651,6 +651,99 @@
         .disclaimer { flex-direction: column; }
         .hero { border-radius: 22px; }
       }
+
+      /* ---------- FASE 2: Analisis Dokumen & Tanya Jawab ----------
+         Memakai token yang sudah ada (var(--...)) supaya mode gelap/terang
+         konsisten tanpa nilai warna baru. Satu kolom, tanpa overflow
+         horizontal di 360px: semua wadah min-width:0, teks panjang
+         overflow-wrap:anywhere. Motion hanya hover (dial MOTION 1). */
+      .f2-note { margin: 0 0 14px; font-size: .95rem; }
+      .gate-panel {
+        background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow-sm); padding: 22px; margin: 16px 0;
+      }
+      .gate-panel p { margin: 0 0 14px; }
+      .gate-panel p:last-child { margin-bottom: 0; }
+      .quota-line { margin: 0 0 14px; font-size: .92rem; color: var(--muted); font-weight: 600; }
+      .privacy-box { border-color: var(--gold); }
+      .privacy-box ul { margin: 8px 0 0; padding-inline-start: 20px; }
+      .privacy-box li { margin: 4px 0; }
+      .f2-card { margin-top: 0; }
+      .f2-field { margin: 0 0 16px; }
+      .f2-field > label { display: block; font-weight: 800; font-size: 1rem; margin-bottom: 8px; letter-spacing: -.01em; }
+      .f2-field select, .f2-field textarea, .f2-field input {
+        width: 100%; min-width: 0; font: inherit; color: var(--ink);
+        background: var(--bg); border: 1.5px solid var(--line-strong); border-radius: 13px;
+      }
+      .f2-field select { min-height: 52px; padding: 10px 14px; }
+      .f2-field textarea { min-height: 150px; padding: 12px 14px; line-height: 1.6; resize: vertical; }
+      .f2-field input { min-height: 52px; padding: 10px 14px; }
+      .f2-field select:focus, .f2-field textarea:focus, .f2-field input:focus {
+        outline: none; border-color: var(--green); background: var(--card);
+        box-shadow: 0 0 0 4px rgba(0,166,81,.15);
+      }
+      .count-line { margin: 8px 2px 0; font-size: .87rem; color: var(--muted); }
+      .dropzone {
+        border: 1.5px dashed var(--line-strong); border-radius: 14px;
+        background: var(--bg); padding: 18px; text-align: center;
+        transition: border-color .16s ease, background .16s ease;
+      }
+      .dropzone.is-drag { border-color: var(--green); background: var(--ok-bg); }
+      .dropzone p { margin: 0 0 12px; color: var(--muted); font-size: .95rem; }
+      .btn-secondary {
+        display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px 22px;
+        border: 1.5px solid var(--green); border-radius: 999px; color: var(--green-strong);
+        font-weight: 700; font-size: .95rem; background: var(--card);
+        transition: background .16s ease, transform .16s ease;
+      }
+      .btn-secondary:hover { background: var(--ok-bg); transform: translateY(-2px); }
+      .btn-secondary:active { transform: scale(.97); }
+      .file-info { margin: 10px 2px 0; font-size: .92rem; font-weight: 600; overflow-wrap: anywhere; }
+      .f2-status { display: flex; align-items: center; gap: 10px; margin: 16px 2px 0; color: var(--muted); font-weight: 600; }
+      .f2-results { margin-top: 8px; }
+      .f2-results .card { margin: 16px 0; }
+      .st-unknown { background: var(--surface-2); color: var(--ink); border-bottom: 1px solid var(--line); }
+      .answer-text { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+      .cite-list { margin: 10px 0 0; padding-inline-start: 20px; }
+      .cite-list li { margin: 5px 0; overflow-wrap: anywhere; }
+      .rshln-box { border-color: var(--gold); background: var(--belum-bg); }
+      .rshln-box p { margin: 0 0 10px; }
+      .rshln-box p:last-child { margin-bottom: 0; }
+      .f2-user-line { margin: 0 0 14px; font-size: .92rem; color: var(--muted); }
+      .f2-user-line b { color: var(--ink); overflow-wrap: anywhere; }
+      .btn-primary[disabled], .btn-secondary[disabled] { opacity: .55; cursor: not-allowed; transform: none; }
+
+      /* ---------- FASE 2: dialog login ---------- */
+      dialog {
+        border: 1px solid var(--line); border-radius: 20px; padding: 0;
+        width: min(480px, calc(100vw - 32px)); max-width: calc(100vw - 32px);
+        background: var(--card); color: var(--ink); box-shadow: var(--shadow-lg);
+      }
+      dialog:modal { overscroll-behavior: contain; }
+      dialog::backdrop { background: rgba(10, 30, 20, .55); overflow: hidden; overscroll-behavior: contain; }
+      .auth-box { padding: 24px 22px 20px; }
+      .auth-box h2 { font-size: 1.35rem; margin-bottom: 6px; }
+      .auth-box > p { color: var(--muted); margin: 0 0 16px; font-size: .95rem; }
+      .btn-google {
+        width: 100%; min-height: 52px; padding: 10px 18px; border-radius: 13px;
+        border: 1.5px solid var(--line-strong); background: var(--card); color: var(--ink);
+        font-weight: 700; font-size: .98rem;
+        transition: border-color .16s ease, background .16s ease, transform .16s ease;
+      }
+      .btn-google:hover { border-color: var(--green); background: var(--ok-bg); transform: translateY(-2px); }
+      .btn-google:active { transform: scale(.97); }
+      .auth-or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .88rem; margin: 18px 0 14px; }
+      .auth-or::before, .auth-or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+      .auth-box .f2-field { margin-bottom: 12px; }
+      .auth-box .btn-primary { width: 100%; margin-top: 6px; }
+      .auth-error { color: var(--wajib-ink); background: var(--wajib-bg); border: 1px solid var(--wajib-solid); border-radius: 10px; padding: 10px 12px; font-size: .92rem; margin: 0 0 12px; }
+      .auth-info { color: var(--ok-ink); background: var(--ok-bg); border: 1px solid var(--ok-solid); border-radius: 10px; padding: 10px 12px; font-size: .92rem; margin: 0 0 12px; }
+      .auth-foot { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; align-items: center; margin-top: 14px; }
+      .auth-foot .btn-text { min-height: 44px; }
+      @media (max-width: 560px) {
+        .f2-field textarea { min-height: 130px; }
+        .gate-panel { padding: 18px; }
+      }
     </style>
     <script>
       /* Tema & bahasa diterapkan sebelum render pertama: pilihan tersimpan
@@ -685,9 +778,12 @@
           <button type="button" data-nav="jelajah" data-i18n="nav_jelajah">Jelajah Kategori</button>
           <button type="button" data-nav="regulasi" data-i18n="nav_regulasi">Regulasi</button>
           <button type="button" data-nav="lhln" data-i18n="nav_lhln">Lembaga Halal Luar Negeri</button>
+          <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
+          <button type="button" data-nav="tanya" data-i18n="nav_tanya">Tanya Jawab</button>
           <button type="button" data-nav="kontak" data-i18n="nav_kontak">Kontak</button>
         </nav>
         <div class="header-tools">
+          <button type="button" class="tool-btn" id="auth-btn" data-i18n="auth_btn_login">Masuk</button>
           <button type="button" class="tool-btn" id="theme-toggle" data-i18n-aria="theme_label" aria-label="Ganti tema gelap atau terang">
             <svg class="ic-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.2A8.5 8.5 0 1 1 10.8 4a7 7 0 0 0 9.2 9.2z"/></svg>
             <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
@@ -936,22 +1032,133 @@
           <p data-i18n="lhln_note">Catatan: MUIS (Singapura, No. 97) — masa berlakunya tampil “null” di situs resmi BPJPH, persis seperti yang tercantum di sumbernya.</p>
         </div>
       </section>
+
+      <section class="view" id="view-analisis" aria-labelledby="judul-analisis" hidden>
+        <div class="page-head">
+          <span class="kicker" data-i18n="analisis_kicker">Fase 2 · Perlu daftar / masuk</span>
+          <h1 id="judul-analisis" data-i18n="analisis_title">Analisis Dokumen</h1>
+          <p class="lede" data-i18n="analisis_lede">Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.</p>
+        </div>
+        <div class="gate-panel" id="gate-analisis" hidden>
+          <p><strong data-i18n="gate_title">Silakan daftar atau login dulu untuk memakai fitur ini.</strong></p>
+          <p data-i18n="gate_text">Analisis dokumen memakai layanan AI berbatas harian, jadi perlu akun gratis. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai tanpa daftar.</p>
+          <p><button type="button" class="btn-primary" data-auth-open data-i18n="gate_btn">Masuk / Daftar</button></p>
+        </div>
+        <div id="f2-main" hidden>
+          <p class="f2-user-line" id="f2-user" hidden><span data-i18n="f2_logged_in_as">Masuk sebagai</span> <b id="f2-user-email"></b></p>
+          <p class="quota-line" id="f2-quota" role="status" hidden></p>
+          <div class="note-box privacy-box" id="f2-privacy">
+            <p><strong data-i18n="privacy_title">Sebelum mengunggah, baca dulu:</strong></p>
+            <ul>
+              <li data-i18n="privacy_a">File yang diunggah hanya diproses untuk analisis, lalu dihapus. File tidak disimpan.</li>
+              <li data-i18n="privacy_b">Layanan AI memakai tier gratis Google: data input dan output dapat dipakai Google untuk peningkatan layanan.</li>
+              <li data-i18n="privacy_c">Karena itu, jangan unggah dokumen yang sangat rahasia.</li>
+            </ul>
+          </div>
+          <div class="card f2-card">
+            <div class="card-body">
+              <div class="f2-field">
+                <label for="f2-mode" data-i18n="mode_label">Jenis dokumen</label>
+                <select id="f2-mode">
+                  <option value="coa" data-i18n="mode_coa">CoA / MSDS — analisis bahan</option>
+                  <option value="cert" data-i18n="mode_cert">Sertifikat halal — verifikasi penerbit, lingkup, dan masa berlaku</option>
+                </select>
+              </div>
+              <div class="f2-field">
+                <label for="f2-file" data-i18n="upload_label">Unggah dokumen (PDF, maks. 4 MB)</label>
+                <div class="dropzone" id="f2-drop">
+                  <p data-i18n="upload_drag">Seret file PDF ke sini, atau pilih dari perangkat Anda.</p>
+                  <button type="button" class="btn-secondary" id="f2-pick" data-i18n="upload_btn">Pilih file PDF</button>
+                  <input id="f2-file" type="file" accept="application/pdf,.pdf" class="sr" data-i18n-aria="upload_label" aria-label="Unggah dokumen PDF" />
+                </div>
+                <p class="file-info" id="f2-file-info" role="status"></p>
+              </div>
+              <div class="f2-field">
+                <label for="f2-text" data-i18n="text_label">Atau tempel teks dokumen di sini</label>
+                <textarea id="f2-text" maxlength="20000" data-i18n-ph="text_ph" placeholder="Tempel daftar komposisi, isi CoA/MSDS, atau teks sertifikat…"></textarea>
+                <p class="count-line" id="f2-text-count" role="status"></p>
+              </div>
+              <button type="button" class="btn-primary" id="f2-run" data-i18n="analyze_btn">Mulai analisis</button>
+              <p class="f2-status" id="f2-status" role="status" aria-live="polite" hidden></p>
+            </div>
+          </div>
+          <div class="f2-results" id="f2-results" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-tanya" aria-labelledby="judul-tanya" hidden>
+        <div class="page-head">
+          <span class="kicker" data-i18n="ask_kicker">Fase 2 · Perlu daftar / masuk</span>
+          <h1 id="judul-tanya" data-i18n="ask_title">Tanya Jawab</h1>
+          <p class="lede" data-i18n="ask_lede">Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus regulasi JDIH BPJPH, lengkap dengan sitasinya.</p>
+        </div>
+        <div class="gate-panel" id="gate-tanya" hidden>
+          <p><strong data-i18n="gate_title">Silakan daftar atau login dulu untuk memakai fitur ini.</strong></p>
+          <p data-i18n="gate_text">Analisis dokumen memakai layanan AI berbatas harian, jadi perlu akun gratis. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai tanpa daftar.</p>
+          <p><button type="button" class="btn-primary" data-auth-open data-i18n="gate_btn">Masuk / Daftar</button></p>
+        </div>
+        <div id="ask-main" hidden>
+          <p class="quota-line" id="ask-quota" role="status" hidden></p>
+          <div class="card f2-card">
+            <div class="card-body">
+              <div class="f2-field">
+                <label for="ask-q" data-i18n="ask_label">Pertanyaan Anda</label>
+                <textarea id="ask-q" maxlength="2000" rows="4" data-i18n-ph="ask_ph" placeholder="Contoh: Apa saja syarat sertifikasi halal untuk UMKM?"></textarea>
+                <p class="count-line" id="ask-count" role="status"></p>
+              </div>
+              <button type="button" class="btn-primary" id="ask-run" data-i18n="ask_btn">Tanya</button>
+              <p class="f2-status" id="ask-status" role="status" aria-live="polite" hidden></p>
+            </div>
+          </div>
+          <div class="f2-results" id="ask-results" aria-live="polite"></div>
+        </div>
+      </section>
     </main>
 
     <footer>
       <div class="wrap">
         <p><strong><span data-i18n="brand_title">Klasifikasi Bahan Halal</span> — BPJPH</strong></p>
         <p><strong data-i18n="foot_src_label">Sumber data:</strong> <span data-i18n="foot_src">Lampiran Keputusan Kepala BPJPH Nomor 20 Tahun 2023, Nomor 301 Tahun 2026, dan Nomor 387 Tahun 2026, diekstrak dari salinan PDF resmi pada 14 November 2026. Sinonim dan CAS tambahan berasal dari PubChem (NIH) dan selalu diberi label sumber PubChem.</span></p>
-        <p><strong data-i18n="foot_limit_label">Batas data:</strong> <span data-i18n="foot_limit">Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen CoA/MSDS adalah Fase 2 dan belum tersedia pada versi ini.</span></p>
+        <p><strong data-i18n="foot_limit_label">Batas data:</strong> <span data-i18n="foot_limit">Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen dan Tanya Jawab ada di tab Analisis Dokumen dan Tanya Jawab — perlu daftar/masuk.</span></p>
         <div class="f-rule" aria-hidden="true"></div>
         <p><span data-i18n="foot_verify">Hasil pencarian adalah alat bantu klasifikasi, bukan keputusan sertifikasi resmi. Verifikasi akhir melalui BPJPH atau Lembaga Pemeriksa Halal (LPH). Situs resmi JDIH BPJPH:</span> <a href="https://jdih.halal.go.id" target="_blank" rel="noopener">jdih.halal.go.id</a>.</p>
       </div>
     </footer>
 
+    <dialog id="auth-dialog" closedby="any" aria-labelledby="auth-title">
+      <div class="auth-box">
+        <h2 id="auth-title" data-i18n="auth_title">Masuk atau daftar</h2>
+        <p data-i18n="auth_sub">Satu akun gratis untuk memakai Analisis Dokumen dan Tanya Jawab. Pencarian tetap bisa dipakai tanpa akun.</p>
+        <p class="auth-error" id="auth-unavailable" role="alert" hidden data-i18n="f2_not_configured">Layanan login belum dikonfigurasi. Proyek Supabase untuk situs ini belum dibuat. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai.</p>
+        <div id="auth-forms">
+          <button type="button" class="btn-google" id="auth-google-btn" data-i18n="auth_google">Lanjutkan dengan Google</button>
+          <p class="auth-or"><span data-i18n="auth_or">atau dengan email</span></p>
+          <form id="auth-form" novalidate>
+            <div class="f2-field">
+              <label for="auth-email" data-i18n="auth_email">Email</label>
+              <input id="auth-email" type="email" required autocomplete="email" />
+            </div>
+            <div class="f2-field">
+              <label for="auth-password" data-i18n="auth_password">Kata sandi</label>
+              <input id="auth-password" type="password" required minlength="6" autocomplete="current-password" />
+            </div>
+            <p class="auth-error" id="auth-error" role="alert" hidden></p>
+            <p class="auth-info" id="auth-info" role="status" hidden></p>
+            <button type="submit" class="btn-primary" id="auth-submit" data-i18n="auth_login_btn">Masuk</button>
+          </form>
+        </div>
+        <div class="auth-foot">
+          <button type="button" class="btn-text" id="auth-mode-toggle" data-i18n="auth_switch_to_register">Belum punya akun? Daftar</button>
+          <form method="dialog"><button type="submit" class="btn-text" data-i18n="auth_close">Tutup</button></form>
+        </div>
+      </div>
+    </dialog>
+
     <button type="button" class="to-top" id="to-top" data-i18n-aria="to_top" aria-label="Kembali ke atas">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5L12 5l6.5 6.5"/></svg>
     </button>
 
+    <script src="config.public.js"></script>
     <script>
 "use strict";
 /* =====================================================================
@@ -1029,7 +1236,7 @@ var I18N = { id: {
   foot_src_label: "Sumber data:",
   foot_src: "Lampiran Keputusan Kepala BPJPH Nomor 20 Tahun 2023, Nomor 301 Tahun 2026, dan Nomor 387 Tahun 2026, diekstrak dari salinan PDF resmi pada 14 November 2026. Sinonim dan CAS tambahan berasal dari PubChem (NIH) dan selalu diberi label sumber PubChem.",
   foot_limit_label: "Batas data:",
-  foot_limit: "Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen CoA/MSDS adalah Fase 2 dan belum tersedia pada versi ini.",
+  foot_limit: "Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen dan Tanya Jawab ada di tab Analisis Dokumen dan Tanya Jawab — perlu daftar/masuk.",
   foot_verify: "Hasil pencarian adalah alat bantu klasifikasi, bukan keputusan sertifikasi resmi. Verifikasi akhir melalui BPJPH atau Lembaga Pemeriksa Halal (LPH). Situs resmi JDIH BPJPH:",
   data_meta: "Data lampiran: {pl} bahan positive list (301/2026), {w} jenis produk wajib (387/2026). Ekstrak 14 November 2026.",
   status_searching: "Mencari di lampiran Kepkaban 301/2026 dan 387/2026…",
@@ -1150,7 +1357,7 @@ I18N.en = {
   foot_src_label: "Data sources:",
   foot_src: "Appendices of BPJPH Head Decrees No. 20 of 2023, No. 301 of 2026, and No. 387 of 2026, extracted from the official PDF copies on 14 November 2026. Additional synonyms and CAS numbers come from PubChem (NIH) and are always labeled as PubChem-sourced.",
   foot_limit_label: "Data limits:",
-  foot_limit: "BPJPH Head Decree No. 378 of 2026 (positive list amendment) is not yet included in this page's data. CoA/MSDS document analysis is Phase 2 and is not available in this version.",
+  foot_limit: "BPJPH Head Decree No. 378 of 2026 (positive list amendment) is not yet included in this page's data. Document analysis and Q&A are in the Document Analysis and Q&A tabs — sign-in required.",
   foot_verify: "Search results are a classification aid, not an official certification decision. Final verification is through BPJPH or a Halal Inspection Body (LPH). Official BPJPH JDIH website:",
   data_meta: "Appendix data: {pl} positive list ingredients (301/2026), {w} product types requiring certification (387/2026). Extracted 14 November 2026.",
   status_searching: "Searching the appendices of Kepkaban 301/2026 and 387/2026…",
@@ -1265,7 +1472,7 @@ I18N.ar = {
   foot_src_label: "مصادر البيانات:",
   foot_src: "ملاحق قرارات رئيس BPJPH رقم 20 لسنة 2023 ورقم 301 لسنة 2026 ورقم 387 لسنة 2026، استُخرجت من النسخ الرسمية بصيغة PDF في 14 نوفمبر 2026. وتأتي المرادفات وأرقام CAS الإضافية من PubChem (NIH) وتُوسم دائمًا بمصدر PubChem.",
   foot_limit_label: "حدود البيانات:",
-  foot_limit: "قرار رئيس BPJPH رقم 378 لسنة 2026 (تعديل القائمة الإيجابية) غير مُدرج بعد في بيانات هذه الصفحة. وتحليل مستندات CoA/MSDS هو المرحلة الثانية وغير متاح في هذا الإصدار.",
+  foot_limit: "قرار رئيس BPJPH رقم 378 لسنة 2026 (تعديل القائمة الإيجابية) غير مُدرج بعد في بيانات هذه الصفحة. تحليل المستندات والأسئلة والأجوبة في تبويبي تحليل المستندات والأسئلة والأجوبة — ويتطلبان تسجيل الدخول.",
   foot_verify: "نتائج البحث أداة مساعدة للتصنيف، وليست قرار شهادة رسميًا. والتحقق النهائي عبر BPJPH أو هيئة فحص الحلال (LPH). الموقع الرسمي JDIH BPJPH:",
   data_meta: "بيانات الملاحق: {pl} مادة في القائمة الإيجابية (301/2026)، و{w} نوع منتج ملزم بالشهادة (387/2026). استُخرجت في 14 نوفمبر 2026.",
   status_searching: "جارٍ البحث في ملاحق القرارين 301/2026 و387/2026…",
@@ -1380,7 +1587,7 @@ I18N.zh = {
   foot_src_label: "数据来源：",
   foot_src: "BPJPH 局长第 20/2023 号、第 301/2026 号和第 387/2026 号决定附录，于 2026 年 11 月 14 日从官方 PDF 副本中提取。其他同义词和 CAS 号来自 PubChem (NIH)，并始终标注 PubChem 来源。",
   foot_limit_label: "数据范围：",
-  foot_limit: "BPJPH 局长第 378/2026 号决定（正面清单修订）尚未纳入本页数据。CoA/MSDS 文件分析属于第二阶段，本版本尚不可用。",
+  foot_limit: "BPJPH 局长第 378/2026 号决定（正面清单修订）尚未纳入本页数据。文件分析与问答位于“文件分析”和“问答”选项卡——需要登录。",
   foot_verify: "搜索结果是分类辅助工具，并非官方认证决定。最终核实请通过 BPJPH 或清真检验机构 (LPH)。BPJPH JDIH 官方网站：",
   data_meta: "附录数据：{pl} 种正面清单原料（301/2026），{w} 种须认证产品类型（387/2026）。提取于 2026 年 11 月 14 日。",
   status_searching: "正在第 301/2026 和 387/2026 号决定附录中搜索…",
@@ -1512,6 +1719,300 @@ Object.assign(I18N.zh, {
   lhln_none: "没有机构符合筛选条件。",
   lhln_note: "注：MUIS（新加坡，第 97 号）——其有效期在 BPJPH 官方网站上显示为“null”，与来源完全一致。",
   lhln_load_err: "国外清真机构数据加载失败。请检查网络连接并重新加载此页面。"
+});
+
+/* Kunci Fase 2 — Analisis Dokumen, Tanya Jawab, login (Tiket 13a/13b) */
+Object.assign(I18N.id, {
+  nav_analisis: "Analisis Dokumen", nav_tanya: "Tanya Jawab",
+  auth_btn_login: "Masuk", auth_btn_logout: "Keluar",
+  auth_title: "Masuk atau daftar",
+  auth_sub: "Satu akun gratis untuk memakai Analisis Dokumen dan Tanya Jawab. Pencarian tetap bisa dipakai tanpa akun.",
+  auth_google: "Lanjutkan dengan Google", auth_or: "atau dengan email",
+  auth_email: "Email", auth_password: "Kata sandi",
+  auth_login_btn: "Masuk", auth_register_btn: "Daftar akun baru",
+  auth_switch_to_register: "Belum punya akun? Daftar", auth_switch_to_login: "Sudah punya akun? Masuk",
+  auth_close: "Tutup", auth_check_email: "Periksa email Anda untuk tautan konfirmasi.",
+  auth_err_generic: "Gagal masuk. Periksa email dan kata sandi, lalu coba lagi.",
+  auth_err_email: "Masukkan alamat email yang valid.",
+  f2_not_configured: "Layanan login belum dikonfigurasi. Proyek Supabase untuk situs ini belum dibuat. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai.",
+  gate_title: "Silakan daftar atau login dulu untuk memakai fitur ini.",
+  gate_text: "Analisis dokumen memakai layanan AI berbatas harian, jadi perlu akun gratis. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai tanpa daftar.",
+  gate_btn: "Masuk / Daftar",
+  analisis_kicker: "Fase 2 · Perlu daftar / masuk", analisis_title: "Analisis Dokumen",
+  analisis_lede: "Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.",
+  ask_kicker: "Fase 2 · Perlu daftar / masuk", ask_title: "Tanya Jawab",
+  ask_lede: "Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus regulasi JDIH BPJPH, lengkap dengan sitasinya.",
+  ask_label: "Pertanyaan Anda", ask_ph: "Contoh: Apa saja syarat sertifikasi halal untuk UMKM?", ask_btn: "Tanya",
+  ask_count: "Sisa {n} dari 2.000 karakter",
+  privacy_title: "Sebelum mengunggah, baca dulu:",
+  privacy_a: "File yang diunggah hanya diproses untuk analisis, lalu dihapus. File tidak disimpan.",
+  privacy_b: "Layanan AI memakai tier gratis Google: data input dan output dapat dipakai Google untuk peningkatan layanan.",
+  privacy_c: "Karena itu, jangan unggah dokumen yang sangat rahasia.",
+  mode_label: "Jenis dokumen",
+  mode_coa: "CoA / MSDS: analisis bahan",
+  mode_cert: "Sertifikat halal: verifikasi penerbit, lingkup, dan masa berlaku",
+  upload_label: "Unggah dokumen (PDF, maks. 4 MB)",
+  upload_drag: "Seret file PDF ke sini, atau pilih dari perangkat Anda.",
+  upload_btn: "Pilih file PDF",
+  upload_not_pdf: "Hanya file PDF yang diterima. Pilih dokumen PDF.",
+  upload_too_big: "File melebihi 4 MB. Pilih file yang lebih kecil.",
+  file_chosen: "File dipilih: {name} ({size})",
+  text_label: "Atau tempel teks dokumen di sini",
+  text_ph: "Tempel daftar komposisi, isi CoA/MSDS, atau teks sertifikat…",
+  text_count: "Sisa {n} dari 20.000 karakter",
+  analyze_btn: "Mulai analisis",
+  analyzing: "Menganalisis… File dihapus setelah analisis selesai.",
+  no_input: "Pilih file PDF atau tempel teks dulu.",
+  quota_line: "Sisa kuota hari ini: {user} analisis (akun Anda) · {global} analisis (situs)",
+  quota_empty: "Batas analisis harian sudah habis. Kuota direset tengah malam waktu Pasifik (sekitar pukul 15.00 WIB). Silakan coba lagi besok.",
+  err_not_configured: "Fitur AI belum aktif. Konfigurasi server belum selesai.",
+  err_login_needed: "Silakan daftar atau login dulu untuk memakai fitur ini.",
+  err_generic: "Terjadi kesalahan. Coba lagi.",
+  err_network: "Tidak dapat menghubungi server. Periksa koneksi lalu coba lagi.",
+  res_bahan_head: "Bahan yang ditemukan", res_unknown_head: "Bahan tidak dikenali",
+  res_incons_head: "Inkonsistensi dokumen", res_none: "Tidak ada bahan yang ditemukan dalam dokumen.",
+  f_cas_src: "Sumber CAS", f_category: "Kategori", f_critical: "Titik kritis",
+  f_action: "Rekomendasi aksi", f_legal: "Dasar hukum",
+  cas_not_listed: "CAS tidak tercantum", cas_src_doc: "dari dokumen",
+  cas_src_lampiran: "dari lampiran BPJPH", cas_src_pubchem: "dari PubChem", cas_src_unknown: "sumber tidak disebutkan",
+  f2_provider: "Dianalisis dengan {provider}.",
+  rshln_title: "Manufaktur luar negeri + wajib: RSHLN",
+  rshln_text: "Bahan berasal dari manufaktur luar negeri dan klasifikasinya Wajib, sehingga perlu Sertifikat Halal Luar Negeri. Sertifikat itu harus diregistrasi ke BPJPH melalui RSHLN (Registrasi Sertifikat Halal Luar Negeri) agar diakui di Indonesia. Periksa penerbit sertifikat di daftar 126 Lembaga Halal Luar Negeri.",
+  rshln_link: "Lihat daftar Lembaga Halal Luar Negeri →",
+  cert_title: "Verifikasi sertifikat", cert_issuer: "Penerbit",
+  cert_in_list: "Masuk daftar LHLN BPJPH", cert_not_in_list: "Tidak masuk daftar LHLN BPJPH",
+  cert_closest: "Nama terdekat", cert_mra: "Status MRA", cert_mra_unknown: "Belum terverifikasi",
+  cert_scope_cert: "Lingkup sertifikat", cert_scope_list: "Lingkup di daftar LHLN",
+  cert_scope_result: "Penilaian lingkup", cert_scope_ok: "Sesuai", cert_scope_no: "Tidak sesuai",
+  cert_scope_na: "Tidak dapat dinilai", cert_valid_cert: "Masa berlaku sertifikat",
+  cert_valid_lhln: "Masa berlaku pengakuan LHLN", cert_valid_result: "Penilaian masa berlaku",
+  cert_valid_ok: "Masih berlaku", cert_valid_soon: "Segera habis", cert_valid_exp: "Kedaluwarsa",
+  cert_summary: "Ringkasan", cert_sum_ok: "Dapat diterima",
+  cert_sum_check: "Perlu pemeriksaan lanjut", cert_sum_no: "Tidak dapat diverifikasi",
+  ask_ans_head: "Jawaban", ask_not_found: "Tidak ditemukan di regulasi yang tersedia",
+  ask_cite_head: "Sumber regulasi",
+  f2_disc: "Analisis ini alat bantu, bukan keputusan sertifikasi resmi. Verifikasi akhir tetap di tangan penyelia halal, LPH, dan BPJPH.",
+  f2_logged_in_as: "Masuk sebagai",
+  prio_wajib: "Wajib", prio_disarankan: "Disarankan", prio_opsional: "Opsional"
+});
+Object.assign(I18N.en, {
+  nav_analisis: "Document Analysis", nav_tanya: "Q&A",
+  auth_btn_login: "Sign in", auth_btn_logout: "Sign out",
+  auth_title: "Sign in or register",
+  auth_sub: "One free account for Document Analysis and Q&A. Search works without an account.",
+  auth_google: "Continue with Google", auth_or: "or with email",
+  auth_email: "Email", auth_password: "Password",
+  auth_login_btn: "Sign in", auth_register_btn: "Create account",
+  auth_switch_to_register: "No account yet? Register", auth_switch_to_login: "Already have an account? Sign in",
+  auth_close: "Close", auth_check_email: "Check your email for the confirmation link.",
+  auth_err_generic: "Sign-in failed. Check your email and password, then try again.",
+  auth_err_email: "Enter a valid email address.",
+  f2_not_configured: "Sign-in is not configured yet. The Supabase project for this site has not been created. Search, Browse, Regulations, and Foreign Halal Bodies still work.",
+  gate_title: "Please register or sign in first to use this feature.",
+  gate_text: "Document analysis uses a daily-limited AI service, so it needs a free account. Search, Browse, Regulations, and Foreign Halal Bodies remain free without registration.",
+  gate_btn: "Sign in / Register",
+  analisis_kicker: "Phase 2 · Sign-in required", analisis_title: "Document Analysis",
+  analisis_lede: "Upload a CoA, MSDS, or halal certificate (PDF), or paste its text. The system reads the ingredients, checks their classification in the BPJPH annexes, then explains the critical points and next steps for each ingredient.",
+  ask_kicker: "Phase 2 · Sign-in required", ask_title: "Questions & Answers",
+  ask_lede: "Ask about halal and halal rules in Indonesia: certification requirements, process and timelines, SJPH, RSHLN, halal labels, or business obligations. Answers come from the BPJPH JDIH regulation corpus, with citations.",
+  ask_label: "Your question", ask_ph: "Example: What are the halal certification requirements for MSMEs?", ask_btn: "Ask",
+  ask_count: "{n} of 2,000 characters remaining",
+  privacy_title: "Before uploading, please read:",
+  privacy_a: "Uploaded files are only processed for analysis, then deleted. They are not stored.",
+  privacy_b: "The AI service uses Google's free tier: input and output data may be used by Google to improve its services.",
+  privacy_c: "So please do not upload highly confidential documents.",
+  mode_label: "Document type",
+  mode_coa: "CoA / MSDS: ingredient analysis",
+  mode_cert: "Halal certificate: verify issuer, scope, and validity",
+  upload_label: "Upload a document (PDF, max. 4 MB)",
+  upload_drag: "Drag a PDF file here, or choose one from your device.",
+  upload_btn: "Choose a PDF file",
+  upload_not_pdf: "Only PDF files are accepted. Please choose a PDF document.",
+  upload_too_big: "The file is larger than 4 MB. Please choose a smaller file.",
+  file_chosen: "Selected file: {name} ({size})",
+  text_label: "Or paste the document text here",
+  text_ph: "Paste the composition list, CoA/MSDS content, or certificate text…",
+  text_count: "{n} of 20,000 characters remaining",
+  analyze_btn: "Start analysis",
+  analyzing: "Analyzing… The file is deleted after the analysis is done.",
+  no_input: "Choose a PDF file or paste text first.",
+  quota_line: "Daily quota remaining: {user} analyses (your account) · {global} analyses (site)",
+  quota_empty: "The daily analysis limit has been reached. Quota resets at midnight Pacific Time (around 15:00 WIB). Please try again tomorrow.",
+  err_not_configured: "The AI feature is not active yet. The server configuration is not finished.",
+  err_login_needed: "Please register or sign in first to use this feature.",
+  err_generic: "Something went wrong. Please try again.",
+  err_network: "Could not reach the server. Check your connection and try again.",
+  res_bahan_head: "Ingredients found", res_unknown_head: "Unrecognized ingredients",
+  res_incons_head: "Document inconsistencies", res_none: "No ingredients were found in the document.",
+  f_cas_src: "CAS source", f_category: "Category", f_critical: "Critical points",
+  f_action: "Recommended actions", f_legal: "Legal basis",
+  cas_not_listed: "CAS not stated", cas_src_doc: "from the document",
+  cas_src_lampiran: "from the BPJPH annex", cas_src_pubchem: "from PubChem", cas_src_unknown: "source not stated",
+  f2_provider: "Analyzed with {provider}.",
+  rshln_title: "Foreign manufacturer + mandatory: RSHLN",
+  rshln_text: "The ingredient comes from a foreign manufacturer and its classification is mandatory, so a foreign halal certificate is required. The certificate must be registered with BPJPH through RSHLN (Registration of Foreign Halal Certificates) to be recognized in Indonesia. Check the certificate issuer in the list of 126 Foreign Halal Bodies.",
+  rshln_link: "See the list of Foreign Halal Bodies →",
+  cert_title: "Certificate verification", cert_issuer: "Issuer",
+  cert_in_list: "In the BPJPH LHLN list", cert_not_in_list: "Not in the BPJPH LHLN list",
+  cert_closest: "Closest name", cert_mra: "MRA status", cert_mra_unknown: "Not yet verified",
+  cert_scope_cert: "Certificate scope", cert_scope_list: "Scope in the LHLN list",
+  cert_scope_result: "Scope assessment", cert_scope_ok: "Matches", cert_scope_no: "Does not match",
+  cert_scope_na: "Cannot be assessed", cert_valid_cert: "Certificate valid until",
+  cert_valid_lhln: "LHLN recognition valid until", cert_valid_result: "Validity assessment",
+  cert_valid_ok: "Still valid", cert_valid_soon: "Expiring soon", cert_valid_exp: "Expired",
+  cert_summary: "Summary", cert_sum_ok: "Acceptable",
+  cert_sum_check: "Needs further checking", cert_sum_no: "Cannot be verified",
+  ask_ans_head: "Answer", ask_not_found: "Not found in the available regulations",
+  ask_cite_head: "Regulation sources",
+  f2_disc: "This analysis is a working aid, not an official certification decision. Final verification stays with the halal supervisor, LPH, and BPJPH.",
+  f2_logged_in_as: "Signed in as",
+  prio_wajib: "Must do", prio_disarankan: "Recommended", prio_opsional: "Optional"
+});
+Object.assign(I18N.ar, {
+  nav_analisis: "تحليل المستندات", nav_tanya: "الأسئلة والأجوبة",
+  auth_btn_login: "تسجيل الدخول", auth_btn_logout: "تسجيل الخروج",
+  auth_title: "تسجيل الدخول أو إنشاء حساب",
+  auth_sub: "حساب مجاني واحد لاستخدام تحليل المستندات والأسئلة والأجوبة. البحث يعمل دون حساب.",
+  auth_google: "المتابعة عبر Google", auth_or: "أو عبر البريد الإلكتروني",
+  auth_email: "البريد الإلكتروني", auth_password: "كلمة المرور",
+  auth_login_btn: "تسجيل الدخول", auth_register_btn: "إنشاء حساب",
+  auth_switch_to_register: "ليس لديك حساب بعد؟ سجّل", auth_switch_to_login: "لديك حساب؟ سجّل الدخول",
+  auth_close: "إغلاق", auth_check_email: "تحقق من بريدك الإلكتروني للحصول على رابط التأكيد.",
+  auth_err_generic: "تعذّر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور ثم حاول مجددًا.",
+  auth_err_email: "أدخل عنوان بريد إلكتروني صحيحًا.",
+  f2_not_configured: "خدمة تسجيل الدخول غير مُعدّة بعد. لم يُنشأ مشروع Supabase لهذا الموقع. البحث وتصفح الفئات واللوائح وهيئات الحلال الأجنبية ما زالت تعمل.",
+  gate_title: "يرجى التسجيل أو تسجيل الدخول أولًا لاستخدام هذه الميزة.",
+  gate_text: "تحليل المستندات يستخدم خدمة ذكاء اصطناعي محدودة يوميًا، لذلك يحتاج إلى حساب مجاني. البحث وتصفح الفئات واللوائح وهيئات الحلال الأجنبية تبقى متاحة دون تسجيل.",
+  gate_btn: "تسجيل الدخول / التسجيل",
+  analisis_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", analisis_title: "تحليل المستندات",
+  analisis_lede: "ارفع شهادة تحليل (CoA) أو نشرة بيانات السلامة (MSDS) أو شهادة حلال (PDF)، أو الصق نصها. يقرأ النظام المكونات ويتحقق من تصنيفها في ملاحق BPJPH، ثم يشرح النقاط الحرجة والخطوات التالية لكل مكون.",
+  ask_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", ask_title: "الأسئلة والأجوبة",
+  ask_lede: "اسأل عن الحلال وقواعد الحلال في إندونيسيا: شروط الشهادة، والإجراءات والمدد، ونظام SJPH، وRSHLN، وملصق الحلال، أو التزامات أصحاب الأعمال. الإجابات من مجموعة لوائح JDIH الخاصة بـ BPJPH مع الاستشهادات.",
+  ask_label: "سؤالك", ask_ph: "مثال: ما شروط شهادة الحلال للمؤسسات الصغيرة والمتوسطة؟", ask_btn: "اسأل",
+  ask_count: "تبقى {n} من 2,000 حرف",
+  privacy_title: "قبل الرفع، يرجى القراءة:",
+  privacy_a: "تُعالج الملفات المرفوعة لغرض التحليل فقط، ثم تُحذف. ولا تُحفظ.",
+  privacy_b: "خدمة الذكاء الاصطناعي تستخدم المستوى المجاني من Google: قد تُستخدم بيانات الإدخال والإخراج من Google لتحسين خدماتها.",
+  privacy_c: "لذلك، لا ترفع مستندات سرية للغاية.",
+  mode_label: "نوع المستند",
+  mode_coa: "CoA / MSDS: تحليل المكونات",
+  mode_cert: "شهادة حلال: التحقق من الجهة المصدرة والنطاق والصلاحية",
+  upload_label: "ارفع مستندًا (PDF، بحد أقصى 4 ميغابايت)",
+  upload_drag: "اسحب ملف PDF إلى هنا، أو اختره من جهازك.",
+  upload_btn: "اختيار ملف PDF",
+  upload_not_pdf: "تُقبل ملفات PDF فقط. يرجى اختيار مستند PDF.",
+  upload_too_big: "الملف أكبر من 4 ميغابايت. يرجى اختيار ملف أصغر.",
+  file_chosen: "الملف المحدد: {name} ({size})",
+  text_label: "أو الصق نص المستند هنا",
+  text_ph: "الصق قائمة المكونات أو محتوى CoA/MSDS أو نص الشهادة…",
+  text_count: "تبقى {n} من 20,000 حرف",
+  analyze_btn: "بدء التحليل",
+  analyzing: "جارٍ التحليل… يُحذف الملف بعد انتهاء التحليل.",
+  no_input: "اختر ملف PDF أو الصق نصًا أولًا.",
+  quota_line: "الحصة اليومية المتبقية: {user} تحليلًا (حسابك) · {global} تحليلًا (الموقع)",
+  quota_empty: "تم الوصول إلى الحد اليومي للتحليل. تُعاد تعيين الحصة عند منتصف الليل بتوقيت المحيط الهادئ (حوالي الساعة 15:00 بتوقيت غرب إندونيسيا). يرجى المحاولة مجددًا غدًا.",
+  err_not_configured: "ميزة الذكاء الاصطناعي غير مفعّلة بعد. لم يكتمل إعداد الخادم.",
+  err_login_needed: "يرجى التسجيل أو تسجيل الدخول أولًا لاستخدام هذه الميزة.",
+  err_generic: "حدث خطأ ما. يرجى المحاولة مجددًا.",
+  err_network: "تعذّر الاتصال بالخادم. تحقق من اتصالك ثم حاول مجددًا.",
+  res_bahan_head: "المكونات التي تم العثور عليها", res_unknown_head: "مكونات غير معروفة",
+  res_incons_head: "تعارضات في المستند", res_none: "لم يتم العثور على مكونات في المستند.",
+  f_cas_src: "مصدر رقم CAS", f_category: "الفئة", f_critical: "النقاط الحرجة",
+  f_action: "الإجراءات الموصى بها", f_legal: "الأساس القانوني",
+  cas_not_listed: "رقم CAS غير مذكور", cas_src_doc: "من المستند",
+  cas_src_lampiran: "من ملحق BPJPH", cas_src_pubchem: "من PubChem", cas_src_unknown: "المصدر غير مذكور",
+  f2_provider: "تم التحليل بواسطة {provider}.",
+  rshln_title: "مصنّع أجنبي + شهادة إلزامية: RSHLN",
+  rshln_text: "المكون من مصنّع أجنبي وتصنيفه إلزامي، لذلك يلزم شهادة حلال أجنبية. ويجب تسجيل الشهادة لدى BPJPH عبر RSHLN (تسجيل شهادات الحلال الأجنبية) لتُعترف بها في إندونيسيا. تحقق من جهة إصدار الشهادة في قائمة هيئات الحلال الأجنبية الـ 126.",
+  rshln_link: "عرض قائمة هيئات الحلال الأجنبية ←",
+  cert_title: "التحقق من الشهادة", cert_issuer: "الجهة المصدرة",
+  cert_in_list: "في قائمة LHLN لدى BPJPH", cert_not_in_list: "ليست في قائمة LHLN لدى BPJPH",
+  cert_closest: "أقرب اسم", cert_mra: "حالة MRA", cert_mra_unknown: "لم يتم التحقق بعد",
+  cert_scope_cert: "نطاق الشهادة", cert_scope_list: "النطاق في قائمة LHLN",
+  cert_scope_result: "تقييم النطاق", cert_scope_ok: "مطابق", cert_scope_no: "غير مطابق",
+  cert_scope_na: "لا يمكن التقييم", cert_valid_cert: "الشهادة صالحة حتى",
+  cert_valid_lhln: "اعتراف LHLN صالح حتى", cert_valid_result: "تقييم الصلاحية",
+  cert_valid_ok: "ما زالت صالحة", cert_valid_soon: "تنتهي قريبًا", cert_valid_exp: "منتهية الصلاحية",
+  cert_summary: "الملخص", cert_sum_ok: "مقبولة",
+  cert_sum_check: "تحتاج إلى فحص إضافي", cert_sum_no: "لا يمكن التحقق منها",
+  ask_ans_head: "الإجابة", ask_not_found: "غير موجود في اللوائح المتاحة",
+  ask_cite_head: "مصادر اللوائح",
+  f2_disc: "هذا التحليل أداة مساعدة، وليس قرار شهادة رسميًا. التحقق النهائي يبقى بيد مشرف الحلال وLPH وBPJPH.",
+  f2_logged_in_as: "تم تسجيل الدخول باسم",
+  prio_wajib: "إلزامي", prio_disarankan: "مُوصى به", prio_opsional: "اختياري"
+});
+Object.assign(I18N.zh, {
+  nav_analisis: "文件分析", nav_tanya: "问答",
+  auth_btn_login: "登录", auth_btn_logout: "退出登录",
+  auth_title: "登录或注册",
+  auth_sub: "一个免费账号即可使用文件分析和问答功能。搜索无需账号。",
+  auth_google: "使用 Google 继续", auth_or: "或使用电子邮箱",
+  auth_email: "电子邮箱", auth_password: "密码",
+  auth_login_btn: "登录", auth_register_btn: "创建账号",
+  auth_switch_to_register: "还没有账号？注册", auth_switch_to_login: "已有账号？登录",
+  auth_close: "关闭", auth_check_email: "请查收电子邮件中的确认链接。",
+  auth_err_generic: "登录失败。请检查邮箱和密码后重试。",
+  auth_err_email: "请输入有效的电子邮箱地址。",
+  f2_not_configured: "登录服务尚未配置——本站的 Supabase 项目尚未创建。搜索、分类浏览、法规和国外清真机构仍可正常使用。",
+  gate_title: "请先注册或登录，才能使用此功能。",
+  gate_text: "文件分析使用每日有限额的 AI 服务，因此需要一个免费账号。搜索、分类浏览、法规和国外清真机构无需注册仍可使用。",
+  gate_btn: "登录 / 注册",
+  analisis_kicker: "第二阶段 · 需要登录", analisis_title: "文件分析",
+  analisis_lede: "上传 CoA、MSDS 或清真证书（PDF），或粘贴其文本。系统会读取其中的成分，对照 BPJPH 附录核查分类，并说明每种成分的关键点和下一步措施。",
+  ask_kicker: "第二阶段 · 需要登录", ask_title: "问答",
+  ask_lede: "咨询有关清真及印尼清真法规的问题——认证条件、流程与时限、SJPH、RSHLN、清真标签或经营者义务。答案来自 BPJPH 的 JDIH 法规库，并附引用来源。",
+  ask_label: "您的问题", ask_ph: "例如：中小企业申请清真认证需要什么条件？", ask_btn: "提问",
+  ask_count: "还剩 {n} / 2,000 字符",
+  privacy_title: "上传之前，请先阅读：",
+  privacy_a: "上传的文件仅用于分析，分析后即删除——不会保存。",
+  privacy_b: "AI 服务使用 Google 免费套餐：输入和输出数据可能被 Google 用于改进服务。",
+  privacy_c: "因此，请勿上传高度机密的文件。",
+  mode_label: "文件类型",
+  mode_coa: "CoA / MSDS——成分分析",
+  mode_cert: "清真证书——核查发证机构、范围和有效期",
+  upload_label: "上传文件（PDF，最大 4 MB）",
+  upload_drag: "将 PDF 文件拖到此处，或从设备中选择。",
+  upload_btn: "选择 PDF 文件",
+  upload_not_pdf: "仅接受 PDF 文件。请选择 PDF 文档。",
+  upload_too_big: "文件超过 4 MB。请选择更小的文件。",
+  file_chosen: "已选文件：{name}（{size}）",
+  text_label: "或在此粘贴文件文本",
+  text_ph: "粘贴成分表、CoA/MSDS 内容或证书文本…",
+  text_count: "还剩 {n} / 20,000 字符",
+  analyze_btn: "开始分析",
+  analyzing: "正在分析…分析完成后文件将被删除。",
+  no_input: "请先选择 PDF 文件或粘贴文本。",
+  quota_line: "今日剩余额度：{user} 次分析（您的账号）· {global} 次分析（全站）",
+  quota_empty: "今日分析额度已用完。额度将于太平洋时间午夜重置（约印尼西部时间 15:00）。请明天再试。",
+  err_not_configured: "AI 功能尚未启用——服务器配置未完成。",
+  err_login_needed: "请先注册或登录，才能使用此功能。",
+  err_generic: "出现错误，请重试。",
+  err_network: "无法连接服务器。请检查网络后重试。",
+  res_bahan_head: "发现的成分", res_unknown_head: "无法识别的成分",
+  res_incons_head: "文件不一致之处", res_none: "文件中未发现成分。",
+  f_cas_src: "CAS 号来源", f_category: "类别", f_critical: "关键点",
+  f_action: "建议措施", f_legal: "法律依据",
+  cas_not_listed: "未注明 CAS 号", cas_src_doc: "来自文件",
+  cas_src_lampiran: "来自 BPJPH 附录", cas_src_pubchem: "来自 PubChem", cas_src_unknown: "来源未注明",
+  f2_provider: "由 {provider} 分析。",
+  rshln_title: "国外制造商 + 强制认证：RSHLN",
+  rshln_text: "该成分来自国外制造商且属于强制认证类别，因此需要国外清真证书。该证书须通过 RSHLN（国外清真证书注册）向 BPJPH 注册，才能在印尼获得认可。请在 126 家国外清真机构名单中核查发证机构。",
+  rshln_link: "查看国外清真机构名单 →",
+  cert_title: "证书核查", cert_issuer: "发证机构",
+  cert_in_list: "在 BPJPH 的 LHLN 名单中", cert_not_in_list: "不在 BPJPH 的 LHLN 名单中",
+  cert_closest: "最接近的名称", cert_mra: "MRA 状态", cert_mra_unknown: "尚未核实",
+  cert_scope_cert: "证书范围", cert_scope_list: "LHLN 名单中的范围",
+  cert_scope_result: "范围评估", cert_scope_ok: "相符", cert_scope_no: "不相符",
+  cert_scope_na: "无法评估", cert_valid_cert: "证书有效期至",
+  cert_valid_lhln: "LHLN 认可有效期至", cert_valid_result: "有效期评估",
+  cert_valid_ok: "仍有效", cert_valid_soon: "即将到期", cert_valid_exp: "已过期",
+  cert_summary: "结论", cert_sum_ok: "可以接受",
+  cert_sum_check: "需要进一步核查", cert_sum_no: "无法核实",
+  ask_ans_head: "回答", ask_not_found: "在现有法规中未找到",
+  ask_cite_head: "法规来源",
+  f2_disc: "本分析仅为辅助工具，不是正式的认证决定。最终核实仍由清真监督员、LPH 和 BPJPH 负责。",
+  f2_logged_in_as: "登录身份",
+  prio_wajib: "必须做", prio_disarankan: "建议做", prio_opsional: "可选"
 });
 
 var DATA = null;
@@ -2305,7 +2806,7 @@ function buildRegulasi() {
 
 /* ---------------- navigasi & peristiwa ---------------- */
 function switchView(name) {
-  ["cari", "jelajah", "regulasi", "kontak", "lhln"].forEach(function (v) {
+  ["cari", "jelajah", "regulasi", "kontak", "lhln", "analisis", "tanya"].forEach(function (v) {
     el("view-" + v).hidden = v !== name;
   });
   document.querySelectorAll("[data-nav]").forEach(function (b) {
@@ -2313,6 +2814,11 @@ function switchView(name) {
     else b.removeAttribute("aria-current");
   });
   window.scrollTo({ top: 0 });
+  /* Fase 2: tab Analisis Dokumen / Tanya Jawab butuh login. Anonim tetap
+     melihat panel gate di view-nya, plus dialog login dibuka sekali. */
+  if ((name === "analisis" || name === "tanya") && typeof f2IsLoggedIn === "function" && !f2IsLoggedIn()) {
+    f2OpenAuth();
+  }
 }
 document.querySelectorAll("[data-nav]").forEach(function (b) {
   b.addEventListener("click", function () { switchView(b.getAttribute("data-nav")); });
@@ -2465,6 +2971,662 @@ function applyStaticTexts() {
     n.setAttribute("aria-label", t(n.getAttribute("data-i18n-aria")));
   });
 }
+/* FASE2-START */
+/* =====================================================================
+   FASE 2 — Analisis Dokumen, Tanya Jawab, login (Tiket 13a/13b)
+   Kontrak: fase2-arsitektur.md §3 (endpoint + auth Bearer), §5 (aturan
+   keras). Keamanan (gerbang Rofik): SEMUA teks dari pengguna / AI /
+   server dirender lewat textContent (bukan innerHTML); tautan sitasi
+   hanya dibuat bila href-nya https://; pesan error server TIDAK PERNAH
+   ditampilkan mentah — hanya pesan ramah dari dict i18n berdasarkan
+   kode status. Validasi client (4 MB, panjang teks) hanya UX; keamanan
+   ditegakkan server. Tidak ada kunci apa pun di kode ini.
+   ===================================================================== */
+var F2_MAX_FILE = 4 * 1024 * 1024;   /* batas file 4 MB (kontrak §2) */
+var F2_MAX_TEXT = 20000;             /* batas tempel-teks (kontrak §2) */
+var F2_MAX_Q = 2000;                 /* batas pertanyaan (kontrak §2) */
+/* URL ESM resmi @supabase/supabase-js v2 — dari README resmi supabase-js
+   (https://github.com/supabase/supabase-js): import dari
+   https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm */
+var F2_SUPABASE_ESM = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+var f2Supabase = null;        /* client Supabase; null bila belum dikonfigurasi / gagal muat */
+var f2SupabaseTried = false;
+var f2User = null;            /* user login saat ini; null = anonim */
+var f2SelectedFile = null;    /* File PDF yang dipilih user (di memori saja) */
+var f2LastAnalyze = null;     /* {kind:"analyze"|"cert", data} — render ulang saat ganti bahasa */
+var f2LastAsk = null;
+var f2AuthMode = "login";     /* "login" | "register" */
+
+/* ---------- konfigurasi publik ---------- */
+function f2Config() {
+  var c = window.FASE2_CONFIG || null;
+  if (!c || typeof c.supabaseUrl !== "string" || typeof c.supabaseAnonKey !== "string") return null;
+  if (!c.supabaseUrl || !c.supabaseAnonKey) return null;
+  return c;
+}
+function f2IsLoggedIn() { return !!f2User; }
+
+/* Muat client Supabase secara malas (lazy) dari CDN ESM resmi, hanya bila
+   config ada. Gagal muat / tanpa config -> null; UI tetap jalan (Fase 1
+   tidak pernah rusak karena Fase 2). */
+function f2EnsureSupabase() {
+  if (f2Supabase) return Promise.resolve(f2Supabase);
+  if (f2SupabaseTried) return Promise.resolve(null);
+  f2SupabaseTried = true;
+  var cfg = f2Config();
+  if (!cfg) return Promise.resolve(null);
+  return import(F2_SUPABASE_ESM).then(function (mod) {
+    f2Supabase = mod.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    return f2Supabase;
+  }).catch(function () { return null; });
+}
+
+function f2InitAuth() {
+  if (!f2Config()) { f2SyncAuthUI(); return; }
+  f2EnsureSupabase().then(function (sb) {
+    if (!sb) { f2SyncAuthUI(); return; }
+    sb.auth.getSession().then(function (r) {
+      f2User = r && r.data && r.data.session ? r.data.session.user : null;
+      f2SyncAuthUI();
+    });
+    sb.auth.onAuthStateChange(function (_ev, session) {
+      f2User = session ? session.user : null;
+      f2SyncAuthUI();
+    });
+  });
+}
+
+/* Sinkronkan seluruh UI auth: tombol header, panel gate vs konten utama,
+   baris "Masuk sebagai". Dipanggil juga dari applyLanguage agar ganti
+   bahasa tidak mengembalikan tombol ke teks default. */
+function f2SyncAuthUI() {
+  var logged = f2IsLoggedIn();
+  var btn = el("auth-btn");
+  if (btn) {
+    btn.textContent = logged ? t("auth_btn_logout") : t("auth_btn_login");
+    btn.title = logged && f2User && f2User.email ? f2User.email : "";
+  }
+  ["analisis", "tanya"].forEach(function (v) {
+    var gate = el("gate-" + v);
+    if (gate) gate.hidden = logged;
+  });
+  var main = el("f2-main"); if (main) main.hidden = !logged;
+  var askMain = el("ask-main"); if (askMain) askMain.hidden = !logged;
+  var userLine = el("f2-user");
+  if (userLine) {
+    userLine.hidden = !logged;
+    if (logged) el("f2-user-email").textContent = (f2User && f2User.email) || "";
+  }
+}
+
+function f2AfterLanguage() {
+  f2SyncAuthUI();
+  f2SetAuthMode(f2AuthMode);
+  if (f2LastAnalyze) {
+    if (f2LastAnalyze.kind === "cert") renderCertResult(f2LastAnalyze.data);
+    else renderAnalyzeResult(f2LastAnalyze.data);
+  }
+  if (f2LastAsk) renderAskResult(f2LastAsk);
+  updateTextCount();
+  updateAskCount();
+  if (f2SelectedFile) showFileInfo(f2SelectedFile);
+}
+
+/* ---------- dialog login ---------- */
+function f2SetAuthMode(mode) {
+  f2AuthMode = mode;
+  var submit = el("auth-submit");
+  if (submit) submit.textContent = mode === "register" ? t("auth_register_btn") : t("auth_login_btn");
+  var toggle = el("auth-mode-toggle");
+  if (toggle) toggle.textContent = mode === "register" ? t("auth_switch_to_login") : t("auth_switch_to_register");
+  var pw = el("auth-password");
+  if (pw) pw.setAttribute("autocomplete", mode === "register" ? "new-password" : "current-password");
+}
+function f2ShowAuthError(text) {
+  var b = el("auth-error"); b.textContent = text; b.hidden = false;
+  var info = el("auth-info"); if (info) info.hidden = true;
+}
+function f2ShowAuthInfo(text) {
+  var b = el("auth-info"); if (b) { b.textContent = text; b.hidden = false; }
+  var err = el("auth-error"); if (err) err.hidden = true;
+}
+function f2OpenAuth() {
+  var dlg = el("auth-dialog");
+  if (!dlg || dlg.open) return;
+  var cfg = f2Config();
+  el("auth-unavailable").hidden = !!cfg;
+  el("auth-forms").hidden = !cfg;
+  el("auth-mode-toggle").hidden = !cfg;
+  f2SetAuthMode("login");
+  if (typeof dlg.showModal === "function") dlg.showModal();
+  /* Bila config ada tapi CDN Supabase gagal dimuat, tunjukkan pesan jujur
+     (bukan form yang tidak berfungsi). */
+  if (cfg) {
+    f2EnsureSupabase().then(function (sb) {
+      if (!sb && dlg.open) {
+        el("auth-unavailable").hidden = false;
+        el("auth-forms").hidden = true;
+        el("auth-mode-toggle").hidden = true;
+      }
+    });
+  }
+}
+
+/* ---------- panggilan API (kontrak §3) ---------- */
+function f2Api(path, opts) {
+  opts = opts || {};
+  return f2EnsureSupabase().then(function (sb) {
+    if (!sb) throw { code: "not_configured" };
+    return sb.auth.getSession();
+  }).then(function (r) {
+    var token = r && r.data && r.data.session ? r.data.session.access_token : null;
+    if (!token) throw { code: "daftar_dulu" };
+    var headers = { "Authorization": "Bearer " + token };
+    if (opts.json) headers["Content-Type"] = "application/json";
+    if (opts.pdf) headers["Content-Type"] = "application/pdf";
+    return fetch(path, { method: "POST", headers: headers, body: opts.body });
+  }).then(function (res) {
+    return res.text().then(function (txt) {
+      var data = null;
+      try { data = JSON.parse(txt); } catch (e) { data = null; }
+      return { status: res.status, data: data };
+    });
+  }).catch(function (e) {
+    if (e && e.code) throw e;
+    throw { code: "network" };
+  });
+}
+/* Pesan ramah berdasarkan kode status saja — body error server tidak
+   pernah ditampilkan mentah (gerbang keamanan butir 3). */
+function f2ErrorMessage(res) {
+  if (!res) return t("err_generic");
+  if (res.status === 401) return t("err_login_needed");
+  if (res.status === 429) return t("quota_empty");
+  if (res.status === 503 || (res.data && res.data.error === "belum_dikonfigurasi")) return t("err_not_configured");
+  if (res.status === 413) return t("upload_too_big");
+  return t("err_generic");
+}
+function f2CatchMessage(e) {
+  if (!e) return t("err_network");
+  if (e.code === "not_configured") return t("err_not_configured");
+  if (e.code === "daftar_dulu") return t("err_login_needed");
+  return t("err_network");
+}
+
+/* ---------- util render aman (textContent saja) ---------- */
+function f2El(tag, cls, text) {
+  var n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+function f2StatusInfo(status) {
+  var s = String(status || "").toLowerCase().replace(/[\s_]+/g, "");
+  if (s.indexOf("dikecualikan") >= 0) return { cls: "st-ok", label: t("banner_ok") };
+  if (s.indexOf("wajib") >= 0) return { cls: "st-wajib", label: t("banner_wajib") };
+  if (s.indexOf("belum") >= 0) return { cls: "st-belum", label: t("banner_belum") };
+  return { cls: "st-unknown", label: String(status || "") };
+}
+function f2CasSourceLabel(src) {
+  var s = String(src || "").toLowerCase();
+  if (s.indexOf("pubchem") >= 0) return t("cas_src_pubchem");
+  if (s.indexOf("lampiran") >= 0 || s.indexOf("301") >= 0 || s.indexOf("387") >= 0) return t("cas_src_lampiran");
+  if (s.indexOf("dokumen") >= 0 || s.indexOf("doc") >= 0) return t("cas_src_doc");
+  return t("cas_src_unknown");
+}
+function f2PrioLabel(p) {
+  var s = String(p || "").toLowerCase();
+  if (s.indexOf("wajib") >= 0) return t("prio_wajib");
+  if (s.indexOf("disarankan") >= 0 || s.indexOf("recommended") >= 0) return t("prio_disarankan");
+  if (s.indexOf("opsional") >= 0 || s.indexOf("optional") >= 0) return t("prio_opsional");
+  return String(p);
+}
+/* Daftar sitasi: tautan hanya dibuat bila href-nya https:// (JDIH);
+   selain itu tampil sebagai teks biasa. */
+function f2CiteList(sitasi) {
+  if (!sitasi || !sitasi.length) return null;
+  var ul = f2El("ul", "cite-list");
+  sitasi.forEach(function (s) {
+    var li = document.createElement("li");
+    var label = [s.nama, s.nomor, s.pasal].filter(Boolean).join(" ");
+    if (s.tautan && /^https:\/\//.test(s.tautan)) {
+      var a = document.createElement("a");
+      a.href = s.tautan; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = label || s.tautan;
+      li.appendChild(a);
+    } else {
+      li.textContent = label;
+    }
+    ul.appendChild(li);
+  });
+  return ul;
+}
+function f2DiscBox() {
+  var d = f2El("div", "note-box");
+  d.appendChild(f2El("p", null, t("f2_disc")));
+  return d;
+}
+function f2ShowError(containerId, text) {
+  var c = el(containerId);
+  c.textContent = "";
+  var div = f2El("div", "error-box");
+  div.setAttribute("role", "alert");
+  div.appendChild(f2El("p", null, text));
+  c.appendChild(div);
+}
+function f2ShowQuota(data, boxId) {
+  var box = el(boxId);
+  if (!box) return;
+  var q = data && data.kuota_sisa;
+  if (q && (typeof q.per_pengguna === "number" || typeof q.global === "number")) {
+    box.textContent = tt("quota_line", {
+      user: fmtNum(q.per_pengguna == null ? 0 : q.per_pengguna),
+      global: fmtNum(q.global == null ? 0 : q.global)
+    });
+    box.hidden = false;
+  }
+}
+function f2SetStatus(boxId, text) {
+  var box = el(boxId);
+  box.textContent = "";
+  box.hidden = !text;
+  if (!text) return;
+  var sp = document.createElement("span");
+  sp.className = "spinner spinner-sm";
+  sp.setAttribute("aria-hidden", "true");
+  box.appendChild(sp);
+  box.appendChild(f2El("span", null, text));
+}
+
+/* ---------- kartu hasil per bahan (struktur sama dengan kartu v1) ---------- */
+function f2BahanCard(b) {
+  var st = f2StatusInfo(b.status);
+  var card = f2El("article", "card");
+  var banner = f2El("div", "status-banner " + st.cls, st.label);
+  card.appendChild(banner);
+  var body = f2El("div", "card-body");
+  body.appendChild(f2El("h3", null, b.nama || ""));
+  var dl = f2El("dl", "fields");
+  function row(dtText, ddNode) {
+    dl.appendChild(f2El("dt", null, dtText));
+    var dd = document.createElement("dd");
+    dd.appendChild(ddNode);
+    dl.appendChild(dd);
+  }
+  row(t("f_cas"), b.cas ? f2El("span", "cas", String(b.cas)) : f2El("span", null, t("cas_not_listed")));
+  row(t("f_cas_src"), f2El("span", null, f2CasSourceLabel(b.cas_sumber)));
+  if (b.kategori) row(t("f_category"), f2El("span", null, String(b.kategori)));
+  var legalText = Array.isArray(b.dasar_hukum) ? b.dasar_hukum.join("; ") : (b.dasar_hukum || "");
+  if (legalText) row(t("f_legal"), f2El("span", null, legalText));
+  body.appendChild(dl);
+  if (b.titik_kritis) {
+    body.appendChild(f2El("h4", null, t("f_critical")));
+    body.appendChild(f2El("p", null, String(b.titik_kritis)));
+  }
+  if (b.rekomendasi_aksi && b.rekomendasi_aksi.length) {
+    body.appendChild(f2El("h4", null, t("f_action")));
+    var ul = f2El("ul", "doc-list");
+    b.rekomendasi_aksi.forEach(function (r) {
+      var li = document.createElement("li");
+      if (r && typeof r === "object") {
+        var pr = r.prioritas ? f2PrioLabel(r.prioritas) : "";
+        li.textContent = (pr ? pr + ": " : "") + (r.langkah || r.aksi || r.teks || "");
+      } else {
+        li.textContent = String(r);
+      }
+      ul.appendChild(li);
+    });
+    body.appendChild(ul);
+  }
+  var cites = f2CiteList(b.sitasi);
+  if (cites) body.appendChild(cites);
+  body.appendChild(f2DiscBox());
+  card.appendChild(body);
+  return card;
+}
+
+function renderAnalyzeResult(data) {
+  var c = el("f2-results");
+  c.textContent = "";
+  if (data.provider) {
+    c.appendChild(f2El("p", "source-line", tt("f2_provider", { provider: String(data.provider) })));
+  }
+  var bahan = Array.isArray(data.bahan) ? data.bahan : [];
+  if (bahan.length) {
+    c.appendChild(f2El("h2", "group-head", t("res_bahan_head")));
+    bahan.forEach(function (b) { c.appendChild(f2BahanCard(b)); });
+  } else {
+    c.appendChild(f2El("p", "group-sub", t("res_none")));
+  }
+  var unknown = Array.isArray(data.bahan_tidak_dikenali) ? data.bahan_tidak_dikenali : [];
+  if (unknown.length) {
+    c.appendChild(f2El("h2", "group-head", t("res_unknown_head")));
+    var ul = f2El("ul", "doc-list");
+    unknown.forEach(function (u) {
+      var li = document.createElement("li");
+      li.textContent = typeof u === "string" ? u : [u.nama, u.alasan].filter(Boolean).join(" — ");
+      ul.appendChild(li);
+    });
+    c.appendChild(ul);
+  }
+  var ink = Array.isArray(data.inkonsistensi) ? data.inkonsistensi : [];
+  if (ink.length) {
+    c.appendChild(f2El("h2", "group-head", t("res_incons_head")));
+    var ul2 = f2El("ul", "doc-list");
+    ink.forEach(function (s) {
+      var li = document.createElement("li");
+      li.textContent = String(s);
+      ul2.appendChild(li);
+    });
+    c.appendChild(ul2);
+  }
+  /* PRD §11.5: manufaktur luar negeri + Wajib -> RSHLN (flag server, atau
+     dihitung dari data bila flag tidak ada). */
+  var anyWajib = bahan.some(function (b) { return f2StatusInfo(b.status).cls === "st-wajib"; });
+  if (data.rshln || (data.manufaktur_luar_negeri && anyWajib)) {
+    var box = f2El("div", "note-box rshln-box");
+    var p1 = document.createElement("p");
+    p1.appendChild(f2El("strong", null, t("rshln_title")));
+    box.appendChild(p1);
+    box.appendChild(f2El("p", null, t("rshln_text")));
+    var btn = f2El("button", "btn-text", t("rshln_link"));
+    btn.type = "button";
+    btn.addEventListener("click", function () { switchView("lhln"); });
+    box.appendChild(btn);
+    c.appendChild(box);
+  }
+  var cites = f2CiteList(data.sitasi);
+  if (cites) {
+    c.appendChild(f2El("h2", "group-head", t("ask_cite_head")));
+    c.appendChild(cites);
+  }
+}
+
+/* ---------- kartu verdict sertifikat ---------- */
+function f2MapScope(v) {
+  var s = String(v || "").toLowerCase();
+  if (s.indexOf("sesuai") >= 0 && s.indexOf("tidak") < 0) return t("cert_scope_ok");
+  if (s.indexOf("tidak sesuai") >= 0) return t("cert_scope_no");
+  return t("cert_scope_na");
+}
+function f2MapValid(v) {
+  var s = String(v || "").toLowerCase();
+  if (s.indexOf("kedaluwarsa") >= 0 || s.indexOf("expired") >= 0) return t("cert_valid_exp");
+  if (s.indexOf("segera habis") >= 0 || s.indexOf("akan habis") >= 0) return t("cert_valid_soon");
+  if (s.indexOf("masih berlaku") >= 0 || s.indexOf("berlaku") >= 0) return t("cert_valid_ok");
+  return String(v || "");
+}
+function f2MapSummary(v) {
+  var s = String(v || "").toLowerCase();
+  if (s.indexOf("dapat diterima") >= 0) return { cls: "st-ok", label: t("cert_sum_ok") };
+  if (s.indexOf("perlu pemeriksaan") >= 0) return { cls: "st-belum", label: t("cert_sum_check") };
+  if (s.indexOf("tidak dapat diverifikasi") >= 0) return { cls: "st-unknown", label: t("cert_sum_no") };
+  return { cls: "st-unknown", label: String(v || "") };
+}
+function renderCertResult(data) {
+  var c = el("f2-results");
+  c.textContent = "";
+  var sum = f2MapSummary(data.ringkasan);
+  var card = f2El("article", "card");
+  card.appendChild(f2El("div", "status-banner " + sum.cls, sum.label));
+  var body = f2El("div", "card-body");
+  body.appendChild(f2El("h3", null, t("cert_title")));
+  var dl = f2El("dl", "fields");
+  function row(dtText, ddNode) {
+    dl.appendChild(f2El("dt", null, dtText));
+    var dd = document.createElement("dd");
+    dd.appendChild(ddNode);
+    dl.appendChild(dd);
+  }
+  var p = data.penerbit || {};
+  row(t("cert_issuer"), f2El("span", null, p.nama || ""));
+  if (p.cocok) {
+    var inTxt = t("cert_in_list");
+    if (p.nomor_urut != null) inTxt += " — No. " + p.nomor_urut;
+    if (p.nama_di_daftar) inTxt += ", " + p.nama_di_daftar;
+    row(t("cert_in_list"), f2El("span", null, inTxt));
+  } else {
+    var outTxt = t("cert_not_in_list");
+    if (p.nama_terdekat) outTxt += " — " + t("cert_closest") + ": " + p.nama_terdekat;
+    row(t("cert_in_list"), f2El("span", null, outTxt));
+  }
+  /* Kontrak §5: status MRA SELALU "belum terverifikasi" sampai Tiket 12f
+     membuktikan ada datanya. Server mengembalikan nilai itu; bila server
+     belum mengembalikannya, tampilkan label yang sama. */
+  row(t("cert_mra"), f2El("span", null, data.mra ? String(data.mra) : t("cert_mra_unknown")));
+  var lk = data.lingkup || {};
+  if (lk.sertifikat) row(t("cert_scope_cert"), f2El("span", null, String(lk.sertifikat)));
+  if (lk.daftar) row(t("cert_scope_list"), f2El("span", null, String(lk.daftar)));
+  if (lk.penilaian) row(t("cert_scope_result"), f2El("span", null, f2MapScope(lk.penilaian)));
+  var mb = data.masa_berlaku || {};
+  if (mb.sertifikat) row(t("cert_valid_cert"), f2El("span", null, String(mb.sertifikat)));
+  if (mb.lhln) row(t("cert_valid_lhln"), f2El("span", null, String(mb.lhln)));
+  if (mb.penilaian) row(t("cert_valid_result"), f2El("span", null, f2MapValid(mb.penilaian)));
+  row(t("cert_summary"), f2El("span", null, sum.label));
+  body.appendChild(dl);
+  var cites = f2CiteList(data.sitasi);
+  if (cites) body.appendChild(cites);
+  body.appendChild(f2DiscBox());
+  card.appendChild(body);
+  c.appendChild(card);
+}
+
+/* ---------- kartu jawaban Tanya Jawab ---------- */
+function renderAskResult(data) {
+  var c = el("ask-results");
+  c.textContent = "";
+  var card = f2El("article", "card");
+  var body = f2El("div", "card-body");
+  body.appendChild(f2El("h3", null, t("ask_ans_head")));
+  body.appendChild(f2El("p", "answer-text", data.jawaban || ""));
+  if (data.ditemukan === false) {
+    body.appendChild(f2El("p", "source-line", t("ask_not_found")));
+  }
+  var cites = f2CiteList(data.sitasi);
+  if (cites) {
+    body.appendChild(f2El("h4", null, t("ask_cite_head")));
+    body.appendChild(cites);
+  }
+  body.appendChild(f2DiscBox());
+  card.appendChild(body);
+  c.appendChild(card);
+}
+
+/* ---------- upload + tempel-teks ---------- */
+function fmtFileSize(n) {
+  if (n >= 1024 * 1024) return (Math.round(n / 1024 / 1024 * 10) / 10) + " MB";
+  if (n >= 1024) return Math.round(n / 1024) + " KB";
+  return n + " B";
+}
+function showFileInfo(file) {
+  el("f2-file-info").textContent = tt("file_chosen", { name: file.name, size: fmtFileSize(file.size) });
+}
+/* Validasi client hanya UX (gerbang keamanan butir 4): server yang
+   menegakkan batas 4 MB dan jenis PDF. */
+function f2IsPdf(file) {
+  if (!file) return false;
+  var nameOk = /\.pdf$/i.test(file.name || "");
+  var typeOk = !file.type || file.type === "application/pdf";
+  return nameOk && typeOk;
+}
+function f2HandleFile(file) {
+  if (!file) return;
+  if (!f2IsPdf(file)) {
+    f2SelectedFile = null;
+    el("f2-file-info").textContent = "";
+    f2ShowError("f2-results", t("upload_not_pdf"));
+    return;
+  }
+  if (file.size > F2_MAX_FILE) {
+    f2SelectedFile = null;
+    el("f2-file-info").textContent = "";
+    f2ShowError("f2-results", t("upload_too_big"));
+    return;
+  }
+  f2SelectedFile = file;
+  showFileInfo(file);
+}
+function updateTextCount() {
+  var left = F2_MAX_TEXT - el("f2-text").value.length;
+  if (left < 0) left = 0;
+  el("f2-text-count").textContent = tt("text_count", { n: fmtNum(left) });
+}
+function updateAskCount() {
+  var left = F2_MAX_Q - el("ask-q").value.length;
+  if (left < 0) left = 0;
+  el("ask-count").textContent = tt("ask_count", { n: fmtNum(left) });
+}
+
+function f2RunAnalyze() {
+  if (!f2IsLoggedIn()) { f2OpenAuth(); return; }
+  var mode = el("f2-mode").value; /* "coa" | "cert" */
+  var text = el("f2-text").value.trim();
+  var runBtn = el("f2-run");
+  var endpoint = mode === "cert" ? "/api/verify-certificate" : "/api/analyze";
+  function done(res) {
+    runBtn.disabled = false;
+    f2SetStatus("f2-status", null);
+    if (res.status >= 200 && res.status < 300 && res.data && res.data.ok) {
+      if (mode === "cert") {
+        f2LastAnalyze = { kind: "cert", data: res.data };
+        renderCertResult(res.data);
+      } else {
+        f2LastAnalyze = { kind: "analyze", data: res.data };
+        renderAnalyzeResult(res.data);
+      }
+      f2ShowQuota(res.data, "f2-quota");
+    } else {
+      if (res.status === 401) f2OpenAuth();
+      f2ShowError("f2-results", f2ErrorMessage(res));
+    }
+  }
+  function failed(e) {
+    runBtn.disabled = false;
+    f2SetStatus("f2-status", null);
+    f2ShowError("f2-results", f2CatchMessage(e));
+    if (e && e.code === "daftar_dulu") f2OpenAuth();
+  }
+  if (f2SelectedFile) {
+    /* Upload: raw bytes PDF, Content-Type application/pdf (kontrak §3). */
+    runBtn.disabled = true;
+    f2SetStatus("f2-status", t("analyzing"));
+    f2Api(endpoint + "?mode=upload", { pdf: true, body: f2SelectedFile }).then(done, failed);
+    return;
+  }
+  if (!text) { f2ShowError("f2-results", t("no_input")); return; }
+  runBtn.disabled = true;
+  f2SetStatus("f2-status", t("analyzing"));
+  f2Api(endpoint, { json: true, body: JSON.stringify({ mode: "text", text: text }) }).then(done, failed);
+}
+
+function f2RunAsk() {
+  if (!f2IsLoggedIn()) { f2OpenAuth(); return; }
+  var q = el("ask-q").value.trim();
+  if (!q) { f2ShowError("ask-results", t("no_input")); return; }
+  var btn = el("ask-run");
+  btn.disabled = true;
+  f2SetStatus("ask-status", t("analyzing"));
+  f2Api("/api/ask", { json: true, body: JSON.stringify({ question: q }) }).then(function (res) {
+    btn.disabled = false;
+    f2SetStatus("ask-status", null);
+    if (res.status >= 200 && res.status < 300 && res.data && res.data.ok) {
+      f2LastAsk = res.data;
+      renderAskResult(res.data);
+      f2ShowQuota(res.data, "ask-quota");
+    } else {
+      if (res.status === 401) f2OpenAuth();
+      f2ShowError("ask-results", f2ErrorMessage(res));
+    }
+  }, function (e) {
+    btn.disabled = false;
+    f2SetStatus("ask-status", null);
+    f2ShowError("ask-results", f2CatchMessage(e));
+    if (e && e.code === "daftar_dulu") f2OpenAuth();
+  });
+}
+
+/* ---------- wiring Fase 2 ---------- */
+el("auth-btn").addEventListener("click", function () {
+  if (f2IsLoggedIn()) {
+    f2EnsureSupabase().then(function (sb) {
+      if (sb) sb.auth.signOut();
+      f2User = null;
+      f2SyncAuthUI();
+    });
+  } else {
+    f2OpenAuth();
+  }
+});
+document.querySelectorAll("[data-auth-open]").forEach(function (b) {
+  b.addEventListener("click", function () { f2OpenAuth(); });
+});
+el("auth-mode-toggle").addEventListener("click", function () {
+  f2SetAuthMode(f2AuthMode === "login" ? "register" : "login");
+});
+el("auth-google-btn").addEventListener("click", function () {
+  f2EnsureSupabase().then(function (sb) {
+    if (!sb) { f2ShowAuthError(t("f2_not_configured")); return; }
+    sb.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.href.split("#")[0] }
+    });
+  });
+});
+el("auth-form").addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  var email = el("auth-email").value.trim();
+  var pw = el("auth-password").value;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { f2ShowAuthError(t("auth_err_email")); return; }
+  if (pw.length < 6) { f2ShowAuthError(t("auth_err_generic")); return; }
+  f2EnsureSupabase().then(function (sb) {
+    if (!sb) { f2ShowAuthError(t("f2_not_configured")); return; }
+    var p = f2AuthMode === "register"
+      ? sb.auth.signUp({ email: email, password: pw })
+      : sb.auth.signInWithPassword({ email: email, password: pw });
+    return p.then(function (r) {
+      if (r.error) { f2ShowAuthError(t("auth_err_generic")); return; }
+      if (f2AuthMode === "register" && !(r.data && r.data.session)) {
+        f2ShowAuthInfo(t("auth_check_email"));
+        return;
+      }
+      var dlg = el("auth-dialog");
+      if (dlg.open) dlg.close();
+    }).catch(function () { f2ShowAuthError(t("auth_err_generic")); });
+  });
+});
+/* Light dismiss cadangan: panduan modern-web-guidance "light-dismiss-a-dialog"
+   memakai closedby="any" (sudah di atribut dialog); klik backdrop ditangani
+   juga di sini untuk browser yang belum mendukung closedby. */
+el("auth-dialog").addEventListener("click", function (ev) {
+  if (ev.target === this) this.close();
+});
+el("f2-pick").addEventListener("click", function () { el("f2-file").click(); });
+el("f2-file").addEventListener("change", function () {
+  if (this.files && this.files[0]) f2HandleFile(this.files[0]);
+  this.value = "";
+});
+(function () {
+  var dz = el("f2-drop");
+  ["dragenter", "dragover"].forEach(function (evt) {
+    dz.addEventListener(evt, function (ev) { ev.preventDefault(); dz.classList.add("is-drag"); });
+  });
+  ["dragleave", "drop"].forEach(function (evt) {
+    dz.addEventListener(evt, function (ev) { ev.preventDefault(); dz.classList.remove("is-drag"); });
+  });
+  dz.addEventListener("drop", function (ev) {
+    var files = ev.dataTransfer && ev.dataTransfer.files;
+    if (files && files[0]) f2HandleFile(files[0]);
+  });
+})();
+el("f2-text").addEventListener("input", updateTextCount);
+el("ask-q").addEventListener("input", updateAskCount);
+el("f2-run").addEventListener("click", f2RunAnalyze);
+el("ask-run").addEventListener("click", f2RunAsk);
+updateTextCount();
+updateAskCount();
+f2InitAuth();
+/* FASE2-END */
+
 function applyLanguage(lang, rerender) {
   LANG = lang;
   try { localStorage.setItem("kbh-lang", lang); } catch (e) {}
@@ -2490,6 +3652,7 @@ function applyLanguage(lang, rerender) {
     if (q.length >= 2) runSearch(q);
   }
   if (rerender && LHLN) { buildLhlnFilters(); renderLhln(); }
+  if (typeof f2AfterLanguage === "function") f2AfterLanguage();
 }
 el("theme-toggle").addEventListener("click", function () {
   var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
