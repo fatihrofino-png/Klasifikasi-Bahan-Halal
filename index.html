@@ -115,16 +115,27 @@
         display: grid; place-items: center;
       }
       .brand small { display: block; font-weight: 500; font-size: .76rem; color: var(--muted); letter-spacing: .01em; }
-      nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; transition: background-color .2s ease, border-color .2s ease; order: 3; flex: 1 1 100%; }
+      nav.main-nav { position: relative; display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; transition: background-color .2s ease, border-color .2s ease; order: 3; flex: 1 1 100%; }
+      /* Pil penanda tab aktif — meluncur mengikuti tab yang dipilih (ala reel
+         referensi: tab atas + pil yang bergeser). Diposisikan via JS. */
+      .nav-pill {
+        position: absolute; top: 0; left: 0; z-index: 0; height: 40px; width: 0;
+        border-radius: 999px; pointer-events: none; opacity: 0;
+        background: linear-gradient(135deg, #f2cd72, #d9a514);
+        box-shadow: 0 4px 12px -4px rgba(160,120,10,.55);
+        transition: transform .38s var(--ease-out), width .38s var(--ease-out), opacity .2s ease;
+      }
       nav.main-nav button {
+        position: relative; z-index: 1;
         min-height: 40px; padding: 7px 16px; border: 0; border-radius: 999px;
         background: transparent; color: var(--muted); font-weight: 700; font-size: .92rem; white-space: nowrap;
-        transition: background .18s ease, color .18s ease, transform .18s var(--ease-out);
+        transition: color .18s ease, transform .18s var(--ease-out);
       }
       nav.main-nav button:hover { color: var(--ink); }
       nav.main-nav button:active { transform: scale(.97); }
-      nav.main-nav button[aria-current="page"] { background: var(--forest); color: #fff; box-shadow: 0 4px 12px -4px rgba(10,53,36,.5); }
-      :root[data-theme="dark"] nav.main-nav button[aria-current="page"] { background: #007a33; }
+      /* Latar aktif kini disediakan .nav-pill; tombol hanya mengganti warna teks. */
+      nav.main-nav button[aria-current="page"] { color: #0a3524; }
+      nav.main-nav button[aria-current="page"]:hover { color: #0a3524; }
 
       main { padding: 18px 0 8px; }
       h1 { font-family: var(--font-display); font-optical-sizing: auto; font-size: clamp(2rem, 1.55rem + 2.4vw, 3.15rem); line-height: 1.06; font-weight: 600; letter-spacing: -.02em; margin: 0 0 10px; }
@@ -132,8 +143,14 @@
       h3 { font-size: 1.08rem; line-height: 1.4; font-weight: 700; margin: 0; }
       .lede { color: var(--muted); margin: 0 0 20px; max-width: 64ch; font-size: 1.02rem; }
       .view[hidden] { display: none; }
-      .view { animation: viewIn .28s var(--ease-out) backwards; }
-      @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+      /* Masuk konten mengikuti arah pindah tab: --view-dx diisi JS (+26px bila
+         maju ke tab berikutnya, -26px bila mundur; RTL dibalik). */
+      .view { animation: viewIn .32s var(--ease-out) backwards; }
+      @keyframes viewIn { from { opacity: 0; transform: translate(var(--view-dx, 0px), 6px); } to { opacity: 1; transform: translate(0, 0); } }
+      @media (prefers-reduced-motion: reduce) {
+        .view { animation: none; }
+        .nav-pill { transition: none; }
+      }
 
       /* ---------- Hero ---------- */
       .hero {
@@ -982,6 +999,7 @@
           <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span></span>
         </div>
         <nav class="main-nav" data-i18n-aria="nav_label" aria-label="Navigasi utama">
+          <span class="nav-pill" id="nav-pill" aria-hidden="true"></span>
           <button type="button" data-nav="cari" aria-current="page" data-i18n="nav_cari">Pencarian</button>
           <button type="button" data-nav="tanya" data-i18n="nav_tanya">Tanya Jawab</button>
           <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
@@ -3223,7 +3241,36 @@ function buildRegulasi() {
 }
 
 /* ---------------- navigasi & peristiwa ---------------- */
+/* Urutan tab di nav utama — dipakai untuk arah animasi (maju/mundur). */
+var NAV_ORDER = ["cari", "tanya", "analisis", "jelajah", "regulasi", "lhln", "kontak"];
+var currentView = "cari";
+var navPill = null;
+/* Posisikan pil emas tepat di belakang tombol tab aktif. `instant` = tanpa
+   transisi (dipakai saat load/resize/ganti bahasa supaya pil tidak meluncur
+   dari pojok). Pil disembunyikan saat nav utama tidak tampil (<=760px). */
+function positionNavPill(instant) {
+  var nav = document.querySelector("nav.main-nav");
+  if (!nav) return;
+  if (!navPill) navPill = el("nav-pill");
+  if (!navPill) return;
+  var active = nav.querySelector("button[aria-current=\"page\"]");
+  if (!active || nav.offsetParent === null) { navPill.style.opacity = "0"; return; }
+  if (instant) navPill.style.transition = "none";
+  navPill.style.width = active.offsetWidth + "px";
+  navPill.style.height = active.offsetHeight + "px";
+  navPill.style.transform = "translate(" + active.offsetLeft + "px," + active.offsetTop + "px)";
+  navPill.style.opacity = "1";
+  if (instant) { void navPill.offsetWidth; navPill.style.transition = ""; }
+}
 function switchView(name) {
+  /* Arah masuk konten mengikuti arah pindah tab (RTL dibalik). Harus diisi
+     SEBELUM view ditampilkan supaya keyframe memakai nilai baru. */
+  var dir = 0;
+  if (currentView && currentView !== name) dir = NAV_ORDER.indexOf(name) - NAV_ORDER.indexOf(currentView);
+  currentView = name;
+  var rtl = document.documentElement.dir === "rtl";
+  var dx = dir === 0 ? 0 : (dir > 0 ? 1 : -1) * (rtl ? -26 : 26);
+  el("view-" + name).style.setProperty("--view-dx", dx + "px");
   ["cari", "jelajah", "regulasi", "kontak", "lhln", "analisis", "tanya"].forEach(function (v) {
     el("view-" + v).hidden = v !== name;
   });
@@ -3231,6 +3278,7 @@ function switchView(name) {
     if (b.getAttribute("data-nav") === name) b.setAttribute("aria-current", "page");
     else b.removeAttribute("aria-current");
   });
+  positionNavPill();
   window.scrollTo({ top: 0 });
   /* Fase 2: tab Analisis Dokumen / Tanya Jawab butuh login. Anonim tetap
      melihat panel gate di view-nya, plus dialog login dibuka sekali. */
@@ -3241,6 +3289,10 @@ function switchView(name) {
 document.querySelectorAll("[data-nav]").forEach(function (b) {
   b.addEventListener("click", function () { switchView(b.getAttribute("data-nav")); });
 });
+/* Pil nav: posisi awal tanpa animasi; reposisi saat ukuran berubah. */
+window.addEventListener("resize", function () { positionNavPill(true); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { positionNavPill(true); });
+positionNavPill(true);
 document.querySelectorAll("[data-example]").forEach(function (c) {
   if (c.closest("#results")) return;
   c.addEventListener("click", function () { doSearch(c.getAttribute("data-example")); });
@@ -4156,6 +4208,7 @@ function applyLanguage(lang, rerender) {
   }
   if (rerender && LHLN) { buildLhlnFilters(); renderLhln(); }
   if (typeof f2AfterLanguage === "function") f2AfterLanguage();
+  positionNavPill(true);
 }
 document.querySelectorAll(".theme-toggle").forEach(function (btn) { btn.addEventListener("click", function () {
   var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
