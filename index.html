@@ -123,10 +123,13 @@
         border-radius: 999px; pointer-events: none; opacity: 0;
         background: linear-gradient(135deg, #f2cd72, #d9a514);
         box-shadow: 0 4px 12px -4px rgba(160,120,10,.55);
-        /* Tepi depan cepat (.36s power3.out), tepi belakang lambat (.55s
-           power3.inOut): pil MEREGANG ke arah tab tujuan, seperti di reel
-           referensi (slidePill, GSAP). Default = gerak ke kanan. */
-        transition: left .55s cubic-bezier(.645,.045,.355,1), width .36s cubic-bezier(.215,.61,.355,1), top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease;
+        /* Dua tepi dianimasikan TERPISAH (left + right), seperti slidePill
+           di reel (GSAP, clip-path): tepi depan cepat (.36s power3.out),
+           tepi belakang lambat (.55s power3.inOut) — pil MEREGANG ke arah
+           tab tujuan. PENTING: width TIDAK dipakai, karena transisi width
+           hanya menginterpolasi antar lebar tab dan tidak pernah memanjang.
+           Default = gerak ke kanan. */
+        transition: left .55s cubic-bezier(.645,.045,.355,1), right .36s cubic-bezier(.215,.61,.355,1), top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease;
       }
       nav.main-nav button {
         position: relative; z-index: 1;
@@ -3262,18 +3265,23 @@ function positionNavPill(instant, vdir) {
     navPill.style.transition = "none";
   } else if (vdir) {
     /* Mekanisme reel: tepi DEPAN (arah gerak) cepat .36s power3.out, tepi
-       BELAKANG lambat .55s power3.inOut — pil meregang ke arah tujuan.
-       Gerak ke kanan: tepi kanan memimpin -> width cepat, left lambat.
-       Gerak ke kiri: tepi kiri memimpin -> left cepat, width lambat. */
+       BELAKANG lambat .55s power3.inOut. Tepi dianimasikan lewat left +
+       right (bukan width): tepi depan mencapai target dulu sementara
+       tepi belakang masih di tempat — lebar pil SEMENTARA membesar
+       (meregang), lalu mengecil ke lebar tab tujuan.
+       Gerak ke kanan: tepi kanan memimpin -> right cepat, left lambat.
+       Gerak ke kiri: tepi kiri memimpin -> left cepat, right lambat. */
     var lead = " .36s cubic-bezier(.215,.61,.355,1)";
     var trail = " .55s cubic-bezier(.645,.045,.355,1)";
     navPill.style.transition = vdir > 0
-      ? ("left" + trail + ", width" + lead + ", top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease")
-      : ("left" + lead + ", width" + trail + ", top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease");
+      ? ("left" + trail + ", right" + lead + ", top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease")
+      : ("left" + lead + ", right" + trail + ", top .38s var(--ease-out), height .38s var(--ease-out), opacity .2s ease");
   }
+  var navW = nav.clientWidth || 0;
   navPill.style.left = active.offsetLeft + "px";
+  navPill.style.right = Math.max(0, navW - (active.offsetLeft + active.offsetWidth)) + "px";
   navPill.style.top = active.offsetTop + "px";
-  navPill.style.width = active.offsetWidth + "px";
+  navPill.style.width = "auto";
   navPill.style.height = active.offsetHeight + "px";
   navPill.style.opacity = "1";
   if (instant) { void navPill.offsetWidth; navPill.style.transition = ""; }
