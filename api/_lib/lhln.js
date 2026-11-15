@@ -2,7 +2,10 @@
 // Normalisasi nama (huruf, singkatan, tanda baca) + fuzzy match (Jaccard token
 // + kemiripan substring). Ambang cocok: skor >= 0.8. Di bawah itu: tidak cocok,
 // kembalikan nama terdekat berlabel "kemiripan, bukan kecocokan pasti".
-// Status MRA: SELALU "belum terverifikasi" (Tiket 12f — lihat MRA-NOTE.md).
+// Status MRA (koreksi 15 Nov 2026 atas arahan Rofik, penyelia halal):
+// penerbit yang COCOK di daftar LHLN BPJPH = "terverifikasi" (masuk daftar
+// berarti sudah MRA — daftar itu sendiri adalah daftar lembaga yang diakui
+// BPJPH); tidak cocok = "belum terverifikasi". Lihat MRA-NOTE.md.
 // Pemetaan lingkup Indonesia <-> Inggris (tabel ditulis di sini + komentar):
 // nilai lingkup di daftar LHLN berbahasa Inggris (dipisah " | ").
 'use strict';
@@ -190,5 +193,7 @@ function assessExpiry(tanggalBerakhir, now = new Date()) {
 module.exports = {
   SCOPE_MAP, mapScopeText, normalizeScopeToken, normName, similarity,
   loadLhln, matchIssuer, assessScope, assessExpiry, MATCH_THRESHOLD,
-  MRA_STATUS: 'belum terverifikasi', // Tiket 12f — jangan diubah tanpa data BPJPH.
+  MRA_STATUS: 'belum terverifikasi', // nilai bila penerbit TIDAK cocok di daftar.
+  // Aturan MRA (koreksi 15 Nov 2026, Rofik): masuk daftar LHLN BPJPH = sudah MRA.
+  mraStatus: (cocok) => (cocok ? 'terverifikasi' : 'belum terverifikasi'),
 };

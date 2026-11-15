@@ -2024,7 +2024,7 @@ Object.assign(I18N.id, {
   rshln_link: "Lihat daftar Lembaga Halal Luar Negeri →",
   cert_title: "Verifikasi sertifikat", cert_issuer: "Penerbit",
   cert_in_list: "Masuk daftar LHLN BPJPH", cert_not_in_list: "Tidak masuk daftar LHLN BPJPH",
-  cert_closest: "Nama terdekat", cert_mra: "Status MRA", cert_mra_unknown: "Belum terverifikasi",
+  cert_closest: "Nama terdekat", cert_mra: "Status MRA", cert_mra_unknown: "Belum terverifikasi", cert_mra_verified: "Terverifikasi",
   cert_scope_cert: "Lingkup sertifikat", cert_scope_list: "Lingkup di daftar LHLN",
   cert_scope_result: "Penilaian lingkup", cert_scope_ok: "Sesuai", cert_scope_no: "Tidak sesuai",
   cert_scope_na: "Tidak dapat dinilai", cert_valid_cert: "Masa berlaku sertifikat",
@@ -2097,7 +2097,7 @@ Object.assign(I18N.en, {
   rshln_link: "See the list of Foreign Halal Bodies →",
   cert_title: "Certificate verification", cert_issuer: "Issuer",
   cert_in_list: "In the BPJPH LHLN list", cert_not_in_list: "Not in the BPJPH LHLN list",
-  cert_closest: "Closest name", cert_mra: "MRA status", cert_mra_unknown: "Not yet verified",
+  cert_closest: "Closest name", cert_mra: "MRA status", cert_mra_unknown: "Not yet verified", cert_mra_verified: "Verified",
   cert_scope_cert: "Certificate scope", cert_scope_list: "Scope in the LHLN list",
   cert_scope_result: "Scope assessment", cert_scope_ok: "Matches", cert_scope_no: "Does not match",
   cert_scope_na: "Cannot be assessed", cert_valid_cert: "Certificate valid until",
@@ -2170,7 +2170,7 @@ Object.assign(I18N.ar, {
   rshln_link: "عرض قائمة هيئات الحلال الأجنبية ←",
   cert_title: "التحقق من الشهادة", cert_issuer: "الجهة المصدرة",
   cert_in_list: "في قائمة LHLN لدى BPJPH", cert_not_in_list: "ليست في قائمة LHLN لدى BPJPH",
-  cert_closest: "أقرب اسم", cert_mra: "حالة MRA", cert_mra_unknown: "لم يتم التحقق بعد",
+  cert_closest: "أقرب اسم", cert_mra: "حالة MRA", cert_mra_unknown: "لم يتم التحقق بعد", cert_mra_verified: "تم التحقق",
   cert_scope_cert: "نطاق الشهادة", cert_scope_list: "النطاق في قائمة LHLN",
   cert_scope_result: "تقييم النطاق", cert_scope_ok: "مطابق", cert_scope_no: "غير مطابق",
   cert_scope_na: "لا يمكن التقييم", cert_valid_cert: "الشهادة صالحة حتى",
@@ -2243,7 +2243,7 @@ Object.assign(I18N.zh, {
   rshln_link: "查看国外清真机构名单 →",
   cert_title: "证书核查", cert_issuer: "发证机构",
   cert_in_list: "在 BPJPH 的 LHLN 名单中", cert_not_in_list: "不在 BPJPH 的 LHLN 名单中",
-  cert_closest: "最接近的名称", cert_mra: "MRA 状态", cert_mra_unknown: "尚未核实",
+  cert_closest: "最接近的名称", cert_mra: "MRA 状态", cert_mra_unknown: "尚未核实", cert_mra_verified: "已核实",
   cert_scope_cert: "证书范围", cert_scope_list: "LHLN 名单中的范围",
   cert_scope_result: "范围评估", cert_scope_ok: "相符", cert_scope_no: "不相符",
   cert_scope_na: "无法评估", cert_valid_cert: "证书有效期至",
@@ -3657,6 +3657,16 @@ function f2MapSummary(v) {
   if (s.indexOf("tidak dapat diverifikasi") >= 0) return { cls: "st-unknown", label: t("cert_sum_no") };
   return { cls: "st-unknown", label: String(v || "") };
 }
+function f2List(v) { return Array.isArray(v) ? v.join(", ") : String(v || ""); }
+/* Format objek masa berlaku {penilaian, tanggal, sisa_hari, alasan} jadi
+   "2028-04-05 (Masih berlaku)" atau "Tidak dapat dinilai — <alasan>".
+   (Perbaikan 15 Nov 2026: String(objek) sebelumnya menampilkan "[object Object]".) */
+function f2FmtValid(o) {
+  if (!o) return "";
+  var label = f2MapValid(o.penilaian);
+  if (o.tanggal) return o.tanggal + " (" + label + ")";
+  return label + (o.alasan ? " — " + o.alasan : "");
+}
 function renderCertResult(data) {
   var c = el("f2-results");
   c.textContent = "";
@@ -3684,17 +3694,17 @@ function renderCertResult(data) {
     if (p.nama_terdekat) outTxt += " — " + t("cert_closest") + ": " + p.nama_terdekat;
     row(t("cert_in_list"), f2El("span", null, outTxt));
   }
-  /* Kontrak §5: status MRA SELALU "belum terverifikasi" sampai Tiket 12f
-     membuktikan ada datanya. Server mengembalikan nilai itu; bila server
-     belum mengembalikannya, tampilkan label yang sama. */
-  row(t("cert_mra"), f2El("span", null, data.mra ? String(data.mra) : t("cert_mra_unknown")));
+  /* Kontrak §5 (koreksi 15 Nov 2026, Rofik): server mengembalikan "terverifikasi"
+     bila penerbit cocok di daftar LHLN BPJPH (masuk daftar = sudah MRA), atau
+     "belum terverifikasi" bila tidak cocok / server belum mengembalikannya. */
+  row(t("cert_mra"), f2El("span", null, data.mra === "terverifikasi" ? t("cert_mra_verified") : (data.mra ? String(data.mra) : t("cert_mra_unknown"))));
   var lk = data.lingkup || {};
-  if (lk.sertifikat) row(t("cert_scope_cert"), f2El("span", null, String(lk.sertifikat)));
-  if (lk.daftar) row(t("cert_scope_list"), f2El("span", null, String(lk.daftar)));
+  if (lk.sertifikat) row(t("cert_scope_cert"), f2El("span", null, f2List(lk.sertifikat)));
+  if (lk.daftar) row(t("cert_scope_list"), f2El("span", null, f2List(lk.daftar)));
   if (lk.penilaian) row(t("cert_scope_result"), f2El("span", null, f2MapScope(lk.penilaian)));
   var mb = data.masa_berlaku || {};
-  if (mb.sertifikat) row(t("cert_valid_cert"), f2El("span", null, String(mb.sertifikat)));
-  if (mb.lhln) row(t("cert_valid_lhln"), f2El("span", null, String(mb.lhln)));
+  if (mb.sertifikat) row(t("cert_valid_cert"), f2El("span", null, f2FmtValid(mb.sertifikat)));
+  if (mb.lhln) row(t("cert_valid_lhln"), f2El("span", null, f2FmtValid(mb.lhln)));
   if (mb.penilaian) row(t("cert_valid_result"), f2El("span", null, f2MapValid(mb.penilaian)));
   row(t("cert_summary"), f2El("span", null, sum.label));
   body.appendChild(dl);

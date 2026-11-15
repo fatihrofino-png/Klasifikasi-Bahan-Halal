@@ -1,7 +1,8 @@
 // api/verify-certificate.js — POST /api/verify-certificate (Tiket 12e).
 // Ekstrak penerbit/lingkup/masa berlaku (LLM) -> cocokkan LOKAL ke lhln.json,
 // nilai lingkup (pemetaan ID<->EN) + masa berlaku vs hari ini.
-// MRA SELALU "belum terverifikasi" (Tiket 12f).
+// MRA: "terverifikasi" bila penerbit cocok di daftar LHLN BPJPH
+// (koreksi 15 Nov 2026, Rofik); bila tidak cocok, "belum terverifikasi".
 'use strict';
 
 const { CONFIG } = require('./_lib/config');
@@ -13,7 +14,7 @@ const { verifyAuth } = require('./_lib/auth');
 const { getSupabase, checkQuota, logUsage } = require('./_lib/quota');
 const { logEvent, logSecurity } = require('./_lib/log');
 const {
-  matchIssuer, mapScopeText, assessScope, assessExpiry, loadLhln, MRA_STATUS,
+  matchIssuer, mapScopeText, assessScope, assessExpiry, loadLhln, mraStatus,
 } = require('./_lib/lhln');
 const common = require('./_lib/common');
 
@@ -122,7 +123,7 @@ async function handle(ctx) {
       skor_kemiripan: penerbit.skor_kemiripan,
       catatan: penerbit.catatan || null,
     },
-    mra: MRA_STATUS, // selalu "belum terverifikasi" (Tiket 12f)
+    mra: mraStatus(penerbit.cocok), // masuk daftar LHLN = sudah MRA (koreksi 15 Nov 2026)
     lingkup: {
       sertifikat: lingkup.sertifikat,
       daftar: lingkup.daftar,
