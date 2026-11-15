@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Situs ini satu halaman (SPA): semua tampilan — Pencarian, AI Halal,
+       Analisis Dokumen, Jelajah Kategori, Regulasi, LHLN, Kontak — ada di
+       URL beranda yang sama. Hanya URL kanonis yang didaftarkan di sini. -->
+  <url>
+    <loc>https://cek-bahan.vercel.app/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

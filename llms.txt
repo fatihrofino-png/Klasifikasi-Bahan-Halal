@@ -1,0 +1,26 @@
+# Klasifikasi Bahan Halal BPJPH
+
+> Alat bantu klasifikasi bahan halal: ketik nama bahan, sinonim, nama Inggris,
+> atau nomor CAS, dan ketahui statusnya — Dikecualikan (positive list),
+> Wajib Bersertifikat Halal, atau Belum Diatur — berdasarkan Lampiran
+> Kepkaban BPJPH 301 & 387 Tahun 2026 dan kriteria SJPH Kepkaban 20/2023.
+> Data: 4.574 bahan positive list, 1.404 jenis produk wajib, 21 kategori
+> lampiran, 126 Lembaga Halal Luar Negeri (LHLN).
+
+## Cek Bahan
+
+- [Cari bahan — beranda](https://cek-bahan.vercel.app/): ketik nama bahan, sinonim, atau nomor CAS. Hasil menampilkan status, nomor CAS, klasifikasi, dan dasar hukumnya.
+- Situs ini satu halaman: tampilan Pencarian, AI Halal, Analisis Dokumen, Jelajah Kategori, Regulasi, LHLN, dan Kontak semuanya ada di beranda yang sama.
+
+## Regulasi Acuan
+
+- Kepkaban BPJPH 20 Tahun 2023 — kriteria Sistem Jaminan Produk Halal (SJPH).
+- Kepkaban BPJPH 301 Tahun 2026 — Lampiran positive list bahan yang dikecualikan dari kewajiban sertifikat halal.
+- Kepkaban BPJPH 387 Tahun 2026 — jenis produk yang wajib bersertifikat halal.
+- [Unduh ZIP regulasi (PDF)](https://cek-bahan.vercel.app/api/regulasi-zip): kumpulan dokumen regulasi acuan.
+
+## Pertanyaan Umum
+
+- Apa itu positive list? Bahan yang tercantum di Lampiran Kepkaban 301/2026 dan dikecualikan dari kewajiban sertifikat halal.
+- Apakah gliserin wajib sertifikat halal? Gliserin (gliserol, CAS 56-81-5) tidak tercantum di Lampiran 301/2026, sehingga statusnya Belum Diatur — perlu dicek sumber bahan dan sertifikat halal produsennya.
+- Apakah situs ini keputusan resmi? Bukan. Ini alat bantu klasifikasi; keputusan sertifikasi halal tetap melalui Lembaga Pemeriksa Halal (LPH) dan penetapan BPJPH.
