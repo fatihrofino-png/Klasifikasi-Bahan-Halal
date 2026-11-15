@@ -917,20 +917,22 @@
       /* ---------- PWA: popup install (HP saja, 15 Nov 2026) ---------- */
       .pwa-sheet { position: fixed; inset-inline: 0; bottom: 0; z-index: 90; padding: 0 12px calc(12px + env(safe-area-inset-bottom)); display: flex; justify-content: center; pointer-events: none; }
       .pwa-sheet[hidden] { display: none; }
-      .pwa-card { pointer-events: auto; width: min(560px, 100%); display: flex; gap: 12px; align-items: flex-start; background: var(--card); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 20px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.45); padding: 16px; animation: pwaUp .35s var(--ease-out) backwards; }
+      .pwa-card { pointer-events: auto; width: min(560px, 100%); display: flex; gap: 10px; align-items: flex-start; background: var(--card); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 16px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.45); padding: 12px; animation: pwaUp .35s var(--ease-out) backwards; }
       @keyframes pwaUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-      .pwa-ico { width: 56px; height: 56px; border-radius: 14px; flex: none; }
-      .pwa-title { font-weight: 800; margin: 0 0 2px; font-size: 1rem; line-height: 1.3; }
-      .pwa-desc { margin: 0 0 10px; font-size: .9rem; color: var(--muted); }
-      .pwa-steps { margin: 0 0 10px; }
-      .pwa-steps p { margin: 2px 0; font-size: .9rem; }
+      .pwa-ico { width: 44px; height: 44px; border-radius: 12px; flex: none; }
+      .pwa-title { font-weight: 800; margin: 0 0 2px; font-size: .95rem; line-height: 1.25; }
+      .pwa-desc { margin: 0 0 8px; font-size: .85rem; color: var(--muted); }
+      .pwa-steps { margin: 0 0 8px; }
+      .pwa-steps p { margin: 2px 0; font-size: .85rem; }
       .pwa-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-      .btn-pwa-install { min-height: 44px; padding: 10px 18px; border: 0; border-radius: 12px; background: linear-gradient(135deg, var(--green-bright), var(--green-strong)); color: #fff; font: inherit; font-weight: 800; cursor: pointer; box-shadow: 0 8px 18px -8px rgba(0,122,51,.6); }
+      .pwa-actions .btn-pwa-install { flex: 1 1 100%; }
+      .pwa-actions .btn-pwa-ghost { flex: 1 1 0; }
+      .btn-pwa-install { min-height: 38px; padding: 8px 16px; border: 0; border-radius: 10px; background: linear-gradient(135deg, var(--green-bright), var(--green-strong)); color: #fff; font: inherit; font-size: .95rem; font-weight: 800; cursor: pointer; box-shadow: 0 8px 18px -8px rgba(0,122,51,.6); }
       .btn-pwa-install:active { transform: scale(.97); }
-      .btn-pwa-ghost { min-height: 44px; padding: 10px 14px; border: 1.5px solid var(--line-strong); border-radius: 12px; background: transparent; color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+      .btn-pwa-ghost { min-height: 38px; padding: 8px 12px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: transparent; color: var(--ink); font: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; }
       .btn-pwa-ghost:active { transform: scale(.97); }
-      .pwa-note { font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
-      .pwa-close { flex: none; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--surface); color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; }
+      .pwa-note { font-size: .8rem; color: var(--muted); margin: 8px 0 0; }
+      .pwa-close { flex: none; width: 28px; height: 28px; border: 0; border-radius: 50%; background: var(--surface); color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
       .btn-install-foot { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; min-height: 44px; padding: 10px 18px; border: 1.5px solid rgba(255,255,255,.35); border-radius: 12px; background: transparent; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
       /* Sheet boleh dibuka di semua lebar lewat tombol footer; popup OTOMATIS tetap HP saja (diatur di JS). */
     </style>
@@ -1410,7 +1412,7 @@
 
     <div class="pwa-sheet" id="pwa-sheet" hidden role="dialog" aria-labelledby="pwa-title">
       <div class="pwa-card">
-        <img class="pwa-ico" src="/icons/icon.svg" alt="" width="56" height="56" />
+        <img class="pwa-ico" src="/icons/icon.svg" alt="" width="44" height="44" />
         <div class="pwa-body">
           <p class="pwa-title" id="pwa-title" data-i18n="pwa_title">Pasang Cek Bahan di HP kamu</p>
           <p class="pwa-desc" data-i18n="pwa_desc">Buka lebih cepat dari layar utama — tanpa membuka browser dulu.</p>
