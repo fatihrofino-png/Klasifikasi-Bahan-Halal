@@ -97,7 +97,7 @@
         border-bottom: 1px solid var(--line);
         transition: background-color .2s ease, border-color .2s ease;
       }
-      .topbar-in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+      .topbar-in { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
       .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.14rem; letter-spacing: -.02em; color: var(--ink); margin-inline-end: auto; line-height: 1.25; }
       .brand .brand-accent { color: var(--gold-ink); }
       .brand .mark {
@@ -107,10 +107,10 @@
         display: grid; place-items: center;
       }
       .brand small { display: block; font-weight: 500; font-size: .76rem; color: var(--muted); letter-spacing: .01em; }
-      nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; transition: background-color .2s ease, border-color .2s ease; }
+      nav.main-nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; transition: background-color .2s ease, border-color .2s ease; order: 3; flex: 1 1 100%; }
       nav.main-nav button {
         min-height: 40px; padding: 7px 16px; border: 0; border-radius: 999px;
-        background: transparent; color: var(--muted); font-weight: 700; font-size: .92rem;
+        background: transparent; color: var(--muted); font-weight: 700; font-size: .92rem; white-space: nowrap;
         transition: background .18s ease, color .18s ease, transform .18s var(--ease-out);
       }
       nav.main-nav button:hover { color: var(--ink); }
@@ -132,8 +132,10 @@
         position: relative; overflow: hidden; isolation: isolate;
         background: linear-gradient(128deg, var(--forest) 0%, var(--forest-2) 58%, #14663f 115%);
         color: #f2f7f2; border-radius: 28px;
-        padding: clamp(24px, 4vw, 40px) clamp(22px, 5vw, 54px) clamp(36px, 4.5vw, 48px);
+        padding: clamp(20px, 3vw, 30px) clamp(22px, 4vw, 44px) clamp(26px, 3vw, 34px);
         box-shadow: var(--shadow-lg);
+        display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+        gap: 8px clamp(24px, 3.5vw, 48px); align-items: center;
       }
       .hero::before {
         content: ""; position: absolute; inset: 0; z-index: -1; opacity: .13;
@@ -186,7 +188,28 @@
       .hero h1 .line:nth-child(3) .line-in { animation-delay: .18s; }
       @keyframes maskUp { from { transform: translateY(112%); } to { transform: translateY(0); } }
       @keyframes fadeRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-      .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 20px; }
+      .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 14px; }
+      /* ---------- Hero: kolom kanan berisi 3 kartu status (pindahan dari empty-state) ---------- */
+      .hero-main { min-width: 0; }
+      .hero-side { min-width: 0; }
+      .hero-side-label { margin: 0 0 12px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+      .hero .status-tiles { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      .hero .tile { display: flex; gap: 14px; align-items: flex-start; padding: 15px 16px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 16px; box-shadow: none; transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out), background-color .18s ease; }
+      .hero .tile:hover { transform: translateY(-2px); background: rgba(255,255,255,.1); box-shadow: 0 10px 22px -10px rgba(0,0,0,.5); }
+      .hero .tile .t-ico { width: 40px; height: 40px; flex: none; margin-bottom: 0; border-radius: 12px; }
+      .hero .tile .t-body { min-width: 0; }
+      .hero .tile h3 { color: #ffffff; font-size: .98rem; margin-bottom: 2px; }
+      .hero .tile p { color: #c8dccd; font-size: .86rem; }
+      .hero .tile .t-tag { margin-top: 7px; }
+      .hero .tile-ok .t-tag { background: rgba(74,222,128,.18); color: #b7f4cd; }
+      .hero .tile-wajib .t-tag { background: rgba(252,165,165,.18); color: #fecaca; }
+      .hero .tile-belum .t-tag { background: rgba(253,224,71,.18); color: #fef08a; }
+      @media (min-width: 761px) {
+        .hero .hero-stats { flex-wrap: nowrap; }
+        .hero .hstat { padding-inline-end: 10px; margin-inline-end: 10px; }
+        .hero .hstat b { font-size: 1.55rem; }
+        .hero .hstat span { font-size: .78rem; }
+      }
       .hstat { padding-inline-end: 26px; margin-inline-end: 26px; border-inline-end: 1px solid rgba(255,255,255,.18); }
       .hstat:last-child { border-inline-end: 0; margin-inline-end: 0; padding-inline-end: 0; }
       .hstat b { display: block; font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.75rem; font-weight: 600; letter-spacing: 0; color: #fff; line-height: 1.15; font-variant-numeric: tabular-nums; }
@@ -603,7 +626,7 @@
       }
 
       /* ---------- Header tools: tema & bahasa ---------- */
-      .header-tools { display: flex; align-items: center; gap: 8px; }
+      .header-tools { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; }
       .tool-btn {
         display: inline-flex; align-items: center; justify-content: center; gap: 7px;
         min-height: 44px; min-width: 44px; padding: 8px 12px;
@@ -873,6 +896,7 @@
         .header-tools { display: none; }
         .menu-btn { display: inline-flex; }
         .topbar-in { gap: 10px; }
+        .hero { grid-template-columns: 1fr; gap: 22px; }
       }
       @media (max-width: 560px) {
         .f2-field textarea { min-height: 130px; }
@@ -1002,6 +1026,7 @@
       <!-- ================= VIEW: PENCARIAN ================= -->
       <section class="view" id="view-cari" aria-labelledby="judul-cari">
         <div class="hero">
+          <div class="hero-main">
           <p class="kicker" data-i18n="hero_kicker">Basis data resmi BPJPH</p>
           <h1 id="judul-cari"><span class="line"><span class="line-in" data-i18n="hero_l1">Apakah bahan ini</span></span><span class="line"><span class="line-in" data-i18n="hero_l2">wajib bersertifikat</span></span><span class="line"><span class="line-in"><em data-i18n="hero_l3">halal?</em></span></span></h1>
           <p class="hero-tagline"><span data-i18n="hero_tagline_a">Klasifikasi Bahan, </span><span class="tagline-accent" data-i18n="hero_tagline_b">Tanpa Ragu</span></p>
@@ -1011,6 +1036,30 @@
             <div class="hstat"><b data-count="1404">1.404</b><span data-i18n="stat_wajib">jenis produk wajib</span></div>
             <div class="hstat"><b data-count="21">21</b><span data-i18n="stat_kat">kategori lampiran</span></div>
             <div class="hstat"><b data-count="3">3</b><span data-i18n="stat_kep">keputusan acuan</span></div>
+          </div>
+          </div>
+          <div class="hero-side">
+            <p class="hero-side-label" data-i18n="hero_side_label">Tiga kemungkinan hasil</p>
+<div class="status-tiles">
+            <article class="tile tile-ok">
+              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></span>
+              <div class="t-body"><h3 data-i18n="tile_ok_t">Dikecualikan</h3>
+              <p data-i18n="tile_ok_d">Bahan tercantum di Lampiran Kepkaban 301/2026, tidak wajib bersertifikat halal.</p>
+              <span class="t-tag" data-i18n="tile_ok_tag">Positive List · 301/2026</span></div>
+            </article>
+            <article class="tile tile-wajib">
+              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L22 20H2z"/><path d="M12 10v4.2"/><circle cx="12" cy="17.2" r="0.4" fill="currentColor"/></svg></span>
+              <div class="t-body"><h3 data-i18n="tile_wajib_t">Wajib Bersertifikat Halal</h3>
+              <p data-i18n="tile_wajib_d">Yang dicari adalah jenis produk di Kepkaban 387/2026.</p>
+              <span class="t-tag" data-i18n="tile_wajib_tag">Jenis Produk · 387/2026</span></div>
+            </article>
+            <article class="tile tile-belum">
+              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3A2.6 2.6 0 1 1 12 12.2V13"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg></span>
+              <div class="t-body"><h3 data-i18n="tile_belum_t">Belum Diatur</h3>
+              <p data-i18n="tile_belum_d">Bahan tidak tercantum di kedua lampiran, sehingga perlu dokumen pendukung sesuai Kepkaban 20/2023.</p>
+              <span class="t-tag" data-i18n="tile_belum_tag">Dokumen Pendukung · 20/2023</span></div>
+            </article>
+          </div>
           </div>
         </div>
 
@@ -1043,27 +1092,7 @@
         <div id="results" aria-live="polite"></div>
 
         <div class="empty-state" id="empty-state">
-          <p><strong data-i18n="empty_strong">Belum ada pencarian.</strong> <span data-i18n="empty_text">Setiap bahan yang dicari akan mendapat satu dari tiga status berikut:</span></p>
-          <div class="status-tiles">
-            <article class="tile tile-ok">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></span>
-              <h3 data-i18n="tile_ok_t">Dikecualikan</h3>
-              <p data-i18n="tile_ok_d">Bahan tercantum di Lampiran Kepkaban 301/2026, tidak wajib bersertifikat halal.</p>
-              <span class="t-tag" data-i18n="tile_ok_tag">Positive List · 301/2026</span>
-            </article>
-            <article class="tile tile-wajib">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L22 20H2z"/><path d="M12 10v4.2"/><circle cx="12" cy="17.2" r="0.4" fill="currentColor"/></svg></span>
-              <h3 data-i18n="tile_wajib_t">Wajib Bersertifikat Halal</h3>
-              <p data-i18n="tile_wajib_d">Yang dicari adalah jenis produk di Kepkaban 387/2026.</p>
-              <span class="t-tag" data-i18n="tile_wajib_tag">Jenis Produk · 387/2026</span>
-            </article>
-            <article class="tile tile-belum">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3A2.6 2.6 0 1 1 12 12.2V13"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg></span>
-              <h3 data-i18n="tile_belum_t">Belum Diatur</h3>
-              <p data-i18n="tile_belum_d">Bahan tidak tercantum di kedua lampiran, sehingga perlu dokumen pendukung sesuai Kepkaban 20/2023.</p>
-              <span class="t-tag" data-i18n="tile_belum_tag">Dokumen Pendukung · 20/2023</span>
-            </article>
-          </div>
+          <p><strong data-i18n="empty_strong">Belum ada pencarian.</strong> <span data-i18n="empty_text">Hasil pencarian akan muncul di sini.</span></p>
         </div>
 
         <div class="how">
@@ -1410,8 +1439,8 @@ var I18N = { id: {
   data_error_strong: "Data lampiran gagal dimuat.",
   data_error_text: "Periksa koneksi lalu muat ulang halaman ini. Pencarian tidak dapat berjalan tanpa data lampiran.",
   empty_strong: "Belum ada pencarian.",
-  empty_text: "Setiap bahan yang dicari akan mendapat satu dari tiga status berikut:",
-  tile_ok_t: "Dikecualikan", tile_ok_d: "Bahan tercantum di Lampiran Kepkaban 301/2026, tidak wajib bersertifikat halal.", tile_ok_tag: "Positive List · 301/2026",
+  empty_text: "Hasil pencarian akan muncul di sini.",
+  hero_side_label: "Tiga kemungkinan hasil",   tile_ok_t: "Dikecualikan", tile_ok_d: "Bahan tercantum di Lampiran Kepkaban 301/2026, tidak wajib bersertifikat halal.", tile_ok_tag: "Positive List · 301/2026",
   tile_wajib_t: "Wajib Bersertifikat Halal", tile_wajib_d: "Yang dicari adalah jenis produk di Kepkaban 387/2026.", tile_wajib_tag: "Jenis Produk · 387/2026",
   tile_belum_t: "Belum Diatur", tile_belum_d: "Bahan tidak tercantum di kedua lampiran, sehingga perlu dokumen pendukung sesuai Kepkaban 20/2023.", tile_belum_tag: "Dokumen Pendukung · 20/2023",
   how_title: "Cara memakai alat ini", how_sub: "Tiga langkah, langsung dari teks lampiran resmi.",
@@ -1535,8 +1564,8 @@ I18N.en = {
   data_error_strong: "Appendix data failed to load.",
   data_error_text: "Check your connection and reload this page. Search cannot run without the appendix data.",
   empty_strong: "No search yet.",
-  empty_text: "Every ingredient you look up will receive one of these three statuses:",
-  tile_ok_t: "Exempted", tile_ok_d: "The ingredient is listed in the Appendix of Kepkaban 301/2026 and does not need halal certification.", tile_ok_tag: "Positive List · 301/2026",
+  empty_text: "Search results will appear here.",
+  hero_side_label: "Three possible outcomes",   tile_ok_t: "Exempted", tile_ok_d: "The ingredient is listed in the Appendix of Kepkaban 301/2026 and does not need halal certification.", tile_ok_tag: "Positive List · 301/2026",
   tile_wajib_t: "Must Be Halal Certified", tile_wajib_d: "What you searched for is a product type under Kepkaban 387/2026.", tile_wajib_tag: "Product Types · 387/2026",
   tile_belum_t: "Not Yet Regulated", tile_belum_d: "The ingredient is not listed in either appendix, so supporting documents are required under Kepkaban 20/2023.", tile_belum_tag: "Supporting Documents · 20/2023",
   how_title: "How to use this tool", how_sub: "Three steps, straight from the official appendix text.",
@@ -1654,8 +1683,8 @@ I18N.ar = {
   data_error_strong: "تعذّر تحميل بيانات الملاحق.",
   data_error_text: "تحقق من الاتصال ثم أعد تحميل هذه الصفحة. لا يمكن إجراء البحث دون بيانات الملاحق.",
   empty_strong: "لا يوجد بحث بعد.",
-  empty_text: "ستحصل كل مادة تبحث عنها على إحدى الحالات الثلاث التالية:",
-  tile_ok_t: "مُعفاة", tile_ok_d: "المادة مدرجة في ملحق القرار 301/2026 ولا تحتاج إلى شهادة حلال.", tile_ok_tag: "القائمة الإيجابية · 301/2026",
+  empty_text: "ستظهر نتائج البحث هنا.",
+  hero_side_label: "ثلاث نتائج محتملة",   tile_ok_t: "مُعفاة", tile_ok_d: "المادة مدرجة في ملحق القرار 301/2026 ولا تحتاج إلى شهادة حلال.", tile_ok_tag: "القائمة الإيجابية · 301/2026",
   tile_wajib_t: "يجب أن تكون معتمدة حلال", tile_wajib_d: "ما بحثت عنه هو نوع منتج في القرار 387/2026.", tile_wajib_tag: "أنواع المنتجات · 387/2026",
   tile_belum_t: "غير منظمة بعد", tile_belum_d: "المادة غير مدرجة في أي من الملحقين، لذا يلزم تقديم مستندات داعمة وفق القرار 20/2023.", tile_belum_tag: "المستندات الداعمة · 20/2023",
   how_title: "كيفية استخدام هذه الأداة", how_sub: "ثلاث خطوات، مباشرة من نص الملاحق الرسمية.",
@@ -1773,8 +1802,8 @@ I18N.zh = {
   data_error_strong: "附录数据加载失败。",
   data_error_text: "请检查网络连接并重新加载此页面。没有附录数据，搜索无法运行。",
   empty_strong: "尚未搜索。",
-  empty_text: "您查询的每种原料都会得到以下三种状态之一：",
-  tile_ok_t: "豁免", tile_ok_d: "该原料列于第 301/2026 号决定附录，无需清真认证。", tile_ok_tag: "正面清单 · 301/2026",
+  empty_text: "搜索结果将显示在这里。",
+  hero_side_label: "三种可能结果",   tile_ok_t: "豁免", tile_ok_d: "该原料列于第 301/2026 号决定附录，无需清真认证。", tile_ok_tag: "正面清单 · 301/2026",
   tile_wajib_t: "必须获得清真认证", tile_wajib_d: "您搜索的是第 387/2026 号决定中的产品类型。", tile_wajib_tag: "产品类型 · 387/2026",
   tile_belum_t: "尚未规定", tile_belum_d: "该原料未列入任一附录，因此需按第 20/2023 号决定提供支持文件。", tile_belum_tag: "支持文件 · 20/2023",
   how_title: "如何使用本工具", how_sub: "三个步骤，直接来自官方附录文本。",
