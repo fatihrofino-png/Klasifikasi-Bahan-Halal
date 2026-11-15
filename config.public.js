@@ -8,6 +8,6 @@
    pesan jujur "layanan login belum dikonfigurasi" dan pencarian Fase 1
    tetap jalan tanpa login. */
 window.FASE2_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: ""
+  supabaseUrl: "https://rifmzgzvhvrofvtimbvz.supabase.co",
+  supabaseAnonKey: "sb_publishable_Xfc2P8fhFA2IQBYL1o4XgA_iBh_11ty"
 };
