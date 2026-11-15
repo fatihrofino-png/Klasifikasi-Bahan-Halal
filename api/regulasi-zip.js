@@ -7,7 +7,8 @@
 //   sebagai URL — tidak ada SSRF. Query string diabaikan.
 // - Setiap file divalidasi: harus diawali magic bytes "%PDF", ukuran per file
 //   maks 40 MB, total maks 100 MB. File yang gagal dilewati dan dicatat di
-//   DAFTAR-ISI.txt, bukan menggagalkan seluruh ZIP.
+//   DAFTAR-ISI.txt, bukan menggagalkan seluruh ZIP. Fetch memakai UA browser
+//   + 1x retry (peraturan.bpk.go.id menolak UA default runtime, HTTP 403).
 // - Respons di-STREAM (res.write) dengan Content-Length eksak, bukan dikirim
 //   sebagai satu Buffer — supaya tidak kena batas respons 4,5 MB Vercel
 //   (total ZIP ~25 MB).
@@ -128,12 +129,26 @@ function endRecord(count, cdSize, cdOffset) {
   return h;
 }
 
-async function fetchPdf(doc) {
+async function fetchPdf(doc, attempt) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
   try {
-    const r = await fetch(doc.url, { signal: ctrl.signal, redirect: 'follow' });
-    if (!r.ok) return { doc, ok: false, reason: 'HTTP ' + r.status };
+    // UA browser: sebagian host (mis. peraturan.bpk.go.id) menolak UA
+    // default runtime serverless (HTTP 403) — UA browser biasa lolos.
+    const r = await fetch(doc.url, {
+      signal: ctrl.signal, redirect: 'follow',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/pdf,*/*',
+      },
+    });
+    if (!r.ok) {
+      if (!attempt) {
+        await new Promise((res) => setTimeout(res, 1500));
+        return fetchPdf(doc, 1);
+      }
+      return { doc, ok: false, reason: 'HTTP ' + r.status };
+    }
     const buf = Buffer.from(await r.arrayBuffer());
     if (buf.length > MAX_FILE_BYTES) return { doc, ok: false, reason: 'file terlalu besar' };
     if (buf.length < 5 || buf.slice(0, 5).toString('ascii') !== '%PDF-') {
@@ -141,6 +156,10 @@ async function fetchPdf(doc) {
     }
     return { doc, ok: true, buf };
   } catch (e) {
+    if (!attempt && e && e.name !== 'AbortError') {
+      await new Promise((res) => setTimeout(res, 1500));
+      return fetchPdf(doc, 1);
+    }
     return { doc, ok: false, reason: e && e.name === 'AbortError' ? 'timeout' : 'gagal diunduh' };
   } finally {
     clearTimeout(timer);
