@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Alat bantu klasifikasi bahan halal: cari nama bahan atau nomor CAS, dapatkan status dikecualikan (positive list Kepkaban 301/2026), wajib bersertifikat halal (Kepkaban 387/2026), atau belum diatur, lengkap dengan dasar hukum BPJPH." />
-    <link rel="icon" href="data:," />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0a3524" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Cek Bahan" />
     <title>Klasifikasi Bahan Halal BPJPH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -908,6 +914,25 @@
         .f2-field textarea { min-height: 130px; }
         .gate-panel { padding: 18px; }
       }
+      /* ---------- PWA: popup install (HP saja, 15 Nov 2026) ---------- */
+      .pwa-sheet { position: fixed; inset-inline: 0; bottom: 0; z-index: 90; padding: 0 12px calc(12px + env(safe-area-inset-bottom)); display: flex; justify-content: center; pointer-events: none; }
+      .pwa-sheet[hidden] { display: none; }
+      .pwa-card { pointer-events: auto; width: min(560px, 100%); display: flex; gap: 12px; align-items: flex-start; background: var(--card); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 20px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.45); padding: 16px; animation: pwaUp .35s var(--ease-out) backwards; }
+      @keyframes pwaUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+      .pwa-ico { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+      .pwa-title { font-weight: 800; margin: 0 0 2px; font-size: 1rem; line-height: 1.3; }
+      .pwa-desc { margin: 0 0 10px; font-size: .9rem; color: var(--muted); }
+      .pwa-steps { margin: 0 0 10px; }
+      .pwa-steps p { margin: 2px 0; font-size: .9rem; }
+      .pwa-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .btn-pwa-install { min-height: 44px; padding: 10px 18px; border: 0; border-radius: 12px; background: linear-gradient(135deg, var(--green-bright), var(--green-strong)); color: #fff; font: inherit; font-weight: 800; cursor: pointer; box-shadow: 0 8px 18px -8px rgba(0,122,51,.6); }
+      .btn-pwa-install:active { transform: scale(.97); }
+      .btn-pwa-ghost { min-height: 44px; padding: 10px 14px; border: 1.5px solid var(--line-strong); border-radius: 12px; background: transparent; color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+      .btn-pwa-ghost:active { transform: scale(.97); }
+      .pwa-note { font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
+      .pwa-close { flex: none; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--surface); color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; }
+      .btn-install-foot { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; min-height: 44px; padding: 10px 18px; border: 1.5px solid rgba(255,255,255,.35); border-radius: 12px; background: transparent; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+      @media (min-width: 761px) { .pwa-sheet { display: none !important; } }
     </style>
     <script>
       /* Tema & bahasa diterapkan sebelum render pertama: pilihan tersimpan
@@ -1350,6 +1375,7 @@
         <p><strong data-i18n="foot_limit_label">Batas data:</strong> <span data-i18n="foot_limit">Keputusan Kepala BPJPH Nomor 378 Tahun 2026 (perubahan positive list) belum termasuk dalam data halaman ini. Analisis dokumen dan Tanya Jawab ada di tab Analisis Dokumen dan Tanya Jawab — perlu daftar/masuk.</span></p>
         <div class="f-rule" aria-hidden="true"></div>
         <p><span data-i18n="foot_verify">Hasil pencarian adalah alat bantu klasifikasi, bukan keputusan sertifikasi resmi. Verifikasi akhir melalui BPJPH atau Lembaga Pemeriksa Halal (LPH). Situs resmi JDIH BPJPH:</span> <a href="https://jdih.halal.go.id" target="_blank" rel="noopener">jdih.halal.go.id</a>.</p>
+        <button type="button" class="btn-install-foot" id="pwa-open"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg><span data-i18n="pwa_install">Pasang Aplikasi</span></button>
       </div>
     </footer>
 
@@ -1381,6 +1407,27 @@
         </div>
       </div>
     </dialog>
+
+    <div class="pwa-sheet" id="pwa-sheet" hidden role="dialog" aria-labelledby="pwa-title">
+      <div class="pwa-card">
+        <img class="pwa-ico" src="/icons/icon.svg" alt="" width="56" height="56" />
+        <div class="pwa-body">
+          <p class="pwa-title" id="pwa-title" data-i18n="pwa_title">Pasang Cek Bahan di HP kamu</p>
+          <p class="pwa-desc" data-i18n="pwa_desc">Buka lebih cepat dari layar utama — tanpa membuka browser dulu.</p>
+          <div class="pwa-steps" id="pwa-steps" hidden>
+            <p data-i18n="pwa_ios_1">1. Ketuk tombol Bagikan di bawah browser.</p>
+            <p data-i18n="pwa_ios_2">2. Pilih “Tambah ke Layar Utama”.</p>
+          </div>
+          <div class="pwa-actions">
+            <button type="button" class="btn-pwa-install" id="pwa-install" data-i18n="pwa_install">Pasang Aplikasi</button>
+            <button type="button" class="btn-pwa-ghost" id="pwa-shortcut" data-i18n="pwa_shortcut">Shortcut Saja</button>
+            <button type="button" class="btn-pwa-ghost" id="pwa-later" data-i18n="pwa_later">Nanti Saja</button>
+          </div>
+          <p class="pwa-note" id="pwa-note" hidden data-i18n="pwa_android_note">Shortcut: ketuk menu ⋮ di browser, lalu “Tambahkan ke Layar Utama”. Ikonnya membuka situs di browser.</p>
+        </div>
+        <button type="button" class="pwa-close" id="pwa-close" data-i18n-aria="pwa_close" aria-label="Tutup">×</button>
+      </div>
+    </div>
 
     <button type="button" class="to-top" id="to-top" data-i18n-aria="to_top" aria-label="Kembali ke atas">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5L12 5l6.5 6.5"/></svg>
@@ -1432,6 +1479,15 @@ var I18N = { id: {
   hero_l1: "Apakah bahan ini", hero_l2: "wajib bersertifikat", hero_l3: "halal?",
   hero_tagline_a: "Klasifikasi Bahan, ", hero_tagline_b: "Tanpa Ragu",
   hero_lede: "Ketik nama bahan, sinonim, atau nomor CAS — jawabannya diambil dari Lampiran Kepkaban BPJPH 301 & 387 Tahun 2026.",
+  pwa_title: "Pasang Cek Bahan di HP kamu",
+  pwa_desc: "Buka lebih cepat dari layar utama — tanpa membuka browser dulu.",
+  pwa_install: "Pasang Aplikasi",
+  pwa_shortcut: "Shortcut Saja",
+  pwa_later: "Nanti Saja",
+  pwa_ios_1: "1. Ketuk tombol Bagikan di bawah browser.",
+  pwa_ios_2: "2. Pilih “Tambah ke Layar Utama”.",
+  pwa_android_note: "Shortcut: ketuk menu ⋮ di browser, lalu “Tambahkan ke Layar Utama”. Ikonnya membuka situs di browser.",
+  pwa_close: "Tutup",
   stats_label: "Ringkasan data lampiran",
   stat_pl: "bahan positive list", stat_wajib: "jenis produk wajib", stat_kat: "kategori lampiran", stat_kep: "keputusan acuan",
   search_label: "Nama bahan atau nomor CAS",
@@ -1557,6 +1613,15 @@ I18N.en = {
   hero_l1: "Does this ingredient", hero_l2: "need to be", hero_l3: "halal certified?",
   hero_tagline_a: "Ingredient Classification, ", hero_tagline_b: "Without a Doubt",
   hero_lede: "Type an ingredient name, synonym, or CAS number — the answer comes from the Appendices of BPJPH Decrees No. 301 & 387 of 2026.",
+  pwa_title: "Install Cek Bahan on your phone",
+  pwa_desc: "Open it faster from your home screen — no browser needed.",
+  pwa_install: "Install App",
+  pwa_shortcut: "Shortcut Only",
+  pwa_later: "Not Now",
+  pwa_ios_1: "1. Tap the Share button at the bottom of the browser.",
+  pwa_ios_2: "2. Choose “Add to Home Screen”.",
+  pwa_android_note: "Shortcut: tap the ⋮ menu in your browser, then “Add to Home Screen”. The icon opens the site in the browser.",
+  pwa_close: "Close",
   stats_label: "Appendix data summary",
   stat_pl: "positive list ingredients", stat_wajib: "product types requiring certification", stat_kat: "appendix categories", stat_kep: "reference decrees",
   search_label: "Ingredient name or CAS number",
@@ -1676,6 +1741,15 @@ I18N.ar = {
   hero_l1: "هل تحتاج هذه المادة", hero_l2: "إلى الحصول على", hero_l3: "شهادة حلال؟",
   hero_tagline_a: "تصنيف المواد، ", hero_tagline_b: "بلا تردد",
   hero_lede: "اكتب اسم المادة أو مرادفها أو رقم CAS — والإجابة مأخوذة من ملحقي قراري هيئة ضمان المنتجات الحلال رقم 301 و387 لسنة 2026.",
+  pwa_title: "ثبّت «تحقق من المادة» على هاتفك",
+  pwa_desc: "افتحه بسرعة أكبر من الشاشة الرئيسية — دون فتح المتصفح.",
+  pwa_install: "تثبيت التطبيق",
+  pwa_shortcut: "اختصار فقط",
+  pwa_later: "ليس الآن",
+  pwa_ios_1: "١. اضغط زر المشاركة أسفل المتصفح.",
+  pwa_ios_2: "٢. اختر «إضافة إلى الشاشة الرئيسية».",
+  pwa_android_note: "اختصار: اضغط قائمة ⋮ في المتصفح، ثم «إضافة إلى الشاشة الرئيسية». تفتح الأيقونة الموقع في المتصفح.",
+  pwa_close: "إغلاق",
   stats_label: "ملخص بيانات الملاحق",
   stat_pl: "مادة في القائمة الإيجابية", stat_wajib: "نوع منتج ملزم بالشهادة", stat_kat: "فئة ملاحق", stat_kep: "قرار مرجعي",
   search_label: "اسم المادة أو رقم CAS",
@@ -1795,6 +1869,15 @@ I18N.zh = {
   hero_l1: "这种原料", hero_l2: "是否必须获得", hero_l3: "清真认证？",
   hero_tagline_a: "原料分类，", hero_tagline_b: "毫无疑虑",
   hero_lede: "输入配料名称、同义词或 CAS 编号——答案取自 BPJPH 2026 年第 301 号和第 387 号法令附件。",
+  pwa_title: "把 Cek Bahan 装到手机上",
+  pwa_desc: "从主屏幕更快打开——无需先打开浏览器。",
+  pwa_install: "安装应用",
+  pwa_shortcut: "仅添加快捷方式",
+  pwa_later: "以后再说",
+  pwa_ios_1: "1. 点击浏览器底部的分享按钮。",
+  pwa_ios_2: "2. 选择“添加到主屏幕”。",
+  pwa_android_note: "快捷方式：点击浏览器中的 ⋮ 菜单，然后选择“添加到主屏幕”。图标会在浏览器中打开网站。",
+  pwa_close: "关闭",
   stats_label: "附录数据概览",
   stat_pl: "正面清单原料", stat_wajib: "须认证产品类型", stat_kat: "附录类别", stat_kep: "参考法令",
   search_label: "原料名称或 CAS 号",
@@ -4074,6 +4157,76 @@ document.addEventListener("keydown", function (ev) {
     el("auth-btn").setAttribute("aria-expanded", "false");
     el("auth-btn").focus();
   }
+});
+/* ---------------- PWA: popup install (HP saja, 15 Nov 2026) ----------------
+   Android/Chrome: beforeinstallprompt -> install 1 ketuk.
+   iOS/Safari: tidak ada beforeinstallprompt -> tampilkan langkah manual.
+   Popup muncul sekali; "Nanti Saja" menunda 30 hari (localStorage).
+   Tombol footer #pwa-open membuka lagi sheet-nya kapan saja. */
+var PWA_SNOOZE_KEY = "cekbahan-pwa-snooze";
+var PWA_SNOOZE_DAYS = 30;
+var pwaDeferred = null;
+var pwaSheet = el("pwa-sheet");
+var pwaSteps = el("pwa-steps");
+var pwaNote = el("pwa-note");
+var pwaInstallBtn = el("pwa-install");
+var pwaShortcutBtn = el("pwa-shortcut");
+function pwaIsIOS() { return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream; }
+function pwaIsStandalone() { return (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || window.navigator.standalone === true; }
+function pwaIsMobile() { return window.matchMedia("(max-width: 760px)").matches; }
+function pwaSnoozed() {
+  try {
+    var v = localStorage.getItem(PWA_SNOOZE_KEY);
+    return v && (Date.now() - parseInt(v, 10)) < PWA_SNOOZE_DAYS * 864e5;
+  } catch (e) { return false; }
+}
+function pwaSnooze() { try { localStorage.setItem(PWA_SNOOZE_KEY, String(Date.now())); } catch (e) {} }
+function pwaHide() { if (pwaSheet) pwaSheet.hidden = true; }
+function pwaShow() {
+  if (!pwaSheet || pwaIsStandalone()) return;
+  var ios = pwaIsIOS();
+  if (pwaSteps) pwaSteps.hidden = !ios;
+  if (pwaNote) pwaNote.hidden = true;
+  if (pwaShortcutBtn) pwaShortcutBtn.style.display = ios ? "none" : "";
+  pwaSheet.hidden = false;
+}
+window.addEventListener("beforeinstallprompt", function (e) {
+  e.preventDefault();
+  pwaDeferred = e;
+});
+window.addEventListener("appinstalled", function () {
+  pwaDeferred = null; pwaHide();
+  try { localStorage.removeItem(PWA_SNOOZE_KEY); } catch (e) {}
+});
+if (pwaInstallBtn) pwaInstallBtn.addEventListener("click", function () {
+  if (pwaIsIOS()) { if (pwaSteps) pwaSteps.hidden = false; return; }
+  if (pwaDeferred) {
+    pwaDeferred.prompt();
+    pwaDeferred.userChoice.then(function () { pwaDeferred = null; pwaHide(); }).catch(function () {});
+  } else if (pwaSteps) { pwaSteps.hidden = false; }
+});
+if (pwaShortcutBtn) pwaShortcutBtn.addEventListener("click", function () {
+  if (pwaNote) pwaNote.hidden = false;
+});
+function pwaDismiss() { pwaSnooze(); pwaHide(); }
+var pwaLaterBtn = el("pwa-later");
+if (pwaLaterBtn) pwaLaterBtn.addEventListener("click", pwaDismiss);
+var pwaCloseBtn = el("pwa-close");
+if (pwaCloseBtn) pwaCloseBtn.addEventListener("click", pwaDismiss);
+var pwaOpenBtn = el("pwa-open");
+if (pwaOpenBtn) pwaOpenBtn.addEventListener("click", pwaShow);
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js").catch(function () {});
+  });
+}
+/* Popup otomatis: HP, belum terpasang, tidak sedang ditunda, 2,5 dtk setelah muat.
+   Muncul bila event install tersedia (Android) atau di iOS (panduan manual). */
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    if (!pwaIsMobile() || pwaIsStandalone() || pwaSnoozed()) return;
+    if (pwaDeferred || pwaIsIOS()) pwaShow();
+  }, 2500);
 });
 applyLanguage(LANG, false);
     </script>
