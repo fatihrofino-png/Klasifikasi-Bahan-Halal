@@ -182,11 +182,17 @@
       .hero-stats .hstat:nth-child(3) { animation-delay: .50s; }
       .hero-stats .hstat:nth-child(4) { animation-delay: .56s; }
       @keyframes heroPattern { from { opacity: .11; } to { opacity: .16; } }
-      .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; }
+      .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; text-wrap: balance; }
       .hero h1 .line-in { display: inline-block; animation: maskUp .55s var(--ease-out) backwards; will-change: transform; }
       .hero h1 .line:nth-child(2) .line-in { animation-delay: .09s; }
       .hero h1 .line:nth-child(3) .line-in { animation-delay: .18s; }
       @keyframes maskUp { from { transform: translateY(112%); } to { transform: translateY(0); } }
+      /* Judul hero di HP: perkecil supaya tiap baris muat satu baris penuh.
+         Sebelumnya "Apakah bahan ini" dan "wajib bersertifikat" terpotong di
+         layar sempit dan menyisakan "ini"/"wajib" sendirian (15 Nov 2026). */
+      @media (max-width: 760px) {
+        .hero h1 { font-size: clamp(1.65rem, 1.3rem + 2vw, 1.95rem); max-width: 22ch; }
+      }
       @keyframes fadeRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
       .hero-stats { display: flex; flex-wrap: wrap; gap: 10px 0; margin-top: 14px; }
       /* ---------- Hero: kolom kanan berisi 3 kartu status (pindahan dari empty-state) ---------- */
@@ -1030,7 +1036,7 @@
           <p class="kicker" data-i18n="hero_kicker">Basis data resmi BPJPH</p>
           <h1 id="judul-cari"><span class="line"><span class="line-in" data-i18n="hero_l1">Apakah bahan ini</span></span><span class="line"><span class="line-in" data-i18n="hero_l2">wajib bersertifikat</span></span><span class="line"><span class="line-in"><em data-i18n="hero_l3">halal?</em></span></span></h1>
           <p class="hero-tagline"><span data-i18n="hero_tagline_a">Klasifikasi Bahan, </span><span class="tagline-accent" data-i18n="hero_tagline_b">Tanpa Ragu</span></p>
-          <p class="lede" data-i18n="hero_lede">Ketik nama bahan, nama Inggris, sinonim, nama dagang, atau nomor CAS. Jawabannya diambil dari Lampiran Kepkaban BPJPH Nomor 301 Tahun 2026 (bahan yang dikecualikan) dan Nomor 387 Tahun 2026 (jenis produk yang wajib bersertifikat halal).</p>
+          <p class="lede" data-i18n="hero_lede">Ketik nama bahan, sinonim, atau nomor CAS — jawabannya diambil dari Lampiran Kepkaban BPJPH 301 &amp; 387 Tahun 2026.</p>
           <div class="hero-stats" data-i18n-aria="stats_label" aria-label="Ringkasan data lampiran">
             <div class="hstat"><b data-count="4574">4.574</b><span data-i18n="stat_pl">bahan positive list</span></div>
             <div class="hstat"><b data-count="1404">1.404</b><span data-i18n="stat_wajib">jenis produk wajib</span></div>
@@ -1425,7 +1431,7 @@ var I18N = { id: {
   hero_kicker: "Basis data resmi BPJPH",
   hero_l1: "Apakah bahan ini", hero_l2: "wajib bersertifikat", hero_l3: "halal?",
   hero_tagline_a: "Klasifikasi Bahan, ", hero_tagline_b: "Tanpa Ragu",
-  hero_lede: "Ketik nama bahan, nama Inggris, sinonim, nama dagang, atau nomor CAS. Jawabannya diambil dari Lampiran Kepkaban BPJPH Nomor 301 Tahun 2026 (bahan yang dikecualikan) dan Nomor 387 Tahun 2026 (jenis produk yang wajib bersertifikat halal).",
+  hero_lede: "Ketik nama bahan, sinonim, atau nomor CAS — jawabannya diambil dari Lampiran Kepkaban BPJPH 301 & 387 Tahun 2026.",
   stats_label: "Ringkasan data lampiran",
   stat_pl: "bahan positive list", stat_wajib: "jenis produk wajib", stat_kat: "kategori lampiran", stat_kep: "keputusan acuan",
   search_label: "Nama bahan atau nomor CAS",
@@ -1550,7 +1556,7 @@ I18N.en = {
   hero_kicker: "Official BPJPH database",
   hero_l1: "Does this ingredient", hero_l2: "need to be", hero_l3: "halal certified?",
   hero_tagline_a: "Ingredient Classification, ", hero_tagline_b: "Without a Doubt",
-  hero_lede: "Type an ingredient name, English name, synonym, trade name, or CAS number. The answer comes from the Appendix of BPJPH Head Decree No. 301 of 2026 (exempted ingredients) and No. 387 of 2026 (product types that must be halal certified).",
+  hero_lede: "Type an ingredient name, synonym, or CAS number — the answer comes from the Appendices of BPJPH Decrees No. 301 & 387 of 2026.",
   stats_label: "Appendix data summary",
   stat_pl: "positive list ingredients", stat_wajib: "product types requiring certification", stat_kat: "appendix categories", stat_kep: "reference decrees",
   search_label: "Ingredient name or CAS number",
@@ -1669,7 +1675,7 @@ I18N.ar = {
   hero_kicker: "قاعدة بيانات BPJPH الرسمية",
   hero_l1: "هل تحتاج هذه المادة", hero_l2: "إلى الحصول على", hero_l3: "شهادة حلال؟",
   hero_tagline_a: "تصنيف المواد، ", hero_tagline_b: "بلا تردد",
-  hero_lede: "اكتب اسم المادة أو اسمها الإنجليزي أو مرادفها أو اسمها التجاري أو رقم CAS. تأتي الإجابة من ملحق قرار رئيس BPJPH رقم 301 لسنة 2026 (المواد المُعفاة) ورقم 387 لسنة 2026 (أنواع المنتجات التي يجب أن تكون معتمدة حلال).",
+  hero_lede: "اكتب اسم المادة أو مرادفها أو رقم CAS — والإجابة مأخوذة من ملحقي قراري هيئة ضمان المنتجات الحلال رقم 301 و387 لسنة 2026.",
   stats_label: "ملخص بيانات الملاحق",
   stat_pl: "مادة في القائمة الإيجابية", stat_wajib: "نوع منتج ملزم بالشهادة", stat_kat: "فئة ملاحق", stat_kep: "قرار مرجعي",
   search_label: "اسم المادة أو رقم CAS",
@@ -1788,7 +1794,7 @@ I18N.zh = {
   hero_kicker: "BPJPH 官方数据库",
   hero_l1: "这种原料", hero_l2: "是否必须获得", hero_l3: "清真认证？",
   hero_tagline_a: "原料分类，", hero_tagline_b: "毫无疑虑",
-  hero_lede: "输入原料名称、英文名、同义词、商品名或 CAS 号。答案来自 BPJPH 局长第 301/2026 号决定附录（豁免原料）和第 387/2026 号决定附录（必须获得清真认证的产品类型）。",
+  hero_lede: "输入配料名称、同义词或 CAS 编号——答案取自 BPJPH 2026 年第 301 号和第 387 号法令附件。",
   stats_label: "附录数据概览",
   stat_pl: "正面清单原料", stat_wajib: "须认证产品类型", stat_kat: "附录类别", stat_kep: "参考法令",
   search_label: "原料名称或 CAS 号",
