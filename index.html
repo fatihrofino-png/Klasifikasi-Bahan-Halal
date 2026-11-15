@@ -213,9 +213,9 @@
       .hero-stats .hstat:nth-child(3) { animation-delay: .50s; }
       .hero-stats .hstat:nth-child(4) { animation-delay: .56s; }
       @keyframes heroPop { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      .hero-side.hero-pop .tile { animation: heroPop .5s var(--ease-out) backwards; }
-      .hero-side.hero-pop .tile:nth-child(2) { animation-delay: .12s; }
-      .hero-side.hero-pop .tile:nth-child(3) { animation-delay: .24s; }
+      .hero-side.hero-pop .tile { animation: heroPop .55s var(--ease-out) backwards; }
+      .hero-side.hero-pop .tile:nth-child(2) { animation-delay: .15s; }
+      .hero-side.hero-pop .tile:nth-child(3) { animation-delay: .3s; }
       @keyframes heroPattern { from { opacity: .11; } to { opacity: .16; } }
       .hero h1 .line { display: block; overflow: hidden; padding-bottom: .09em; margin-bottom: -.09em; text-wrap: balance; }
       .hero h1 .line-in { display: inline-block; animation: maskUp .55s var(--ease-out) backwards; will-change: transform; }
@@ -1209,8 +1209,8 @@
         <div id="results-head" hidden>
           <h2 class="results-title" data-i18n="results_title">Hasil pencarian</h2>
           <p class="results-count" id="results-count"></p>
-          <div id="results-summary" class="results-summary" hidden></div>
         </div>
+        <div id="results-summary" class="results-summary" hidden></div>
 
         <div id="results" aria-live="polite"></div>
 
@@ -3065,7 +3065,7 @@ function runSearch(raw) {
   var seq = ++searchSeq;
   var resultsEl = el("results");
   if (q.length < 2) {
-    resultsEl.innerHTML = ""; el("empty-state").hidden = false; el("results-head").hidden = true; setStatus(null);
+    resultsEl.innerHTML = ""; el("empty-state").hidden = false; el("results-head").hidden = true; el("results-summary").hidden = true; setStatus(null);
     syncUrlQuery("");
     return;
   }
