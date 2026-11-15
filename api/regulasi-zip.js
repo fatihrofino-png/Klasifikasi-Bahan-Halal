@@ -7,8 +7,9 @@
 //   sebagai URL — tidak ada SSRF. Query string diabaikan.
 // - Setiap file divalidasi: harus diawali magic bytes "%PDF", ukuran per file
 //   maks 40 MB, total maks 100 MB. File yang gagal dilewati dan dicatat di
-//   DAFTAR-ISI.txt, bukan menggagalkan seluruh ZIP. Fetch memakai UA browser
-//   + 1x retry (peraturan.bpk.go.id menolak UA default runtime, HTTP 403).
+//   DAFTAR-ISI.txt, bukan menggagalkan seluruh ZIP. Fetch memakai UA browser;
+//   PP 39/2021 punya URL cadangan (Setkab, halalmui.org) karena BPK menolak
+//   IP datacenter Vercel (HTTP 403) meski UA sudah diubah.
 // - Respons di-STREAM (res.write) dengan Content-Length eksak, bukan dikirim
 //   sebagai satu Buffer — supaya tidak kena batas respons 4,5 MB Vercel
 //   (total ZIP ~25 MB).
@@ -22,7 +23,10 @@ const DOCS = [
     url: 'https://jdih.halal.go.id/api/jdih/pdf?path=JDIH%2Fdokumen%2F1770801119535_20140031033.pdf' },
   { file: '02-PP-39-2021-Penyelenggaraan-JPH.pdf',
     title: 'Peraturan Pemerintah Nomor 39 Tahun 2021 tentang Penyelenggaraan Bidang Jaminan Produk Halal (DICABUT oleh PP 42/2024 — disimpan sebagai arsip)',
-    url: 'https://peraturan.bpk.go.id/Download/154605/PP%20Nomor%2039%20Tahun%202021.pdf' },
+    url: 'https://peraturan.bpk.go.id/Download/154605/PP%20Nomor%2039%20Tahun%202021.pdf',
+    urls: ['https://peraturan.bpk.go.id/Download/154605/PP%20Nomor%2039%20Tahun%202021.pdf',
+      'https://jdih.setkab.go.id/PUUdoc/176351/PP_Nomor_39_Tahun_2021.pdf',
+      'https://www.halalmui.org/images/stories/kebijakanhalaldiindonesia/PP_Nomor_39_Tahun_2021.pdf'] },
   { file: '03-PP-42-2024-Penyelenggaraan-JPH.pdf',
     title: 'Peraturan Pemerintah Nomor 42 Tahun 2024 tentang Penyelenggaraan Bidang Jaminan Produk Halal (berlaku — pengganti PP 39/2021)',
     url: 'https://jdih.halal.go.id/api/jdih/pdf?path=JDIH%2Fdokumen%2F1770797380336_2024PP042.pdf' },
@@ -129,41 +133,40 @@ function endRecord(count, cdSize, cdOffset) {
   return h;
 }
 
-async function fetchPdf(doc, attempt) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
-  try {
-    // UA browser: sebagian host (mis. peraturan.bpk.go.id) menolak UA
-    // default runtime serverless (HTTP 403) — UA browser biasa lolos.
-    const r = await fetch(doc.url, {
-      signal: ctrl.signal, redirect: 'follow',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'application/pdf,*/*',
-      },
-    });
-    if (!r.ok) {
-      if (!attempt) {
-        await new Promise((res) => setTimeout(res, 1500));
-        return fetchPdf(doc, 1);
+/* Coba semua URL cadangan berurutan (doc.urls, bila ada) sampai satu
+   mengembalikan PDF valid. Tiap URL dicoba 1x; jeda 1,5 dtk antar percobaan
+   supaya host yang membatasi laju tidak makin menolak. */
+async function fetchPdf(doc) {
+  const urls = doc.urls || [doc.url];
+  let lastReason = 'gagal diunduh';
+  for (let i = 0; i < urls.length; i++) {
+    if (i > 0) await new Promise((res) => setTimeout(res, 1500));
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+    try {
+      // UA browser: sebagian host (mis. peraturan.bpk.go.id) menolak UA
+      // default runtime serverless (HTTP 403) — UA browser biasa lolos.
+      const r = await fetch(urls[i], {
+        signal: ctrl.signal, redirect: 'follow',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/pdf,*/*',
+        },
+      });
+      if (!r.ok) { lastReason = 'HTTP ' + r.status; continue; }
+      const buf = Buffer.from(await r.arrayBuffer());
+      if (buf.length > MAX_FILE_BYTES) { lastReason = 'file terlalu besar'; continue; }
+      if (buf.length < 5 || buf.slice(0, 5).toString('ascii') !== '%PDF-') {
+        lastReason = 'bukan PDF'; continue;
       }
-      return { doc, ok: false, reason: 'HTTP ' + r.status };
+      return { doc, ok: true, buf, usedUrl: urls[i] };
+    } catch (e) {
+      lastReason = e && e.name === 'AbortError' ? 'timeout' : 'gagal diunduh';
+    } finally {
+      clearTimeout(timer);
     }
-    const buf = Buffer.from(await r.arrayBuffer());
-    if (buf.length > MAX_FILE_BYTES) return { doc, ok: false, reason: 'file terlalu besar' };
-    if (buf.length < 5 || buf.slice(0, 5).toString('ascii') !== '%PDF-') {
-      return { doc, ok: false, reason: 'bukan PDF' };
-    }
-    return { doc, ok: true, buf };
-  } catch (e) {
-    if (!attempt && e && e.name !== 'AbortError') {
-      await new Promise((res) => setTimeout(res, 1500));
-      return fetchPdf(doc, 1);
-    }
-    return { doc, ok: false, reason: e && e.name === 'AbortError' ? 'timeout' : 'gagal diunduh' };
-  } finally {
-    clearTimeout(timer);
   }
+  return { doc, ok: false, reason: lastReason };
 }
 
 function daftarIsiText(results, now) {
@@ -179,7 +182,7 @@ function daftarIsiText(results, now) {
   results.forEach((r, i) => {
     lines.push((i + 1) + '. ' + r.doc.title);
     lines.push('   File   : ' + r.doc.file);
-    lines.push('   Sumber : ' + r.doc.url);
+    lines.push('   Sumber : ' + (r.ok && r.usedUrl ? r.usedUrl : r.doc.url));
     lines.push('   Status : ' + (r.ok ? 'OK (' + (r.buf.length / 1024).toFixed(0) + ' KB)' : 'GAGAL — ' + r.reason));
     lines.push('');
   });
