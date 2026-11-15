@@ -5,7 +5,7 @@
    - JANGAN PERNAH cache /api/*, Supabase, PubChem, atau cross-origin.
    - Navigasi (HTML): network-first supaya update situs selalu mengalir.
    - Versi cache dinaikkan tiap perubahan perilaku SW. */
-var PWA_CACHE = "cek-bahan-v2";
+var PWA_CACHE = "cek-bahan-v3";
 var PWA_PRECACHE = [
   "/icons/icon.svg",
   "/icons/icon-maskable.svg"
