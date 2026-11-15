@@ -15,7 +15,7 @@
     <title>Klasifikasi Bahan Halal BPJPH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
       :root {
         --green: #007a33;
@@ -30,6 +30,7 @@
         --muted: #55645c;
         --bg: #f4f6f2;
         --surface: #eef2ec;
+        --results-bg: #f6f1e5;
         --surface-2: #e3eae1;
         --card: #ffffff;
         --line: #d9e1d8;
@@ -59,6 +60,7 @@
           --muted: #a9bcab;
           --bg: #0d120e;
           --surface: #17211a;
+          --results-bg: #12291d;
           --surface-2: #1f2c22;
           --card: #141d17;
           --line: #2d3d31;
@@ -322,6 +324,17 @@
 
       /* ---------- Result cards ---------- */
       #results { margin-top: 10px; }
+      #results:not(:empty) { background: var(--results-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 18px 18px; font-family: "Inter", "Plus Jakarta Sans", system-ui, sans-serif; }
+      .results-title { margin: 26px 0 2px; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; }
+      .results-count { margin: 0; color: var(--muted); font-size: .92rem; }
+      .match-line { margin: 10px 0 0; font-size: .92rem; }
+      .match-line strong { color: var(--ok-ink); }
+      .reg-zip { background: linear-gradient(120deg, #f2cd72, #d9a514); border-radius: var(--radius); padding: 18px 20px; margin: 18px 0 4px; box-shadow: var(--shadow-md); }
+      .reg-zip p { color: #3a2c05; margin: 0 0 12px; font-weight: 600; font-size: .95rem; }
+      .btn-zip { display: inline-flex; align-items: center; gap: 10px; background: #0a3524; color: #fff; font-weight: 800; font-size: 1rem; padding: 12px 20px; border-radius: 12px; text-decoration: none; transition: transform .16s ease, filter .16s ease; }
+      .btn-zip:hover { transform: translateY(-2px); filter: brightness(1.15); }
+      .btn-zip:active { transform: scale(.97); }
+      .btn-zip svg { flex: none; }
       .group-head { margin: 24px 0 4px; font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.45rem; font-weight: 600; letter-spacing: 0; display: flex; align-items: center; gap: 10px; }
       .group-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
       .group-sub { margin: 0 0 8px; color: var(--muted); font-size: .92rem; max-width: 68ch; }
@@ -785,13 +798,14 @@
       .auth-box h2 { font-size: 1.35rem; margin-bottom: 6px; }
       .auth-box > p { color: var(--muted); margin: 0 0 16px; font-size: .95rem; }
       .btn-google {
-        width: 100%; min-height: 52px; padding: 10px 18px; border-radius: 13px;
+        width: 100%; min-height: 52px; padding: 10px 18px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 13px;
         border: 1.5px solid var(--line-strong); background: var(--card); color: var(--ink);
         font-weight: 700; font-size: .98rem;
         transition: border-color .16s ease, background .16s ease, transform .16s ease;
       }
       .btn-google:hover { border-color: var(--green); background: var(--ok-bg); transform: translateY(-2px); }
       .btn-google:active { transform: scale(.97); }
+      .btn-google svg { flex: none; }
       .auth-or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .88rem; margin: 18px 0 14px; }
       .auth-or::before, .auth-or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
       .auth-box .f2-field { margin-bottom: 12px; }
@@ -963,7 +977,7 @@
         </button>
         <div class="brand">
           <span class="mark" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4A8.6 8.6 0 1 1 10.6 3.4a6.9 6.9 0 0 0 10 10z" fill="#d3ba85"/><path d="M17.2 2.6l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75z" fill="#d3ba85"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.4" cy="10.4" r="5.2" stroke="#d3ba85" stroke-width="1.6"/><path d="M14.2 14.2 L18.4 18.4" stroke="#d3ba85" stroke-width="2" stroke-linecap="round"/><path d="M8 10.4 L9.8 12.2 L12.8 8.8" stroke="#d3ba85" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span></span>
         </div>
@@ -1014,7 +1028,7 @@
       <div class="drawer-head">
         <div class="brand">
           <span class="mark" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4A8.6 8.6 0 1 1 10.6 3.4a6.9 6.9 0 0 0 10 10z" fill="#d3ba85"/><path d="M17.2 2.6l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75z" fill="#d3ba85"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.4" cy="10.4" r="5.2" stroke="#d3ba85" stroke-width="1.6"/><path d="M14.2 14.2 L18.4 18.4" stroke="#d3ba85" stroke-width="2" stroke-linecap="round"/><path d="M8 10.4 L9.8 12.2 L12.8 8.8" stroke="#d3ba85" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <span><span data-i18n="brand_title">Klasifikasi Bahan Halal</span></span>
         </div>
@@ -1075,19 +1089,19 @@
             <p class="hero-side-label" data-i18n="hero_side_label">Tiga kemungkinan hasil</p>
 <div class="status-tiles">
             <article class="tile tile-ok">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg></span>
+              <span class="t-ico" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 120 120" fill="none" aria-hidden="true"><polygon points="60,12 102,32 60,52 18,32" fill="#4ade80"/><polygon points="18,32 60,52 60,96 18,76" fill="#22c55e"/><polygon points="102,32 60,52 60,96 102,76" fill="#15803d"/><g transform="matrix(42,-20,0,44,60,52)" stroke="#ffffff" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M0.2 0.55 L0.42 0.75 L0.82 0.3"/></g></svg></span>
               <div class="t-body"><h3 data-i18n="tile_ok_t">Dikecualikan</h3>
               <p data-i18n="tile_ok_d">Bahan tercantum di Lampiran Kepkaban 301/2026, tidak wajib bersertifikat halal.</p>
               <span class="t-tag" data-i18n="tile_ok_tag">Positive List · 301/2026</span></div>
             </article>
             <article class="tile tile-wajib">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L22 20H2z"/><path d="M12 10v4.2"/><circle cx="12" cy="17.2" r="0.4" fill="currentColor"/></svg></span>
+              <span class="t-ico" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 120 120" fill="none" aria-hidden="true"><polygon points="60,12 102,32 60,52 18,32" fill="#fca5a5"/><polygon points="18,32 60,52 60,96 18,76" fill="#ef4444"/><polygon points="102,32 60,52 60,96 102,76" fill="#b91c1c"/><g transform="matrix(42,-20,0,44,60,52)" fill="#ffffff"><path d="M0.44 0.22 L0.56 0.22 L0.56 0.58 L0.44 0.58 Z"/><circle cx="0.5" cy="0.72" r="0.07"/></g></svg></span>
               <div class="t-body"><h3 data-i18n="tile_wajib_t">Wajib Bersertifikat Halal</h3>
               <p data-i18n="tile_wajib_d">Yang dicari adalah jenis produk di Kepkaban 387/2026.</p>
               <span class="t-tag" data-i18n="tile_wajib_tag">Jenis Produk · 387/2026</span></div>
             </article>
             <article class="tile tile-belum">
-              <span class="t-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3A2.6 2.6 0 1 1 12 12.2V13"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg></span>
+              <span class="t-ico" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 120 120" fill="none" aria-hidden="true"><polygon points="60,12 102,32 60,52 18,32" fill="#fcd34d"/><polygon points="18,32 60,52 60,96 18,76" fill="#f59e0b"/><polygon points="102,32 60,52 60,96 102,76" fill="#b45309"/><text x="0.5" y="0.8" text-anchor="middle" font-size="0.62" font-weight="800" fill="#ffffff" transform="matrix(42,-20,0,44,60,52)">?</text></svg></span>
               <div class="t-body"><h3 data-i18n="tile_belum_t">Belum Diatur</h3>
               <p data-i18n="tile_belum_d">Bahan tidak tercantum di kedua lampiran, sehingga perlu dokumen pendukung sesuai Kepkaban 20/2023.</p>
               <span class="t-tag" data-i18n="tile_belum_tag">Dokumen Pendukung · 20/2023</span></div>
@@ -1120,6 +1134,11 @@
         </div>
         <div class="error-box" id="data-error" role="alert" hidden>
           <p><strong data-i18n="data_error_strong">Data lampiran gagal dimuat.</strong> <span data-i18n="data_error_text">Periksa koneksi lalu muat ulang halaman ini. Pencarian tidak dapat berjalan tanpa data lampiran.</span></p>
+        </div>
+
+        <div id="results-head" hidden>
+          <h2 class="results-title" data-i18n="results_title">Hasil pencarian</h2>
+          <p class="results-count" id="results-count"></p>
         </div>
 
         <div id="results" aria-live="polite"></div>
@@ -1184,6 +1203,10 @@
           <span class="kicker" data-i18n="reg_kicker">Dasar hukum</span>
           <h1 id="judul-regulasi" data-i18n="reg_title">Regulasi acuan</h1>
           <p class="lede" data-i18n="reg_lede">Tiga keputusan Kepala BPJPH yang menjadi dasar klasifikasi di halaman ini, beserta kriteria Sistem Jaminan Produk Halal (SJPH) dan status keberlakuannya.</p>
+        </div>
+        <div class="reg-zip">
+          <p data-i18n="reg_zip_note">11 dokumen PDF resmi — UU 33/2014, PP 39/2021, PP 42/2024, Kepkaban 301, 387, 20, 40, 328, PMA 20/2021, SE 2/2026, dan PerBPJPH 4/2026 — dalam satu file ZIP.</p>
+          <a class="btn-zip" href="/api/regulasi-zip" download="regulasi-halal-bpjph.zip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg><span data-i18n="reg_zip_btn">Unduh Semua Regulasi (ZIP)</span></a>
         </div>
         <div id="regulasi-isi"></div>
       </section>
@@ -1387,7 +1410,7 @@
         <p data-i18n="auth_sub">Satu akun gratis untuk memakai Analisis Dokumen dan Tanya Jawab. Pencarian tetap bisa dipakai tanpa akun.</p>
         <p class="auth-error" id="auth-unavailable" role="alert" hidden data-i18n="f2_not_configured">Layanan login belum dikonfigurasi. Proyek Supabase untuk situs ini belum dibuat. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai.</p>
         <div id="auth-forms">
-          <button type="button" class="btn-google" id="auth-google-btn" data-i18n="auth_google">Lanjutkan dengan Google</button>
+          <button type="button" class="btn-google" id="auth-google-btn"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303C33.654 32.657 29.223 36 24 36c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span data-i18n="auth_google">Lanjutkan dengan Google</span></button>
           <p class="auth-or"><span data-i18n="auth_or">atau dengan email</span></p>
           <form id="auth-form" novalidate>
             <div class="f2-field">
@@ -1522,6 +1545,8 @@ var I18N = { id: {
   browse_sub387: "Empat belas kategori jenis produk. Kepkaban 387 mengatur jenis produk, bukan daftar bahan.",
   reg_kicker: "Dasar hukum", reg_title: "Regulasi acuan",
   reg_lede: "Tiga keputusan Kepala BPJPH yang menjadi dasar klasifikasi di halaman ini, beserta kriteria Sistem Jaminan Produk Halal (SJPH) dan status keberlakuannya.",
+  reg_zip_btn: "Unduh Semua Regulasi (ZIP)",
+  reg_zip_note: "11 dokumen PDF resmi — UU 33/2014, PP 39/2021, PP 42/2024, Kepkaban 301, 387, 20, 40, 328, PMA 20/2021, SE 2/2026, dan PerBPJPH 4/2026 — dalam satu file ZIP.",
   contact_kicker: "Hubungi saya", contact_title: "Kontak",
   contact_lede: "Ada pertanyaan seputar klasifikasi bahan atau sertifikasi halal? Hubungi langsung lewat kanal di bawah ini.",
   btn_wa: "Chat WhatsApp", ig_detail: "Profil Instagram Rofik", btn_ig: "Lihat profil Instagram",
@@ -1538,6 +1563,10 @@ var I18N = { id: {
   status_pubchem: "Menghubungi PubChem untuk sinonim dan CAS tambahan…",
   group_pl_head: "Bahan pada positive list",
   group_pl_sub: "{n} bahan ditemukan di Lampiran Kepkaban 301/2026 untuk “{q}”.",
+  results_title: "Hasil pencarian",
+  results_count: "{n} hasil ditemukan untuk “{q}”.",
+  results_none: "Tidak ada bahan yang cocok di lampiran 301/2026 atau 387/2026.",
+  match_syn_label: "Cocok lewat sinonim",
   group_w_head: "Jenis produk yang wajib bersertifikat halal",
   group_w_sub: "{n} jenis produk ditemukan di Lampiran Kepkaban 387/2026. Bagian ini berlaku bila yang Anda maksud adalah produk jadinya, bukan bahannya.",
   group_substance_head: "Bahan yang dicari",
@@ -1656,6 +1685,8 @@ I18N.en = {
   browse_sub387: "Fourteen product-type categories. Kepkaban 387 regulates product types, not ingredient lists.",
   reg_kicker: "Legal basis", reg_title: "Reference regulations",
   reg_lede: "The three BPJPH Head decrees behind the classification on this page, together with the Halal Product Assurance System (SJPH) criteria and their applicability status.",
+  reg_zip_btn: "Download All Regulations (ZIP)",
+  reg_zip_note: "11 official PDF documents — Law 33/2014, PP 39/2021, PP 42/2024, Kepkaban 301, 387, 20, 40, 328, PMA 20/2021, SE 2/2026, and PerBPJPH 4/2026 — in one ZIP file.",
   contact_kicker: "Get in touch", contact_title: "Contact",
   contact_lede: "Questions about ingredient classification or halal certification? Reach me directly through the channels below.",
   btn_wa: "Chat on WhatsApp", ig_detail: "Rofik's Instagram profile", btn_ig: "View Instagram profile",
@@ -1672,6 +1703,10 @@ I18N.en = {
   status_pubchem: "Contacting PubChem for additional synonyms and CAS…",
   group_pl_head: "Ingredients on the positive list",
   group_pl_sub: "{n} ingredients found in the Appendix of Kepkaban 301/2026 for “{q}”.",
+  results_title: "Search results",
+  results_count: "{n} results found for “{q}”.",
+  results_none: "No matching ingredient in Appendix 301/2026 or 387/2026.",
+  match_syn_label: "Matched via synonym",
   group_w_head: "Product types that must be halal certified",
   group_w_sub: "{n} product types found in the Appendix of Kepkaban 387/2026. This section applies if you mean the finished product, not the ingredient.",
   group_substance_head: "The ingredient you searched for",
@@ -1784,6 +1819,8 @@ I18N.ar = {
   browse_sub387: "أربع عشرة فئة من أنواع المنتجات. ينظّم القرار 387 أنواع المنتجات، لا قوائم المواد.",
   reg_kicker: "الأساس القانوني", reg_title: "اللوائح المرجعية",
   reg_lede: "قرارات رئيس BPJPH الثلاثة التي يستند إليها التصنيف في هذه الصفحة، إلى جانب معايير نظام ضمان المنتجات الحلال (SJPH) وحالة سريانها.",
+  reg_zip_btn: "تنزيل جميع اللوائح (ZIP)",
+  reg_zip_note: "11 وثيقة PDF رسمية — القانون 33/2014، واللائحة الحكومية 39/2021، واللائحة الحكومية 42/2024، وقرارات رئيس BPJPH رقم 301 و387 و20 و40 و328، واللائحة الوزارية 20/2021، والتعميم 2/2026، ولائحة BPJPH رقم 4/2026 — في ملف ZIP واحد.",
   contact_kicker: "تواصل معي", contact_title: "اتصل بنا",
   contact_lede: "هل لديك أسئلة حول تصنيف المواد أو شهادة الحلال؟ تواصل معي مباشرة عبر القنوات التالية.",
   btn_wa: "محادثة واتساب", ig_detail: "حساب روفيك على إنستغرام", btn_ig: "عرض حساب إنستغرام",
@@ -1800,6 +1837,10 @@ I18N.ar = {
   status_pubchem: "جارٍ الاتصال بـ PubChem للحصول على مرادفات ورقم CAS إضافي…",
   group_pl_head: "مواد في القائمة الإيجابية",
   group_pl_sub: "تم العثور على {n} مادة في ملحق القرار 301/2026 لـ «{q}».",
+  results_title: "نتائج البحث",
+  results_count: "تم العثور على {n} نتيجة لـ«{q}».",
+  results_none: "لا توجد مادة مطابقة في الملحق 301/2026 أو 387/2026.",
+  match_syn_label: "تمت المطابقة عبر المرادف",
   group_w_head: "أنواع المنتجات التي يجب أن تكون معتمدة حلال",
   group_w_sub: "تم العثور على {n} نوع منتج في ملحق القرار 387/2026. ينطبق هذا القسم إذا كنت تقصد المنتج النهائي، لا المادة.",
   group_substance_head: "المادة التي بحثت عنها",
@@ -1912,6 +1953,8 @@ I18N.zh = {
   browse_sub387: "十四个产品类型类别。第 387 号决定规范的是产品类型，而非原料清单。",
   reg_kicker: "法律依据", reg_title: "参考法规",
   reg_lede: "本页分类所依据的三项 BPJPH 局长决定，以及清真产品保障体系 (SJPH) 标准和其适用状态。",
+  reg_zip_btn: "下载全部法规 (ZIP)",
+  reg_zip_note: "11 份官方 PDF 文件——2014 年第 33 号法律、2021 年第 39 号政府条例、2024 年第 42 号政府条例、BPJPH 局长决定第 301、387、20、40、328 号、2021 年第 20 号部长条例、2026 年第 2 号通函和 BPJPH 第 4/2026 号条例——合为一个 ZIP 文件。",
   contact_kicker: "联系我", contact_title: "联系我们",
   contact_lede: "对原料分类或清真认证有疑问？请通过以下渠道直接联系我。",
   btn_wa: "WhatsApp 聊天", ig_detail: "Rofik 的 Instagram 主页", btn_ig: "查看 Instagram 主页",
@@ -1928,6 +1971,10 @@ I18N.zh = {
   status_pubchem: "正在联系 PubChem 获取其他同义词和 CAS…",
   group_pl_head: "正面清单上的原料",
   group_pl_sub: "在第 301/2026 号决定附录中为“{q}”找到 {n} 种原料。",
+  results_title: "搜索结果",
+  results_count: "为“{q}”找到 {n} 个结果。",
+  results_none: "在附录 301/2026 或 387/2026 中没有匹配的配料。",
+  match_syn_label: "通过同义词匹配",
   group_w_head: "必须获得清真认证的产品类型",
   group_w_sub: "在第 387/2026 号决定附录中找到 {n} 种产品类型。如果您指的是成品而非原料，本节适用。",
   group_substance_head: "您搜索的原料",
@@ -2567,11 +2614,11 @@ function searchPL(q, qTokens, qCasK) {
     var fz = fuzzyBonus(qTokens, it.tokens);
     if (fz > 0 && s < 100) {
       var exactEv = qTokens.some(function (t) { return it.tokens.has(t); });
-      if (qTokens.length === 1) { fuzzyOut.push({ it: it, s: s + fz }); continue; }
+      if (qTokens.length === 1) { fuzzyOut.push({ it: it, s: s + fz, m: matchedAliases(it, qTokens) }); continue; }
       if (!exactEv) fz = 0;
     }
     s += fz;
-    if (s >= 100) out.push({ it: it, s: s });
+    if (s >= 100) out.push({ it: it, s: s, m: matchedAliases(it, qTokens) });
   }
   var res = out.length ? out : fuzzyOut.filter(function (r) { return r.s >= 100; });
   res.sort(function (a, b) { return b.s - a.s; });
@@ -2677,7 +2724,7 @@ function docPendukungHTML() {
     "</ul>" +
     "<p>" + esc(t("doc_close")) + "</p></div>";
 }
-function cardPL(it, extraNote) {
+function cardPL(it, extraNote, matched) {
   var e = it.e;
   var rows = [
     [t("f_cas"), e.cas ? casHTML(e.cas) : esc(t("f_cas_none"))],
@@ -2692,6 +2739,7 @@ function cardPL(it, extraNote) {
     '<span class="tag">' + esc(t("tag_pl")) + '</span></div><div class="card-body">' +
     "<h3>" + esc(e.nama_id) + "</h3>" +
     (e.nama_en ? '<p class="name-en">' + esc(t("name_en_label")) + ": " + esc(e.nama_en) + "</p>" : "") +
+    (matched && matched.length ? '<p class="match-line"><strong>' + esc(t("match_syn_label")) + ":</strong> " + esc(matched.join(", ")) + "</p>" : "") +
     fieldsHTML(rows) +
     (extraNote ? '<div class="note-box"><p>' + extraNote + "</p></div>" : "");
   var m = mentions387(it);
@@ -2823,7 +2871,7 @@ function runSearch(raw) {
   var seq = ++searchSeq;
   var resultsEl = el("results");
   if (q.length < 2) {
-    resultsEl.innerHTML = ""; el("empty-state").hidden = false; setStatus(null);
+    resultsEl.innerHTML = ""; el("empty-state").hidden = false; el("results-head").hidden = true; setStatus(null);
     syncUrlQuery("");
     return;
   }
@@ -2876,6 +2924,29 @@ function relatedChipsHTML(heading, items, labelOf) {
       return '<button type="button" class="chip" data-example="' + esc(label) + '">' + esc(label) + "</button>";
     }).join("") + "</p></div>";
 }
+/* Judul "Hasil pencarian" + jumlah hasil di atas area hasil. n = jumlah
+   kartu lokal (301 + 387); n = 0 berarti tidak ada di lampiran. */
+function showResultsHead(n, q) {
+  var head = el("results-head");
+  if (!head) return;
+  var c = el("results-count");
+  if (n > 0) c.textContent = tt("results_count", { n: fmtNum(n), q: q });
+  else c.textContent = t("results_none");
+  head.hidden = false;
+}
+/* Sinonim (tampilan aslinya) yang memuat SEMUA kata kueri — dipakai
+   untuk baris "Cocok lewat sinonim" di kartu, supaya pengguna melihat
+   lewat nama apa hasil itu ditemukan. */
+function matchedAliases(it, qTokens) {
+  var out = [];
+  (it.e.sinonim || []).forEach(function (rawSyn, j) {
+    var f = it.synN[j];
+    if (!f) return;
+    var toks = new Set(f.split(" "));
+    if (qTokens.length && qTokens.every(function (t) { return toks.has(t); })) out.push(rawSyn);
+  });
+  return out;
+}
 function renderLocal(raw, pl, w) {
   var demoteW = pl.length && w.length && hasExactMatch(pl) && !hasExactMatch(w);
   var demotePL = pl.length && w.length && hasExactMatch(w) && !hasExactMatch(pl);
@@ -2883,7 +2954,7 @@ function renderLocal(raw, pl, w) {
   if (pl.length && !demotePL) {
     h += '<h2 class="group-head">' + esc(t("group_pl_head")) + "</h2>" +
       '<p class="group-sub">' + esc(tt("group_pl_sub", { n: fmtNum(pl.length), q: raw })) + "</p>";
-    pl.forEach(function (r, i) { h += cardPL(r.it, null); });
+    pl.forEach(function (r, i) { h += cardPL(r.it, null, r.m); });
     var rel = relatedOf(pl[0].it);
     if (rel.length) {
       h += '<div class="related"><p>' + esc(t("related_same")) + '</p><p class="examples">' +
@@ -2907,6 +2978,8 @@ function renderLocal(raw, pl, w) {
       w, function (it) { return it.title; });
   }
   el("results").innerHTML = h;
+  if (pl.length || w.length) showResultsHead(pl.length + w.length, raw);
+  else el("results-head").hidden = true;
   bindResultButtons();
 }
 function handlePubchem(raw, pl, w, pc, pcError) {
@@ -2922,12 +2995,15 @@ function handlePubchem(raw, pl, w, pc, pcError) {
           '<p class="group-sub">' + esc(tt("found_via_pc", { q: raw, title: pc.title })) +
           (pc.cas ? " (CAS " + esc(pc.cas) + ")" : "") + esc(t("found_via_pc_tail")) + "</p>" +
           cardPL(local, esc(tt("pc_match_note", { cid: pc.cid })));
+        showResultsHead(1, raw);
         bindResultButtons();
         return;
       }
       resultsEl.innerHTML = cardBelum(raw, pc, false);
+      showResultsHead(0, raw);
     } else {
       resultsEl.innerHTML = cardBelum(raw, null, pcError);
+      showResultsHead(0, raw);
     }
     bindResultButtons();
     return;
