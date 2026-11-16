@@ -466,6 +466,7 @@
       .btn-mini:hover { border-color: var(--gold); }
       .btn-mini svg { flex: none; }
       .btn-mini.is-copied { background: var(--ok-bg); border-color: var(--ok-solid); color: var(--ok-ink); }
+      a.btn-mini { text-decoration: none; }
       .skel { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; margin: 16px 0; background: var(--card); }
       .skel-bar { height: 14px; border-radius: 8px; background: var(--surface); margin: 10px 0; animation: skelPulse 1.2s ease-in-out infinite alternate; }
       .skel-bar.w60 { width: 60%; height: 20px; }
@@ -1782,7 +1783,7 @@ var I18N = { id: {
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
   popular_label: "Bahan populer:",
-  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
+  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
   data_loading: "Memuat data lampiran…",
@@ -1922,7 +1923,7 @@ I18N.en = {
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
   popular_label: "Popular ingredients:",
-  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
+  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", page_btn: "View ingredient page", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
   data_loading: "Loading appendix data…",
@@ -2056,7 +2057,7 @@ I18N.ar = {
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
   popular_label: "مواد شائعة:",
-  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
+  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
   data_loading: "جارٍ تحميل بيانات الملاحق…",
@@ -2190,7 +2191,7 @@ I18N.zh = {
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
   popular_label: "热门原料：",
-  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
+  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", page_btn: "查看原料页面", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
   data_loading: "正在加载附录数据…",
@@ -3093,6 +3094,420 @@ function mentions387(entry) {
   return count ? { count: count, cats: cats.slice(0, 3) } : null;
 }
 
+/* Peta nama bahan -> slug halaman per bahan (top-100, 16 Nov 2026).
+   Kunci ternormalisasi dengan norm() -- sama seperti pencocokan situs.
+   Dibangun dari hidden_files/halaman-per-bahan/top-100-data.json.
+   Satu-satunya tabrakan kunci: "e471" dipakai E471 dan Gliserol
+   Monostearat (keduanya E471) -- dimenangkan entri E471 (lebih dulu). */
+var PAGE_SLUG = {
+  "1 2 3 propanetriol": "gliserin",
+  "1 3 7 trimethylxanthine": "kafein",
+  "1 beta d galactopyranosyl 4 d glucopyranose": "laktosa",
+  "2 6 di t butyl 4 methylphenol": "bht",
+  "2 6 di tert butyl p cresol": "bht",
+  "2 aminoethanesulfonic acid": "taurin",
+  "2 hydroxypropane 1 2 3 tricarboxylic acid": "asam-sitrat",
+  "2 hydroxypropanoic acid": "asam-laktat",
+  "2 hydroxypropionic acid": "asam-laktat",
+  "2 isopropyl 5 methylcyclohexanol": "mentol",
+  "2 tert butylhydroquinone": "tbhq",
+  "2e 4e 6e 8e 10e 12e 14e 16z 18e 20 methoxy 4 8 13 17 tetramethyl 20 oxoicosa 2 4 6 8 10 12 14 16 18 nonaenoic acid": "annatto",
+  "2r 3r 4s 5r 6r 6 hydroxymethyl oxane 2 3 4 5 tetrol": "laktase",
+  "3 6 dihydroxy 2 4 5 7 tetraiodospiro 2 benzofuran 3 9 xanthene 1 one": "eritrosin",
+  "4 hydroxy 3 methoxybenzaldehyde": "vanilin",
+  "4 o alpha d glucopyranosyl d glucitol": "maltitol",
+  "89na02m4rx": "pektin",
+  "acesulfam k": "acesulfam-k",
+  "acesulfame k": "acesulfam-k",
+  "acesulfame potassium": "acesulfam-k",
+  "acetic acid": "asam-asetat",
+  "acid blue 74": "indigotine",
+  "aciletten": "asam-sitrat",
+  "agar": "agar-agar",
+  "agar agar": "agar-agar",
+  "aizen tartrazine": "tartrazin",
+  "alcohol": "etanol",
+  "allura red": "allura-red",
+  "allura red ac": "allura-red",
+  "amalty mr 100": "maltitol",
+  "amilase": "amilase",
+  "amylase": "amilase",
+  "ancoma": "monosodium-glutamat",
+  "annatto": "annatto",
+  "annatto e 160b": "annatto",
+  "antimol": "natrium-benzoat",
+  "antrancine 12": "bha",
+  "asam asetat": "asam-asetat",
+  "asam cuka": "asam-asetat",
+  "asam fosfat": "asam-fosfat",
+  "asam laktat": "asam-laktat",
+  "asam sitrat": "asam-sitrat",
+  "asp phe ome": "aspartam",
+  "aspartam": "aspartam",
+  "aspartame": "aspartam",
+  "aspasvit": "sukralosa",
+  "b rose liquid": "carmine",
+  "baking soda": "natrium-bikarbonat",
+  "bb powder": "kalium-sorbat",
+  "beef": "daging-sapi",
+  "beeswax": "lilin-lebah",
+  "benzoic acid sodium salt": "natrium-benzoat",
+  "beras": "beras",
+  "beta beta carotene": "beta-karoten",
+  "beta carotene": "beta-karoten",
+  "beta d galactopyranose": "laktase",
+  "beta d galp 1 4 d glcp": "laktosa",
+  "beta galactose": "laktase",
+  "beta karoten": "beta-karoten",
+  "betacarotene": "beta-karoten",
+  "bha": "bha",
+  "bht": "bht",
+  "bioban c": "kalsium-propionat",
+  "biscuit": "biskuit",
+  "biskuit": "biskuit",
+  "blue 1206": "brilliant-blue",
+  "bread": "roti",
+  "brilliant blue": "brilliant-blue",
+  "brilliant blue fcf": "brilliant-blue",
+  "butil hidroksianisol": "bha",
+  "butilated hidroksitoluena": "bht",
+  "butter": "mentega",
+  "butylated hydroxyanisole": "bha",
+  "butylated hydroxytoluene": "bht",
+  "butylhydroxytoluene": "bht",
+  "caffeine": "kafein",
+  "calcium propanoate": "kalsium-propionat",
+  "calcium propionate": "kalsium-propionat",
+  "candy": "permen",
+  "caramel": "karamel",
+  "carboxymethylcellulose sodium": "cmc",
+  "carmellose sodium": "cmc",
+  "carmethose": "cmc",
+  "carmine": "carmine",
+  "carrageenan": "karagenan",
+  "casein": "kasein",
+  "ceylon": "agar-agar",
+  "chebi 17309": "pektin",
+  "chebi 17716": "laktosa",
+  "cheese": "keju",
+  "chicken egg": "telur-ayam",
+  "chicken meat": "daging-ayam",
+  "chile saltpeter": "natrium-nitrat",
+  "chinese gelatin": "agar-agar",
+  "chinese seasoning": "monosodium-glutamat",
+  "chocolate": "cokelat",
+  "ci 16035": "allura-red",
+  "citric acid": "asam-sitrat",
+  "citric acid anhydrous": "asam-sitrat",
+  "cochineal dye": "carmine",
+  "coconut milk": "santan",
+  "coconut oil": "minyak-kelapa",
+  "coffee": "kopi",
+  "cokelat": "cokelat",
+  "collagen": "kolagen",
+  "common salt": "garam",
+  "corn": "jagung",
+  "creatin": "kreatin",
+  "creatine": "kreatin",
+  "cubic niter": "natrium-nitrat",
+  "cuka": "cuka",
+  "curcumin": "kurkumin",
+  "cyclamate sodium": "siklamat",
+  "cyclamic acid sodium salt": "siklamat",
+  "cystein": "l-sistein",
+  "cysteine": "l-sistein",
+  "d fructopyranoside": "fruktosa",
+  "d glucitol": "sorbitol",
+  "d maltitol": "maltitol",
+  "daging ayam": "daging-ayam",
+  "daging sapi": "daging-sapi",
+  "diferuloylmethane": "kurkumin",
+  "dl lactic acid": "asam-laktat",
+  "dtxcid101131536": "sunset-yellow",
+  "dtxsid1024629": "annatto",
+  "dtxsid6021456": "sunset-yellow",
+  "dye cochineal": "carmine",
+  "e100": "kurkumin",
+  "e102": "tartrazin",
+  "e110": "sunset-yellow",
+  "e1100": "amilase",
+  "e1103": "laktase",
+  "e1104": "lipase",
+  "e120": "carmine",
+  "e127": "eritrosin",
+  "e129": "allura-red",
+  "e129 allura red ac": "allura-red",
+  "e132": "indigotine",
+  "e133": "brilliant-blue",
+  "e133 brilliant blue fcf": "brilliant-blue",
+  "e150": "karamel",
+  "e1510": "etanol",
+  "e160a": "beta-karoten",
+  "e160b": "annatto",
+  "e202": "kalium-sorbat",
+  "e211": "natrium-benzoat",
+  "e250": "natrium-nitrit",
+  "e251": "natrium-nitrat",
+  "e260": "asam-asetat",
+  "e270": "asam-laktat",
+  "e282": "kalsium-propionat",
+  "e319": "tbhq",
+  "e320": "bha",
+  "e321": "bht",
+  "e322": "lesitin",
+  "e330": "asam-sitrat",
+  "e338": "asam-fosfat",
+  "e406": "agar-agar",
+  "e407": "karagenan",
+  "e415": "xanthan-gum",
+  "e420": "sorbitol",
+  "e422": "gliserin",
+  "e433": "polisorbat-80",
+  "e440": "pektin",
+  "e441": "gelatin",
+  "e466": "cmc",
+  "e471": "e471",
+  "e500": "natrium-bikarbonat",
+  "e621": "monosodium-glutamat",
+  "e901": "lilin-lebah",
+  "e904": "shellac",
+  "e920": "l-sistein",
+  "e950": "acesulfam-k",
+  "e951": "aspartam",
+  "e952": "siklamat",
+  "e954": "sakarin",
+  "e955": "sukralosa",
+  "e960": "stevia",
+  "e965": "maltitol",
+  "e967": "xilitol",
+  "erinitrit": "natrium-nitrit",
+  "eritrosin": "eritrosin",
+  "erythrosine": "eritrosin",
+  "erythrosine sodium anhydrous": "eritrosin",
+  "es krim": "es-krim",
+  "etanol": "etanol",
+  "ethanesulfonic acid 2 amino": "taurin",
+  "ethanoic acid": "asam-asetat",
+  "ethanol": "etanol",
+  "ethyl alcohol": "etanol",
+  "ethylic acid": "asam-asetat",
+  "fc166779": "karagenan",
+  "fd c blue 1": "brilliant-blue",
+  "fd c blue 2": "indigotine",
+  "fd c blue no 1": "brilliant-blue",
+  "fd c red no 40": "allura-red",
+  "fd c yellow no 6": "sunset-yellow",
+  "fema no 4763": "stevia",
+  "food yellow 4": "tartrazin",
+  "fructopyranose": "fruktosa",
+  "fructopyranoside": "fruktosa",
+  "fructose": "fruktosa",
+  "fruktosa": "fruktosa",
+  "g06874yz": "xilitol",
+  "g72751": "karagenan",
+  "gandum": "gandum",
+  "garam": "garam",
+  "gelatin": "gelatin",
+  "gelatine": "gelatin",
+  "gelose": "agar-agar",
+  "gliserin": "gliserin",
+  "gliserol monostearat": "gliserol-monostearat",
+  "glucitol": "sorbitol",
+  "glucopyranose": "glukosa",
+  "glucose": "glukosa",
+  "glukosa": "glukosa",
+  "glutamat sodny": "monosodium-glutamat",
+  "glycerin": "gliserin",
+  "glycerin 1 stearate": "gliserol-monostearat",
+  "glycerine": "gliserin",
+  "glycerol": "gliserin",
+  "glyceryl monostearate": "gliserol-monostearat",
+  "glytoucan g06874yz": "xilitol",
+  "grain alcohol": "etanol",
+  "grape sugar": "glukosa",
+  "guaranine": "kafein",
+  "gula pasir": "gula-pasir",
+  "honey": "madu",
+  "ice cream": "es-krim",
+  "indigo carmine": "indigotine",
+  "indigotindisulfonate sodium": "indigotine",
+  "indigotine": "indigotine",
+  "ins no 960": "stevia",
+  "instant noodles": "mi-instan",
+  "jagung": "jagung",
+  "kacha haldi": "kurkumin",
+  "kafein": "kafein",
+  "kalium sorbat": "kalium-sorbat",
+  "kalsium propionat": "kalsium-propionat",
+  "karagenan": "karagenan",
+  "karamel": "karamel",
+  "kasein": "kasein",
+  "kecap": "kecap",
+  "kedelai": "kedelai",
+  "keju": "keju",
+  "kolagen": "kolagen",
+  "kopi": "kopi",
+  "kreatin": "kreatin",
+  "kunir": "kurkumin",
+  "kurkumin": "kurkumin",
+  "l cysteine": "l-sistein",
+  "l sistein": "l-sistein",
+  "l taurine": "taurin",
+  "lactase": "laktase",
+  "lactic acid": "asam-laktat",
+  "lactose": "laktosa",
+  "laktase": "laktase",
+  "laktosa": "laktosa",
+  "lanolin": "lanolin",
+  "lard": "minyak-babi",
+  "lecithin": "lesitin",
+  "lesitin": "lesitin",
+  "lilin lebah": "lilin-lebah",
+  "lipase": "lipase",
+  "lipase ay 30": "lipase",
+  "lipase from aspergillus oryzae": "lipase",
+  "madu": "madu",
+  "maize": "jagung",
+  "maltitol": "maltitol",
+  "maltodekstrin": "maltodekstrin",
+  "maltodextrin": "maltodekstrin",
+  "margarin": "margarin",
+  "margarine": "margarin",
+  "mentega": "mentega",
+  "menthol": "mentol",
+  "mentholum": "mentol",
+  "menthyl alcohol": "mentol",
+  "mentol": "mentol",
+  "methyltheobromine": "kafein",
+  "mi instan": "mi-instan",
+  "milk powder": "susu-bubuk",
+  "minyak babi": "minyak-babi",
+  "minyak kelapa": "minyak-kelapa",
+  "minyak sawit": "minyak-sawit",
+  "minyak zaitun": "minyak-zaitun",
+  "mono and diglycerides of fatty acids": "e471",
+  "mono dan digliserida asam lemak": "e471",
+  "monosodium glutamat": "monosodium-glutamat",
+  "monosodium glutamate": "monosodium-glutamat",
+  "monostearin": "gliserol-monostearat",
+  "n amidinosarcosine": "kreatin",
+  "natrium benzoat": "natrium-benzoat",
+  "natrium bikarbonat": "natrium-bikarbonat",
+  "natrium karboksimetil selulosa": "cmc",
+  "natrium nitrat": "natrium-nitrat",
+  "natrium nitrit": "natrium-nitrit",
+  "natural yellow 3": "kurkumin",
+  "nitrite sodium": "natrium-nitrit",
+  "nitrous acid sodium salt": "natrium-nitrit",
+  "nutrasweet": "aspartam",
+  "o benzoic sulfimide": "sakarin",
+  "o phosphoric acid": "asam-fosfat",
+  "o sulfobenzimide": "sakarin",
+  "olive oil": "minyak-zaitun",
+  "orthophosphoric acid": "asam-fosfat",
+  "otizon": "acesulfam-k",
+  "palm oil": "minyak-sawit",
+  "pectin": "pektin",
+  "pectins": "pektin",
+  "pektin": "pektin",
+  "permen": "permen",
+  "phenol 1 1 dimethylethyl 4 methoxy": "bha",
+  "phosphoric acid": "asam-fosfat",
+  "polisorbat 80": "polisorbat-80",
+  "polysorbate 80": "polisorbat-80",
+  "potassium acesulfame": "acesulfam-k",
+  "potassium sorbate": "kalium-sorbat",
+  "propanoic acid calcium salt": "kalsium-propionat",
+  "refchem 1084024": "allura-red",
+  "refchem 1085314": "sunset-yellow",
+  "refchem 934805": "xilitol",
+  "rennet": "rennet",
+  "rice": "beras",
+  "roti": "roti",
+  "saccharin": "sakarin",
+  "saccharine": "sakarin",
+  "saccharose": "gula-pasir",
+  "sakarin": "sakarin",
+  "salt": "garam",
+  "santan": "santan",
+  "saus tomat": "saus-tomat",
+  "shellac": "shellac",
+  "shortening": "shortening",
+  "siklamat": "siklamat",
+  "sobenate": "natrium-benzoat",
+  "soda niter": "natrium-nitrat",
+  "sodium 4 pyridin 2 yldiazenyl benzene 1 3 diol": "lipase",
+  "sodium acid carbonate": "natrium-bikarbonat",
+  "sodium benzoate": "natrium-benzoat",
+  "sodium bicarbonate": "natrium-bikarbonat",
+  "sodium carboxymethyl cellulose": "cmc",
+  "sodium chloric": "garam",
+  "sodium cyclamate": "siklamat",
+  "sodium hydrogen carbonate": "natrium-bikarbonat",
+  "sodium nitrate": "natrium-nitrat",
+  "sodium nitrite": "natrium-nitrit",
+  "sorbic acid potassium salt": "kalium-sorbat",
+  "sorbistat potassium": "kalium-sorbat",
+  "sorbitol": "sorbitol",
+  "soy milk": "susu-kedelai",
+  "soy sauce": "kecap",
+  "soybean": "kedelai",
+  "splenda": "sukralosa",
+  "stearin 1 mono": "gliserol-monostearat",
+  "stevia": "stevia",
+  "steviosin": "stevia",
+  "sucaryl sodium": "siklamat",
+  "sucralose": "sukralosa",
+  "sucrose": "gula-pasir",
+  "sugar": "gula-pasir",
+  "sukralosa": "sukralosa",
+  "sunset yellow": "sunset-yellow",
+  "sunset yellow fcf": "sunset-yellow",
+  "susu bubuk": "susu-bubuk",
+  "susu kedelai": "susu-kedelai",
+  "t butylhydroquinone": "tbhq",
+  "table salt": "garam",
+  "table sugar": "gula-pasir",
+  "tartrazin": "tartrazin",
+  "tartrazine": "tartrazin",
+  "taurin": "taurin",
+  "taurine": "taurin",
+  "tbhq": "tbhq",
+  "tea": "teh",
+  "teh": "teh",
+  "telur ayam": "telur-ayam",
+  "tepung terigu": "tepung-terigu",
+  "tert butyl 4 hydroxyanisole": "bha",
+  "tert butylhydroquinone": "tbhq",
+  "thioserine": "l-sistein",
+  "tomato sauce": "saus-tomat",
+  "trichlorosucrose": "sukralosa",
+  "trisodium 5 hydroxy 1 4 sulphophenyl 4 4 sulphophe nylazo pyrazole 3 carboxylate": "tartrazin",
+  "vanilin": "vanilin",
+  "vanillaldehyde": "vanilin",
+  "vanillic aldehyde": "vanilin",
+  "vanillin": "vanilin",
+  "vinegar": "cuka",
+  "vinegar acid": "asam-asetat",
+  "wc reiniger": "asam-fosfat",
+  "wheat": "gandum",
+  "wheat flour": "tepung-terigu",
+  "whey": "whey",
+  "xanthan gum": "xanthan-gum",
+  "xilitol": "xilitol",
+  "xylitol": "xilitol",
+  "yellow 5": "tartrazin",
+  "yogurt": "yogurt"
+};
+function pageSlugFor(cands) {
+  if (!cands) return null;
+  for (var i = 0; i < cands.length; i++) {
+    var k = norm(cands[i]);
+    if (k && PAGE_SLUG[k]) return PAGE_SLUG[k];
+  }
+  return null;
+}
+
 /* ---------------- render kartu ---------------- */
 function fieldsHTML(rows) {
   var h = '<dl class="fields">';
@@ -3108,8 +3523,9 @@ function docPendukungHTML() {
     "</ul>" +
     "<p>" + esc(t("doc_close")) + "</p></div>";
 }
-function cardPL(it, extraNote, matched) {
+function cardPL(it, extraNote, matched, rawQ) {
   var e = it.e;
+  var slug = pageSlugFor([e.nama_id, e.nama_en].concat(e.sinonim || []).concat([rawQ]));
   var rows = [
     [t("f_cas"), e.cas ? casHTML(e.cas) : esc(t("f_cas_none"))],
     [t("f_class301"), esc(cap(e.kategori))]
@@ -3136,12 +3552,13 @@ function cardPL(it, extraNote, matched) {
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal301")) + "</p>" +
     pdfBtn(PDF_301, t("pdf301")) + "</div>" +
     '<div class="pubchem-slot"></div>' +
-    cardActionsHTML("pl", ck) +
+    cardActionsHTML("pl", ck, slug) +
     "</div></article>";
   return h;
 }
-function cardW(it) {
+function cardW(it, rawQ) {
   var e = it.e, full = String(e.rincian || "");
+  var slug = pageSlugFor([it.title, e.rincian, e.jenis_produk, e.klasifikasi, rawQ]);
   var long = full.length > 300;
   var rows = [
     [t("f_cat_product"), esc(cap(e.kategori))],
@@ -3158,12 +3575,13 @@ function cardW(it) {
     '<p class="source-line">' + esc(t("source387")) + "</p>" +
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal387")) + "</p>" +
     pdfBtn(PDF_387, t("pdf387")) + "</div>" +
-    cardActionsHTML("w") +
+    cardActionsHTML("w", null, slug) +
     "</div></article>";
   return h;
 }
 function cardBelum(queryLabel, pc, pcError) {
   var name = pc ? pc.title : queryLabel;
+  var slug = pageSlugFor([queryLabel, pc ? pc.title : null].concat(pc && pc.synonyms ? pc.synonyms.slice(0, 10) : []));
   var rows = [];
   if (pc) {
     rows.push([t("f_cas"), pc.cas ? casHTML(pc.cas) : esc(t("f_cas_pc_none"))]);
@@ -3190,7 +3608,7 @@ function cardBelum(queryLabel, pc, pcError) {
   }
   h += '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal20")) + "</p>" +
     pdfBtn(PDF_20, t("pdf20")) + "</div>" +
-    cardActionsHTML("belum") +
+    cardActionsHTML("belum", null, slug) +
     "</div></article>";
   return h;
 }
@@ -3275,10 +3693,12 @@ var LHLN_FLAG = {
 /* Baris tombol tiap kartu hasil (item 3 bagikan + item 10 unduh PNG). */
 var ICO_SHARE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>';
 var ICO_DL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
-function cardActionsHTML(kind, casK) {
+var ICO_PAGE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
+function cardActionsHTML(kind, casK, slug) {
   var sh = '<button type="button" class="btn-mini" data-share data-kind="' + kind + '"' + (casK ? ' data-cas="' + esc(casK) + '"' : "") + ">" + ICO_SHARE + "<span>" + esc(t("share_btn")) + "</span></button>";
   var png = '<button type="button" class="btn-mini" data-png>' + ICO_DL + "<span>" + esc(t("png_btn")) + "</span></button>";
-  return '<div class="card-actions">' + sh + png + "</div>";
+  var pg = slug ? '<a class="btn-mini" href="/bahan/' + esc(slug) + '">' + ICO_PAGE + "<span>" + esc(t("page_btn")) + "</span></a>" : "";
+  return '<div class="card-actions">' + pg + sh + png + "</div>";
 }
 /* Bar ringkasan hasil (item 9): hanya kategori yang jumlahnya > 0. */
 function updateResultsSummary(plN, wN, belumN) {
@@ -3460,7 +3880,7 @@ function renderLocal(raw, pl, w) {
   if (pl.length && !demotePL) {
     h += '<h2 class="group-head">' + esc(t("group_pl_head")) + "</h2>" +
       '<p class="group-sub">' + esc(tt("group_pl_sub", { n: fmtNum(pl.length), q: raw })) + "</p>";
-    pl.forEach(function (r, i) { h += cardPL(r.it, null, r.m); });
+    pl.forEach(function (r, i) { h += cardPL(r.it, null, r.m, raw); });
     var rel = relatedOf(pl[0].it);
     if (rel.length) {
       h += '<div class="related"><p>' + esc(t("related_same")) + '</p><p class="examples">' +
@@ -3476,7 +3896,7 @@ function renderLocal(raw, pl, w) {
   if (w.length && !demoteW) {
     h += '<h2 class="group-head">' + esc(t("group_w_head")) + "</h2>" +
       '<p class="group-sub">' + esc(tt("group_w_sub", { n: fmtNum(w.length) })) + "</p>";
-    w.forEach(function (r) { h += cardW(r.it); });
+    w.forEach(function (r) { h += cardW(r.it, raw); });
   }
   if (w.length && demoteW) {
     h += relatedChipsHTML(
@@ -3501,7 +3921,7 @@ function handlePubchem(raw, pl, w, pc, pcError) {
         resultsEl.innerHTML = '<h2 class="group-head">' + esc(t("group_pl_head")) + "</h2>" +
           '<p class="group-sub">' + esc(tt("found_via_pc", { q: raw, title: pc.title })) +
           (pc.cas ? " (CAS " + esc(pc.cas) + ")" : "") + esc(t("found_via_pc_tail")) + "</p>" +
-          cardPL(local, esc(tt("pc_match_note", { cid: pc.cid })));
+          cardPL(local, esc(tt("pc_match_note", { cid: pc.cid })), null, raw);
         showResultsHead(1, raw);
         updateResultsSummary(1, 0, 0);
         bindResultButtons();
