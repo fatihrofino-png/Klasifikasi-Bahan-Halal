@@ -14,11 +14,22 @@ const ATURAN_GROUNDING = [
   'Bila suatu informasi tidak ada di potongan yang diberikan, tulis "belum terverifikasi" — JANGAN mengarang.',
   'Gliserin (glycerol, CAS 56-81-5) TIDAK ada di lampiran Kepkaban 301/2026 — jangan pernah mengklaimnya ada di positive list.',
   'Semua teks jawaban dalam Bahasa Indonesia.',
+  'STATUS REGULASI (v2): potongan yang ditandai [STATUS: tidak berlaku] berasal dari regulasi yang SUDAH DICABUT — sebutkan statusnya dan pencabutnya bila mengutipnya, dan jangan sajikan isinya sebagai aturan yang berlaku.',
+  'Bila pertanyaan menyangkut tenggat/penahapan kewajiban bersertifikat halal, utamakan blok PEMBARUAN RESMI (PP 40/2026) di atas potongan PP 42/2024 — tenggat lama PP 42/2024 sudah diubah.',
+  'Bila potongan berasal dari regulasi yang ditandai [DIUBAH OLEH: ...], sebutkan perubahannya bila relevan dengan pertanyaan.',
 ].join('\n');
 
+// Penanda status di setiap potongan agar LLM tidak menyajikan aturan
+// yang dicabut/diubah seolah masih berlaku.
+function formatPotongan(h, i) {
+  let penanda = '';
+  if (h.status === 'tidak berlaku') penanda += ` [STATUS: tidak berlaku — dicabut oleh ${h.dicabut_oleh || 'peraturan pencabut'}]`;
+  if (h.diubah_oleh) penanda += ` [DIUBAH OLEH: ${h.diubah_oleh}]`;
+  return `[${i + 1}] ${h.jenis} Nomor ${h.nomor} Tahun ${h.tahun}${h.pasal ? ' — ' + h.pasal : ''}${penanda}\n${h.potongan}`;
+}
+
 function buildAnalyzePrompt({ teks, potonganKorpus, ringkasan }) {
-  const korpus = (potonganKorpus || []).map((h, i) =>
-    `[${i + 1}] ${h.jenis} Nomor ${h.nomor} Tahun ${h.tahun}${h.pasal ? ' — ' + h.pasal : ''}\n${h.potongan}`).join('\n\n');
+  const korpus = (potonganKorpus || []).map(formatPotongan).join('\n\n');
   const sjph = (ringkasan.kriteria_sjph_20_2023 || []).map((k) => `- ${k.nama}: ${k.uraian}`).join('\n');
   const dikecualikan = (ringkasan.kriteria_dikecualikan_301 || []).map((k, i) => `${i + 1}. ${k}`).join('\n');
   return {
@@ -54,8 +65,7 @@ function buildAnalyzePrompt({ teks, potonganKorpus, ringkasan }) {
 }
 
 function buildCertificatePrompt({ teks, potonganKorpus }) {
-  const korpus = (potonganKorpus || []).map((h, i) =>
-    `[${i + 1}] ${h.jenis} Nomor ${h.nomor} Tahun ${h.tahun}${h.pasal ? ' — ' + h.pasal : ''}\n${h.potongan}`).join('\n\n');
+  const korpus = (potonganKorpus || []).map(formatPotongan).join('\n\n');
   return {
     system:
       'Kamu adalah asisten penyelia halal. Tugasmu HANYA mengekstrak tiga hal dari teks sertifikat berikut: '
@@ -77,15 +87,20 @@ function buildCertificatePrompt({ teks, potonganKorpus }) {
   };
 }
 
-function buildAskPrompt({ question, potonganKorpus }) {
-  const korpus = (potonganKorpus || []).map((h, i) =>
-    `[${i + 1}] ${h.jenis} Nomor ${h.nomor} Tahun ${h.tahun}${h.pasal ? ' — ' + h.pasal : ''}\n${h.potongan}`).join('\n\n');
+function buildAskPrompt({ question, potonganKorpus, pembaruan }) {
+  const korpus = (potonganKorpus || []).map(formatPotongan).join('\n\n');
+  // Blok pembaruan resmi: fakta metadata terverifikasi (bukan isi pasal)
+  // untuk regulasi yang teks lengkapnya belum ada di korpus (mis. PP 40/2026).
+  const blokPembaruan = (pembaruan || []).map((p) =>
+    `- ${p.dokumen} (ditetapkan ${p.tanggal_ditetapkan}${p.lembaran_negara ? ', ' + p.lembaran_negara : ''}): ${p.isi_ringkas} `
+    + `(sumber: ${p.sumber_url || p.sumber})`).join('\n');
   return {
     system:
       'Kamu adalah asisten Tanya Jawab Halal. Jawablah pertanyaan HANYA dari potongan regulasi di bawah. '
       + 'Keluarkan HANYA JSON valid sesuai skema, tanpa teks lain.\n' + ATURAN_GROUNDING,
     user:
       `PERTANYAAN: ${question}\n\n`
+      + `PEMBARUAN RESMI (metadata terverifikasi dari JDIH BPJPH / berita resmi BPJPH; BUKAN kutipan pasal — teks lengkap peraturannya belum ada di korpus):\n${blokPembaruan || '(tidak ada pembaruan)'}\n\n`
       + `POTONGAN KORPUS RELEVAN:\n${korpus || '(tidak ada potongan relevan)'}\n\n`
       + 'TUGAS — kembalikan JSON dengan bentuk persis ini:\n'
       + '{\n'
@@ -109,6 +124,6 @@ function parseJsonResponse(text) {
 }
 
 module.exports = {
-  ATURAN_GROUNDING, buildAnalyzePrompt, buildCertificatePrompt,
+  ATURAN_GROUNDING, formatPotongan, buildAnalyzePrompt, buildCertificatePrompt,
   buildAskPrompt, parseJsonResponse,
 };
