@@ -6,7 +6,7 @@
 'use strict';
 
 const { CONFIG } = require('./_lib/config');
-const { retrieve, loadCorpus } = require('./_lib/corpus');
+const { retrieve, loadCorpus, loadMeta, cariDokumenBelumMasuk } = require('./_lib/corpus');
 const { generateJson } = require('./_lib/llm');
 const { buildAskPrompt } = require('./_lib/prompt');
 const { verifyAuth } = require('./_lib/auth');
@@ -28,13 +28,36 @@ async function handle(ctx) {
     return common.fail(400, 'pertanyaan_terlalu_panjang', CONFIG.MSG_PERTANYAAN_TERLALU_PANJANG);
   }
 
+  // Caveat dulu: bila pertanyaan menyebut regulasi yang terdaftar di JDIH
+  // tetapi teks resminya belum tersedia di korpus (mis. Kepkaban 378/2026,
+  // 370/2026, PP 40/2026), JANGAN jawab dari potongan regulasi lain yang
+  // mirip (mis. 301/2026 yang sudah diubah 378/2026) — beri caveat spesifik
+  // dan arahkan ke JDIH, tanpa memanggil LLM dan tanpa mengarang isi.
+  const belumMasuk = cariDokumenBelumMasuk(question);
+  if (belumMasuk.length) {
+    logEvent('ask.dokumen_belum_masuk', { user_id: user.id, dokumen: belumMasuk[0].id });
+    const d = belumMasuk[0];
+    return common.ok({
+      provider: null,
+      jawaban: `${d.judul} sudah terdaftar di JDIH BPJPH, tetapi teks resminya belum tersedia di korpus kami sehingga isinya belum bisa dijawab dari regulasi. Silakan baca dokumen resminya di JDIH BPJPH${d.sumber_url ? ' (' + d.sumber_url + ')' : ''} atau tanyakan langsung ke BPJPH/LPH terdekat.`,
+      sitasi: [],
+      ditemukan: false,
+      dokumen_belum_masuk: belumMasuk.map((x) => ({
+        nama: x.judul, nomor: x.nomor, tahun: x.tahun, sumber_url: x.sumber_url || null,
+      })),
+      kuota_sisa: null, // kuota tidak terpakai: LLM tidak dipanggil
+    });
+  }
+
   // Retrieval dulu: tanpa potongan relevan, JANGAN panggil LLM.
-  // Ambang relevansi (diukur 15 Nov 2026): pertanyaan di luar korpus
-  // ("harga tiket pesawat...") skor teratas 10,16; tiga pertanyaan uji
-  // (UMKM/RSHLN/SJPH) skor teratas 44–83. Di bawah 15 -> tidak ditemukan,
-  // tanpa memanggil LLM (hemat kuota + anti-karangan dari potongan lemah).
+  // Ambang relevansi (diukur ulang 16 Nov 2026, korpus v2): pertanyaan di
+  // luar korpus skor teratas 8,5–22,5 ("rendang daging sapi" 22,49 —
+  // 387/2026 memuat daftar produk daging); pertanyaan dalam korpus skor
+  // teratas 31,6–88,9. Ambang 25 duduk di celah pemisah. Di bawah 25 ->
+  // tidak ditemukan, tanpa memanggil LLM (hemat kuota + anti-karangan
+  // dari potongan lemah).
   const potongan = retrieve(question, 5, loadCorpus());
-  const MIN_SKOR_RELEVAN = 15;
+  const MIN_SKOR_RELEVAN = 25;
   if (!potongan.length || potongan[0].skor < MIN_SKOR_RELEVAN) {
     logEvent('ask.tidak_ditemukan', { user_id: user.id });
     return common.ok({
@@ -61,7 +84,12 @@ async function handle(ctx) {
   let hasil;
   let provider = null;
   try {
-    const r = await generateJson(buildAskPrompt({ question, potonganKorpus: potongan }));
+    const meta = loadMeta();
+    const r = await generateJson(buildAskPrompt({
+      question,
+      potonganKorpus: potongan,
+      pembaruan: meta.pembaruan || [],
+    }));
     provider = r.provider;
     hasil = r.parsed;
   } catch (e) {
