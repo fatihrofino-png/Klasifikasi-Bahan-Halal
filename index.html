@@ -467,6 +467,16 @@
       .btn-mini svg { flex: none; }
       .btn-mini.is-copied { background: var(--ok-bg); border-color: var(--ok-solid); color: var(--ok-ink); }
       a.btn-mini { text-decoration: none; }
+      .feedback { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: .9rem; }
+      .fb-q { color: var(--muted); }
+      .fb-thanks { color: var(--green); font-weight: 700; }
+      .fb-msg { color: #c23a28; font-size: .85rem; }
+      .suggest { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); display: grid; gap: 10px; }
+      .suggest-title { margin: 0; font-size: .92rem; }
+      .suggest-field { display: grid; gap: 4px; font-size: .9rem; }
+      .suggest-field input, .suggest-field textarea { width: 100%; min-width: 0; font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line-strong); border-radius: 10px; padding: 9px 12px; }
+      .suggest-field textarea { min-height: 64px; resize: vertical; line-height: 1.5; }
+      .suggest-field input:focus, .suggest-field textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(0,166,81,.15); }
       .skel { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; margin: 16px 0; background: var(--card); }
       .skel-bar { height: 14px; border-radius: 8px; background: var(--surface); margin: 10px 0; animation: skelPulse 1.2s ease-in-out infinite alternate; }
       .skel-bar.w60 { width: 60%; height: 20px; }
@@ -1783,7 +1793,7 @@ var I18N = { id: {
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
   popular_label: "Bahan populer:",
-  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", wa_btn: "Kirim ke WA", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
+  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", wa_btn: "Kirim ke WA", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", fb_q: "Jawaban ini membantu?", fb_yes: "Ya", fb_no: "Tidak", fb_thanks: "Terima kasih atas masukannya!", fb_err: "Tidak terkirim, coba lagi.", sug_title: "Usulkan bahan ini?", sug_hint: "Tidak menemukan bahan yang dicari? Kirimkan namanya, kami akan meninjaunya.", sug_name: "Nama bahan", sug_note: "Catatan (opsional)", sug_email: "Email (opsional)", sug_submit: "Kirim usulan", sug_ok: "Terima kasih! Usulanmu masuk daftar tinjauan.", sug_dup: "Bahan ini sudah pernah diusulkan. Terima kasih!", sug_err: "Tidak terkirim, coba lagi.", sug_name_req: "Isi dulu nama bahannya.", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
   data_loading: "Memuat data lampiran…",
@@ -1923,7 +1933,7 @@ I18N.en = {
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
   popular_label: "Popular ingredients:",
-  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", wa_btn: "Send to WhatsApp", png_btn: "Download image", page_btn: "View ingredient page", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
+  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", wa_btn: "Send to WhatsApp", png_btn: "Download image", page_btn: "View ingredient page", fb_q: "Was this answer helpful?", fb_yes: "Yes", fb_no: "No", fb_thanks: "Thanks for your feedback!", fb_err: "Could not send, please try again.", sug_title: "Suggest this ingredient?", sug_hint: "Can't find the ingredient you're looking for? Send us its name and we'll review it.", sug_name: "Ingredient name", sug_note: "Note (optional)", sug_email: "Email (optional)", sug_submit: "Send suggestion", sug_ok: "Thank you! Your suggestion is on the review list.", sug_dup: "This ingredient was already suggested. Thank you!", sug_err: "Could not send, please try again.", sug_name_req: "Please fill in the ingredient name first.", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
   data_loading: "Loading appendix data…",
@@ -2057,7 +2067,7 @@ I18N.ar = {
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
   popular_label: "مواد شائعة:",
-  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", wa_btn: "أرسل واتساب", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
+  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", wa_btn: "أرسل واتساب", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", fb_q: "هل كانت هذه الإجابة مفيدة؟", fb_yes: "نعم", fb_no: "لا", fb_thanks: "شكرًا لملاحظتك!", fb_err: "تعذّر الإرسال، حاول مرة أخرى.", sug_title: "اقترح هذه المادة؟", sug_hint: "لم تجد المادة التي تبحث عنها؟ أرسل اسمها وسنراجعها.", sug_name: "اسم المادة", sug_note: "ملاحظة (اختياري)", sug_email: "البريد الإلكتروني (اختياري)", sug_submit: "أرسل الاقتراح", sug_ok: "شكرًا لك! تمت إضافة اقتراحك إلى قائمة المراجعة.", sug_dup: "تم اقتراح هذه المادة من قبل. شكرًا لك!", sug_err: "تعذّر الإرسال، حاول مرة أخرى.", sug_name_req: "يرجى إدخال اسم المادة أولًا.", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
   data_loading: "جارٍ تحميل بيانات الملاحق…",
@@ -2191,7 +2201,7 @@ I18N.zh = {
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
   popular_label: "热门原料：",
-  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", wa_btn: "发到 WhatsApp", png_btn: "下载图片", page_btn: "查看原料页面", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
+  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", wa_btn: "发到 WhatsApp", png_btn: "下载图片", page_btn: "查看原料页面", fb_q: "这个答案有帮助吗？", fb_yes: "有", fb_no: "没有", fb_thanks: "感谢你的反馈！", fb_err: "发送失败，请重试。", sug_title: "推荐这种原料？", sug_hint: "没找到你要找的原料？把名字发给我们，我们会审核。", sug_name: "原料名称", sug_note: "备注（可选）", sug_email: "邮箱（可选）", sug_submit: "提交推荐", sug_ok: "谢谢！你的推荐已进入审核列表。", sug_dup: "这种原料已经被推荐过了，谢谢！", sug_err: "发送失败，请重试。", sug_name_req: "请先填写原料名称。", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
   data_loading: "正在加载附录数据…",
@@ -3552,7 +3562,7 @@ function cardPL(it, extraNote, matched, rawQ) {
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal301")) + "</p>" +
     pdfBtn(PDF_301, t("pdf301")) + "</div>" +
     '<div class="pubchem-slot"></div>' +
-    cardActionsHTML("pl", ck, slug) +
+    cardActionsHTML("pl", ck, slug) + feedbackHTML("pl", e.nama_id) +
     "</div></article>";
   return h;
 }
@@ -3575,7 +3585,7 @@ function cardW(it, rawQ) {
     '<p class="source-line">' + esc(t("source387")) + "</p>" +
     '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal387")) + "</p>" +
     pdfBtn(PDF_387, t("pdf387")) + "</div>" +
-    cardActionsHTML("w", null, slug) +
+    cardActionsHTML("w", null, slug) + feedbackHTML("w", it.title) +
     "</div></article>";
   return h;
 }
@@ -3608,7 +3618,7 @@ function cardBelum(queryLabel, pc, pcError) {
   }
   h += '<div class="legal"><p><strong>' + esc(t("legal_label")) + "</strong> " + esc(t("legal20")) + "</p>" +
     pdfBtn(PDF_20, t("pdf20")) + "</div>" +
-    cardActionsHTML("belum", null, slug) +
+    cardActionsHTML("belum", null, slug) + feedbackHTML("belum", name) + suggestHTML(name) +
     "</div></article>";
   return h;
 }
@@ -3701,6 +3711,45 @@ function cardActionsHTML(kind, casK, slug) {
   var png = '<button type="button" class="btn-mini" data-png>' + ICO_DL + "<span>" + esc(t("png_btn")) + "</span></button>";
   var pg = slug ? '<a class="btn-mini" href="/bahan/' + esc(slug) + '">' + ICO_PAGE + "<span>" + esc(t("page_btn")) + "</span></a>" : "";
   return '<div class="card-actions">' + pg + sh + wa + png + "</div>";
+}
+/* Umpan balik "Jawaban ini membantu?" (saran 5) + form usulan bahan (saran 6).
+   Disimpan ke Supabase (tabel umpan_balik_jawaban / usulan_bahan, RLS
+   insert-only untuk anon) lewat client malas f2EnsureSupabase() yang sama
+   dengan Fase 2. Satu suara / satu usulan per bahan per browser
+   (localStorage); bila Supabase gagal dimuat atau insert gagal, tombol
+   tetap bisa diklik ulang dan pesan galat ramah tampil — tidak ada suara
+   yang hilang diam-diam. */
+function feedbackHTML(kind, bahan) {
+  var key = "fb:" + kind + ":" + norm(bahan);
+  var voted = null;
+  try { voted = localStorage.getItem(key); } catch (e) {}
+  if (voted === "ya" || voted === "tidak") {
+    return '<div class="feedback" data-feedback data-bahan="' + esc(bahan) + '" data-verdict="' + kind + '">' +
+      '<span class="fb-thanks">' + esc(t("fb_thanks")) + "</span></div>";
+  }
+  return '<div class="feedback" data-feedback data-bahan="' + esc(bahan) + '" data-verdict="' + kind + '">' +
+    '<span class="fb-q">' + esc(t("fb_q")) + "</span>" +
+    '<button type="button" class="btn-mini fb-btn" data-vote="ya">' + esc(t("fb_yes")) + "</button>" +
+    '<button type="button" class="btn-mini fb-btn" data-vote="tidak">' + esc(t("fb_no")) + "</button>" +
+    '<span class="fb-msg" hidden></span></div>';
+}
+function suggestHTML(prefill) {
+  var key = "usulan:" + norm(prefill);
+  var done = false;
+  try { done = !!localStorage.getItem(key); } catch (e) {}
+  if (done) {
+    return '<div class="suggest" data-suggest><p class="fb-thanks">' + esc(t("sug_dup")) + "</p></div>";
+  }
+  return '<form class="suggest" data-suggest novalidate>' +
+    '<p class="suggest-title"><strong>' + esc(t("sug_title")) + "</strong> " + esc(t("sug_hint")) + "</p>" +
+    '<label class="suggest-field"><span>' + esc(t("sug_name")) + '</span>' +
+    '<input name="nama" type="text" required maxlength="200" value="' + esc(prefill) + '"></label>' +
+    '<label class="suggest-field"><span>' + esc(t("sug_note")) + '</span>' +
+    '<textarea name="catatan" rows="2" maxlength="1000"></textarea></label>' +
+    '<label class="suggest-field"><span>' + esc(t("sug_email")) + '</span>' +
+    '<input name="email" type="email" maxlength="200" placeholder="nama@email.com"></label>' +
+    '<button type="submit" class="btn-mini">' + esc(t("sug_submit")) + "</button>" +
+    '<p class="fb-msg" hidden></p></form>';
 }
 /* Bar ringkasan hasil (item 9): hanya kategori yang jumlahnya > 0. */
 function updateResultsSummary(plN, wN, belumN) {
@@ -4035,6 +4084,70 @@ function bindResultButtons() {
       if (b.getAttribute("data-busy") === "1") return;
       var card = b.closest(".card");
       if (card) { b.setAttribute("data-busy", "1"); downloadCardPNG(card, b); }
+    });
+  });
+  /* Umpan balik Ya/Tidak (saran 5): kirim ke Supabase, lalu kunci suara
+     di browser ini. Galat insert: tombol aktif lagi + pesan ramah. */
+  var fbRows = el("results").querySelectorAll("[data-feedback]");
+  fbRows.forEach(function (row) {
+    row.querySelectorAll("[data-vote]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (b.getAttribute("data-busy") === "1") return;
+        b.setAttribute("data-busy", "1");
+        var vote = b.getAttribute("data-vote");
+        var bahan = row.getAttribute("data-bahan") || "";
+        var verdict = row.getAttribute("data-verdict") || "";
+        var msg = row.querySelector(".fb-msg");
+        f2EnsureSupabase().then(function (sb) {
+          if (!sb) throw new Error("no-supabase");
+          return sb.from("umpan_balik_jawaban").insert([{
+            bahan: bahan, verdict: verdict, membantu: vote === "ya", bahasa: LANG
+          }]);
+        }).then(function (res) {
+          if (res && res.error) throw res.error;
+          try { localStorage.setItem("fb:" + verdict + ":" + norm(bahan), vote); } catch (e) {}
+          row.textContent = "";
+          var s = document.createElement("span");
+          s.className = "fb-thanks"; s.textContent = t("fb_thanks");
+          row.appendChild(s);
+        }).catch(function () {
+          b.removeAttribute("data-busy");
+          if (msg) { msg.hidden = false; msg.textContent = t("fb_err"); }
+        });
+      });
+    });
+  });
+  /* Form usulan bahan (saran 6): kirim ke Supabase, lalu kunci usulan
+     nama yang sama di browser ini. */
+  var sugForms = el("results").querySelectorAll("[data-suggest]");
+  sugForms.forEach(function (f) {
+    if (f.tagName !== "FORM") return;
+    f.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = f.querySelector('[type="submit"]');
+      if (btn.getAttribute("data-busy") === "1") return;
+      var nama = (f.elements.nama.value || "").trim();
+      var msg = f.querySelector(".fb-msg");
+      if (!nama) { if (msg) { msg.hidden = false; msg.textContent = t("sug_name_req"); } return; }
+      btn.setAttribute("data-busy", "1");
+      var catatan = (f.elements.catatan.value || "").trim();
+      var email = (f.elements.email.value || "").trim();
+      f2EnsureSupabase().then(function (sb) {
+        if (!sb) throw new Error("no-supabase");
+        return sb.from("usulan_bahan").insert([{
+          nama: nama, catatan: catatan || null, email: email || null, bahasa: LANG
+        }]);
+      }).then(function (res) {
+        if (res && res.error) throw res.error;
+        try { localStorage.setItem("usulan:" + norm(nama), "1"); } catch (e) {}
+        var p = document.createElement("p");
+        p.className = "fb-thanks"; p.setAttribute("data-suggest", "");
+        p.textContent = t("sug_ok");
+        f.replaceWith(p);
+      }).catch(function () {
+        btn.removeAttribute("data-busy");
+        if (msg) { msg.hidden = false; msg.textContent = t("sug_err"); }
+      });
     });
   });
   var casBtns = el("results").querySelectorAll("[data-copy-cas]");
