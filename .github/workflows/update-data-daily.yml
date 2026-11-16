@@ -1,0 +1,37 @@
+# Update harian data LHLN + Berita — Website Klasifikasi Bahan Halal BPJPH.
+# Dibuat 16 Nov 2026. Jalan tiap hari 06.00 WIB (= 23.00 UTC hari sebelumnya).
+# Script: scripts/update-daily.mjs (Node stdlib saja, tanpa secret/API key).
+# Hanya commit bila ada perubahan nyata; Vercel auto-deploy dari main.
+name: Update harian LHLN & Berita
+
+on:
+  schedule:
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Ambil data terbaru (LHLN + Berita)
+        run: node scripts/update-daily.mjs
+      - name: Commit bila ada perubahan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/berita.json data/lhln-updates.json api/_data/lhln.json index.html
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan — tidak ada commit."
+          else
+            git commit -m "chore(data): update harian LHLN & berita $(date -u +%Y-%m-%d)"
+            git push
+          fi
