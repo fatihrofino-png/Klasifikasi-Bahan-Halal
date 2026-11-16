@@ -1783,7 +1783,7 @@ var I18N = { id: {
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
   popular_label: "Bahan populer:",
-  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
+  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", wa_btn: "Kirim ke WA", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
   data_loading: "Memuat data lampiran…",
@@ -1923,7 +1923,7 @@ I18N.en = {
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
   popular_label: "Popular ingredients:",
-  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", page_btn: "View ingredient page", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
+  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", wa_btn: "Send to WhatsApp", png_btn: "Download image", page_btn: "View ingredient page", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
   data_loading: "Loading appendix data…",
@@ -2057,7 +2057,7 @@ I18N.ar = {
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
   popular_label: "مواد شائعة:",
-  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
+  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", wa_btn: "أرسل واتساب", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
   data_loading: "جارٍ تحميل بيانات الملاحق…",
@@ -2191,7 +2191,7 @@ I18N.zh = {
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
   popular_label: "热门原料：",
-  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", page_btn: "查看原料页面", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
+  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", wa_btn: "发到 WhatsApp", png_btn: "下载图片", page_btn: "查看原料页面", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
   data_loading: "正在加载附录数据…",
@@ -3690,15 +3690,17 @@ var LHLN_FLAG = {
   "Thailand": "th", "Tunisia": "tn", "Turkey": "tr", "United Arab Emirates": "ae",
   "United Kingdom": "gb", "United States of America": "us", "Uruguay": "uy", "Vietnam": "vn"
 };
-/* Baris tombol tiap kartu hasil (item 3 bagikan + item 10 unduh PNG). */
+/* Baris tombol tiap kartu hasil (item 3 bagikan + item 10 unduh PNG + kirim ke WhatsApp). */
 var ICO_SHARE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>';
+var ICO_WA = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
 var ICO_DL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 var ICO_PAGE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
 function cardActionsHTML(kind, casK, slug) {
   var sh = '<button type="button" class="btn-mini" data-share data-kind="' + kind + '"' + (casK ? ' data-cas="' + esc(casK) + '"' : "") + ">" + ICO_SHARE + "<span>" + esc(t("share_btn")) + "</span></button>";
+  var wa = '<button type="button" class="btn-mini" data-wa>' + ICO_WA + "<span>" + esc(t("wa_btn")) + "</span></button>";
   var png = '<button type="button" class="btn-mini" data-png>' + ICO_DL + "<span>" + esc(t("png_btn")) + "</span></button>";
   var pg = slug ? '<a class="btn-mini" href="/bahan/' + esc(slug) + '">' + ICO_PAGE + "<span>" + esc(t("page_btn")) + "</span></a>" : "";
-  return '<div class="card-actions">' + pg + sh + png + "</div>";
+  return '<div class="card-actions">' + pg + sh + wa + png + "</div>";
 }
 /* Bar ringkasan hasil (item 9): hanya kategori yang jumlahnya > 0. */
 function updateResultsSummary(plN, wN, belumN) {
@@ -3997,6 +3999,34 @@ function bindResultButtons() {
         b.classList.add("is-copied");
         setTimeout(function () { b.innerHTML = orig; b.classList.remove("is-copied"); b.removeAttribute("data-busy"); }, 1600);
       });
+    });
+  });
+  /* Kirim hasil ke WhatsApp: buka wa.me dengan pesan berisi nama bahan,
+     status klasifikasi, CAS (bila ada) dan tautan hasil — pengguna yang
+     memilih kontak tujuannya. Tanpa API key, tanpa backend baru. */
+  var waBtns = el("results").querySelectorAll("[data-wa]");
+  waBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".card");
+      var title = card ? (card.querySelector("h3") || { textContent: "" }).textContent.trim() : "";
+      /* Status = span pertama banner saja (span kedua adalah tag seperti
+         "Positive List" / "Tidak ada di lampiran", bukan bagian verdict). */
+      var banner = card ? card.querySelector(".status-banner") : null;
+      var vSpan = banner ? banner.querySelector("span") : null;
+      var status = vSpan ? vSpan.textContent.trim() : "";
+      /* CAS dibaca dari <span class="cas"> hasil render (bentuk "56-81-5"),
+         BUKAN dari data-cas (itu kunci angka "56815" untuk anchor #hasil-). */
+      var casEl = card ? card.querySelector(".cas") : null;
+      var cas = casEl ? casEl.textContent.trim() : "";
+      var q = el("q").value.trim();
+      var base = (location.origin && location.origin !== "null") ? location.origin + location.pathname : location.href.split(/[?#]/)[0];
+      var url = base + (q ? "?q=" + encodeURIComponent(q) : "");
+      var lines = [];
+      if (title) lines.push(title);
+      if (status) lines.push(status);
+      if (cas) lines.push("CAS: " + cas);
+      lines.push(url);
+      window.open("https://wa.me/?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
     });
   });
   var pngBtns = el("results").querySelectorAll("[data-png]");
