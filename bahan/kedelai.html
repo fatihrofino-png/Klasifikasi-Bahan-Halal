@@ -33,6 +33,13 @@
           "name": "Kedelai Halal? Cek Status Bahan — Klasifikasi Bahan Halal BPJPH",
           "description": "Status Kedelai (Soybean): Dikecualikan — tercantum di Lampiran Kepkaban BPJPH 301/2026 No. 4.",
           "inLanguage": "id-ID",
+          "author": {
+            "@type": "Person",
+            "name": "Rofik",
+            "jobTitle": "Penyelia Halal"
+          },
+          "datePublished": "2026-11-16",
+          "dateModified": "2026-11-16",
           "isPartOf": {
             "@type": "WebSite",
             "name": "Klasifikasi Bahan Halal BPJPH",
@@ -45,6 +52,19 @@
               "Soybean"
             ]
           }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Apakah Kedelai halal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Status Kedelai: Dikecualikan — tercantum di Lampiran Kepkaban BPJPH 301/2026 No. 4."
+              }
+            }
+          ]
         },
         {
           "@type": "BreadcrumbList",
@@ -260,6 +280,12 @@ button, [role="button"], select, summary, input:not([type="checkbox"], [type="ra
       .bahan-sub strong { color: #fff; font-weight: 700; }
       .url-hint { margin: 14px 0 0; font-size: .85rem; color: #9dbfa4; }
       .url-hint code { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: #d9ecdd; }
+      .meta-line { margin: 10px 0 0; font-size: .9rem; color: #cfe5d2; }
+      .meta-line strong { color: #fff; }
+      .faq-list { display: grid; gap: 12px; }
+      .faq-item { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+      .faq-item h3 { margin: 0 0 6px; font-size: 1.04rem; }
+      .faq-item p { margin: 0; color: var(--ink-2); }
 
       main { padding: 26px 0 10px; }
       section { margin-bottom: 30px; }
@@ -549,6 +575,7 @@ button, [role="button"], select, summary, input:not([type="checkbox"], [type="ra
         <h1 class="bahan">Kedelai</h1>
         <p class="bahan-sub"><strong>Soybean</strong></p>
         <p class="url-hint">Alamat halaman: <code>cek-bahan.vercel.app/bahan/kedelai</code></p>
+        <p class="meta-line">Ditulis oleh <strong>Rofik</strong>, Penyelia Halal &middot; Terakhir diperbarui 16 November 2026</p>
       </div>
 
       <main>
@@ -624,6 +651,17 @@ button, [role="button"], select, summary, input:not([type="checkbox"], [type="ra
           <a class="reg-link" href="https://cek-bahan.vercel.app/">Lihat halaman Regulasi
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
+        </section>
+
+        <!-- ================= PERTANYAAN UMUM ================= -->
+        <section aria-label="Pertanyaan umum">
+          <h2 class="sec">Pertanyaan umum</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <h3>Apakah Kedelai halal?</h3>
+              <p>Status Kedelai: Dikecualikan — tercantum di Lampiran Kepkaban BPJPH 301/2026 No. 4.</p>
+            </div>
+          </div>
         </section>
 
         <!-- ================= BAHAN TERKAIT ================= -->
@@ -777,5 +815,12 @@ button, [role="button"], select, summary, input:not([type="checkbox"], [type="ra
         });
       })();
     </script>
+    <!-- Vercel Speed Insights (gratis, paket Hobby): ukur Core Web Vitals dari kunjungan nyata.
+         Rute klasik /_vercel/speed-insights/script.js terverifikasi 200 di live (16 Nov 2026);
+         dashboard Vercel tidak punya tombol Enable — snippet inilah yang mengaktifkannya. -->
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
 </html>
