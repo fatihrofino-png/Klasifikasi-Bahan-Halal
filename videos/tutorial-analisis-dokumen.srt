@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:07,962
+Tutorial: menganalisis dokumen CoA dan MSDS di website Klasifikasi Bahan Halal
+
+1
+00:00:07,962 --> 00:00:08,574
+BPJPH.
+
+1
+00:00:08,600 --> 00:00:14,702
+Buka tab Analisis Dokumen di website cek-bahan.vercel.app.
+
+1
+00:00:14,733 --> 00:00:21,341
+Unggah dokumen CoA atau MSDS Anda. Pastikan dokumen terbaca jelas agar
+
+2
+00:00:21,341 --> 00:00:22,851
+hasilnya akurat.
+
+2
+00:00:22,867 --> 00:00:29,318
+Tunggu beberapa saat selagi AI membaca dokumen dan mencocokkannya dengan
+
+2
+00:00:29,318 --> 00:00:30,662
+regulasi BPJPH.
+
+2
+00:00:30,667 --> 00:00:36,970
+Hasil analisis menampilkan ringkasan isi dokumen, bahan yang terdeteksi, dan
+
+3
+00:00:36,970 --> 00:00:39,210
+status masing-masing bahan.
+
+3
+00:00:39,233 --> 00:00:44,887
+Bila ada bahan berstatus Belum Diatur, hasil analisis menyarankan dokumen
+
+3
+00:00:44,887 --> 00:00:47,907
+pendukung dan tindak lanjut berikutnya.
+
+3
+00:00:47,933 --> 00:00:53,843
+Simpan hasil analisisnya sebagai bahan pengajuan ke Lembaga Pemeriksa Halal.
+
+4
+00:00:53,867 --> 00:01:00,704
+Itu cara menganalisis dokumen. Coba sekarang di cek-bahan.vercel.app.
+
