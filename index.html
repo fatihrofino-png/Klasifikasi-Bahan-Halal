@@ -125,16 +125,16 @@
           --gold-soft: #4a3f27;
           --ink: #edf3ee;
           --muted: #a9bcab;
-          --bg: #0d120e;
-          --surface: #17211a;
-          --results-bg: #12291d;
-          --surface-2: #1f2c22;
-          --card: #141d17;
-          --line: #2d3d31;
-          --line-strong: #3c5042;
+          --bg: #0b0f0c;
+          --surface: #222f27;
+          --results-bg: #14261a;
+          --surface-2: #2a3d31;
+          --card: #1b2a20;
+          --line: #33473a;
+          --line-strong: #4a6353;
           --ok-bg: #10301e; --ok-ink: #8fe0b2; --ok-solid: #2ea36b;
-          --wajib-bg: #371b16; --wajib-ink: #ffb3a6; --wajib-solid: #c94f3d;
-          --belum-bg: #38300f; --belum-ink: #f2cf6b; --belum-solid: #c79a2e;
+          --wajib-bg: #3d1a14; --wajib-ink: #ffb3a6; --wajib-solid: #c94f3d;
+          --belum-bg: #3a2f10; --belum-ink: #f2cf6b; --belum-solid: #c79a2e;
           --focus: #8fe0b2;
           --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
           --shadow-md: 0 2px 6px rgba(0,0,0,.45), 0 16px 40px -12px rgba(0,0,0,.55);
@@ -411,7 +411,7 @@
         opacity: .5; transform: scale(.92);
         transition: opacity .22s ease, transform .22s var(--ease-out), background .16s ease;
       }
-      :root[data-theme="dark"] .to-top { background: #007a33; }
+      :root[data-theme="dark"] .to-top { background: var(--ok-solid); color: var(--bg); }
       .to-top.show { opacity: 1; transform: scale(1); }
       .to-top:hover { filter: brightness(1.12); }
       .to-top:active { transform: scale(.94); }
@@ -419,6 +419,7 @@
       /* ---------- Result cards ---------- */
       #results { margin-top: 10px; }
       #results:not(:empty) { background: var(--results-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 18px 18px; font-family: "Inter", "Plus Jakarta Sans", system-ui, sans-serif; }
+      :root[data-theme="dark"] #results:not(:empty) { border-color: var(--line-strong); }
       .results-title { margin: 26px 0 2px; font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; }
       .results-count { margin: 0; color: var(--muted); font-size: .92rem; }
       .match-line { margin: 10px 0 0; font-size: .92rem; }
@@ -460,7 +461,7 @@
       .results-summary { position: sticky; top: calc(var(--topbar-h, 120px) + 10px); z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 10px 0 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--shadow-sm); font-size: .88rem; font-weight: 600; }
       .results-summary .rs-item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
       .results-summary .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
-      .dot-ok { background: #0e8a44; } .dot-wajib { background: #c23a28; } .dot-belum { background: #d9a514; }
+      .dot-ok { background: var(--ok-solid); } .dot-wajib { background: var(--wajib-solid); } .dot-belum { background: var(--belum-solid); }
       .reg-timeline { margin: 0 0 22px; }
       .reg-timeline h2 { font-size: 1.15rem; margin: 0 0 12px; }
       .reg-timeline ol { list-style: none; margin: 0; padding: 0 0 0 8px; border-inline-start: 2px solid var(--line); }
@@ -471,6 +472,9 @@
       .reg-timeline .tl-name { font-weight: 700; }
       .reg-timeline .tl-desc { color: var(--muted); font-size: .92rem; }
       .reg-timeline .tl-tag { display: inline-block; margin-inline-start: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .04em; padding: 2px 8px; border-radius: 999px; background: #fbe9e7; color: #7e1d12; border: 1px solid #e8b4ac; }
+      :root[data-theme="dark"] .reg-timeline .tl-tag { background: #3d1a14; color: #ffb3a6; border-color: #6e2a20; }
+      .reg-timeline .tl-tag-cancelled { background: #fdf6e0; color: #7a5200; border-color: #e0c06a; }
+      :root[data-theme="dark"] .reg-timeline .tl-tag-cancelled { background: #3a2f10; color: #f2cf6b; border-color: #6e5a1e; }
       .card-body { padding: 20px 22px 22px; }
       .status-banner {
         display: flex; align-items: center; gap: 12px; padding: 15px 22px;
@@ -486,8 +490,8 @@
       .st-wajib { background: linear-gradient(120deg, #c23a28, #7e1d12); color: #fff; }
       .st-belum { background: linear-gradient(120deg, #d9a514, #a57608); color: #fff; }
       :root[data-theme="dark"] .st-ok { background: linear-gradient(120deg, #177a43, #0c3524); }
-      :root[data-theme="dark"] .st-wajib { background: linear-gradient(120deg, #a83a2a, #5f1a10); }
-      :root[data-theme="dark"] .st-belum { background: linear-gradient(120deg, #a37f14, #6e5410); }
+      :root[data-theme="dark"] .st-wajib { background: linear-gradient(120deg, #b03a28, #5f1a10); }
+      :root[data-theme="dark"] .st-belum { background: linear-gradient(120deg, #b48a17, #6e5410); }
       .card h3 { font-family: var(--font-display); font-optical-sizing: auto; font-size: 1.5rem; line-height: 1.2; font-weight: 600; letter-spacing: 0; margin-bottom: 2px; overflow-wrap: anywhere; }
       .name-en { color: var(--muted); margin: 0 0 10px; }
       dl.fields { display: grid; grid-template-columns: 176px 1fr; gap: 6px 16px; margin: 12px 0; }
@@ -583,7 +587,7 @@
       .browse-section { margin-bottom: 26px; }
       .browse-section > h2 { display: flex; align-items: center; gap: 12px; }
       .browse-section > h2 .b-badge { font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--forest); color: #fff; padding: 4px 11px; border-radius: 999px; }
-      :root[data-theme="dark"] .browse-section > h2 .b-badge { background: #007a33; }
+      :root[data-theme="dark"] .browse-section > h2 .b-badge { background: var(--ok-solid); color: var(--bg); }
       .cat-block { border: 1px solid var(--line); border-radius: 16px; margin: 12px 0; overflow: hidden; background: var(--card); box-shadow: var(--shadow-sm); }
       .cat-head {
         width: 100%; min-height: 58px; display: flex; align-items: center; gap: 12px; text-align: start;
@@ -740,6 +744,34 @@
 
       /* ---------- Lembaga Halal Luar Negeri ---------- */
       .lhln-meta { margin: 10px 0 0; font-size: .95rem; }
+      /* Bendera (16 Nov 2026): <img> flagcdn, bukan emoji — Windows tidak
+         merender emoji bendera. Fallback kode negara bila gambar gagal. */
+      .lm-flag img, .lhln-flag img { width: 1.25em; height: auto; border-radius: 2px; vertical-align: -0.18em; display: inline-block; }
+      .flag-fallback { display: none; font-size: .68rem; font-weight: 800; letter-spacing: .02em; padding: 1px 4px; border: 1px solid var(--line-strong); border-radius: 4px; }
+      .lhln-flag { white-space: nowrap; }
+      /* Berita Terkini (16 Nov 2026) */
+      .news-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+      .news-filters button { min-height: 42px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--card); color: var(--ink); font: inherit; font-weight: 700; font-size: .9rem; cursor: pointer; }
+      .news-filters button[aria-pressed="true"] { background: var(--forest); color: #fff; border-color: var(--forest); }
+      :root[data-theme="dark"] .news-filters button[aria-pressed="true"] { background: var(--ok-solid); border-color: var(--ok-solid); color: var(--bg); }
+      .news-list { display: grid; gap: 12px; }
+      .news-item { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 16px 18px; }
+      .news-item h3 { margin: 0 0 6px; font-size: 1.08rem; line-height: 1.35; }
+      .news-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin: 0 0 8px; font-size: .86rem; color: var(--muted); font-weight: 600; }
+      .news-badge { display: inline-flex; padding: 2px 10px; border-radius: 999px; font-size: .76rem; font-weight: 800; letter-spacing: .04em; background: var(--ok-bg); color: var(--ok-ink); border: 1px solid var(--ok-solid); }
+      .news-badge.lppom { background: var(--gold-soft); color: var(--gold-ink); border-color: var(--gold); }
+      :root[data-theme="dark"] .news-badge.lppom { color: var(--gold); }
+      .news-item p { margin: 0 0 10px; font-size: .95rem; }
+      .news-src { font-weight: 700; color: var(--ok-ink); }
+      /* Tutorial (16 Nov 2026) — kartu video, lazy-load via preload="none" */
+      .tut-list { display: grid; gap: 14px; }
+      .tut-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 16px 18px; }
+      .tut-card video { display: block; width: 100%; height: auto; border-radius: 12px; background: #000; margin-bottom: 12px; }
+      .tut-card h3 { margin: 0 0 6px; font-size: 1.08rem; line-height: 1.35; }
+      .tut-card p { margin: 0 0 10px; font-size: .95rem; }
+      .tut-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin: 0; font-size: .86rem; color: var(--muted); font-weight: 600; }
+      .tut-meta a { font-weight: 700; color: var(--ok-ink); }
+      @media (min-width: 860px) { .tut-list { grid-template-columns: repeat(3, 1fr); } }
       .lhln-meta a { overflow-wrap: anywhere; }
       .lhln-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; margin: 18px 0 4px; }
       .lhln-search { flex: 2 1 240px; }
@@ -763,7 +795,7 @@
         text-align: start; background: var(--forest); color: #fff; font-weight: 700;
         padding: 13px 16px; font-size: .86rem; letter-spacing: .02em; white-space: nowrap;
       }
-      :root[data-theme="dark"] .lhln-table th { background: #007a33; }
+      :root[data-theme="dark"] .lhln-table th { background: var(--ok-solid); color: var(--bg); }
       .lhln-table td { padding: 12px 16px; border-top: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
       .lhln-table tbody tr { transition: background .14s ease; }
       .lhln-table tbody tr:hover { background: var(--surface); }
@@ -1011,7 +1043,7 @@
       .drawer-nav button:hover { background: var(--surface); }
       .drawer-nav button:active { transform: scale(.97); }
       .drawer-nav button[aria-current="page"] { background: var(--forest); color: #ffffff; }
-      :root[data-theme="dark"] .drawer-nav button[aria-current="page"] { background: #007a33; }
+      :root[data-theme="dark"] .drawer-nav button[aria-current="page"] { background: var(--ok-solid); color: var(--bg); }
       .drawer-user { padding: 4px 2px 2px; }
       .drawer-tools { margin-top: auto; padding: 14px 16px 20px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
       .drawer-section-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 2px 2px; }
@@ -1120,6 +1152,8 @@
           <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
           <button type="button" data-nav="jelajah" data-i18n="nav_jelajah">Jelajah Kategori</button>
           <button type="button" data-nav="regulasi" data-i18n="nav_regulasi">Regulasi</button>
+          <button type="button" data-nav="berita" data-i18n="nav_berita">Berita Terkini</button>
+          <button type="button" data-nav="tutorial" data-i18n="nav_tutorial">Tutorial</button>
           <button type="button" data-nav="lhln" data-i18n="nav_lhln">Lembaga Halal Luar Negeri</button>
           <button type="button" data-nav="kontak" data-i18n="nav_kontak">Kontak</button>
         </nav>
@@ -1141,15 +1175,15 @@
           </button>
           <div class="lang-wrap">
             <button type="button" class="tool-btn lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria="lang_label" aria-label="Pilih bahasa">
-              <span class="lm-flag" id="lang-flag" aria-hidden="true">&#127470;&#127465;</span>
+              <span class="lm-flag" id="lang-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/id.png" width="20" height="15" loading="lazy" alt="Indonesia" /><span class="flag-fallback" aria-hidden="true">ID</span></span>
               <span class="lang-name" id="lang-current">Bahasa Indonesia</span>
               <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
             </button>
             <ul class="lang-menu" id="lang-menu" role="listbox" data-i18n-aria="lang_label" aria-label="Pilih bahasa" hidden>
-              <li><button type="button" role="option" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true">&#127470;&#127465;</span>Bahasa Indonesia<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127468;&#127463;</span>English<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127480;&#127462;</span>العربية<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
-              <li><button type="button" role="option" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127464;&#127475;</span>中文<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/id.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">ID</span></span>Bahasa Indonesia<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/gb.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">GB</span></span>English<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/sa.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">SA</span></span>العربية<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
+              <li><button type="button" role="option" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/cn.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">CN</span></span>中文<svg class="lm-check" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button></li>
             </ul>
           </div>
         </div>
@@ -1175,6 +1209,8 @@
         <button type="button" data-nav="analisis" data-i18n="nav_analisis">Analisis Dokumen</button>
         <button type="button" data-nav="jelajah" data-i18n="nav_jelajah">Jelajah Kategori</button>
         <button type="button" data-nav="regulasi" data-i18n="nav_regulasi">Regulasi</button>
+        <button type="button" data-nav="berita" data-i18n="nav_berita">Berita Terkini</button>
+        <button type="button" data-nav="tutorial" data-i18n="nav_tutorial">Tutorial</button>
         <button type="button" data-nav="lhln" data-i18n="nav_lhln">Lembaga Halal Luar Negeri</button>
         <button type="button" data-nav="kontak" data-i18n="nav_kontak">Kontak</button>
       </div>
@@ -1194,10 +1230,10 @@
           <svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
         </button>
         <div class="drawer-lang" role="group" data-i18n-aria="lang_label" aria-label="Pilih bahasa">
-          <button type="button" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true">&#127470;&#127465;</span>Bahasa Indonesia</button>
-          <button type="button" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127468;&#127463;</span>English</button>
-          <button type="button" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127480;&#127462;</span>العربية</button>
-          <button type="button" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true">&#127464;&#127475;</span>中文</button>
+          <button type="button" data-lang-opt="id" aria-selected="true"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/id.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">ID</span></span>Bahasa Indonesia</button>
+          <button type="button" data-lang-opt="en" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/gb.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">GB</span></span>English</button>
+          <button type="button" data-lang-opt="ar" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/sa.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">SA</span></span>العربية</button>
+          <button type="button" data-lang-opt="zh" aria-selected="false"><span class="lm-flag" aria-hidden="true"><img class="flag-img" src="https://flagcdn.com/w40/cn.png" width="20" height="15" loading="lazy" alt="" /><span class="flag-fallback" aria-hidden="true">CN</span></span>中文</button>
         </div>
       </div>
     </nav>
@@ -1349,6 +1385,62 @@
         <div id="regulasi-isi"></div>
       </section>
 
+      <!-- ================= VIEW: BERITA TERKINI ================= -->
+      <section class="view" id="view-berita" aria-labelledby="judul-berita" hidden>
+        <div class="page-head">
+          <span class="kicker" data-i18n="berita_kicker">Dari sumber resmi</span>
+          <h1 id="judul-berita" data-i18n="berita_title">Berita Terkini</h1>
+          <p class="lede" data-i18n="berita_lede">Kabar terbaru seputar halal dari BPJPH dan LPPOM MUI. Daftar digabungkan dan diurutkan dari yang terbaru; ketuk “Sumber” untuk membaca artikel aslinya.</p>
+          <p class="lhln-meta" id="berita-updated"><span data-i18n="berita_loading">Memuat berita…</span></p>
+          <p class="lhln-meta" id="berita-note" hidden></p>
+        </div>
+        <div class="news-filters" role="group" aria-label="Filter sumber berita">
+          <button type="button" data-news-filter="all" aria-pressed="true" data-i18n="berita_filter_all">Semua</button>
+          <button type="button" data-news-filter="BPJPH" aria-pressed="false">BPJPH</button>
+          <button type="button" data-news-filter="LPPOM MUI" aria-pressed="false">LPPOM MUI</button>
+        </div>
+        <div class="news-list" id="berita-list" aria-live="polite"></div>
+        <p class="shown-note" id="berita-empty" hidden></p>
+      </section>
+
+      <!-- ================= VIEW: TUTORIAL ================= -->
+      <section class="view" id="view-tutorial" aria-labelledby="judul-tutorial" hidden>
+        <div class="page-head">
+          <span class="kicker" data-i18n="tut_kicker">Panduan video langkah demi langkah</span>
+          <h1 id="judul-tutorial" data-i18n="tut_title">Tutorial</h1>
+          <p class="lede" data-i18n="tut_lede">Tiga video pendek yang memandu Anda memakai website ini: mencari bahan, memakai AI Halal, dan menganalisis dokumen. Tekan putar pada video yang Anda butuhkan — video hanya dimuat saat diputar.</p>
+        </div>
+        <div class="tut-list">
+          <article class="tut-card">
+            <video controls preload="none" poster="videos/tutorial-pencarian-poster.jpg">
+              <source src="videos/tutorial-pencarian.mp4" type="video/mp4" />
+              <track kind="subtitles" label="Bahasa Indonesia" srclang="id" src="videos/tutorial-pencarian.srt" default />
+            </video>
+            <h3 data-i18n="tut_1_title">Cara Mencari Bahan</h3>
+            <p data-i18n="tut_1_desc">Cara mengecek status bahan halal: ketik nama bahan atau nomor CAS, lalu baca kartu hasil Dikecualikan, Wajib, atau Belum Diatur — contohnya gliserin.</p>
+            <p class="tut-meta"><span class="news-badge">1:26</span><a href="videos/tutorial-pencarian.srt" download data-i18n="tut_srt">Unduh subtitle (.srt)</a></p>
+          </article>
+          <article class="tut-card">
+            <video controls preload="none" poster="videos/tutorial-ai-halal-poster.jpg">
+              <source src="videos/tutorial-ai-halal.mp4" type="video/mp4" />
+              <track kind="subtitles" label="Bahasa Indonesia" srclang="id" src="videos/tutorial-ai-halal.srt" default />
+            </video>
+            <h3 data-i18n="tut_2_title">Memakai AI Halal</h3>
+            <p data-i18n="tut_2_desc">Memakai fitur AI Halal: Tanya Langsung, Analisis Dokumen, dan Upload Sertifikat — masuk dengan akun Google, gratis dengan kuota harian.</p>
+            <p class="tut-meta"><span class="news-badge">1:17</span><a href="videos/tutorial-ai-halal.srt" download data-i18n="tut_srt">Unduh subtitle (.srt)</a></p>
+          </article>
+          <article class="tut-card">
+            <video controls preload="none" poster="videos/tutorial-analisis-dokumen-poster.jpg">
+              <source src="videos/tutorial-analisis-dokumen.mp4" type="video/mp4" />
+              <track kind="subtitles" label="Bahasa Indonesia" srclang="id" src="videos/tutorial-analisis-dokumen.srt" default />
+            </video>
+            <h3 data-i18n="tut_3_title">Menganalisis Dokumen</h3>
+            <p data-i18n="tut_3_desc">Menganalisis CoA dan MSDS: unggah dokumen, tunggu AI membaca bahannya, lalu simpan hasilnya untuk pengajuan ke Lembaga Pemeriksa Halal.</p>
+            <p class="tut-meta"><span class="news-badge">1:01</span><a href="videos/tutorial-analisis-dokumen.srt" download data-i18n="tut_srt">Unduh subtitle (.srt)</a></p>
+          </article>
+        </div>
+      </section>
+
       <!-- ================= VIEW: KONTAK ================= -->
       <section class="view" id="view-kontak" aria-labelledby="judul-kontak" hidden>
         <div class="page-head">
@@ -1405,7 +1497,8 @@
           <span class="kicker" data-i18n="lhln_kicker">Diakui BPJPH</span>
           <h1 id="judul-lhln" data-i18n="lhln_title">Lembaga Halal Luar Negeri</h1>
           <p class="lede" data-i18n="lhln_lede">Daftar 126 Lembaga Halal Luar Negeri (LHLN) yang diakui BPJPH. Cari berdasarkan nama lembaga, saring menurut negara atau lingkup layanan, atau unduh seluruh daftarnya sebagai CSV.</p>
-          <p class="lhln-meta"><strong data-i18n="lhln_updated">Data diperbarui: 15 November 2026</strong></p>
+          <p class="lhln-meta"><strong data-i18n="lhln_updated">Data diperbarui: 16 November 2026</strong></p>
+          <p class="lhln-meta" id="lhln-check-line">Terakhir dicek: 16 November 2026 • 6 nama lembaga diperbarui</p>
           <p class="lhln-meta"><span data-i18n="lhln_source_label">Sumber data:</span> <a href="https://bpjph.halal.go.id/cari/lembaga-halal-luar-negeri" target="_blank" rel="noopener">bpjph.halal.go.id/cari/lembaga-halal-luar-negeri</a></p>
         </div>
         <div class="lhln-tools">
@@ -1421,7 +1514,7 @@
             <label class="sr" for="lhln-scope" data-i18n="lhln_scope_label">Lingkup layanan</label>
             <select id="lhln-scope"></select>
           </div>
-          <a class="btn-download" href="data:application/octet-stream;base64,bm8sbmFtYV9saGxuLGFsYW1hdCxsaW5na3VwLG1hc2FfYmVybGFrdQoxLEFMLUJBUUFSQSBDRVJUSUZJQ0FUSU9OLCJYaWFtZW4sIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMDItMjAKMixBbC1XYWl6IENlcnRpZmljYXRpb24gYW5kIFRyYWluaW5nIFNlcnZpY2VzIChQcml2YXRlKSBMaW1pdGVkLCJMYWhvcmUgUGFraXN0YW4sIFBha2lzdGFuIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAozLEFtZXJpY2FuIEhhbGFsIEZvdW5kYXRpb24gKEFIRiksIlRhbXBhLCBVbml0ZWQgU3RhdGVzIG9mIEFtZXJpY2EiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjQsQU5JQyBIYWxhbCBBdXRob3JpdHksIkNodWxsb3JhIDIxOTAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDMwLTA2LTMwCjUsQVJBIEhhbGFsIENlcnRpZmljYXRpb24gU2VydmljZXMgQ2VudGVyIEluYy4sIlpoZW5nemhvdSwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0xMC0wNAo2LCJBU0VHVVJBTUlFTlRPIEhBTEFMLCBTLkEuIGRlIEMuVi4iLCJNZXhpY28sIE1leGljbyIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgUHJvY2Vzc2luZyBzZXJ2aWNlcywyMDMwLTAxLTIxCjcsQXVzdHJhbGlhIEhhbGFsIEZvb2QgU2VydmljZXMgKEFIRlMpLCJRdWVlbnNsYW5kIDQxMjcsIEF1c3RyYWxpYSIsRm9vZCB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA4LTI2CjgsQXVzdHJhbGlhbiBIYWxhbCBBdXRob3JpdHkgYW5kIEFkdmlzZXJzLCJNZWxib3VybmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcyB8IFN0b3JhZ2Ugc2VydmljZXMsMjAyOC0wMi0yMAo5LEF1c3RyYWxpYW4gSGFsYWwgRGV2ZWxvcG1lbnQgYW5kIEFjY3JlZGl0YXRpb24gKEFIREFBKSwiYnJpc2JhbmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjEwLEFVU1RSQUxJQU4gSU5URVJOQVRJT05BTCBIQUxBTCBDRVJUSUZJQ0FUSU9OIE9SR0FOSVNBVElPTiBQWVQgTFRELCJNZWxib3VybmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjktMTEtMTEKMTEsQmVsYXJ1c2lhbiBDZW50ZXIgZm9yIFN0YW5kYXJkaXphdGlvbiBhbmQgQ2VydGlmaWNhdGlvbiBIYWxhbCBMTEMgSGFsYWwgKEJlbEhhbGFsKSwiTWluc2ssIEJlbGFydXMiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgU2VydmljZXMsMjAyOC0wOC0yNgoxMixCSUMgSEFMQUwgS09SRUEsIkJVU0FOLCBTT1VUSCBLT1JFQSwgU291dGggS29yZWEiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcyB8IFN0b3JhZ2Ugc2VydmljZXMsMjAyOC0xMC0yOQoxMyxDRElBTCBIQUxBTCBBVVRPUklEQURFIERFIENFUlRJRklDQUNBTyBMVERBLCJTw6NvIEJlcm5hcmRvIGRvIENhbXBvLCBCcmF6aWwiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA4LTI2CjE0LENlbnRybyBJc2zDoW1pY28gZGUgbGEgUmVww7pibGljYSBBcmdlbnRpbmEsIkJ1ZW5vcyBBaXJlcywgQXJnZW50aW5hIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMzAtMDItMjQKMTUsIkNoaW5hIEhhbGFsIENlcnRpZmljYXRpb24gU2hhbmdoYWkgQ28uLEx0ZC4iLCJTaGFuZ2hhaSwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcywyMDMwLTAyLTAyCjE2LEZBTUJSQVMgQ0VSVElGSUNBQ0lPTiBIQUxBTCBTQVMsIkJPR09Uw4EgREMsIEtvbG9tYmlhIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMzAtMDYtMjkKMTcsRkFNQlJBUyBIYWxhbCBDZXJ0aWZpY2HDp8OjbyBMdGRhLCJTw6NvIFBhdWxvIC0gU1AsIEJyYXppbCIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMTkKMTgsRlVJTiBIYWxhbCBDZXJ0aWZpY2F0aW9uIENlbnRlciwiRnVxaW5nLCBDaGluYSIsRm9vZCB8IENvc21ldGljcywyMDMwLTA0LTMwCjE5LEdIQyBHTE9CQUwgSEFMQUwgQ0VSVElGSUNBVElPTiBDT01QQU5ZIExJTUlURUQsIkhvIENoaSBNaW5oIENpdHksIFZpZXRuYW0iLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNy0xNQoyMCxHSU1ERVMgKEFzc29jaWF0aW9uIGZvciB0aGUgSW5zcGVjdGlvbiBhbmQgQ2VydGlmaWNhdGlvbiBvZiBGb29kIGFuZCBTdXBwbGllcyksIklzdGFuYnVsLCBUdXJrZXkiLEZvb2QgfCBCZXZlcmFnZXMgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOS0wNi0xMgoyMSxHTCBIYWxhbCBDZW50ZXIgKEdMIEhBQyksIlNlb3VsLCBTb3V0aCBLb3JlYSIsRm9vZCB8IENvc21ldGljcyB8IENvbnN1bWVyIEdvb2RzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcywyMDMwLTA0LTE2CjIyLEdsb2JhbCBBdXN0cmFsaWFuIEhhbGFsIENlcnRpZmljYXRpb24sIlN5ZG5leSwgTlNXIDIyMDAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjIzLEdsb2JhbCBIYWxhbCBTeXN0ZW1zIEZyYW5jZSwiUGFyaXMsIEZyYW5jZSIsRm9vZCB8IENvc21ldGljcywyMDMwLTAyLTEwCjI0LEdMT0JBTCBIQUxBTCBUUkFERSBDRU5UUkUgKEdIVEMpLCJCcmlzYmFuZSwgUUxELCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoyNSxHb29kIEZvcnR1bmUgSGFsYWwgQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyAoUWluZ2RhbykgQ28uIEx0ZC4sIlFpbmdkYW8sIENoaW5hIixGb29kIHwgUGFja2FnaW5nIHNlcnZpY2VzLDIwMjktMTItMTcKMjYsSEFGU0EgSEFMQUwgQ0VSVElGSUNBVElPTiBTRVJWSUNFUyBBTkQgRk9PRCBGT1JFSUdOIFRSQURFIExJTUlURUQgQ09NUEFOWSwiSVNUQU5CVUwsIFR1cmtleSIsRm9vZCB8IEJldmVyYWdlcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTA2LTExCjI3LEhhbGFsIEFzc2Vzc21lbnQgQ291bmNpbCAoR3VhcmFudGVlKSBMaW1pdGVkLCJDb2xvbWJvLCBTcmkgTGFua2EiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IENvbnN1bWVyIEdvb2RzLDIwMjktMDUtMDUKMjgsSGFsYWwgQXVzdHJhbGlhIFB0eSBMdGQsIlBhcnJhbWF0dGEgTlNXIDIxNTAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTAyLTA2CjI5LEhhbGFsIENlcnRpZmljYXRpb24gQWdlbmN5IChIQ0EpLCJIYW5vaSwgVmlldG5hbSIsRm9vZCB8IEJldmVyYWdlcywyMDI4LTEwLTE2CjMwLEhhbGFsIENlcnRpZmljYXRpb24gQXV0aG9yaXR5IEF1c3RyYWxpYSAoSENBKSwiU3lkbmV5LCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI5LTA1LTE2CjMxLEhhbGFsIENlcnRpZmljYXRpb24gQ2VudGVyIG9mIENoaWxlIC0gQ0hJTEVIQUxBTCwiVmnDsWEgZGVsIE1hciwgQ2hpbGUiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyNy0xMS0xNAozMixIYWxhbCBDZXJ0aWZpY2F0aW9uIEV1cm9wZSAoSENFKSwiTGVpY2VzdGVyLCBVbml0ZWQgS2luZ2RvbSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDgtMjYKMzMsSGFsYWwgQ2VydGlmaWNhdGlvbiBPcmdhbmlzYXRpb24sIldlc3QgTWlkbGFuZHMsIFVuaXRlZCBLaW5nZG9tIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0xMi0xMQozNCxIYWxhbCBDZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIChIQ1MpLCJSaGVpbmZlbGRlbiwgU3dpdHplcmxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOS0wNS0yNwozNSxIYWxhbCBDZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIENob25ncWluZyAoSENTKSwiQ2hvbmdxaW5nLCBDaGluYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIFByb2R1Y3RzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IEdlbmV0aWNhbGx5IG1vZGlmaWVkIG9yZ2FuaXNtIChHTU8pIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMgfCBQYWNrYWdpbmcgc2VydmljZXMsMjAyOC0wMi0xOQozNixIYWxhbCBDb25mb3JtaXR5IFNlcnZpY2VzKEhDUyksIkF1Y2tsYW5kLCBOZXcgWmVhbGFuZCIsRm9vZCB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI3LTExLTE0CjM3LCJIQUxBTCBDT05TVUxUSU5HLCBTLkwuIiwiVG9ycmVtb2xpbm9zLCBNYWxhZ2EsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDItMDUKMzgsSGFsYWwgQ29udHJvbCBHbWJILCJSdWVzc2Vsc2hlaW0sIEdlcm1hbnkiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOS0wMi0yOAozOSxIYWxhbCBDb3JyZWN0IEZyYW5jZSwiTGlsbGUsIEZyYW5jZSIsRm9vZCB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDYtMTIKNDAsSGFsYWwgQ29ycmVjdCBHZXJtYW55LCJPYmVyaGF1c2VuLCBHZXJtYW55IixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDYtMTMKNDEsSGFsYWwgQ29ycmVjdCBTcGFpbiwiMDMwMDMsIEFsaWNhbnRlLCBTcGFpbiIsRm9vZCB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMzAtMDMtMTcKNDIsIkhBTEFMIERFVkVMT1BNRU5UIElOU1RJVFVURSBPRiBUSEUgUEhJTElQUElORVMsIElOQy4iLCJRdWV6b24gQ2l0eSwgUGhpbGlwcGluZXMiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wMi0xMQo0MyxIYWxhbCBGZWVkIGFuZCBGb29kIEluc3BlY3Rpb24gQXV0aG9yaXR5IChIRkZJQSksIlRoZSBIYWd1ZSwgTmV0aGVybGFuZHMiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzLDIwMjgtMTItMDIKNDQsSGFsYWwgRm9vZCAmIFF1YWxpdHksIlZBTEVOQ0lBLCBTcGFpbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTAzLTI1CjQ1LEhBTEFMIEZPT0QgQVVUSE9SSVRZIChIRkEpIExJTUlURUQsIkxvbmRvbiwgVW5pdGVkIEtpbmdkb20iLEZvb2QgfCBCZXZlcmFnZXMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTA4LTI2CjQ2LEhhbGFsIEZvb2QgQ291bmNpbCBvZiBFdXJvcGUgKEhGQ0UpIEJlbGdpdW0sIkJydXNzZWxzLCBCZWxnaXVtIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDItMjQKNDcsSGFsYWwgSW5kaWEgUHJpdmF0ZSBMaW1pdGVkLCJDaGVubmFpLCBJbmRpYSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDItMjAKNDgsSGFsYWwgSXRhbGlhLCJNaWxhbiAvIFZpY2VuemEsIEl0YWx5IixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0wOC0yNgo0OSwiSGFsYWwgTWFkYW5pIENlcnRpZmljYXRpb24gJiBJbnNwZWN0aW9uIFNlcnZpY2VzIChTaGVuemhlbikgQ28uLEx0ZCIsIlNoZW56aGVuLCBDaGluYSIsRm9vZCB8IENvbnN1bWVyIEdvb2RzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IFBhY2thZ2luZyBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcywyMDMwLTA0LTA4CjUwLEhhbGFsIE1vbnRyw6lhbCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSBJbmMuIChITUNBKSwiQnJvc3NhcmQsIFFDIEo0WSAwRTMsIENhbmFkYSwgQ2FuYWRhIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKNTEsSGFsYWwgUXVhaWx0eSBDb250cm9sIChIUUMpIEdlcm1hbnkgR21iSCwiT3NuYWJyw7xjaywgR2VybWFueSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAyOS0wMy0yMQo1MixIYWxhbCBRdWFsaXR5IENvbnRyb2wgKEhRQykgQXVzdHJpYSwiTGlueiwgQXVzdHJpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTA1LTE2CjUzLEhhbGFsIFF1YWxpdHkgQ29udHJvbCAoSFFDKSBHcm91cCBJcmVsYW5kLCJEdWJsaW4sIElyZWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0xMQo1NCxIYWxhbCBRdWFsaXR5IENvbnRyb2wgKEhRQykgSXRhbGlhLCJST01BLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDEtMzAKNTUsSGFsYWwgUXVhbGl0eSBDb250cm9sIFtIUUNdIEdyb3VwIC0gU2NhbmRpbmF2aWEsIkFhcmh1cywgRGVubWFyayIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDUtMjcKNTYsIkhhbGFsIFF1YWxpdHkgQ29udHJvbCBFdXJvcGUsIFMuTC4iLCJNYWRyaWQsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDMtMjEKNTcsSGFsYWwgUXVhbGl0eSBDb250cm9sIEdyb3VwIChIUUMpIEZyYW5jZSwiUGFyaXMsIEZyYW5jZSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDYtMDUKNTgsSGFsYWwgUXVhbGl0eSBDb250cm9sIEdyb3VwIFtIUUNdIEJlbGdpdW0sIkFudHdlcnAsIEJlbGdpdW0iLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0xMQo1OSxIYWxhbCBRdWFsaXR5IENvbnRyb2wgTmV0aGVybGFuZHMsIkRlbiBIYWFnLCBOZXRoZXJsYW5kcyIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMTItMDIKNjAsSGFsYWwgUXVhbGl0eSBDb250cm9sIFBvbGFuZCwiV2Fyc2F3LCBQb2xhbmRpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI4LTEyLTE4CjYxLEhhbGFsIFF1YWxpdHkgQ29udHJvbCBVbml0ZWQgS2luZ2RvbSwiUmVkaGlsbCwgVW5pdGVkIEtpbmdkb20iLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0yMAo2MiwiSEFMQUwgU0FGRVRZIENFUlRJRklDQVRJT04sIFMuTC4iLCJNdXJjaWEsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMzAtMDktMTcKNjMsSGFsYWwgU2NpZW5jZSBhbmQgQ2VydGlmaWNhdGlvbiBDZW50ZXIsIkJlbiBhcm91c3MsIFR1bmlzaWEiLEZvb2QgfCBDb3NtZXRpY3MsMjAzMC0wNC0xNgo2NCxIYWxhbCBTdGFuZGFyZCBDb21taXR0ZWUgb2YgdGhlIFNwaXJpdHVhbCBCb2FyZCBvZiBNdXNsaW1zIG9mIHRoZSBSZXB1YmxpYyBvZiBUYXRhcnN0YW4sIkthemFuLCBSdXNzaWEiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNC0wNgo2NSwiSGFsYWwgVHJhbnNhY3Rpb25zLCBJbmMuIC8gSGFsYWwgVHJhbnNhY3Rpb25zIG9mIE9tYWhhIChIVE8pIiwiT21haGEsIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSIsRm9vZCB8IEJldmVyYWdlcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKNjYsSEZDRSBGcmFuY2UsIkxpbGxlLCBGcmFuY2UiLEZvb2QgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTExLTE0CjY3LCJIRkNFIEhhbGFsIENlcnRpZmljYXRpb24gRXNwYW5hLCBTLkwiLCJNYWRyaWQsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDctMDcKNjgsSEZDRSBJcmVsYW5kLCJEdWJsaW4sIElyZWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0xMS0xMAo2OSxIRkNFIEl0YWx5LCJNaWxhbiwgSXRhbHkiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wMi0wNQo3MCxIRkNFIFVuaXRlZCBLaW5nZG9tLCJJc2xld29ydGgsIFVuaXRlZCBLaW5nZG9tIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDktMDQKNzEsSUNTQyAiSGFsYWwiIExMQywiTW9zY293LCBSdXNzaWEiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOS0xMS0xMgo3MixJR01HLUVIWiBFdXJvcGVhbiBJbnN0aXR1dGUgb2YgSGFsYWwgQ2VydGlmaWNhdGlvbiwiQ29sb2duZSwgR2VybWFueSIsRm9vZCB8IENvc21ldGljcywyMDMwLTAyLTIwCjczLCJJbnN0aXR1dG8gSGFsYWwgKEVzdGFuZGFyIEdsb2JhbCBkZSBDZXJ0aWZpY2FjacOzbiBIYWxhbCwgUy5MLikiLCJDw7NyZG9iYSwgU3BhaW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI5LTA0LTE3Cjc0LEluc3RpdHV0byBoYWxhbCBkZSBQb3J0dWdhbCwicXVpbnRhIGRvIGFuam8sIFBvcnR1Z2FsIixGb29kIHwgQmV2ZXJhZ2VzLDIwMzAtMDYtMDgKNzUsSW50ZXJuYXRpb25hbCBIYWxhbCBDZW50ZXIgR21iSCAtIEdlcm1hbnksIkRhcm1zdGFkdCwgR2VybWFueSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAyOS0wNi0xMwo3NixJbnRlcm5hdGlvbmFsIEhhbGFsIENlbnRlciBTQVMgLSBGcmFuY2UsIlBhcmlzLCBGcmFuY2UiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTEwLTE2Cjc3LEludGVybmF0aW9uYWwgSGFsYWwgQ2VydGlmaWNhdGlvbiAoUHJpdmF0ZSkgTHRkIC0gUGFraXN0YW4sIkthcmFjaGksIFBha2lzdGFuIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKNzgsSW50ZXJuYXRpb25hbCBIYWxhbCBDZXJ0aWZpY2F0aW9uIC0gVUFFIER1YmFpLCJEdWJhaSwgVW5pdGVkIEFyYWIgRW1pcmF0ZXMiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNS0xNgo3OSxJc2xhbWljIENvb3JkaW5hdGluZyBDb3VuY2lsIG9mIFZpY3RvcmlhLCJNZWxib3VybmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAo4MCxJc2xhbWljIERhJ3dhaCBDb3VuY2lsIG9mIHRoZSBQaGlsaXBwaW5lcywiTWFuaWxhIENpdHksIFBoaWxpcHBpbmVzIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMTEtMTEKODEsSUZBTkNBLCJEZXMgUGxhaW5lcywgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDQtMDUKODIsSXNsYW1pYyBGb29kIGFuZCBOdXRyaXRpb24gQ291bmNpbCBvZiBDYW5hZGEsIk1pc3Npc3NhdWdhLCBDYW5hZGEiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBEcnVncyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA3LTA1CjgzLElzbGFtaWMgRm9vZCBSZXNlYXJjaCBDZW50cmUgKEhvbmcgS29uZykgQ28uIEx0ZC4sIlNoZW56aGVuLCBDaGluYSIsRm9vZCB8IEJldmVyYWdlcywyMDI4LTAyLTE5Cjg0LElTTEFNSUMgRk9VTkRBVElPTiBPRiBJUkVMQU5ELCJEVUJMSU4sIElyZWxhbmQiLEZvb2QgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTExLTExCjg1LElzbGFtaWMgSW5mb3JtYXRpb24gRG9jdW1lbnRhdGlvbiBhbmQgQ2VydGlmaWNhdGlvbiAoSUlEQyBBdXN0cmlhKSwiVHJhdW4sIEF1c3RyaWEiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOC0wOC0yNgo4NixJc2xhbWljIFNlcnZpY2VzIG9mIEFtZXJpY2EgKElTQSksIkNlZGFyIFJhcGlkcywgSU9XQSwgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIixGb29kIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAo4NyxJc2xhbWljIFNvY2lldHkgb2YgV2FzaGluZ3RvbiBBcmVhIChJU1dBKSBIYWxhbCBDZXJ0aWZpY2F0aW9uIERlcGFydG1lbnQsIlNpbHZlciBTcHJpbmcsIE1hcnlsYW5kIDIwOTA0LCBVbml0ZWQgU3RhdGVzIG9mIEFtZXJpY2EiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAo4OCxKQUtJTSwiUHV0cmFqYXlhLCBNYWxheXNpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMgfCBQcm9jZXNzaW5nIHNlcnZpY2VzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IFBhY2thZ2luZyBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcywyMDI5LTA2LTA4Cjg5LEpBTUlBVCBVTEFNQS1JLUhJTkQgSEFMQUwgVFJVU1QgKEpVSEhUKSBJbmRpYSwiTkVXIERFTEhJLCBJbmRpYSIsRm9vZCB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA4LTI0CjkwLEpBUEFOIE1VU0xJTSBBU1NPQ0lBVElPTiAoSk1BKSwiVG9reW8sIEphcGFuIixGb29kIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0wNi0zMAo5MSxKSVQgKEphcGFuIElzbGFtaWMgVHJ1c3QpLCJUb2t5bywgSmFwYW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTAyLTIwCjkyLEpVSEYgQ2VydGlmaWNhdGlvbiBQdnQuIEx0ZC4sIk11bWJhaSwgSW5kaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAo5MyxLb3JlYSBIYWxhbCBBdXRob3JpdHkgKEtIQSksIkRhZWplb24sIFNvdXRoIEtvcmVhIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBDb25zdW1lciBHb29kcywyMDI3LTExLTE0Cjk0LEtPUkVBIE1VU0xJTSBGRURFUkFUSU9OIChLTUYpLCJTZW91bCwgU291dGggS29yZWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI3LTExLTE0Cjk1LEtvcmVhIFRlc3RpbmcgQ2VydGlmaWNhdGlvbiBJbnN0aXR1dGUsIkd1bnBvLUNpdHksIFNvdXRoIEtvcmVhIixGb29kIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBDb25zdW1lciBHb29kcywyMDI4LTEyLTEwCjk2LEtvcmVhLUluZG9uZXNpYSBJbnRlZ3JhdGVkIEhhbGFsIENvb3BlcmF0aW9uIENlbnRlciAoS0lJSENDKSwiU2VvdWwsIFNvdXRoIEtvcmVhIixEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MsMjAyOS0wNi0yMAo5NyxNVUlTLCJTaW5nYXBvcmUsIFNpbmdhcG9yZSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IEdlbmV0aWNhbGx5IG1vZGlmaWVkIG9yZ2FuaXNtIChHTU8pIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMgfCBQcm9jZXNzaW5nIHNlcnZpY2VzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IFBhY2thZ2luZyBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcyB8IFNhbGVzIHNlcnZpY2VzIHwgU2VydmluZyBzZXJ2aWNlcyxudWxsCjk4LE11c2xpbSBDb25zdW1lciBDb3VuY2lsIG9mIENhbmFkYSwiREVMVEEsIENhbmFkYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDMwLTEwLTA1Cjk5LE11c2xpbSBQcm9mZXNzaW9uYWwgSmFwYW4gQXNzb2NpYXRpb24gKE1QSkEpLCJUb2t5bywgSmFwYW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcywyMDI4LTEwLTI2CjEwMCxNdXNsaW0gUmVsaWdpb3VzIFVuaW9uIGluIFBvbGFuZCwiQmlhbHlzdG9rLCBQb2xhbmRpYSIsRm9vZCB8IEJldmVyYWdlcywyMDMwLTA1LTExCjEwMSxOYXRpb25hbCBIYWxhbCBBY2NyZWRpdGF0aW9uIFNlcnZpY2VzIEF1c3RyYWxpYSAoTkhBU0EpLCJEYWxsYXMgMzA0NywgQXVzdHJhbGlhIixGb29kIHwgQmV2ZXJhZ2VzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKMTAyLE5hdGlvbmFsIEhhbGFsIEF1dGhvcml0eSwiQ29idXJnIE5vcnRoIFZJQ1RPUklBIDMwNTgsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMDMsTmF0aW9uYWwgSW5kZXBlbmRlbnQgSGFsYWFsIFRydXN0LCJKb2hhbm5lc2J1cmcsIFNvdXRoIEFmcmljYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTExLTA0CjEwNCxORVcgWkVBTEFORCBJU0xBTUlDIERFVkVMT1BNRU5UIFRSVVNUIChOWklEVCkgTElNSVRFRCwiQXVja2xhbmQgMTA1MSwgTmV3IFplYWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyNy0xMS0xNAoxMDUsTmlwcG9uIEFzaWEgSGFsYWwgQXNzb2NpYXRpb24sIkNodW8td2FyZCwgSmFwYW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTAyLTI0CjEwNixOUE8gSmFwYW4gSGFsYWwgQXNzb2NpYXRpb24gKEpIQSksIk9zYWthLCBKYXBhbiIsRm9vZCB8IEJldmVyYWdlcyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDgtMjYKMTA3LFBvbGlzaCBJbnN0aXR1dGUgb2YgSGFsYWwgKFBJSCkgKFBvbHNraSBJbnN0eXR1dCBIYWxhbCksIlBvem5hbiwgUG9sYW5kaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wNC0zMAoxMDgsU2F1ZGkgRm9vZCBhbmQgRHJ1ZyBBdXRob3JpdHkgKFNGREEpLCJSaXlhZGgsIFNhdWRpIEFyYWJpYSIsRm9vZCB8IEJldmVyYWdlcyB8IFNsYXVnaHRlcmluZyBTZXJ2aWNlcywyMDI3LTEwLTE5CjEwOSxTY2FuZGluYXZpYW4gSGFsYWwgQ2VydGlmaWNhdGlvbiBBQiwiMTk1IDQ0LCBNw6Ryc3RhLCBTd2VkZW4iLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNi0yMgoxMTAsIlNoYWFueGkgU2hhbmcgUGluIFl1YW4gSGFsYWwgRm9vZCAmIFJlc3RhdXJhbnQgTWFuYWdlbWVudCBDby4sTHRkKFNTUFkpIiwiWGknYW4sIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0wMi0xOQoxMTEsU0hBTkRPTkcgSEFMQUwgQ0VSVElGSUNBVElPTiBTRVJWSUNFIChTSEMpLCJKSU5BTiwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMTIsU2hhbmdoYWkgR2xvYmFsIEhhbGFsIENlcnRpZmljYXRpb24gU2VydmljZSwiU2hhbmdoYWksIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDMtMjAKMTEzLCJTaGFuZ2hhaSBNdXNlbGluZyBUZXN0aW5nIGFuZCBDZXJ0aWZpY2F0aW9uIENvLiwgTHRkIiwiU2hhbmdoYWksIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ29uc3VtZXIgR29vZHMsMjAzMC0wNC0yNwoxMTQsU2hlbnpoZW4gT25lIEdhdGUgSGFsYWwgQ2VudHJlLCJTaGVuemhlbiBDaXR5LCBDaGluYSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAzMC0wMS0yMwoxMTUsU0lJTEhBTEFMIC0gSXNsYW1pYyBJbnNwZWN0aW9uIFNlcnZpY2UsIkNoYXBlY8OzLCBCcmF6aWwiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wOC0yNgoxMTYsU291dGggQWZyaWNhbiBOYXRpb25hbCBIYWxhYWwgQXV0aG9yaXR5IChTQU5IQSksIkR1cmJhbiwgU291dGggQWZyaWNhIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMDItMjAKMTE3LFNVUFJFTUUgSVNMQU1JQyBDT1VOQ0lMIE9GIEhBTEFMIE1FQVQgSU4gQVVTVFJBTElBIElOQy4gKFNJQ0hNQSksIlN5ZG5leSwgTlNXLCBBdXN0cmFsaWEiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMTgsVGFpd2FuIEhhbGFsIEludGVncml0eSBEZXZlbG9wbWVudCBBc3NvY2lhdGlvbiAoVEhJREEpLCJUYWlwZWksIFRhaXdhbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgUHJvZHVjdHMsMjAyNy0xMS0xNAoxMTksVGhlIENlbnRyYWwgSXNsYW1pYyBDb3VuY2lsIG9mIFRoYWlsYW5kIChDSUNPVCksIkJhbmdrb2ssIFRoYWlsYW5kIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBQYWNrYWdpbmcgc2VydmljZXMsMjAyNy0xMS0xNAoxMjAsVEhFIEZFREVSQVRJT04gT0YgSVNMQU1JQyBBU1NPQ0lBVElPTlMgT0YgTkVXIFpFQUxBTkQgKEZJQU5aKSwiV0VMTElOR1RPTiwgTmV3IFplYWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI3LTExLTE0CjEyMSxUb3RhbCBRdWFsaXR5IEhhbGFsIENvcnJlY3QgQ2VydGlmaWNhdGlvbiAoVFFIQ0MpLCJMZWlkZW4sIE5ldGhlcmxhbmRzIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMTItMDIKMTIyLFVydWd1YXkgSXNsYW1pYyBDZW50ZXIgKFVJQyksIk1vbnRldmlkZW8sIFVydWd1YXkiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0xMC0xMQoxMjMsV2VzdGVybiBBdXN0cmFsaWEgSGFsYWwgQXV0aG9yaXR5LCJNYWRkaW5ndG9uLCBXQSA2MTA5LCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI5LTAzLTIxCjEyNCxXSEFEIElUQUxJQSAtaXRhbGlhbiBoYWxhbCBjZXJ0aWZpY2F0aW9uIGNlbnRlciwidmVyb25hLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcywyMDMwLTA0LTA4CjEyNSxXb3JsZCBIYWxhbCBBdXRob3JpdHkgKFdIQSksIk1JTEFOLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAyOC0xMC0xNQoxMjYsV29ybGQgSGFsYWwgVHJ1c3QsIlZpbG5pdXMsIExpdGh1YW5pYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTA3LTE4Cg==" download="lembaga-halal-luar-negeri-bpjph-2026-11-15.csv">
+          <a class="btn-download" href="data:application/octet-stream;base64,bm8sbmFtYV9saGxuLGFsYW1hdCxsaW5na3VwLG1hc2FfYmVybGFrdQoxLEFMLUJBUUFSQSBDRVJUSUZJQ0FUSU9OLCJYaWFtZW4sIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMDItMjAKMixBbC1XYWl6IENlcnRpZmljYXRpb24gYW5kIFRyYWluaW5nIFNlcnZpY2VzIChQcml2YXRlKSBMaW1pdGVkLCJMYWhvcmUgUGFraXN0YW4sIFBha2lzdGFuIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAozLEFtZXJpY2FuIEhhbGFsIEZvdW5kYXRpb24gKEFIRiksIlRhbXBhLCBVbml0ZWQgU3RhdGVzIG9mIEFtZXJpY2EiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjQsQU5JQyBIYWxhbCBBdXRob3JpdHksIkNodWxsb3JhIDIxOTAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDMwLTA2LTMwCjUsQVJBIEhhbGFsIENlcnRpZmljYXRpb24gU2VydmljZXMgQ2VudGVyIEluYy4sIlpoZW5nemhvdSwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0xMC0wNAo2LCJBU0VHVVJBTUlFTlRPIEhBTEFMLCBTLkEuIGRlIEMuVi4iLCJNZXhpY28sIE1leGljbyIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgUHJvY2Vzc2luZyBzZXJ2aWNlcywyMDMwLTAxLTIxCjcsQXVzdHJhbGlhIEhhbGFsIEZvb2QgU2VydmljZXMgKEFIRlMpLCJRdWVlbnNsYW5kIDQxMjcsIEF1c3RyYWxpYSIsRm9vZCB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA4LTI2CjgsQXVzdHJhbGlhbiBIYWxhbCBBdXRob3JpdHkgYW5kIEFkdmlzZXJzLCJNZWxib3VybmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcyB8IFN0b3JhZ2Ugc2VydmljZXMsMjAyOC0wMi0yMAo5LEF1c3RyYWxpYW4gSGFsYWwgRGV2ZWxvcG1lbnQgYW5kIEFjY3JlZGl0YXRpb24gKEFIREFBKSwiYnJpc2JhbmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjEwLEFVU1RSQUxJQU4gSU5URVJOQVRJT05BTCBIQUxBTCBDRVJUSUZJQ0FUSU9OIE9SR0FOSVNBVElPTiBQWVQgTFRELCJNZWxib3VybmUsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjktMTEtMTEKMTEsQmVsYXJ1c2lhbiBDZW50ZXIgZm9yIFN0YW5kYXJkaXphdGlvbiBhbmQgQ2VydGlmaWNhdGlvbiBIYWxhbCBMTEMgSGFsYWwgKEJlbEhhbGFsKSwiTWluc2ssIEJlbGFydXMiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgU2VydmljZXMsMjAyOC0wOC0yNgoxMixCSUMgSEFMQUwgS09SRUEsIkJVU0FOLCBTT1VUSCBLT1JFQSwgU291dGggS29yZWEiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcyB8IFN0b3JhZ2Ugc2VydmljZXMsMjAyOC0xMC0yOQoxMyxDRElBTCBIQUxBTCBBVVRPUklEQURFIERFIENFUlRJRklDQUNBTyBMVERBLCJTw6NvIEJlcm5hcmRvIGRvIENhbXBvLCBCcmF6aWwiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTA4LTI2CjE0LENlbnRybyBJc2zDoW1pY28gZGUgbGEgUmVww7pibGljYSBBcmdlbnRpbmEsIkJ1ZW5vcyBBaXJlcywgQXJnZW50aW5hIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMzAtMDItMjQKMTUsIkNoaW5hIEhhbGFsIENlcnRpZmljYXRpb24gU2hhbmdoYWkgQ28uLEx0ZC4iLCJTaGFuZ2hhaSwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcywyMDMwLTAyLTAyCjE2LEZBTUJSQVMgQ0VSVElGSUNBQ0lPTiBIQUxBTCBTQVMsIkJPR09Uw4EgREMsIEtvbG9tYmlhIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMzAtMDYtMjkKMTcsRkFNQlJBUyBIYWxhbCBDZXJ0aWZpY2HDp8OjbyBMdGRhLCJTw6NvIFBhdWxvIC0gU1AsIEJyYXppbCIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMTkKMTgsRlVJTiBIYWxhbCBDZXJ0aWZpY2F0aW9uIENlbnRlciwiRnVxaW5nLCBDaGluYSIsRm9vZCB8IENvc21ldGljcywyMDMwLTA0LTMwCjE5LEdIQyBHTE9CQUwgSEFMQUwgQ0VSVElGSUNBVElPTiBDT01QQU5ZIExJTUlURUQsIkhvIENoaSBNaW5oIENpdHksIFZpZXRuYW0iLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNy0xNQoyMCxHSU1ERVMgKEFzc29jaWF0aW9uIGZvciB0aGUgSW5zcGVjdGlvbiBhbmQgQ2VydGlmaWNhdGlvbiBvZiBGb29kIGFuZCBTdXBwbGllcyksIklzdGFuYnVsLCBUdXJrZXkiLEZvb2QgfCBCZXZlcmFnZXMgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOS0wNi0xMgoyMSxHTCBIYWxhbCBDZW50ZXIgKEdMIEhBQyksIlNlb3VsLCBTb3V0aCBLb3JlYSIsRm9vZCB8IENvc21ldGljcyB8IENvbnN1bWVyIEdvb2RzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcywyMDMwLTA0LTE2CjIyLEdsb2JhbCBBdXN0cmFsaWFuIEhhbGFsIENlcnRpZmljYXRpb24sIlN5ZG5leSwgTlNXIDIyMDAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjIzLEdsb2JhbCBIYWxhbCBTeXN0ZW1zIEZyYW5jZSwiUGFyaXMsIEZyYW5jZSIsRm9vZCB8IENvc21ldGljcywyMDMwLTAyLTEwCjI0LEdMT0JBTCBIQUxBTCBUUkFERSBDRU5UUkUgKEdIVEMpLCJCcmlzYmFuZSwgUUxELCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoyNSwiR29vZCBGb3J0dW5lIEhhbGFsIENlcnRpZmljYXRpb24gU2VydmljZXMgKFFpbmdkYW8pIENvLiwgTHRkLiIsIlFpbmdkYW8sIENoaW5hIixGb29kIHwgUGFja2FnaW5nIHNlcnZpY2VzLDIwMjktMTItMTcKMjYsSEFGU0EgSEFMQUwgQ0VSVElGSUNBVElPTiBTRVJWSUNFUyBBTkQgRk9PRCBGT1JFSUdOIFRSQURFIExJTUlURUQgQ09NUEFOWSwiSVNUQU5CVUwsIFR1cmtleSIsRm9vZCB8IEJldmVyYWdlcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTA2LTExCjI3LEhhbGFsIEFzc2Vzc21lbnQgQ291bmNpbCAoR3VhcmFudGVlKSBMaW1pdGVkLCJDb2xvbWJvLCBTcmkgTGFua2EiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IENvbnN1bWVyIEdvb2RzLDIwMjktMDUtMDUKMjgsSGFsYWwgQXVzdHJhbGlhIFB0eSBMdGQsIlBhcnJhbWF0dGEgTlNXIDIxNTAsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTAyLTA2CjI5LEhhbGFsIENlcnRpZmljYXRpb24gQWdlbmN5IChIQ0EpLCJIYW5vaSwgVmlldG5hbSIsRm9vZCB8IEJldmVyYWdlcywyMDI4LTEwLTE2CjMwLEhhbGFsIENlcnRpZmljYXRpb24gQXV0aG9yaXR5IEF1c3RyYWxpYSAoSENBKSwiU3lkbmV5LCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI5LTA1LTE2CjMxLEhhbGFsIENlcnRpZmljYXRpb24gQ2VudGVyIG9mIENoaWxlIC0gQ0hJTEVIQUxBTCwiVmnDsWEgZGVsIE1hciwgQ2hpbGUiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyNy0xMS0xNAozMixIYWxhbCBDZXJ0aWZpY2F0aW9uIEV1cm9wZSAoSENFKSwiTGVpY2VzdGVyLCBVbml0ZWQgS2luZ2RvbSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDgtMjYKMzMsSGFsYWwgQ2VydGlmaWNhdGlvbiBPcmdhbmlzYXRpb24sIldlc3QgTWlkbGFuZHMsIFVuaXRlZCBLaW5nZG9tIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0xMi0xMQozNCxIYWxhbCBDZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIChIQ1MpLCJSaGVpbmZlbGRlbiwgU3dpdHplcmxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOS0wNS0yNwozNSxIYWxhbCBDZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIENob25ncWluZyAoSENTKSwiQ2hvbmdxaW5nLCBDaGluYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIFByb2R1Y3RzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IEdlbmV0aWNhbGx5IG1vZGlmaWVkIG9yZ2FuaXNtIChHTU8pIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMgfCBQYWNrYWdpbmcgc2VydmljZXMsMjAyOC0wMi0xOQozNixIYWxhbCBDb25mb3JtaXR5IFNlcnZpY2VzKEhDUyksIkF1Y2tsYW5kLCBOZXcgWmVhbGFuZCIsRm9vZCB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI3LTExLTE0CjM3LCJIQUxBTCBDT05TVUxUSU5HLCBTLkwuIiwiVG9ycmVtb2xpbm9zLCBNYWxhZ2EsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDItMDUKMzgsSGFsYWwgQ29udHJvbCBHbWJILCJSdWVzc2Vsc2hlaW0sIEdlcm1hbnkiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOS0wMi0yOAozOSxIYWxhbCBDb3JyZWN0IEZyYW5jZSwiTGlsbGUsIEZyYW5jZSIsRm9vZCB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDYtMTIKNDAsSGFsYWwgQ29ycmVjdCBHZXJtYW55LCJPYmVyaGF1c2VuLCBHZXJtYW55IixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDYtMTMKNDEsSGFsYWwgQ29ycmVjdCBTcGFpbiwiMDMwMDMsIEFsaWNhbnRlLCBTcGFpbiIsRm9vZCB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMzAtMDMtMTcKNDIsIkhBTEFMIERFVkVMT1BNRU5UIElOU1RJVFVURSBPRiBUSEUgUEhJTElQUElORVMsIElOQy4iLCJRdWV6b24gQ2l0eSwgUGhpbGlwcGluZXMiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wMi0xMQo0MyxIYWxhbCBGZWVkIGFuZCBGb29kIEluc3BlY3Rpb24gQXV0aG9yaXR5IChIRkZJQSksIlRoZSBIYWd1ZSwgTmV0aGVybGFuZHMiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBCaW9sb2dpY2FsIHByb2R1Y3RzLDIwMjgtMTItMDIKNDQsSGFsYWwgRm9vZCAmIFF1YWxpdHksIlZBTEVOQ0lBLCBTcGFpbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTAzLTI1CjQ1LEhBTEFMIEZPT0QgQVVUSE9SSVRZIChIRkEpIExJTUlURUQsIkxvbmRvbiwgVW5pdGVkIEtpbmdkb20iLEZvb2QgfCBCZXZlcmFnZXMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTA4LTI2CjQ2LEhhbGFsIEZvb2QgQ291bmNpbCBvZiBFdXJvcGUgKEhGQ0UpIEJlbGdpdW0sIkJydXNzZWxzLCBCZWxnaXVtIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDItMjQKNDcsSGFsYWwgSW5kaWEgUHJpdmF0ZSBMaW1pdGVkLCJDaGVubmFpLCBJbmRpYSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDItMjAKNDgsSGFsYWwgSXRhbGlhLCJNaWxhbiAvIFZpY2VuemEsIEl0YWx5IixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0wOC0yNgo0OSwiSGFsYWwgTWFkYW5pIENlcnRpZmljYXRpb24gJiBJbnNwZWN0aW9uIFNlcnZpY2VzIChTaGVuemhlbikgQ28uLEx0ZCIsIlNoZW56aGVuLCBDaGluYSIsRm9vZCB8IENvbnN1bWVyIEdvb2RzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IFBhY2thZ2luZyBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcywyMDMwLTA0LTA4CjUwLEhhbGFsIE1vbnRyw6lhbCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSBJbmMuIChITUNBKSwiQnJvc3NhcmQsIFFDIEo0WSAwRTMsIENhbmFkYSwgQ2FuYWRhIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKNTEsSGFsYWwgUXVhaWx0eSBDb250cm9sIChIUUMpIEdlcm1hbnkgR21iSCwiT3NuYWJyw7xjaywgR2VybWFueSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAyOS0wMy0yMQo1MixIYWxhbCBRdWFsaXR5IENvbnRyb2wgKEhRQykgQXVzdHJpYSwiTGlueiwgQXVzdHJpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTA1LTE2CjUzLEhhbGFsIFF1YWxpdHkgQ29udHJvbCAoSFFDKSBHcm91cCBJcmVsYW5kLCJEdWJsaW4sIElyZWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0xMQo1NCxIYWxhbCBRdWFsaXR5IENvbnRyb2wgKEhRQykgSXRhbGlhLCJST01BLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDEtMzAKNTUsSGFsYWwgUXVhbGl0eSBDb250cm9sIFtIUUNdIEdyb3VwIC0gU2NhbmRpbmF2aWEsIkFhcmh1cywgRGVubWFyayIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDUtMjcKNTYsIkhhbGFsIFF1YWxpdHkgQ29udHJvbCBFdXJvcGUsIFMuTC4iLCJNYWRyaWQsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDMtMjEKNTcsSGFsYWwgUXVhbGl0eSBDb250cm9sIEdyb3VwIChIUUMpIEZyYW5jZSwiUGFyaXMsIEZyYW5jZSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDYtMDUKNTgsSGFsYWwgUXVhbGl0eSBDb250cm9sIEdyb3VwIFtIUUNdIEJlbGdpdW0sIkFudHdlcnAsIEJlbGdpdW0iLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0xMQo1OSxIYWxhbCBRdWFsaXR5IENvbnRyb2wgTmV0aGVybGFuZHMsIkRlbiBIYWFnLCBOZXRoZXJsYW5kcyIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMTItMDIKNjAsSGFsYWwgUXVhbGl0eSBDb250cm9sIFBvbGFuZCwiV2Fyc2F3LCBQb2xhbmRpYSIsRm9vZCB8IEJldmVyYWdlcywyMDI4LTEyLTE4CjYxLEhhbGFsIFF1YWxpdHkgQ29udHJvbCBVbml0ZWQgS2luZ2RvbSwiUmVkaGlsbCwgVW5pdGVkIEtpbmdkb20iLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0wNi0yMAo2MiwiSEFMQUwgU0FGRVRZIENFUlRJRklDQVRJT04sIFMuTC4iLCJNdXJjaWEsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMzAtMDktMTcKNjMsSGFsYWwgU2NpZW5jZSBhbmQgQ2VydGlmaWNhdGlvbiBDZW50ZXIsIkJlbiBhcm91c3MsIFR1bmlzaWEiLEZvb2QgfCBDb3NtZXRpY3MsMjAzMC0wNC0xNgo2NCxIYWxhbCBTdGFuZGFyZCBDb21taXR0ZWUgb2YgdGhlIFNwaXJpdHVhbCBCb2FyZCBvZiBNdXNsaW1zIG9mIHRoZSBSZXB1YmxpYyBvZiBUYXRhcnN0YW4sIkthemFuLCBSdXNzaWEiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNC0wNgo2NSwiSGFsYWwgVHJhbnNhY3Rpb25zLCBJbmMuIC8gSGFsYWwgVHJhbnNhY3Rpb25zIG9mIE9tYWhhIChIVE8pIiwiT21haGEsIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSIsRm9vZCB8IEJldmVyYWdlcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKNjYsSEZDRSBGcmFuY2UsIkxpbGxlLCBGcmFuY2UiLEZvb2QgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTExLTE0CjY3LCJIRkNFIEhhbGFsIENlcnRpZmljYXRpb24gRXNwYW5hLCBTLkwiLCJNYWRyaWQsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDctMDcKNjgsSEZDRSBJcmVsYW5kLCJEdWJsaW4sIElyZWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOS0xMS0xMAo2OSxIRkNFIEl0YWx5LCJNaWxhbiwgSXRhbHkiLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wMi0wNQo3MCxIRkNFIFVuaXRlZCBLaW5nZG9tLCJJc2xld29ydGgsIFVuaXRlZCBLaW5nZG9tIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDktMDQKNzEsIklDU0MgIiJIYWxhbCIiIExMQyIsIk1vc2NvdywgUnVzc2lhIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjktMTEtMTIKNzIsSUdNRy1FSFogRXVyb3BlYW4gSW5zdGl0dXRlIG9mIEhhbGFsIENlcnRpZmljYXRpb24sIkNvbG9nbmUsIEdlcm1hbnkiLEZvb2QgfCBDb3NtZXRpY3MsMjAzMC0wMi0yMAo3MywiSW5zdGl0dXRvIEhhbGFsIChFc3RhbmRhciBHbG9iYWwgZGUgQ2VydGlmaWNhY2nDs24gSGFsYWwsIFMuTC4pIiwiQ8OzcmRvYmEsIFNwYWluIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOS0wNC0xNwo3NCxJbnN0aXR1dG8gaGFsYWwgZGUgUG9ydHVnYWwsInF1aW50YSBkbyBhbmpvLCBQb3J0dWdhbCIsRm9vZCB8IEJldmVyYWdlcywyMDMwLTA2LTA4Cjc1LEludGVybmF0aW9uYWwgSGFsYWwgQ2VudGVyIEdtYkggLSBHZXJtYW55LCJEYXJtc3RhZHQsIEdlcm1hbnkiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IENvbnN1bWVyIEdvb2RzLDIwMjktMDYtMTMKNzYsSW50ZXJuYXRpb25hbCBIYWxhbCBDZW50ZXIgU0FTIC0gRnJhbmNlLCJQYXJpcywgRnJhbmNlIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0xMC0xNgo3NyxJbnRlcm5hdGlvbmFsIEhhbGFsIENlcnRpZmljYXRpb24gKFByaXZhdGUpIEx0ZCAtIFBha2lzdGFuLCJLYXJhY2hpLCBQYWtpc3RhbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjc4LEludGVybmF0aW9uYWwgSGFsYWwgQ2VydGlmaWNhdGlvbiAtIFVBRSBEdWJhaSwiRHViYWksIFVuaXRlZCBBcmFiIEVtaXJhdGVzIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjktMDUtMTYKNzksSXNsYW1pYyBDb29yZGluYXRpbmcgQ291bmNpbCBvZiBWaWN0b3JpYSwiTWVsYm91cm5lLCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKODAsSXNsYW1pYyBEYSd3YWggQ291bmNpbCBvZiB0aGUgUGhpbGlwcGluZXMsIk1hbmlsYSBDaXR5LCBQaGlsaXBwaW5lcyIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTExLTExCjgxLElzbGFtaWMgRm9vZCBhbmQgTnV0cml0aW9uIENvdW5jaWwgb2YgQW1lcmljYSAoSUZBTkNBKSwiRGVzIFBsYWluZXMsIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTA0LTA1CjgyLElzbGFtaWMgRm9vZCBhbmQgTnV0cml0aW9uIENvdW5jaWwgb2YgQ2FuYWRhLCJNaXNzaXNzYXVnYSwgQ2FuYWRhIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgRHJ1Z3MgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wNy0wNQo4MywiSXNsYW1pYyBGb29kIFJlc2VhcmNoIENlbnRyZSAoSG9uZyBLb25nKSBDby4sIEx0ZC4iLCJTaGVuemhlbiwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMsMjAyOC0wMi0xOQo4NCxJU0xBTUlDIEZPVU5EQVRJT04gT0YgSVJFTEFORCwiRFVCTElOLCBJcmVsYW5kIixGb29kIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOS0xMS0xMQo4NSxJc2xhbWljIEluZm9ybWF0aW9uIERvY3VtZW50YXRpb24gYW5kIENlcnRpZmljYXRpb24gKElJREMgQXVzdHJpYSksIlRyYXVuLCBBdXN0cmlhIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMDgtMjYKODYsSXNsYW1pYyBTZXJ2aWNlcyBvZiBBbWVyaWNhIChJU0EpLCJDZWRhciBSYXBpZHMsIElPV0EsIFVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKODcsSXNsYW1pYyBTb2NpZXR5IG9mIFdhc2hpbmd0b24gQXJlYSAoSVNXQSkgSGFsYWwgQ2VydGlmaWNhdGlvbiBEZXBhcnRtZW50LCJTaWx2ZXIgU3ByaW5nLCBNYXJ5bGFuZCAyMDkwNCwgVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIixGb29kIHwgQmV2ZXJhZ2VzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKODgsSmFiYXRhbiBLZW1hanVhbiBJc2xhbSBNYWxheXNpYSAoSkFLSU0pLCJQdXRyYWpheWEsIE1hbGF5c2lhIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBDb25zdW1lciBHb29kcyB8IFByb2Nlc3Npbmcgc2VydmljZXMgfCBTdG9yYWdlIHNlcnZpY2VzIHwgUGFja2FnaW5nIHNlcnZpY2VzIHwgRGlzdHJpYnV0aW9uIHNlcnZpY2VzLDIwMjktMDYtMDgKODksSkFNSUFUIFVMQU1BLUktSElORCBIQUxBTCBUUlVTVCAoSlVISFQpIEluZGlhLCJORVcgREVMSEksIEluZGlhIixGb29kIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDgtMjQKOTAsSkFQQU4gTVVTTElNIEFTU09DSUFUSU9OIChKTUEpLCJUb2t5bywgSmFwYW4iLEZvb2QgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI4LTA2LTMwCjkxLEpJVCAoSmFwYW4gSXNsYW1pYyBUcnVzdCksIlRva3lvLCBKYXBhbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjgtMDItMjAKOTIsSlVIRiBDZXJ0aWZpY2F0aW9uIFB2dC4gTHRkLiwiTXVtYmFpLCBJbmRpYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI4LTAyLTIwCjkzLEtvcmVhIEhhbGFsIEF1dGhvcml0eSAoS0hBKSwiRGFlamVvbiwgU291dGggS29yZWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IENvbnN1bWVyIEdvb2RzLDIwMjctMTEtMTQKOTQsS09SRUEgTVVTTElNIEZFREVSQVRJT04gKEtNRiksIlNlb3VsLCBTb3V0aCBLb3JlYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjctMTEtMTQKOTUsS29yZWEgVGVzdGluZyBDZXJ0aWZpY2F0aW9uIEluc3RpdHV0ZSwiR3VucG8tQ2l0eSwgU291dGggS29yZWEiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IENvbnN1bWVyIEdvb2RzLDIwMjgtMTItMTAKOTYsS29yZWEtSW5kb25lc2lhIEludGVncmF0ZWQgSGFsYWwgQ29vcGVyYXRpb24gQ2VudGVyIChLSUlIQ0MpLCJTZW91bCwgU291dGggS29yZWEiLERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcywyMDI5LTA2LTIwCjk3LE1hamxpcyBVZ2FtYSBJc2xhbSBTaW5nYXB1cmEgKE1VSVMpLCJTaW5nYXBvcmUsIFNpbmdhcG9yZSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IEdlbmV0aWNhbGx5IG1vZGlmaWVkIG9yZ2FuaXNtIChHTU8pIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMgfCBQcm9jZXNzaW5nIHNlcnZpY2VzIHwgU3RvcmFnZSBzZXJ2aWNlcyB8IFBhY2thZ2luZyBzZXJ2aWNlcyB8IERpc3RyaWJ1dGlvbiBzZXJ2aWNlcyB8IFNhbGVzIHNlcnZpY2VzIHwgU2VydmluZyBzZXJ2aWNlcyxudWxsCjk4LE11c2xpbSBDb25zdW1lciBDb3VuY2lsIG9mIENhbmFkYSwiREVMVEEsIENhbmFkYSIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDMwLTEwLTA1Cjk5LE11c2xpbSBQcm9mZXNzaW9uYWwgSmFwYW4gQXNzb2NpYXRpb24gKE1QSkEpLCJUb2t5bywgSmFwYW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDb25zdW1lciBHb29kcywyMDI4LTEwLTI2CjEwMCxNdXNsaW0gUmVsaWdpb3VzIFVuaW9uIGluIFBvbGFuZCAoTXV6dWxtYW5za2kgWndpYXplayBSZWxpZ2lqbnkgdyBSemVjenlwb3Nwb2xpdGVqIFBvbHNraWVqKSwiQmlhbHlzdG9rLCBQb2xhbmRpYSIsRm9vZCB8IEJldmVyYWdlcywyMDMwLTA1LTExCjEwMSxOYXRpb25hbCBIYWxhbCBBY2NyZWRpdGF0aW9uIFNlcnZpY2VzIEF1c3RyYWxpYSAoTkhBU0EpLCJEYWxsYXMgMzA0NywgQXVzdHJhbGlhIixGb29kIHwgQmV2ZXJhZ2VzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDItMjAKMTAyLE5hdGlvbmFsIEhhbGFsIEF1dGhvcml0eSwiQ29idXJnIE5vcnRoIFZJQ1RPUklBIDMwNTgsIEF1c3RyYWxpYSIsRm9vZCB8IEJldmVyYWdlcyB8IEJpb2xvZ2ljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMDMsTmF0aW9uYWwgSW5kZXBlbmRlbnQgSGFsYWFsIFRydXN0LCJKb2hhbm5lc2J1cmcsIFNvdXRoIEFmcmljYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTExLTA0CjEwNCxORVcgWkVBTEFORCBJU0xBTUlDIERFVkVMT1BNRU5UIFRSVVNUIChOWklEVCkgTElNSVRFRCwiQXVja2xhbmQgMTA1MSwgTmV3IFplYWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyNy0xMS0xNAoxMDUsTmlwcG9uIEFzaWEgSGFsYWwgQXNzb2NpYXRpb24sIkNodW8td2FyZCwgSmFwYW4iLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBDaGVtaWNhbCBwcm9kdWN0cywyMDI5LTAyLTI0CjEwNixOUE8gSmFwYW4gSGFsYWwgQXNzb2NpYXRpb24gKEpIQSksIk9zYWthLCBKYXBhbiIsRm9vZCB8IEJldmVyYWdlcyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgU2xhdWdodGVyaW5nIHNlcnZpY2VzLDIwMjgtMDgtMjYKMTA3LFBvbGlzaCBJbnN0aXR1dGUgb2YgSGFsYWwgKFBJSCkgKFBvbHNraSBJbnN0eXR1dCBIYWxhbCksIlBvem5hbiwgUG9sYW5kaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDb3NtZXRpY3MgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wNC0zMAoxMDgsU2F1ZGkgRm9vZCBhbmQgRHJ1ZyBBdXRob3JpdHkgKFNGREEpLCJSaXlhZGgsIFNhdWRpIEFyYWJpYSIsRm9vZCB8IEJldmVyYWdlcyB8IFNsYXVnaHRlcmluZyBTZXJ2aWNlcywyMDI3LTEwLTE5CjEwOSxTY2FuZGluYXZpYW4gSGFsYWwgQ2VydGlmaWNhdGlvbiBBQiwiMTk1IDQ0LCBNw6Ryc3RhLCBTd2VkZW4iLEZvb2QgfCBCZXZlcmFnZXMsMjAzMC0wNi0yMgoxMTAsIlNoYWFueGkgU2hhbmcgUGluIFl1YW4gSGFsYWwgRm9vZCAmIFJlc3RhdXJhbnQgTWFuYWdlbWVudCBDby4sTHRkKFNTUFkpIiwiWGknYW4sIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMsMjAyOC0wMi0xOQoxMTEsU0hBTkRPTkcgSEFMQUwgQ0VSVElGSUNBVElPTiBTRVJWSUNFIChTSEMpLCJKSU5BTiwgQ2hpbmEiLEZvb2QgfCBCZXZlcmFnZXMgfCBCaW9sb2dpY2FsIHByb2R1Y3RzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMTIsU2hhbmdoYWkgR2xvYmFsIEhhbGFsIENlcnRpZmljYXRpb24gU2VydmljZSwiU2hhbmdoYWksIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQmlvbG9naWNhbCBwcm9kdWN0cyB8IENoZW1pY2FsIHByb2R1Y3RzLDIwMjktMDMtMjAKMTEzLCJTaGFuZ2hhaSBNdXNlbGluZyBUZXN0aW5nIGFuZCBDZXJ0aWZpY2F0aW9uIENvLiwgTHRkIiwiU2hhbmdoYWksIENoaW5hIixGb29kIHwgQmV2ZXJhZ2VzIHwgRHJ1Z3MvUGhhcm1hY2V1dGljYWxzIHwgQ29zbWV0aWNzIHwgQ29uc3VtZXIgR29vZHMsMjAzMC0wNC0yNwoxMTQsU2hlbnpoZW4gT25lIEdhdGUgSGFsYWwgQ2VudHJlLCJTaGVuemhlbiBDaXR5LCBDaGluYSIsRm9vZCB8IERydWdzL1BoYXJtYWNldXRpY2FscyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAzMC0wMS0yMwoxMTUsU0lJTEhBTEFMIC0gSXNsYW1pYyBJbnNwZWN0aW9uIFNlcnZpY2UsIkNoYXBlY8OzLCBCcmF6aWwiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wOC0yNgoxMTYsU291dGggQWZyaWNhbiBOYXRpb25hbCBIYWxhYWwgQXV0aG9yaXR5IChTQU5IQSksIkR1cmJhbiwgU291dGggQWZyaWNhIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMDItMjAKMTE3LFNVUFJFTUUgSVNMQU1JQyBDT1VOQ0lMIE9GIEhBTEFMIE1FQVQgSU4gQVVTVFJBTElBIElOQy4gKFNJQ0hNQSksIlN5ZG5leSwgTlNXLCBBdXN0cmFsaWEiLEZvb2QgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0wMi0yMAoxMTgsVGFpd2FuIEhhbGFsIEludGVncml0eSBEZXZlbG9wbWVudCBBc3NvY2lhdGlvbiAoVEhJREEpLCJUYWlwZWksIFRhaXdhbiIsRm9vZCB8IEJldmVyYWdlcyB8IERydWdzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgUHJvZHVjdHMsMjAyNy0xMS0xNAoxMTksVGhlIENlbnRyYWwgSXNsYW1pYyBDb3VuY2lsIG9mIFRoYWlsYW5kIChDSUNPVCksIkJhbmdrb2ssIFRoYWlsYW5kIixGb29kIHwgQmV2ZXJhZ2VzIHwgQ29zbWV0aWNzIHwgQ2hlbWljYWwgcHJvZHVjdHMgfCBQYWNrYWdpbmcgc2VydmljZXMsMjAyNy0xMS0xNAoxMjAsVEhFIEZFREVSQVRJT04gT0YgSVNMQU1JQyBBU1NPQ0lBVElPTlMgT0YgTkVXIFpFQUxBTkQgKEZJQU5aKSwiV0VMTElOR1RPTiwgTmV3IFplYWxhbmQiLEZvb2QgfCBCZXZlcmFnZXMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI3LTExLTE0CjEyMSxUb3RhbCBRdWFsaXR5IEhhbGFsIENvcnJlY3QgQ2VydGlmaWNhdGlvbiAoVFFIQ0MpLCJMZWlkZW4sIE5ldGhlcmxhbmRzIixGb29kIHwgQmV2ZXJhZ2VzLDIwMjgtMTItMDIKMTIyLFVydWd1YXkgSXNsYW1pYyBDZW50ZXIgKFVJQyksIk1vbnRldmlkZW8sIFVydWd1YXkiLEZvb2QgfCBTbGF1Z2h0ZXJpbmcgc2VydmljZXMsMjAyOC0xMC0xMQoxMjMsV2VzdGVybiBBdXN0cmFsaWEgSGFsYWwgQXV0aG9yaXR5LCJNYWRkaW5ndG9uLCBXQSA2MTA5LCBBdXN0cmFsaWEiLEZvb2QgfCBCZXZlcmFnZXMgfCBEcnVncy9QaGFybWFjZXV0aWNhbHMgfCBDaGVtaWNhbCBwcm9kdWN0cyB8IFNsYXVnaHRlcmluZyBzZXJ2aWNlcywyMDI5LTAzLTIxCjEyNCxXSEFEIElUQUxJQSAtaXRhbGlhbiBoYWxhbCBjZXJ0aWZpY2F0aW9uIGNlbnRlciwidmVyb25hLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcywyMDMwLTA0LTA4CjEyNSxXb3JsZCBIYWxhbCBBdXRob3JpdHkgKFdIQSksIk1JTEFOLCBJdGFseSIsRm9vZCB8IEJldmVyYWdlcyB8IENvc21ldGljcyB8IENoZW1pY2FsIHByb2R1Y3RzIHwgQ29uc3VtZXIgR29vZHMsMjAyOC0xMC0xNQoxMjYsV29ybGQgSGFsYWwgVHJ1c3QsIlZpbG5pdXMsIExpdGh1YW5pYSIsRm9vZCB8IEJldmVyYWdlcywyMDI5LTA3LTE4Cg==" download="lembaga-halal-luar-negeri-bpjph-2026-11-16.csv">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M6.5 10.5L12 16l5.5-5.5"/><path d="M4 20h16"/></svg>
             <span data-i18n="lhln_download">Unduh CSV</span>
           </a>
@@ -1452,7 +1545,7 @@
 
       <section class="view" id="view-analisis" aria-labelledby="judul-analisis" hidden>
         <div class="page-head">
-          <span class="kicker" data-i18n="analisis_kicker">Fase 2 · Perlu daftar / masuk</span>
+          <span class="kicker" data-i18n="analisis_kicker">Perlu daftar / masuk</span>
           <h1 id="judul-analisis" data-i18n="analisis_title">Analisis Dokumen</h1>
           <p class="lede" data-i18n="analisis_lede">Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.</p>
         </div>
@@ -1505,9 +1598,9 @@
 
       <section class="view" id="view-tanya" aria-labelledby="judul-tanya" hidden>
         <div class="page-head">
-          <span class="kicker" data-i18n="ask_kicker">Fase 2 · Perlu daftar / masuk</span>
+          <span class="kicker" data-i18n="ask_kicker">Perlu daftar / masuk</span>
           <h1 id="judul-tanya" data-i18n="ask_title">Tanya Jawab</h1>
-          <p class="lede" data-i18n="ask_lede">Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus regulasi JDIH BPJPH, lengkap dengan sitasinya.</p>
+          <p class="lede" data-i18n="ask_lede">Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus 14 regulasi JDIH BPJPH (dihitung 16 Nov 2026), lengkap dengan sitasinya.</p>
         </div>
         <div class="gate-panel" id="gate-tanya" hidden>
           <p><strong data-i18n="gate_title">Silakan daftar atau login dulu untuk memakai fitur ini.</strong></p>
@@ -1628,7 +1721,24 @@ var LANG = "id";
 try { var savedLang = localStorage.getItem("kbh-lang"); if (["id", "en", "ar", "zh"].indexOf(savedLang) >= 0) LANG = savedLang; } catch (e) {}
 var LOCALES = { id: "id-ID", en: "en-US", ar: "ar-EG", zh: "zh-CN" };
 var LANG_NAMES = { id: "Bahasa Indonesia", en: "English", ar: "العربية", zh: "中文" };
-var LANG_FLAGS = { id: "🇮🇩", en: "🇬🇧", ar: "🇸🇦", zh: "🇨🇳" };
+/* Kode ISO bendera (flagcdn) per bahasa — emoji bendera tidak dirender
+   Windows, jadi pemilih bahasa memakai <img> (lihat flagImgHTML). */
+var LANG_FLAGS = { id: "id", en: "gb", ar: "sa", zh: "cn" };
+var FLAGCDN = "https://flagcdn.com/w40/";
+function flagImgHTML(code, label) {
+  var c = String(code || "").toLowerCase();
+  return '<img class="flag-img" src="' + FLAGCDN + c + '.png" width="20" height="15" loading="lazy" alt="' + esc(label || "") + '" />' +
+    '<span class="flag-fallback" aria-hidden="true">' + esc(String(code || "").toUpperCase()) + "</span>";
+}
+/* Bila gambar bendera gagal dimuat, tampilkan kode negara sebagai fallback. */
+document.addEventListener("error", function (ev) {
+  var t = ev.target;
+  if (t && t.classList && t.classList.contains("flag-img")) {
+    t.style.display = "none";
+    var f = t.nextElementSibling;
+    if (f && f.classList.contains("flag-fallback")) f.style.display = "inline-block";
+  }
+}, true);
 var I18N = { id: {
   doc_title: "Klasifikasi Bahan Halal BPJPH",
   brand_title: "Klasifikasi Bahan Halal",
@@ -1658,7 +1768,7 @@ var I18N = { id: {
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
   popular_label: "Bahan populer:",
-  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", search_loading: "Memuat hasil…",
+  copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", png_btn: "Unduh gambar", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
   data_loading: "Memuat data lampiran…",
@@ -1798,7 +1908,7 @@ I18N.en = {
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
   popular_label: "Popular ingredients:",
-  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", search_loading: "Loading results…",
+  copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", png_btn: "Download image", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
   data_loading: "Loading appendix data…",
@@ -1932,7 +2042,7 @@ I18N.ar = {
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
   popular_label: "مواد شائعة:",
-  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", search_loading: "جارٍ تحميل النتائج…",
+  copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", png_btn: "تنزيل الصورة", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
   data_loading: "جارٍ تحميل بيانات الملاحق…",
@@ -2066,7 +2176,7 @@ I18N.zh = {
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
   popular_label: "热门原料：",
-  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", search_loading: "正在加载结果…",
+  copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", png_btn: "下载图片", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
   data_loading: "正在加载附录数据…",
@@ -2176,7 +2286,7 @@ Object.assign(I18N.id, {
   nav_lhln: "Lembaga Halal Luar Negeri",
   lhln_kicker: "Diakui BPJPH", lhln_title: "Lembaga Halal Luar Negeri",
   lhln_lede: "Daftar 126 Lembaga Halal Luar Negeri (LHLN) yang diakui BPJPH. Cari berdasarkan nama lembaga, saring menurut negara atau lingkup layanan, atau unduh seluruh daftarnya sebagai CSV.",
-  lhln_updated: "Data diperbarui: 15 November 2026",
+  lhln_updated: "Data diperbarui: 16 November 2026",
   lhln_source_label: "Sumber data:",
   lhln_search_ph: "Cari nama lembaga atau alamat…",
   lhln_search_label: "Cari lembaga halal luar negeri",
@@ -2187,13 +2297,16 @@ Object.assign(I18N.id, {
   lhln_showing: "Menampilkan {a} dari {b} lembaga",
   lhln_none: "Tidak ada lembaga yang cocok dengan filter.",
   lhln_note: "Catatan: MUIS (Singapura, No. 97) — masa berlakunya tampil “null” di situs resmi BPJPH, persis seperti yang tercantum di sumbernya.",
-  lhln_load_err: "Data LHLN gagal dimuat. Periksa koneksi lalu muat ulang halaman ini."
+  lhln_load_err: "Data LHLN gagal dimuat. Periksa koneksi lalu muat ulang halaman ini.",
+  lhln_checked: "Terakhir dicek: {d} • {s}",
+  lhln_change_summary: "{a} baru · {u} berubah · {r} dihapus",
+  lhln_nochange: "tidak ada perubahan"
 });
 Object.assign(I18N.en, {
   nav_lhln: "Foreign Halal Bodies",
   lhln_kicker: "Recognized by BPJPH", lhln_title: "Foreign Halal Bodies",
   lhln_lede: "The list of 126 Foreign Halal Bodies (LHLN) recognized by BPJPH. Search by institution name, filter by country or service scope, or download the whole list as a CSV.",
-  lhln_updated: "Data updated: 15 November 2026",
+  lhln_updated: "Data updated: 16 November 2026",
   lhln_source_label: "Data source:",
   lhln_search_ph: "Search institution name or address…",
   lhln_search_label: "Search foreign halal bodies",
@@ -2204,13 +2317,16 @@ Object.assign(I18N.en, {
   lhln_showing: "Showing {a} of {b} institutions",
   lhln_none: "No institutions match the filter.",
   lhln_note: "Note: MUIS (Singapore, No. 97) — its validity period appears as “null” on the official BPJPH website, exactly as listed at the source.",
-  lhln_load_err: "LHLN data failed to load. Check your connection and reload this page."
+  lhln_load_err: "LHLN data failed to load. Check your connection and reload this page.",
+  lhln_checked: "Last checked: {d} • {s}",
+  lhln_change_summary: "{a} added · {u} changed · {r} removed",
+  lhln_nochange: "no changes"
 });
 Object.assign(I18N.ar, {
   nav_lhln: "هيئات الحلال الأجنبية",
   lhln_kicker: "معترف بها من BPJPH", lhln_title: "هيئات الحلال الأجنبية",
   lhln_lede: "قائمة هيئات الحلال الأجنبية (LHLN) الـ 126 المعترف بها من BPJPH. ابحث باسم الهيئة، أو صفِّ حسب الدولة أو نطاق الخدمات، أو نزّل القائمة كاملة بصيغة CSV.",
-  lhln_updated: "آخر تحديث للبيانات: 15 نوفمبر 2026",
+  lhln_updated: "آخر تحديث للبيانات: 16 نوفمبر 2026",
   lhln_source_label: "مصدر البيانات:",
   lhln_search_ph: "ابحث باسم الهيئة أو العنوان…",
   lhln_search_label: "البحث في هيئات الحلال الأجنبية",
@@ -2221,13 +2337,16 @@ Object.assign(I18N.ar, {
   lhln_showing: "عرض {a} من {b} هيئة",
   lhln_none: "لا توجد هيئات مطابقة للتصفية.",
   lhln_note: "ملاحظة: MUIS (سنغافورة، رقم 97) — تظهر فترة صلاحيتها بصيغة “null” في موقع BPJPH الرسمي، تمامًا كما هي مدرجة في المصدر.",
-  lhln_load_err: "تعذّر تحميل بيانات هيئات الحلال الأجنبية. تحقق من الاتصال ثم أعد تحميل هذه الصفحة."
+  lhln_load_err: "تعذّر تحميل بيانات هيئات الحلال الأجنبية. تحقق من الاتصال ثم أعد تحميل هذه الصفحة.",
+  lhln_checked: "آخر فحص: {d} • {s}",
+  lhln_change_summary: "{a} جديدة · {u} معدَّلة · {r} محذوفة",
+  lhln_nochange: "لا تغييرات"
 });
 Object.assign(I18N.zh, {
   nav_lhln: "国外清真机构",
   lhln_kicker: "BPJPH 认可", lhln_title: "国外清真机构",
   lhln_lede: "BPJPH 认可的 126 家国外清真机构 (LHLN) 名单。可按机构名称搜索、按国家或服务范围筛选，或将完整名单下载为 CSV。",
-  lhln_updated: "数据更新于：2026 年 11 月 15 日",
+  lhln_updated: "数据更新于：2026 年 11 月 16 日",
   lhln_source_label: "数据来源：",
   lhln_search_ph: "搜索机构名称或地址…",
   lhln_search_label: "搜索国外清真机构",
@@ -2238,7 +2357,111 @@ Object.assign(I18N.zh, {
   lhln_showing: "显示 {b} 家机构中的 {a} 家",
   lhln_none: "没有机构符合筛选条件。",
   lhln_note: "注：MUIS（新加坡，第 97 号）——其有效期在 BPJPH 官方网站上显示为“null”，与来源完全一致。",
-  lhln_load_err: "国外清真机构数据加载失败。请检查网络连接并重新加载此页面。"
+  lhln_load_err: "国外清真机构数据加载失败。请检查网络连接并重新加载此页面。",
+  lhln_checked: "上次检查：{d} • {s}",
+  lhln_change_summary: "新增 {a} · 变更 {u} · 删除 {r}",
+  lhln_nochange: "无变化"
+});
+
+
+/* Kunci khusus tab Berita Terkini (16 Nov 2026) — sumber: BPJPH + LPPOM MUI */
+Object.assign(I18N.id, {
+  nav_berita: "Berita Terkini",
+  berita_kicker: "Dari sumber resmi", berita_title: "Berita Terkini",
+  berita_lede: "Kabar terbaru seputar halal dari BPJPH dan LPPOM MUI. Daftar digabungkan dan diurutkan dari yang terbaru; ketuk “Sumber” untuk membaca artikel aslinya.",
+  berita_loading: "Memuat berita…",
+  berita_updated: "Terakhir diperbarui: {d} • {n} berita",
+  berita_date_note: "Catatan: tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. “3 hari yang lalu”); tanggal LPPOM MUI adalah tanggal asli dari situsnya.",
+  berita_partial: "Sebagian sumber gagal dimuat — menampilkan yang berhasil.",
+  berita_source: "Sumber", berita_filter_all: "Semua",
+  berita_empty: "Tidak ada berita untuk filter ini.",
+  berita_error: "Berita gagal dimuat. Periksa koneksi lalu muat ulang halaman ini."
+});
+Object.assign(I18N.en, {
+  nav_berita: "Latest News",
+  berita_kicker: "From official sources", berita_title: "Latest News",
+  berita_lede: "The latest halal news from BPJPH and LPPOM MUI. Merged into one list, newest first; tap “Source” to read the original article.",
+  berita_loading: "Loading news…",
+  berita_updated: "Last updated: {d} • {n} news items",
+  berita_date_note: "Note: BPJPH dates are estimated from the relative label on the source site (e.g. “3 days ago”); LPPOM MUI dates are the original dates from its site.",
+  berita_partial: "One source failed to load — showing what worked.",
+  berita_source: "Source", berita_filter_all: "All",
+  berita_empty: "No news for this filter.",
+  berita_error: "News failed to load. Check your connection and reload this page."
+});
+Object.assign(I18N.ar, {
+  nav_berita: "أحدث الأخبار",
+  berita_kicker: "من مصادر رسمية", berita_title: "أحدث الأخبار",
+  berita_lede: "أحدث أخبار الحلال من BPJPH وLPPOM MUI. قائمة مدمجة مرتبة من الأحدث؛ انقر على «المصدر» لقراءة المقال الأصلي.",
+  berita_loading: "جارٍ تحميل الأخبار…",
+  berita_updated: "آخر تحديث: {d} • {n} خبرًا",
+  berita_date_note: "ملاحظة: تواريخ أخبار BPJPH تقديرية من التسمية النسبية في موقع المصدر (مثل «قبل 3 أيام»)؛ أما تواريخ LPPOM MUI فهي التواريخ الأصلية من موقعها.",
+  berita_partial: "تعذّر تحميل أحد المصدرين — يتم عرض ما نجح تحميله.",
+  berita_source: "المصدر", berita_filter_all: "الكل",
+  berita_empty: "لا توجد أخبار لهذا التصفية.",
+  berita_error: "تعذّر تحميل الأخبار. تحقق من الاتصال ثم أعد تحميل الصفحة."
+});
+Object.assign(I18N.zh, {
+  nav_berita: "最新资讯",
+  berita_kicker: "来自官方来源", berita_title: "最新资讯",
+  berita_lede: "来自 BPJPH 与 LPPOM MUI 的最新清真资讯。合并为一个列表，按最新排序；点击“来源”阅读原文。",
+  berita_loading: "正在加载资讯…",
+  berita_updated: "最近更新：{d} • 共 {n} 条",
+  berita_date_note: "注：BPJPH 新闻的日期是根据来源网站的相对标注（如“3 天前”）估算的；LPPOM MUI 的日期为其网站的原始日期。",
+  berita_partial: "部分来源加载失败——仅显示已成功加载的内容。",
+  berita_source: "来源", berita_filter_all: "全部",
+  berita_empty: "该筛选条件下暂无资讯。",
+  berita_error: "资讯加载失败。请检查网络连接并重新加载页面。"
+});
+
+/* Kunci khusus tab Tutorial (16 Nov 2026) — 3 video panduan Remotion */
+Object.assign(I18N.id, {
+  nav_tutorial: "Tutorial",
+  tut_kicker: "Panduan video langkah demi langkah", tut_title: "Tutorial",
+  tut_lede: "Tiga video pendek yang memandu Anda memakai website ini: mencari bahan, memakai AI Halal, dan menganalisis dokumen. Tekan putar pada video yang Anda butuhkan — video hanya dimuat saat diputar.",
+  tut_1_title: "Cara Mencari Bahan",
+  tut_1_desc: "Cara mengecek status bahan halal: ketik nama bahan atau nomor CAS, lalu baca kartu hasil Dikecualikan, Wajib, atau Belum Diatur — contohnya gliserin.",
+  tut_2_title: "Memakai AI Halal",
+  tut_2_desc: "Memakai fitur AI Halal: Tanya Langsung, Analisis Dokumen, dan Upload Sertifikat — masuk dengan akun Google, gratis dengan kuota harian.",
+  tut_3_title: "Menganalisis Dokumen",
+  tut_3_desc: "Menganalisis CoA dan MSDS: unggah dokumen, tunggu AI membaca bahannya, lalu simpan hasilnya untuk pengajuan ke Lembaga Pemeriksa Halal.",
+  tut_srt: "Unduh subtitle (.srt)"
+});
+Object.assign(I18N.en, {
+  nav_tutorial: "Tutorials",
+  tut_kicker: "Step-by-step video guides", tut_title: "Tutorials",
+  tut_lede: "Three short videos guiding you through this website: searching for materials, using AI Halal, and analyzing documents. Press play on the video you need — videos only load when played.",
+  tut_1_title: "How to Search for Materials",
+  tut_1_desc: "How to check a material's halal status: type a name or CAS number, then read the result card — Exempted, Mandatory, or Not Yet Regulated — using glycerin as an example.",
+  tut_2_title: "Using AI Halal",
+  tut_2_desc: "Using the AI Halal feature: Ask Directly, Document Analysis, and Certificate Upload — sign in with Google, free with a daily quota.",
+  tut_3_title: "Analyzing Documents",
+  tut_3_desc: "Analyzing CoA and MSDS documents: upload a file, let the AI read its ingredients, then save the result for your LPH submission.",
+  tut_srt: "Download subtitles (.srt)"
+});
+Object.assign(I18N.ar, {
+  nav_tutorial: "دروس تعليمية",
+  tut_kicker: "أدلة فيديو خطوة بخطوة", tut_title: "دروس تعليمية",
+  tut_lede: "ثلاثة مقاطع فيديو قصيرة ترشدك في استخدام هذا الموقع: البحث عن المواد، واستخدام الذكاء الاصطناعي الحلال، وتحليل المستندات. اضغط تشغيل على الفيديو الذي تحتاجه — لا يتم تحميل الفيديو إلا عند تشغيله.",
+  tut_1_title: "كيفية البحث عن المواد",
+  tut_1_desc: "كيفية التحقق من حالة المادة الحلال: اكتب اسم المادة أو رقم CAS، ثم اقرأ بطاقة النتيجة — مستثناة أو إلزامية أو غير منظَّمة بعد — مع مثال الجليسرين.",
+  tut_2_title: "استخدام الذكاء الاصطناعي الحلال",
+  tut_2_desc: "استخدام ميزة الذكاء الاصطناعي الحلال: اسأل مباشرة، وتحليل المستندات، ورفع الشهادة — سجّل الدخول بحساب Google، مجانًا بحصة يومية.",
+  tut_3_title: "تحليل المستندات",
+  tut_3_desc: "تحليل شهادات التحليل (CoA) وصحائف بيانات السلامة (MSDS): ارفع المستند، ودع الذكاء الاصطناعي يقرأ مكوناته، ثم احفظ النتيجة لتقديمها إلى LPH.",
+  tut_srt: "تنزيل الترجمة (.srt)"
+});
+Object.assign(I18N.zh, {
+  nav_tutorial: "视频教程",
+  tut_kicker: "分步视频指南", tut_title: "视频教程",
+  tut_lede: "三段短视频，手把手带您使用本网站：查询原料、使用清真 AI、分析文件。点击需要观看的视频即可播放——视频仅在播放时加载。",
+  tut_1_title: "如何查询原料",
+  tut_1_desc: "如何查询原料的清真状态：输入原料名称或 CAS 编号，查看结果卡片——豁免、强制或尚未规定——以甘油为例。",
+  tut_2_title: "使用清真 AI",
+  tut_2_desc: "使用清真 AI 功能：直接提问、文件分析与证书上传——使用 Google 账号登录，免费并有每日额度。",
+  tut_3_title: "分析文件",
+  tut_3_desc: "分析 CoA 与 MSDS 文件：上传文件，让 AI 读取其中的成分，然后保存结果，用于向 LPH 提交申请。",
+  tut_srt: "下载字幕 (.srt)"
 });
 
 /* Kunci Fase 2 — Analisis Dokumen, Tanya Jawab, login (Tiket 13a/13b) */
@@ -2258,10 +2481,10 @@ Object.assign(I18N.id, {
   gate_title: "Silakan daftar atau login dulu untuk memakai fitur ini.",
   gate_text: "Analisis dokumen memakai layanan AI berbatas harian, jadi perlu akun gratis. Pencarian, Jelajah Kategori, Regulasi, dan Lembaga Halal Luar Negeri tetap bisa dipakai tanpa daftar.",
   gate_btn: "Masuk / Daftar",
-  analisis_kicker: "Fase 2 · Perlu daftar / masuk", analisis_title: "Analisis Dokumen",
+  analisis_kicker: "Perlu daftar / masuk", analisis_title: "Analisis Dokumen",
   analisis_lede: "Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.",
-  ask_kicker: "Fase 2 · Perlu daftar / masuk", ask_title: "AI Halal",
-  ask_lede: "Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus regulasi JDIH BPJPH, lengkap dengan sitasinya.",
+  ask_kicker: "Perlu daftar / masuk", ask_title: "AI Halal",
+  ask_lede: "Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus 14 regulasi JDIH BPJPH (dihitung 16 Nov 2026), lengkap dengan sitasinya.",
   ask_label: "Pertanyaan Anda", ask_ph: "Contoh: Apa saja syarat sertifikasi halal untuk UMKM?", ask_btn: "Tanya",
   ask_count: "Sisa {n} dari 2.000 karakter",
   privacy_title: "Sebelum mengunggah, baca dulu:",
@@ -2331,10 +2554,10 @@ Object.assign(I18N.en, {
   gate_title: "Please register or sign in first to use this feature.",
   gate_text: "Document analysis uses a daily-limited AI service, so it needs a free account. Search, Browse, Regulations, and Foreign Halal Bodies remain free without registration.",
   gate_btn: "Sign in / Register",
-  analisis_kicker: "Phase 2 · Sign-in required", analisis_title: "Document Analysis",
+  analisis_kicker: "Sign-in required", analisis_title: "Document Analysis",
   analisis_lede: "Upload a CoA, MSDS, or halal certificate (PDF), or paste its text. The system reads the ingredients, checks their classification in the BPJPH annexes, then explains the critical points and next steps for each ingredient.",
-  ask_kicker: "Phase 2 · Sign-in required", ask_title: "AI Halal",
-  ask_lede: "Ask about halal and halal rules in Indonesia: certification requirements, process and timelines, SJPH, RSHLN, halal labels, or business obligations. Answers come from the BPJPH JDIH regulation corpus, with citations.",
+  ask_kicker: "Sign-in required", ask_title: "AI Halal",
+  ask_lede: "Ask about halal and halal rules in Indonesia: certification requirements, process and timelines, SJPH, RSHLN, halal labels, or business obligations. Answers come from a corpus of 14 BPJPH JDIH regulations (counted 16 Nov 2026), with citations.",
   ask_label: "Your question", ask_ph: "Example: What are the halal certification requirements for MSMEs?", ask_btn: "Ask",
   ask_count: "{n} of 2,000 characters remaining",
   privacy_title: "Before uploading, please read:",
@@ -2404,10 +2627,10 @@ Object.assign(I18N.ar, {
   gate_title: "يرجى التسجيل أو تسجيل الدخول أولًا لاستخدام هذه الميزة.",
   gate_text: "تحليل المستندات يستخدم خدمة ذكاء اصطناعي محدودة يوميًا، لذلك يحتاج إلى حساب مجاني. البحث وتصفح الفئات واللوائح وهيئات الحلال الأجنبية تبقى متاحة دون تسجيل.",
   gate_btn: "تسجيل الدخول / التسجيل",
-  analisis_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", analisis_title: "تحليل المستندات",
+  analisis_kicker: "يتطلب تسجيل الدخول", analisis_title: "تحليل المستندات",
   analisis_lede: "ارفع شهادة تحليل (CoA) أو نشرة بيانات السلامة (MSDS) أو شهادة حلال (PDF)، أو الصق نصها. يقرأ النظام المكونات ويتحقق من تصنيفها في ملاحق BPJPH، ثم يشرح النقاط الحرجة والخطوات التالية لكل مكون.",
-  ask_kicker: "المرحلة الثانية · يتطلب تسجيل الدخول", ask_title: "الذكاء الاصطناعي الحلال",
-  ask_lede: "اسأل عن الحلال وقواعد الحلال في إندونيسيا: شروط الشهادة، والإجراءات والمدد، ونظام SJPH، وRSHLN، وملصق الحلال، أو التزامات أصحاب الأعمال. الإجابات من مجموعة لوائح JDIH الخاصة بـ BPJPH مع الاستشهادات.",
+  ask_kicker: "يتطلب تسجيل الدخول", ask_title: "الذكاء الاصطناعي الحلال",
+  ask_lede: "اسأل عن الحلال وقواعد الحلال في إندونيسيا: شروط الشهادة، والإجراءات والمدد، ونظام SJPH، وRSHLN، وملصق الحلال، أو التزامات أصحاب الأعمال. الإجابات مأخوذة من مجموعة تضم 14 لائحة من لوائح JDIH الخاصة بـ BPJPH (تم إحصاؤها في 16 نوفمبر 2026)، مع الاستشهادات.",
   ask_label: "سؤالك", ask_ph: "مثال: ما شروط شهادة الحلال للمؤسسات الصغيرة والمتوسطة؟", ask_btn: "اسأل",
   ask_count: "تبقى {n} من 2,000 حرف",
   privacy_title: "قبل الرفع، يرجى القراءة:",
@@ -2477,10 +2700,10 @@ Object.assign(I18N.zh, {
   gate_title: "请先注册或登录，才能使用此功能。",
   gate_text: "文件分析使用每日有限额的 AI 服务，因此需要一个免费账号。搜索、分类浏览、法规和国外清真机构无需注册仍可使用。",
   gate_btn: "登录 / 注册",
-  analisis_kicker: "第二阶段 · 需要登录", analisis_title: "文件分析",
+  analisis_kicker: "需要登录", analisis_title: "文件分析",
   analisis_lede: "上传 CoA、MSDS 或清真证书（PDF），或粘贴其文本。系统会读取其中的成分，对照 BPJPH 附录核查分类，并说明每种成分的关键点和下一步措施。",
-  ask_kicker: "第二阶段 · 需要登录", ask_title: "清真 AI",
-  ask_lede: "咨询有关清真及印尼清真法规的问题——认证条件、流程与时限、SJPH、RSHLN、清真标签或经营者义务。答案来自 BPJPH 的 JDIH 法规库，并附引用来源。",
+  ask_kicker: "需要登录", ask_title: "清真 AI",
+  ask_lede: "咨询有关清真及印尼清真法规的问题——认证条件、流程与时限、SJPH、RSHLN、清真标签或经营者义务。答案来自 BPJPH 的 JDIH 法规库，共 14 部法规（2026 年 11 月 16 日统计），并附引用来源。",
   ask_label: "您的问题", ask_ph: "例如：中小企业申请清真认证需要什么条件？", ask_btn: "提问",
   ask_count: "还剩 {n} / 2,000 字符",
   privacy_title: "上传之前，请先阅读：",
@@ -3019,18 +3242,21 @@ function syncUrlQuery(value) {
 /* ---------------- 10 saran tampilan (15 Nov 2026) ---------------- */
 /* Peta bendera negara untuk daftar LHLN (item 7). Kunci = nilai country
    persis dari data (termasuk ejaan "Kolombia"/"Polandia" di sumber). */
+/* Peta kode ISO bendera negara untuk daftar LHLN (item 7). Kunci =
+   nilai country persis dari data (termasuk ejaan "Kolombia"/"Polandia"
+   di sumber); nilai = kode ISO 3166-1 alpha-2 untuk flagcdn. */
 var LHLN_FLAG = {
-  "Argentina": "\u{1F1E6}\u{1F1F7}", "Australia": "\u{1F1E6}\u{1F1FA}", "Austria": "\u{1F1E6}\u{1F1F9}", "Belarus": "\u{1F1E7}\u{1F1FE}",
-  "Belgium": "\u{1F1E7}\u{1F1EA}", "Brazil": "\u{1F1E7}\u{1F1F7}", "Canada": "\u{1F1E8}\u{1F1E6}", "Chile": "\u{1F1E8}\u{1F1F1}",
-  "China": "\u{1F1E8}\u{1F1F3}", "Denmark": "\u{1F1E9}\u{1F1F0}", "France": "\u{1F1EB}\u{1F1F7}", "Germany": "\u{1F1E9}\u{1F1EA}",
-  "India": "\u{1F1EE}\u{1F1F3}", "Ireland": "\u{1F1EE}\u{1F1EA}", "Italy": "\u{1F1EE}\u{1F1F9}", "Japan": "\u{1F1EF}\u{1F1F5}",
-  "Kolombia": "\u{1F1E8}\u{1F1F4}", "Lithuania": "\u{1F1F1}\u{1F1F9}", "Malaysia": "\u{1F1F2}\u{1F1FE}", "Mexico": "\u{1F1F2}\u{1F1FD}",
-  "Netherlands": "\u{1F1F3}\u{1F1F1}", "New Zealand": "\u{1F1F3}\u{1F1FF}", "Pakistan": "\u{1F1F5}\u{1F1F0}", "Philippines": "\u{1F1F5}\u{1F1ED}",
-  "Polandia": "\u{1F1F5}\u{1F1F1}", "Portugal": "\u{1F1F5}\u{1F1F9}", "Russia": "\u{1F1F7}\u{1F1FA}", "Saudi Arabia": "\u{1F1F8}\u{1F1E6}",
-  "Singapore": "\u{1F1F8}\u{1F1EC}", "South Africa": "\u{1F1FF}\u{1F1E6}", "South Korea": "\u{1F1F0}\u{1F1F7}", "Spain": "\u{1F1EA}\u{1F1F8}",
-  "Sri Lanka": "\u{1F1F1}\u{1F1F0}", "Sweden": "\u{1F1F8}\u{1F1EA}", "Switzerland": "\u{1F1E8}\u{1F1ED}", "Taiwan": "\u{1F1F9}\u{1F1FC}",
-  "Thailand": "\u{1F1F9}\u{1F1ED}", "Tunisia": "\u{1F1F9}\u{1F1F3}", "Turkey": "\u{1F1F9}\u{1F1F7}", "United Arab Emirates": "\u{1F1E6}\u{1F1EA}",
-  "United Kingdom": "\u{1F1EC}\u{1F1E7}", "United States of America": "\u{1F1FA}\u{1F1F8}", "Uruguay": "\u{1F1FA}\u{1F1FE}", "Vietnam": "\u{1F1FB}\u{1F1F3}"
+  "Argentina": "ar", "Australia": "au", "Austria": "at", "Belarus": "by",
+  "Belgium": "be", "Brazil": "br", "Canada": "ca", "Chile": "cl",
+  "China": "cn", "Denmark": "dk", "France": "fr", "Germany": "de",
+  "India": "in", "Ireland": "ie", "Italy": "it", "Japan": "jp",
+  "Kolombia": "co", "Lithuania": "lt", "Malaysia": "my", "Mexico": "mx",
+  "Netherlands": "nl", "New Zealand": "nz", "Pakistan": "pk", "Philippines": "ph",
+  "Polandia": "pl", "Portugal": "pt", "Russia": "ru", "Saudi Arabia": "sa",
+  "Singapore": "sg", "South Africa": "za", "South Korea": "kr", "Spain": "es",
+  "Sri Lanka": "lk", "Sweden": "se", "Switzerland": "ch", "Taiwan": "tw",
+  "Thailand": "th", "Tunisia": "tn", "Turkey": "tr", "United Arab Emirates": "ae",
+  "United Kingdom": "gb", "United States of America": "us", "Uruguay": "uy", "Vietnam": "vn"
 };
 /* Baris tombol tiap kartu hasil (item 3 bagikan + item 10 unduh PNG). */
 var ICO_SHARE = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>';
@@ -3489,8 +3715,10 @@ function renderBrowseList(key) {
 }
 
 /* ---------------- regulasi ---------------- */
-/* Linimasa 11 dokumen korpus (item 4). Deskripsi = judul resmi yang
-   dipersingkat dari korpus-regulasi.json; PP 39/2021 sudah dicabut. */
+/* Linimasa 10 regulasi (item 4). Deskripsi = judul resmi yang dipersingkat
+   dari korpus-regulasi.json; PP 39/2021 sudah dicabut. Kepkaban 328/2026
+   TIDAK ditampilkan di linimasa (tetap ada di korpus & ZIP 11 dokumen).
+   PerBPJPH 4/2026: dicabut melalui Pasal II PP 40/2026 (LN 2026 No. 156). */
 var REG_TIMELINE = [
   { y: "2014", n: "UU 33/2014", d: "Jaminan Produk Halal \u2014 undang-undang induk" },
   { y: "2021", n: "PP 39/2021", d: "Penyelenggaraan Bidang Jaminan Produk Halal", tag: "revoked" },
@@ -3499,15 +3727,15 @@ var REG_TIMELINE = [
   { y: "2023", n: "Kepkaban 20/2023", d: "Kriteria Sistem Jaminan Produk Halal" },
   { y: "2024", n: "PP 42/2024", d: "Penyelenggaraan Bidang Jaminan Produk Halal \u2014 mencabut PP 39/2021" },
   { y: "2026", n: "SE 2/2026", d: "Mekanisme Penentuan Kategori Produk dalam Registrasi Sertifikat Halal Luar Negeri" },
-  { y: "2026", n: "PerBPJPH 4/2026", d: "Pemastian Kesesuaian Produk Halal Luar Negeri" },
-  { y: "2026", n: "Kepkaban 328/2026", d: "SOP Layanan Pemastian Kesesuaian Produk Halal Luar Negeri" },
+  { y: "2026", n: "PerBPJPH 4/2026", d: "Pemastian Kesesuaian Produk Halal Luar Negeri \u2014 Dicabut melalui Pasal II PP 40/2026", tag: "cancelled" },
   { y: "2026", n: "Kepkaban 301/2026", d: "Produk dan Bahan yang Dikecualikan dari Kewajiban Bersertifikat Halal" },
   { y: "2026", n: "Kepkaban 387/2026", d: "Jenis Produk yang Wajib Bersertifikat Halal" }
 ];
 function timelineHTML() {
   var items = REG_TIMELINE.map(function (r) {
     return "<li><span class=\"tl-year\">" + r.y + "</span><span class=\"tl-name\">" + esc(r.n) + "</span>" +
-      (r.tag === "revoked" ? '<span class="tl-tag">' + esc(t("reg_revoked")) + "</span>" : "") +
+      (r.tag === "revoked" ? '<span class="tl-tag">' + esc(t("reg_revoked")) + "</span>" :
+        r.tag === "cancelled" ? '<span class="tl-tag tl-tag-cancelled">' + esc(t("reg_cancelled")) + "</span>" : "") +
       '<div class="tl-desc">' + esc(r.d) + "</div></li>";
   }).join("");
   return '<div class="reg-timeline"><h2>' + esc(t("reg_timeline_title")) + "</h2><ol>" + items + "</ol></div>";
@@ -3542,7 +3770,7 @@ function buildRegulasi() {
 
 /* ---------------- navigasi & peristiwa ---------------- */
 /* Urutan tab di nav utama — dipakai untuk arah animasi (maju/mundur). */
-var NAV_ORDER = ["cari", "tanya", "analisis", "jelajah", "regulasi", "lhln", "kontak"];
+var NAV_ORDER = ["cari", "tanya", "analisis", "jelajah", "regulasi", "berita", "tutorial", "lhln", "kontak"];
 var currentView = "cari";
 var navPill = null;
 /* Posisikan pil emas tepat di belakang tombol tab aktif. `instant` = tanpa
@@ -3590,7 +3818,7 @@ function switchView(name) {
   var dx = dir === 0 ? 0 : (dir > 0 ? 1 : -1) * (rtl ? -26 : 26);
   el("view-" + name).style.setProperty("--view-dx", dx + "px");
   var vdir = rtl ? -dir : dir;
-  ["cari", "jelajah", "regulasi", "kontak", "lhln", "analisis", "tanya"].forEach(function (v) {
+  ["cari", "jelajah", "regulasi", "berita", "tutorial", "kontak", "lhln", "analisis", "tanya"].forEach(function (v) {
     el("view-" + v).hidden = v !== name;
   });
   document.querySelectorAll("[data-nav]").forEach(function (b) {
@@ -3604,6 +3832,8 @@ function switchView(name) {
   if ((name === "analisis" || name === "tanya") && typeof f2IsLoggedIn === "function" && !f2IsLoggedIn()) {
     f2OpenAuth();
   }
+  /* Berita Terkini: muat sekali saat tab pertama kali dibuka. */
+  if (name === "berita") loadBerita();
 }
 document.querySelectorAll("[data-nav]").forEach(function (b) {
   b.addEventListener("click", function () { switchView(b.getAttribute("data-nav")); });
@@ -3695,7 +3925,7 @@ function buildLhlnFilters() {
     r.scopes.forEach(function (s) { if (!scopes[s.key]) scopes[s.key] = s.label; });
   });
   cSel.innerHTML = '<option value="">' + esc(t("lhln_country_all")) + "</option>" +
-    Object.keys(countries).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc((LHLN_FLAG[c] ? LHLN_FLAG[c] + " " : "") + c) + "</option>"; }).join("");
+    Object.keys(countries).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc((LHLN_FLAG[c] ? LHLN_FLAG[c].toUpperCase() + " " : "") + c) + "</option>"; }).join("");
   sSel.innerHTML = '<option value="">' + esc(t("lhln_scope_all")) + "</option>" +
     Object.keys(scopes).sort().map(function (k) { return '<option value="' + esc(k) + '">' + esc(scopes[k]) + "</option>"; }).join("");
   cSel.value = cPrev; sSel.value = sPrev;
@@ -3719,7 +3949,7 @@ function renderLhln() {
       return "<tr>" +
         '<td class="c-no" data-th="' + esc(t("lhln_col_no")) + '">' + esc(r.no) + "</td>" +
         '<td class="c-name" data-th="' + esc(t("lhln_col_name")) + '">' + esc(r.nama) + "</td>" +
-        '<td data-th="' + esc(t("lhln_col_addr")) + '">' + (LHLN_FLAG[r.country] ? '<span class="lhln-flag">' + LHLN_FLAG[r.country] + "</span>" : "") + esc(r.alamat) + "</td>" +
+        '<td data-th="' + esc(t("lhln_col_addr")) + '">' + (LHLN_FLAG[r.country] ? '<span class="lhln-flag">' + flagImgHTML(LHLN_FLAG[r.country], r.country) + "</span>" : "") + esc(r.alamat) + "</td>" +
         '<td data-th="' + esc(t("lhln_col_scope")) + '">' + esc(r.lingkup) + "</td>" +
         '<td class="c-valid" data-th="' + esc(t("lhln_col_valid")) + '">' + esc(r.berlaku) + "</td>" +
         '<td data-th="' + esc(t("lhln_col_status")) + '"><span class="badge-verified">\u2713 ' + esc(t("lhln_verified")) + "</span></td>" +
@@ -3748,6 +3978,93 @@ Promise.resolve()
   el(id).addEventListener("input", renderLhln);
   el(id).addEventListener("change", renderLhln);
 });
+
+/* ---------------- berita terkini (16 Nov 2026) ---------------- */
+/* Data dari data/berita.json (ditulis harian oleh scripts/update-daily.mjs:
+   scrape BPJPH + WP REST API LPPOM MUI). TIDAK fetch live per pengunjung. */
+var BERITA = null, BERITA_FILTER = "all", LHLN_UPDATES = null;
+function fmtDateISO(iso) {
+  try {
+    var p = String(iso || "").split("-");
+    if (p.length !== 3) return iso || "";
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return d.toLocaleDateString(LOCALES[LANG] || "id-ID", { day: "numeric", month: "long", year: "numeric" });
+  } catch (e) { return iso || ""; }
+}
+function updateBeritaMeta() {
+  if (!BERITA) return;
+  var upd = el("berita-updated");
+  if (upd) upd.textContent = tt("berita_updated", { d: fmtDateISO(String(BERITA.updated_at_wib || "").slice(0, 10)), n: fmtNum(BERITA.total) });
+  var note = el("berita-note");
+  if (note) {
+    var txt = t("berita_date_note");
+    var s = BERITA.sources || {};
+    if ((s.bpjph && s.bpjph.status !== "ok") || (s.lppom && s.lppom.status !== "ok")) txt += " " + t("berita_partial");
+    note.textContent = txt;
+    note.hidden = false;
+  }
+}
+function renderBerita() {
+  var list = el("berita-list");
+  if (!list || !BERITA) return;
+  var items = BERITA.items.filter(function (it) { return BERITA_FILTER === "all" || it.source === BERITA_FILTER; });
+  el("berita-empty").hidden = true;
+  if (!items.length) {
+    list.innerHTML = "";
+    el("berita-empty").hidden = false;
+    el("berita-empty").textContent = t("berita_empty");
+    return;
+  }
+  list.innerHTML = items.map(function (it) {
+    var badge = it.source === "BPJPH" ? "bpjph" : "lppom";
+    var dateTxt = fmtDateISO(it.date) + (it.date_label ? " · " + esc(it.date_label) : "");
+    return '<article class="news-item"><h3>' + esc(it.title) + "</h3>" +
+      '<p class="news-meta"><span class="news-badge ' + badge + '">' + esc(it.source) + "</span>" +
+      "<span>" + esc(dateTxt) + "</span>" + (it.category ? "<span>· " + esc(it.category) + "</span>" : "") + "</p>" +
+      (it.summary ? "<p>" + esc(it.summary) + "</p>" : "") +
+      '<a class="news-src" href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(t("berita_source")) + " ↗</a></article>";
+  }).join("");
+}
+function loadBerita() {
+  if (BERITA || loadBerita._started) return;
+  loadBerita._started = true;
+  fetch("data/berita.json", { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (j) {
+    BERITA = j;
+    updateBeritaMeta();
+    renderBerita();
+  }).catch(function () {
+    var upd = el("berita-updated");
+    if (upd) upd.textContent = t("berita_error");
+  });
+}
+document.querySelectorAll("[data-news-filter]").forEach(function (b) {
+  b.addEventListener("click", function () {
+    BERITA_FILTER = b.getAttribute("data-news-filter");
+    document.querySelectorAll("[data-news-filter]").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    renderBerita();
+  });
+});
+/* Garis "Terakhir dicek" di tab LHLN — dari data/lhln-updates.json. */
+function updateLhlnCheckLine() {
+  if (!LHLN_UPDATES) return;
+  var line = el("lhln-check-line");
+  if (!line) return;
+  var u = LHLN_UPDATES;
+  var sum = (u.added + u.removed + u.changed === 0)
+    ? t("lhln_nochange")
+    : tt("lhln_change_summary", { a: fmtNum(u.added), u: fmtNum(u.changed), r: fmtNum(u.removed) });
+  line.textContent = tt("lhln_checked", { d: fmtDateISO(String(u.checked_at_wib || "").slice(0, 10)), s: sum });
+}
+fetch("data/lhln-updates.json", { cache: "no-store" }).then(function (r) {
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}).then(function (j) { LHLN_UPDATES = j; updateLhlnCheckLine(); }).catch(function () { /* garis fallback statis tetap tampil */ });
+
 
 /* ---------------- tema & bahasa: penerapan ---------------- */
 function applyStaticTexts() {
@@ -4508,7 +4825,7 @@ function applyLanguage(lang, rerender) {
   document.title = t("doc_title");
   el("lang-current").textContent = LANG_NAMES[lang];
   var langFlag = el("lang-flag");
-  if (langFlag) langFlag.textContent = LANG_FLAGS[lang] || "";
+  if (langFlag) langFlag.innerHTML = flagImgHTML(LANG_FLAGS[lang], LANG_NAMES[lang]);
   document.querySelectorAll("[data-lang-opt]").forEach(function (b) {
     b.setAttribute("aria-selected", String(b.getAttribute("data-lang-opt") === lang));
   });
@@ -4527,6 +4844,7 @@ function applyLanguage(lang, rerender) {
     if (q.length >= 2) runSearch(q);
   }
   if (rerender && LHLN) { buildLhlnFilters(); renderLhln(); }
+  if (rerender) { renderBerita(); updateBeritaMeta(); updateLhlnCheckLine(); }
   if (typeof f2AfterLanguage === "function") f2AfterLanguage();
   positionNavPill(true);
 }
