@@ -344,7 +344,11 @@
       }
       .page-head::before { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 6px; background: linear-gradient(180deg, var(--green-bright), var(--gold)); }
       .page-head .kicker { display: block; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
-      .page-head h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+      .page-head h2 { font-family: var(--font-display); font-optical-sizing: auto; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.06; font-weight: 600; letter-spacing: -.02em; margin: 0 0 10px; }
+      .static-links { margin: 30px 0 8px; padding-top: 22px; border-top: 1px solid var(--line); }
+      .static-links h2 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 8px; }
+      .page-links { margin: 0; line-height: 2.1; font-size: .95rem; }
+
       .page-head .lede { margin-bottom: 0; }
 
       /* ---------- Search ---------- */
@@ -1341,6 +1345,10 @@
         <div id="results-summary" class="results-summary" hidden></div>
 
         <div id="results" aria-live="polite"></div>
+        <section class="static-links" aria-labelledby="page-links-title">
+          <h2 id="page-links-title" data-i18n="page_links_title">Halaman bahan populer</h2>
+          <p class="page-links"><a href="/bahan/gliserin">Gliserin</a> &middot; <a href="/bahan/gelatin">Gelatin</a> &middot; <a href="/bahan/carmine">Carmine</a> &middot; <a href="/bahan/e471">E471</a> &middot; <a href="/bahan/rennet">Rennet</a> &middot; <a href="/bahan/lesitin">Lesitin</a> &middot; <a href="/bahan/monosodium-glutamat">Monosodium Glutamat</a> &middot; <a href="/bahan/aspartam">Aspartam</a> &middot; <a href="/bahan/l-sistein">L-Sistein</a> &middot; <a href="/bahan/kolagen">Kolagen</a></p>
+        </section>
 
         <div class="empty-state" id="empty-state">
           <p><strong data-i18n="empty_strong">Belum ada pencarian.</strong> <span data-i18n="empty_text">Hasil pencarian akan muncul di sini.</span></p>
@@ -1381,7 +1389,7 @@
       <section class="view" id="view-jelajah" aria-labelledby="judul-jelajah" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="browse_kicker">Lampiran lengkap</span>
-          <h1 id="judul-jelajah" data-i18n="browse_title">Jelajah per kategori</h1>
+          <h2 id="judul-jelajah" data-i18n="browse_title">Jelajah per kategori</h2>
           <p class="lede" data-i18n="browse_lede">Seluruh isi lampiran, dikelompokkan per kategori. Buka kategori untuk melihat daftarnya, saring dengan kolom filter, lalu ketuk satu entri untuk melihat kartu klasifikasinya.</p>
         </div>
         <div class="browse-section">
@@ -1400,7 +1408,7 @@
       <section class="view" id="view-regulasi" aria-labelledby="judul-regulasi" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="reg_kicker">Dasar hukum</span>
-          <h1 id="judul-regulasi" data-i18n="reg_title">Regulasi acuan</h1>
+          <h2 id="judul-regulasi" data-i18n="reg_title">Regulasi acuan</h2>
           <p class="lede" data-i18n="reg_lede">Tiga keputusan Kepala BPJPH yang menjadi dasar klasifikasi di halaman ini, beserta kriteria Sistem Jaminan Produk Halal (SJPH) dan status keberlakuannya.</p>
         </div>
         <div class="reg-zip">
@@ -1414,7 +1422,7 @@
       <section class="view" id="view-berita" aria-labelledby="judul-berita" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="berita_kicker">Dari sumber resmi</span>
-          <h1 id="judul-berita" data-i18n="berita_title">Berita Terkini</h1>
+          <h2 id="judul-berita" data-i18n="berita_title">Berita Terkini</h2>
           <p class="lede" data-i18n="berita_lede">Kabar terbaru seputar halal dari BPJPH dan LPPOM MUI. Daftar digabungkan dan diurutkan dari yang terbaru; ketuk “Sumber” untuk membaca artikel aslinya.</p>
           <p class="lhln-meta" id="berita-updated"><span data-i18n="berita_loading">Memuat berita…</span></p>
           <p class="lhln-meta" id="berita-note" hidden></p>
@@ -1432,7 +1440,7 @@
       <section class="view" id="view-tutorial" aria-labelledby="judul-tutorial" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="tut_kicker">Panduan video langkah demi langkah</span>
-          <h1 id="judul-tutorial" data-i18n="tut_title">Tutorial</h1>
+          <h2 id="judul-tutorial" data-i18n="tut_title">Tutorial</h2>
           <p class="lede" data-i18n="tut_lede">Tiga video pendek yang memandu Anda memakai website ini: mencari bahan, memakai AI Halal, dan menganalisis dokumen. Tekan putar pada video yang Anda butuhkan — video hanya dimuat saat diputar.</p>
         </div>
         <div class="tut-list">
@@ -1470,7 +1478,7 @@
       <section class="view" id="view-kontak" aria-labelledby="judul-kontak" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="contact_kicker">Hubungi saya</span>
-          <h1 id="judul-kontak" data-i18n="contact_title">Kontak</h1>
+          <h2 id="judul-kontak" data-i18n="contact_title">Kontak</h2>
           <p class="lede" data-i18n="contact_lede">Ada pertanyaan seputar klasifikasi bahan atau sertifikasi halal? Hubungi langsung lewat kanal di bawah ini.</p>
         </div>
         <div class="contact-grid">
@@ -1520,7 +1528,7 @@
       <section class="view" id="view-lhln" aria-labelledby="judul-lhln" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="lhln_kicker">Diakui BPJPH</span>
-          <h1 id="judul-lhln" data-i18n="lhln_title">Lembaga Halal Luar Negeri</h1>
+          <h2 id="judul-lhln" data-i18n="lhln_title">Lembaga Halal Luar Negeri</h2>
           <p class="lede" data-i18n="lhln_lede">Daftar 126 Lembaga Halal Luar Negeri (LHLN) yang diakui BPJPH. Cari berdasarkan nama lembaga, saring menurut negara atau lingkup layanan, atau unduh seluruh daftarnya sebagai CSV.</p>
           <p class="lhln-meta"><strong data-i18n="lhln_updated">Data diperbarui: 16 November 2026</strong></p>
           <p class="lhln-meta" id="lhln-check-line">Terakhir dicek: 16 November 2026 • 6 nama lembaga diperbarui</p>
@@ -1571,7 +1579,7 @@
       <section class="view" id="view-analisis" aria-labelledby="judul-analisis" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="analisis_kicker">Perlu daftar / masuk</span>
-          <h1 id="judul-analisis" data-i18n="analisis_title">Analisis Dokumen</h1>
+          <h2 id="judul-analisis" data-i18n="analisis_title">Analisis Dokumen</h2>
           <p class="lede" data-i18n="analisis_lede">Unggah CoA, MSDS, atau sertifikat halal (PDF), atau tempel teksnya. Sistem membaca bahan-bahannya, memeriksa klasifikasinya pada lampiran BPJPH, lalu menjelaskan titik kritis dan langkah berikutnya untuk tiap bahan.</p>
         </div>
         <div class="gate-panel" id="gate-analisis" hidden>
@@ -1624,7 +1632,7 @@
       <section class="view" id="view-tanya" aria-labelledby="judul-tanya" hidden>
         <div class="page-head">
           <span class="kicker" data-i18n="ask_kicker">Perlu daftar / masuk</span>
-          <h1 id="judul-tanya" data-i18n="ask_title">Tanya Jawab</h1>
+          <h2 id="judul-tanya" data-i18n="ask_title">Tanya Jawab</h2>
           <p class="lede" data-i18n="ask_lede">Tanya seputar halal dan aturan halal di Indonesia: syarat sertifikasi, proses dan jangka waktu, SJPH, RSHLN, label halal, atau kewajiban pelaku usaha. Jawaban diambil dari korpus 15 regulasi JDIH BPJPH (dihitung 16 Nov 2026), lengkap dengan sitasinya.</p>
         </div>
         <div class="gate-panel" id="gate-tanya" hidden>
@@ -1792,7 +1800,7 @@ var I18N = { id: {
   search_label: "Nama bahan atau nomor CAS",
   search_ph: "Contoh: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Cari bahan", examples_label: "Contoh pencarian:",
-  popular_label: "Bahan populer:",
+  popular_label: "Bahan populer:",   page_links_title: "Halaman bahan populer",
   copy_cas: "Salin CAS", copied: "Tersalin", share_btn: "Bagikan", wa_btn: "Kirim ke WA", png_btn: "Unduh gambar", page_btn: "Lihat halaman bahan", fb_q: "Jawaban ini membantu?", fb_yes: "Ya", fb_no: "Tidak", fb_thanks: "Terima kasih atas masukannya!", fb_err: "Tidak terkirim, coba lagi.", sug_title: "Usulkan bahan ini?", sug_hint: "Tidak menemukan bahan yang dicari? Kirimkan namanya, kami akan meninjaunya.", sug_name: "Nama bahan", sug_note: "Catatan (opsional)", sug_email: "Email (opsional)", sug_submit: "Kirim usulan", sug_ok: "Terima kasih! Usulanmu masuk daftar tinjauan.", sug_dup: "Bahan ini sudah pernah diusulkan. Terima kasih!", sug_err: "Tidak terkirim, coba lagi.", sug_name_req: "Isi dulu nama bahannya.", png_saved: "Gambar diunduh", lhln_col_status: "Status", lhln_verified: "Terverifikasi", reg_timeline_title: "Linimasa regulasi", reg_revoked: "Dicabut oleh PP 42/2024", reg_cancelled: "Dibatalkan", search_loading: "Memuat hasil…",
   pc_loading: "Memuat data PubChem…",
   to_top: "Kembali ke atas",
@@ -1932,7 +1940,7 @@ I18N.en = {
   search_label: "Ingredient name or CAS number",
   search_ph: "Example: beras, eugenol, 470-82-6, gliserin",
   search_btn: "Search", examples_label: "Try:",
-  popular_label: "Popular ingredients:",
+  popular_label: "Popular ingredients:",   page_links_title: "Popular ingredient pages",
   copy_cas: "Copy CAS", copied: "Copied", share_btn: "Share", wa_btn: "Send to WhatsApp", png_btn: "Download image", page_btn: "View ingredient page", fb_q: "Was this answer helpful?", fb_yes: "Yes", fb_no: "No", fb_thanks: "Thanks for your feedback!", fb_err: "Could not send, please try again.", sug_title: "Suggest this ingredient?", sug_hint: "Can't find the ingredient you're looking for? Send us its name and we'll review it.", sug_name: "Ingredient name", sug_note: "Note (optional)", sug_email: "Email (optional)", sug_submit: "Send suggestion", sug_ok: "Thank you! Your suggestion is on the review list.", sug_dup: "This ingredient was already suggested. Thank you!", sug_err: "Could not send, please try again.", sug_name_req: "Please fill in the ingredient name first.", png_saved: "Image downloaded", lhln_col_status: "Status", lhln_verified: "Verified", reg_timeline_title: "Regulation timeline", reg_revoked: "Revoked by PP 42/2024", reg_cancelled: "Cancelled", search_loading: "Loading results…",
   pc_loading: "Loading PubChem data…",
   to_top: "Back to top",
@@ -2066,7 +2074,7 @@ I18N.ar = {
   search_label: "اسم المادة أو رقم CAS",
   search_ph: "مثال: beras، eugenol، 470-82-6، gliserin",
   search_btn: "ابحث", examples_label: "جرّب:",
-  popular_label: "مواد شائعة:",
+  popular_label: "مواد شائعة:",   page_links_title: "صفحات المكونات الشائعة",
   copy_cas: "نسخ CAS", copied: "تم النسخ", share_btn: "مشاركة", wa_btn: "أرسل واتساب", png_btn: "تنزيل الصورة", page_btn: "عرض صفحة المادة", fb_q: "هل كانت هذه الإجابة مفيدة؟", fb_yes: "نعم", fb_no: "لا", fb_thanks: "شكرًا لملاحظتك!", fb_err: "تعذّر الإرسال، حاول مرة أخرى.", sug_title: "اقترح هذه المادة؟", sug_hint: "لم تجد المادة التي تبحث عنها؟ أرسل اسمها وسنراجعها.", sug_name: "اسم المادة", sug_note: "ملاحظة (اختياري)", sug_email: "البريد الإلكتروني (اختياري)", sug_submit: "أرسل الاقتراح", sug_ok: "شكرًا لك! تمت إضافة اقتراحك إلى قائمة المراجعة.", sug_dup: "تم اقتراح هذه المادة من قبل. شكرًا لك!", sug_err: "تعذّر الإرسال، حاول مرة أخرى.", sug_name_req: "يرجى إدخال اسم المادة أولًا.", png_saved: "تم تنزيل الصورة", lhln_col_status: "الحالة", lhln_verified: "تم التحقق", reg_timeline_title: "الخط الزمني للوائح", reg_revoked: "ألغاه PP 42/2024", reg_cancelled: "أُلغيت", search_loading: "جارٍ تحميل النتائج…",
   pc_loading: "جارٍ تحميل بيانات PubChem…",
   to_top: "العودة إلى الأعلى",
@@ -2200,7 +2208,7 @@ I18N.zh = {
   search_label: "原料名称或 CAS 号",
   search_ph: "例如：beras、eugenol、470-82-6、gliserin",
   search_btn: "搜索", examples_label: "试试：",
-  popular_label: "热门原料：",
+  popular_label: "热门原料：",   page_links_title: "热门原料页面",
   copy_cas: "复制 CAS", copied: "已复制", share_btn: "分享", wa_btn: "发到 WhatsApp", png_btn: "下载图片", page_btn: "查看原料页面", fb_q: "这个答案有帮助吗？", fb_yes: "有", fb_no: "没有", fb_thanks: "感谢你的反馈！", fb_err: "发送失败，请重试。", sug_title: "推荐这种原料？", sug_hint: "没找到你要找的原料？把名字发给我们，我们会审核。", sug_name: "原料名称", sug_note: "备注（可选）", sug_email: "邮箱（可选）", sug_submit: "提交推荐", sug_ok: "谢谢！你的推荐已进入审核列表。", sug_dup: "这种原料已经被推荐过了，谢谢！", sug_err: "发送失败，请重试。", sug_name_req: "请先填写原料名称。", png_saved: "图片已下载", lhln_col_status: "状态", lhln_verified: "已验证", reg_timeline_title: "法规时间线", reg_revoked: "已被 PP 42/2024 废止", reg_cancelled: "已废止", search_loading: "正在加载结果…",
   pc_loading: "正在加载 PubChem 数据…",
   to_top: "回到顶部",
