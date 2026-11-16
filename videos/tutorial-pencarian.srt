@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:07,437
+Tutorial: cara mengecek status bahan halal di website Klasifikasi Bahan Halal
+
+1
+00:00:07,437 --> 00:00:08,017
+BPJPH.
+
+1
+00:00:08,033 --> 00:00:15,620
+Buka browser, lalu kunjungi cek-bahan.vercel.app. Website ini memakai lampiran
+
+1
+00:00:15,620 --> 00:00:17,759
+resmi keputusan BPJPH.
+
+2
+00:00:17,767 --> 00:00:24,979
+Di halaman utama, ketik nama bahan di kolom pencarian: nama Indonesia, nama
+
+2
+00:00:24,979 --> 00:00:28,152
+Inggris, sinonim, atau nomor CAS.
+
+2
+00:00:28,167 --> 00:00:34,986
+Contohnya, kita ketik gliserin. Pencarian di sini toleran terhadap salah ketik
+
+2
+00:00:34,986 --> 00:00:35,598
+ringan.
+
+3
+00:00:35,600 --> 00:00:42,416
+Hasilnya langsung muncul. Gliserin tidak tercantum di Lampiran 301, jadi
+
+3
+00:00:42,416 --> 00:00:44,593
+statusnya Belum Diatur.
+
+3
+00:00:44,600 --> 00:00:52,011
+Kartu hasil menampilkan status, nomor CAS, klasifikasi, dan dasar hukumnya.
+
+3
+00:00:52,033 --> 00:00:59,011
+Ada tiga kemungkinan hasil. Dikecualikan bila di Lampiran 301, Wajib bila
+
+4
+00:00:59,011 --> 00:01:06,084
+jenis produk di Lampiran 387, dan Belum Diatur bila tidak ada di keduanya.
+
+4
+00:01:06,100 --> 00:01:12,557
+Untuk bahan Belum Diatur, siapkan dokumen pendukung seperti alur proses
+
+4
+00:01:12,557 --> 00:01:16,831
+produksi, komposisi, dan CoA untuk dinilai LPH.
+
+4
+00:01:16,833 --> 00:01:24,326
+Itu dia cara mengecek bahan. Coba sekarang di cek-bahan.vercel.app. Gratis,
+
+5
+00:01:24,326 --> 00:01:26,224
+tanpa perlu daftar.
+
