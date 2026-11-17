@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-16T02:15:55.765Z",
-  "updated_at_wib": "2026-11-16 09:15 WIB",
-  "total": 19,
+  "updated_at": "2026-11-17T00:33:05.000Z",
+  "updated_at_wib": "2026-11-17 07:33 WIB",
+  "total": 20,
   "sources": {
     "bpjph": {
       "status": "ok",
-      "count": 9
+      "count": 10
     },
     "lppom": {
       "status": "ok",
@@ -202,6 +202,16 @@
       "date_exact": false,
       "category": null,
       "summary": "Siaran Pers Jakarta --- Kepala Badan Penyelenggara Jaminan Produk Halal (BPJPH) Ahmad Haikal Hasan mengecam keras peristiwa pembakaran warung yang menjual makanan nonhalal di Sukoharjo, Jawa Tengah, yang belakangan beredar di media sosial. Ia menegaskan bahwa tindakan kekerasan…"
+    },
+    {
+      "source": "BPJPH",
+      "title": "Penyesuaian Penahapan Kewajiban Sertifikasi Halal Diatur dalam PP 40 Tahun 2026, Begini Rinciannya",
+      "url": "https://bpjph.halal.go.id/read/penyesuaian-penahapan-kewajiban-sertifikasi-halal-diatur-dalam-pp-40-tahun-2026-begini-rinciannya",
+      "date": "2026-10-23",
+      "date_label": null,
+      "date_exact": false,
+      "category": "Nasional",
+      "summary": "PP 40/2026 mengubah PP 42/2024: makanan, minuman, hasil sembelihan, dan jasa penyembelihan dari usaha mikro dan kecil (UMK) diperpanjang sampai 17 Oktober 2028; produk yang sama dari luar negeri wajib bersertifikat halal mulai 18 Oktober 2028. Makanan, minuman, hasil sembelihan, dan jasa penyembelihan dari usaha menengah dan besar tetap wajib sejak 18 Oktober 2024."
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."
