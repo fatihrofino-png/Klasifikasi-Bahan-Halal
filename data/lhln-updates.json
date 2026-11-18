@@ -1,49 +1,35 @@
 {
-  "checked_at": "2026-11-17T04:58:07.621Z",
-  "checked_at_wib": "2026-11-17 11:58 WIB",
-  "total": 126,
-  "added": 0,
+  "checked_at": "2026-11-18T04:02:27.486Z",
+  "checked_at_wib": "2026-11-18 11:02 WIB",
+  "total": 127,
+  "added": 1,
   "removed": 0,
-  "changed": 6,
+  "changed": 0,
   "changes": [
     {
-      "type": "changed",
-      "no": 25,
-      "nama": "Good Fortune Halal Certification Services (Qingdao) Co., Ltd.",
-      "detail": "nama: \"Good Fortune Halal Certification Services (Qingdao) Co. Ltd.\" → \"Good Fortune Halal Certification Services (Qingdao) Co., Ltd.\""
-    },
-    {
-      "type": "changed",
-      "no": 81,
-      "nama": "Islamic Food and Nutrition Council of America (IFANCA)",
-      "detail": "nama: \"IFANCA\" → \"Islamic Food and Nutrition Council of America (IFANCA)\""
-    },
-    {
-      "type": "changed",
-      "no": 83,
-      "nama": "Islamic Food Research Centre (Hong Kong) Co., Ltd.",
-      "detail": "nama: \"Islamic Food Research Centre (Hong Kong) Co. Ltd.\" → \"Islamic Food Research Centre (Hong Kong) Co., Ltd.\""
-    },
-    {
-      "type": "changed",
-      "no": 88,
-      "nama": "Jabatan Kemajuan Islam Malaysia (JAKIM)",
-      "detail": "nama: \"JAKIM\" → \"Jabatan Kemajuan Islam Malaysia (JAKIM)\""
-    },
-    {
-      "type": "changed",
-      "no": 97,
-      "nama": "Majlis Ugama Islam Singapura (MUIS)",
-      "detail": "nama: \"MUIS\" → \"Majlis Ugama Islam Singapura (MUIS)\""
-    },
-    {
-      "type": "changed",
-      "no": 100,
-      "nama": "Muslim Religious Union in Poland (Muzulmanski Zwiazek Religijny w Rzeczypospolitej Polskiej)",
-      "detail": "nama: \"Muslim Religious Union in Poland\" → \"Muslim Religious Union in Poland (Muzulmanski Zwiazek Religijny w Rzeczypospolitej Polskiej)\""
+      "type": "added",
+      "no": 112,
+      "nama": "Shanghai Cangyou Inspection and Certification Co.Ltd.",
+      "detail": "Lembaga baru: Shanghai, China"
     }
   ],
   "history": [
+    {
+      "checked_at": "2026-11-18T04:02:27.486Z",
+      "checked_at_wib": "2026-11-18 11:02 WIB",
+      "total": 127,
+      "added": 1,
+      "removed": 0,
+      "changed": 0,
+      "changes": [
+        {
+          "type": "added",
+          "no": 112,
+          "nama": "Shanghai Cangyou Inspection and Certification Co.Ltd.",
+          "detail": "Lembaga baru: Shanghai, China"
+        }
+      ]
+    },
     {
       "checked_at": "2026-11-17T04:58:07.621Z",
       "checked_at_wib": "2026-11-17 11:58 WIB",
