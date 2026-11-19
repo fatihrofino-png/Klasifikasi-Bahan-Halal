@@ -1,19 +1,21 @@
 {
-  "checked_at": "2026-11-18T04:02:27.486Z",
-  "checked_at_wib": "2026-11-18 11:02 WIB",
+  "checked_at": "2026-11-19T03:59:20.566Z",
+  "checked_at_wib": "2026-11-19 10:59 WIB",
   "total": 127,
-  "added": 1,
+  "added": 0,
   "removed": 0,
   "changed": 0,
-  "changes": [
-    {
-      "type": "added",
-      "no": 112,
-      "nama": "Shanghai Cangyou Inspection and Certification Co.Ltd.",
-      "detail": "Lembaga baru: Shanghai, China"
-    }
-  ],
+  "changes": [],
   "history": [
+    {
+      "checked_at": "2026-11-19T03:59:20.566Z",
+      "checked_at_wib": "2026-11-19 10:59 WIB",
+      "total": 127,
+      "added": 0,
+      "removed": 0,
+      "changed": 0,
+      "changes": []
+    },
     {
       "checked_at": "2026-11-18T04:02:27.486Z",
       "checked_at_wib": "2026-11-18 11:02 WIB",
