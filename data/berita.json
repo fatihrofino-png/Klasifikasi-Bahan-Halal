@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-19T03:59:24.348Z",
-  "updated_at_wib": "2026-11-19 10:59 WIB",
+  "updated_at": "2026-11-20T03:53:16.762Z",
+  "updated_at_wib": "2026-11-20 10:53 WIB",
   "total": 19,
   "sources": {
     "bpjph": {
@@ -14,34 +14,44 @@
   },
   "items": [
     {
+      "source": "LPPOM MUI",
+      "title": "Dari Frankfurt ke Indonesia, LPPOM Bahas Sertifikasi Halal untuk Produsen Global",
+      "url": "https://halalmui.org/sertifikasi-halal-indonesia-produsen-global/",
+      "date": "2026-11-20",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Memasuki pasar Indonesia membutuhkan pemahaman regulasi sertifikasi halal. Melalui Frankfurt Halal Summit 2026, LPPOM membahas kesiapan produsen global dalam memenuhi persyaratan halal di Indonesia. Indonesia merupakan salah satu pasar potensial yang perlu diperhatikan produsen g"
+    },
+    {
       "source": "BPJPH",
       "title": "Kemenko Pangan: Penguatan Ekosistem Halal Strategis bagi Ketahanan Pangan dan Ekonomi Nasional",
       "url": "https://bpjph.halal.go.id/main/read/kemenko-pangan-penguatan-ekosistem-halal-strategis-bagi-ketahanan-pangan-dan-ekonomi-nasional",
       "date": "2026-11-19",
-      "date_label": "18 jam yang lalu",
+      "date_label": "1 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
-      "summary": "sekitar Depok --- Penguatan ekosistem produk halal dinilai menjadi salah satu langkah strategis dalam memperkuat ketahanan pangan sekaligus mendorong pertumbuhan ekonomi nasional. Ekosistem halal yang terintegrasi dari hulu hingga hilir tidak hanya memberikan jaminan terhadap…"
+      "summary": "Depok --- Penguatan ekosistem produk halal dinilai menjadi salah satu langkah strategis dalam memperkuat ketahanan pangan sekaligus mendorong pertumbuhan ekonomi nasional. Ekosistem halal yang terintegrasi dari hulu hingga hilir tidak hanya memberikan jaminan terhadap produk…"
     },
     {
       "source": "BPJPH",
       "title": "Buka UI Halal Expo, Kepala BPJPH Ajak Stakeholder Perkuat Ekosistem Halal Menuju Indonesia Pusat Halal Dunia",
       "url": "https://bpjph.halal.go.id/main/read/buka-ui-halal-expo-kepala-bpjph-ajak-stakeholder-perkuat-ekosistem-halal-menuju-indonesia-pusat-halal-dunia",
       "date": "2026-11-19",
-      "date_label": "18 jam yang lalu",
+      "date_label": "1 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
-      "summary": "sekitar Depok --- Kepala Badan Penyelenggara Jaminan Produk Halal (BPJPH) Ahmad Haikal Hasan mengajak seluruh pemangku kepentingan (stakeholder) untuk memperkuat kolaborasi dalam membangun ekosistem halal nasional. Sinergi pemerintah, perguruan tinggi, lembaga pemeriksa halal,…"
+      "summary": "Depok --- Kepala Badan Penyelenggara Jaminan Produk Halal (BPJPH) Ahmad Haikal Hasan mengajak seluruh pemangku kepentingan (stakeholder) untuk memperkuat kolaborasi dalam membangun ekosistem halal nasional. Sinergi pemerintah, perguruan tinggi, lembaga pemeriksa halal, lembaga…"
     },
     {
-      "source": "BPJPH",
-      "title": "BPJPH Perkuat Moderasi Beragama untuk Wujudkan Pelayanan Halal yang Inklusif",
-      "url": "https://bpjph.halal.go.id/main/read/bpjph-perkuat-moderasi-beragama-untuk-wujudkan-pelayanan-halal-yang-inklusif",
+      "source": "LPPOM MUI",
+      "title": "Jurnal Halal No. 181/2026",
+      "url": "https://halalmui.org/jurnal-halal-no-181-2026/",
       "date": "2026-11-19",
-      "date_label": "18 jam yang lalu",
-      "date_exact": false,
-      "category": "Nasional",
-      "summary": "sekitar Jakarta --- Badan Penyelenggara Jaminan Produk Halal (BPJPH) terus memperkuat nilai-nilai moderasi beragama di lingkungan organisasi sebagai bagian dari upaya membangun aparatur sipil negara (ASN) yang inklusif, harmonis, dan profesional. Penguatan nilai tersebut menjadi…"
+      "date_label": null,
+      "date_exact": true,
+      "category": "Jurnal & Direktori Halal",
+      "summary": ""
     },
     {
       "source": "LPPOM MUI",
@@ -55,13 +65,13 @@
     },
     {
       "source": "BPJPH",
-      "title": "BPJPH Dorong ASN Berperan sebagai Penggerak Pertumbuhan Industri Halal ",
-      "url": "https://bpjph.halal.go.id/main/read/bpjph-dorong-asn-berperan-sebagai-penggerak-pertumbuhan-industri-halal",
+      "title": "BPJPH Perkuat Moderasi Beragama untuk Wujudkan Pelayanan Halal yang Inklusif",
+      "url": "https://bpjph.halal.go.id/main/read/bpjph-perkuat-moderasi-beragama-untuk-wujudkan-pelayanan-halal-yang-inklusif",
       "date": "2026-11-18",
-      "date_label": "1 hari yang lalu",
+      "date_label": "2 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
-      "summary": "Jakarta – Aparatur Sipil Negara (ASN) harus mengambil peran aktif dalam mendorong pertumbuhan industri halal nasional, tidak hanya menjadi konsumen produk halal. Melalui penerapan gaya hidup halal, ASN dapat berkontribusi memperluas literasi masyarakat, mengedukasi pelaku usaha,…"
+      "summary": "Jakarta --- Badan Penyelenggara Jaminan Produk Halal (BPJPH) terus memperkuat nilai-nilai moderasi beragama di lingkungan organisasi sebagai bagian dari upaya membangun aparatur sipil negara (ASN) yang inklusif, harmonis, dan profesional. Penguatan nilai tersebut menjadi fondasi…"
     },
     {
       "source": "LPPOM MUI",
@@ -85,10 +95,20 @@
     },
     {
       "source": "BPJPH",
-      "title": "BPJPH Terima Audiensi DPRD Kota Padang, Bahas Percepatan Sertifikasi Halal Menuju Padang Kota Gastronomi",
-      "url": "https://bpjph.halal.go.id/main/read/bpjph-terima-audiensi-dprd-kota-padang-bahas-percepatan-sertifikasi-halal-menuju-padang-kota-gastronomi",
+      "title": "BPJPH Dorong ASN Berperan sebagai Penggerak Pertumbuhan Industri Halal ",
+      "url": "https://bpjph.halal.go.id/main/read/bpjph-dorong-asn-berperan-sebagai-penggerak-pertumbuhan-industri-halal",
       "date": "2026-11-17",
-      "date_label": "2 hari yang lalu",
+      "date_label": "3 hari yang lalu",
+      "date_exact": false,
+      "category": "Nasional",
+      "summary": "Jakarta – Aparatur Sipil Negara (ASN) harus mengambil peran aktif dalam mendorong pertumbuhan industri halal nasional, tidak hanya menjadi konsumen produk halal. Melalui penerapan gaya hidup halal, ASN dapat berkontribusi memperluas literasi masyarakat, mengedukasi pelaku usaha,…"
+    },
+    {
+      "source": "BPJPH",
+      "title": "BPJPH dan DPRD Kota Padang Bahas Percepatan Sertifikasi Halal Menuju Padang Kota Gastronomi",
+      "url": "https://bpjph.halal.go.id/main/read/bpjph-dan-dprd-kota-padang-bahas-percepatan-sertifikasi-halal-menuju-padang-kota-gastronomi",
+      "date": "2026-11-17",
+      "date_label": "3 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
       "summary": "JAKARTA – Badan Penyelenggara Jaminan Produk Halal (BPJPH) menerima kunjungan kerja dan audiensi Komisi IV Dewan Perwakilan Rakyat Daerah (DPRD) Kota Padang, Senin (16/11/2026), di Kantor BPJPH, Jakarta Timur. Pertemuan tersebut membahas kajian penyusunan Peraturan Daerah…"
@@ -118,7 +138,7 @@
       "title": "Pascainsiden Warung Mie & Babi Tepi Sawah, BPJPH dan Pemkab Sukoharjo Perkuat Pembinaan Jaminan Produk Halal",
       "url": "https://bpjph.halal.go.id/main/read/pascainsiden-warung-mie-and-babi-tepi-sawah-bpjph-dan-pemkab-sukoharjo-perkuat-pembinaan-jaminan-produk-halal",
       "date": "2026-11-16",
-      "date_label": "3 hari yang lalu",
+      "date_label": "4 hari yang lalu",
       "date_exact": false,
       "category": null,
       "summary": "Siaran Pers Pascainsiden Warung Mie & Babi Tepi Sawah, BPJPH dan Pemkab Sukoharjo Perkuat Pembinaan Jaminan Produk Halal Sukoharjo --- Badan Penyelenggara Jaminan Produk Halal (BPJPH) bersama Pemerintah Kabupaten (Pemkab) Sukoharjo memperkuat pembinaan dan sosialisasi Jaminan…"
@@ -148,7 +168,7 @@
       "title": "Kepala BPJPH Haikal Hasan Raih Anugerah Penggerak Nusantara 2026 Kategori Penggerak Pelayanan Publik",
       "url": "https://bpjph.halal.go.id/main/read/kepala-bpjph-haikal-hasan-raih-anugerah-penggerak-nusantara-2026-kategori-penggerak-pelayanan-publik",
       "date": "2026-11-12",
-      "date_label": "7 hari yang lalu",
+      "date_label": "8 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
       "summary": "Jakarta --- Kepala Badan Penyelenggara Jaminan Produk Halal (BPJPH), Ahmad Haikal Hasan, menerima Anugerah Penggerak Nusantara 2026 kategori Penggerak Pelayanan Publik. Penghargaan tersebut diserahkan oleh Direktur Programming IMG Muhammad Choiril Anam, dalam acara yang…"
@@ -168,7 +188,7 @@
       "title": "BPJPH Apresiasi Pengawasan Ombudsman, Perkuat Sinergi untuk Pastikan Hak Masyarakat atas Jaminan Produk Halal Terpenuhi",
       "url": "https://bpjph.halal.go.id/main/read/bpjph-apresiasi-pengawasan-ombudsman-perkuat-sinergi-untuk-pastikan-hak-masyarakat-atas-jaminan-produk-halal-terpenuhi",
       "date": "2026-11-11",
-      "date_label": "8 hari yang lalu",
+      "date_label": "9 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
       "summary": "Jakarta --- Badan Penyelenggara Jaminan Produk Halal (BPJPH) mengapresiasi hasil pengawasan Ombudsman Republik Indonesia terhadap penyelenggaraan Jaminan Produk Halal (JPH). Hasil pengawasan tersebut menjadi penguatan bagi BPJPH dalam meningkatkan kualitas pelayanan, pengawasan,…"
@@ -178,30 +198,10 @@
       "title": "BPJPH dan Pemkab OKI Jalin Sinergi Sertifikasi Halal UMK dan Pengembangan Ekosistem Halal Daerah",
       "url": "https://bpjph.halal.go.id/main/read/bpjph-dan-pemkab-oki-jalin-sinergi-sertifikasi-halal-umk-dan-pengembangan-ekosistem-halal-daerah",
       "date": "2026-11-11",
-      "date_label": "8 hari yang lalu",
+      "date_label": "9 hari yang lalu",
       "date_exact": false,
       "category": "Nasional",
       "summary": "Jakarta – Badan Penyelenggara Jaminan Produk Halal (BPJPH) terus melakukan langkah proaktif dalam memperkuat penyelenggaraan Jaminan Produk Halal (JPH) di Indonesia. Hari ini, upaya tersebut diwujudkan BPJPH melalui penandatanganan MoU tentang Sinergi Sertifikasi Halal Bagi…"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "LPPOM Riau Dorong Penguatan Ekosistem Halal dan Perluasan Sertifikasi",
-      "url": "https://halalmui.org/lppom-riau-perkuat-ekosistem-halal/",
-      "date": "2026-11-11",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Lainnya",
-      "summary": "LPPOM Riau terus memperkuat perannya dalam membangun ekosistem halal melalui peningkatan kualitas pemeriksaan, perluasan sertifikasi halal BPJPH, dan kolaborasi lintas sektor. Upaya ini diharapkan mampu mengoptimalkan potensi industri halal sekaligus mendorong Riau menjadi destin"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "Sertifikasi Halal Kosmetik: 5 Kunci Aman Formula, Supplier, dan Dokumen",
-      "url": "https://halalmui.org/sertifikasi-halal-kosmetik-2026/",
-      "date": "2026-11-11",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Sertifikasi halal kosmetik semula harus beres paling lambat 17 Oktober 2026. Tetapi ada pengumuman baru di tenggat waktu akhir. Sekretaris Kemenko Perekonomian Susiwijono Moegiarso mengumumkan perpanjangan penahapan wajib halal melalui PP perubahan atas PP 42/2024, dan kosmetik m"
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."

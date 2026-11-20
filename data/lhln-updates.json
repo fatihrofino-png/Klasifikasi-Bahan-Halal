@@ -1,12 +1,35 @@
 {
-  "checked_at": "2026-11-19T03:59:20.566Z",
-  "checked_at_wib": "2026-11-19 10:59 WIB",
+  "checked_at": "2026-11-20T03:53:13.299Z",
+  "checked_at_wib": "2026-11-20 10:53 WIB",
   "total": 127,
   "added": 0,
   "removed": 0,
-  "changed": 0,
-  "changes": [],
+  "changed": 1,
+  "changes": [
+    {
+      "type": "changed",
+      "no": 8,
+      "nama": "Australian Halal Authority and Advisers",
+      "detail": "lingkup: \"Food | Beverages | Drugs/Pharmaceuticals | Slaughtering services | Storage services\" → \"Food | Beverages | Drugs/Pharmaceuticals | Cosmetics | Chemical products | Consumer Goods | Slaughtering services | Storage services | Packaging services | Distribution services\""
+    }
+  ],
   "history": [
+    {
+      "checked_at": "2026-11-20T03:53:13.299Z",
+      "checked_at_wib": "2026-11-20 10:53 WIB",
+      "total": 127,
+      "added": 0,
+      "removed": 0,
+      "changed": 1,
+      "changes": [
+        {
+          "type": "changed",
+          "no": 8,
+          "nama": "Australian Halal Authority and Advisers",
+          "detail": "lingkup: \"Food | Beverages | Drugs/Pharmaceuticals | Slaughtering services | Storage services\" → \"Food | Beverages | Drugs/Pharmaceuticals | Cosmetics | Chemical products | Consumer Goods | Slaughtering services | Storage services | Packaging services | Distribution services\""
+        }
+      ]
+    },
     {
       "checked_at": "2026-11-19T03:59:20.566Z",
       "checked_at_wib": "2026-11-19 10:59 WIB",
