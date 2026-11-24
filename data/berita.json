@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T03:32:49.179Z",
-  "updated_at_wib": "2026-11-23 10:32 WIB",
+  "updated_at": "2026-11-24T06:48:34.795Z",
+  "updated_at_wib": "2026-11-24 13:48 WIB",
   "total": 10,
   "sources": {
     "bpjph": {
@@ -13,6 +13,16 @@
     }
   },
   "items": [
+    {
+      "source": "LPPOM MUI",
+      "title": "Waspada Modus Penipuan Sertifikasi Halal, Pelaku Usaha Perlu Verifikasi Informasi Pembayaran",
+      "url": "https://halalmui.org/waspada-penipuan-sertifikasi-halal/",
+      "date": "2026-11-23",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "LPPOM mengimbau pelaku usaha untuk tidak mudah percaya pada pesan permintaan konfirmasi pembayaran sertifikasi halal yang mengatasnamakan proses pendaftaran SIHALAL. Pastikan setiap informasi dan tagihan diverifikasi melalui kanal resmi sebelum melakukan pembayaran. Pelaku usaha "
+    },
     {
       "source": "LPPOM MUI",
       "title": "BPJPH: Saatnya Generasi Muda Jadi Penggerak Industri Halal!",
@@ -102,16 +112,6 @@
       "date_exact": true,
       "category": "Artikel & Berita Halal",
       "summary": "Sertifikasi halal menjadi strategi penting untuk membangun kepercayaan konsumen dan memperluas pasar. Melalui SIAL Food & Drinks Indonesia 2026, LPPOM mengedukasi pelaku usaha tentang kesiapan sertifikasi halal BPJPH guna meningkatkan daya saing produk di pasar global. JAKARTA — "
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "Pemberitahuan Gangguan Layanan Email Microsoft Outlook",
-      "url": "https://halalmui.org/pemberitahuan-gangguan-layanan-email-microsoft-outlook/",
-      "date": "2026-11-13",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Pelanggan LPPOM Group yang Terhormat, Kami informasikan bahwa layanan komunikasi email LPPOM Group melalui Microsoft Outlook saat ini mengalami gangguan sementara pada Jumat, 13 November 2026. Gangguan ini berkaitan dengan kendala pada layanan Microsoft Outlook yang terjadi secar"
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."
