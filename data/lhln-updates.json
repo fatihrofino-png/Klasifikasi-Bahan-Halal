@@ -1,12 +1,21 @@
 {
-  "checked_at": "2026-11-24T06:48:29.325Z",
-  "checked_at_wib": "2026-11-24 13:48 WIB",
+  "checked_at": "2026-11-25T05:16:17.076Z",
+  "checked_at_wib": "2026-11-25 12:16 WIB",
   "total": 127,
   "added": 0,
   "removed": 0,
   "changed": 0,
   "changes": [],
   "history": [
+    {
+      "checked_at": "2026-11-25T05:16:17.076Z",
+      "checked_at_wib": "2026-11-25 12:16 WIB",
+      "total": 127,
+      "added": 0,
+      "removed": 0,
+      "changed": 0,
+      "changes": []
+    },
     {
       "checked_at": "2026-11-24T06:48:29.325Z",
       "checked_at_wib": "2026-11-24 13:48 WIB",

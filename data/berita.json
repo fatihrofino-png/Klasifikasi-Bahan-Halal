@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-24T06:48:34.795Z",
-  "updated_at_wib": "2026-11-24 13:48 WIB",
+  "updated_at": "2026-11-25T05:16:20.194Z",
+  "updated_at_wib": "2026-11-25 12:16 WIB",
   "total": 10,
   "sources": {
     "bpjph": {
@@ -13,6 +13,26 @@
     }
   },
   "items": [
+    {
+      "source": "LPPOM MUI",
+      "title": "Kosmetik Halal Tak Cukup dari Label, Ini Tantangan di Baliknya",
+      "url": "https://halalmui.org/tantangan-kosmetik-halal-lppom/",
+      "date": "2026-11-25",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Memastikan kosmetik benar-benar halal ternyata bukan sekadar memeriksa daftar komposisi pada kemasan. Ada banyak hal yang harus ditelusuri, mulai dari asal bahan baku, proses pengolahan, hingga fasilitas produksi. Dalam forum industri kecantikan internasional di Hong Kong, LPPOM "
+    },
+    {
+      "source": "LPPOM MUI",
+      "title": "Dari Dapur, Muslimah Punya Peran Besar dalam Ekosistem Halal",
+      "url": "https://halalmui.org/peran-muslimah-dalam-ekosistem-halal/",
+      "date": "2026-11-24",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Kesadaran halal tidak hanya dibangun melalui regulasi dan sertifikasi, tetapi juga dari kebiasaan sederhana di rumah. Direktur Utama LPPOM, Muti Arintawati, mengajak Muslimah menjadi penggerak budaya sadar halal yang dimulai dari keluarga. JAKARTA — Memastikan makanan yang dikons"
+    },
     {
       "source": "LPPOM MUI",
       "title": "Waspada Modus Penipuan Sertifikasi Halal, Pelaku Usaha Perlu Verifikasi Informasi Pembayaran",
@@ -92,26 +112,6 @@
       "date_exact": true,
       "category": "Artikel & Berita Halal",
       "summary": "Pelanggan LPPOM Group yang Terhormat, Kami informasikan bahwa layanan komunikasi email LPPOM Group melalui Microsoft Outlook yang sebelumnya mengalami gangguan pada 13 November 2026, kini telah kembali pulih dan dapat digunakan secara normal. Kami mengucapkan terima kasih atas pe"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "SHARP Buka Suara, Ini 6 Alasan Penting bagi Industri Barang Gunaan",
-      "url": "https://halalmui.org/sertifikasi-halal-barang-gunaan-2/",
-      "date": "2026-11-17",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Sertifikasi halal pada barang gunaan bukan sekadar pemenuhan regulasi, tetapi juga peluang bagi industri untuk membangun kepercayaan konsumen dan menciptakan diferensiasi produk. Berikut ini enam alasan penting sertifikasi halal bagi industri. Sertifikasi halal pada barang gunaan"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "LPPOM Hadir di SIAL Food & Drinks Indonesia, Dorong Akses Pasar Global melalui Sertifikasi Halal",
-      "url": "https://halalmui.org/lppom-sial-food-drinks-indonesia-sertifikasi-halal/",
-      "date": "2026-11-16",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Sertifikasi halal menjadi strategi penting untuk membangun kepercayaan konsumen dan memperluas pasar. Melalui SIAL Food & Drinks Indonesia 2026, LPPOM mengedukasi pelaku usaha tentang kesiapan sertifikasi halal BPJPH guna meningkatkan daya saing produk di pasar global. JAKARTA — "
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."
