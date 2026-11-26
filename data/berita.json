@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25T05:16:20.194Z",
-  "updated_at_wib": "2026-11-25 12:16 WIB",
+  "updated_at": "2026-11-26T04:43:48.101Z",
+  "updated_at_wib": "2026-11-26 11:43 WIB",
   "total": 10,
   "sources": {
     "bpjph": {
@@ -13,6 +13,26 @@
     }
   },
   "items": [
+    {
+      "source": "LPPOM MUI",
+      "title": "Gangguan Sementara Layanan WhatsApp Customer Service",
+      "url": "https://halalmui.org/gangguan-sementara-layanan-whatsapp-customer-service/",
+      "date": "2026-11-26",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Sehubungan dengan pemeliharaan sistem oleh pihak penyedia layanan, WhatsApp Official LPPOM untuk sementara mengalami gangguan. Respons terhadap pesan dan permintaan informasi melalui WhatsApp dapat mengalami keterlambatan hingga layanan kembali normal. LPPOM LPPOM menginformasika"
+    },
+    {
+      "source": "LPPOM MUI",
+      "title": "Sudah Bersertifikat Halal, Mengapa Produk Belum Tentu Laku di Pasar?",
+      "url": "https://halalmui.org/daya-saing-produk-halal/",
+      "date": "2026-11-26",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Sertifikat halal memang menjadi modal penting untuk membangun kepercayaan konsumen. Namun, agar mampu bersaing dan menembus pasar yang lebih luas, pelaku usaha juga harus memastikan mutu, keamanan, ketersediaan bahan baku, hingga kesiapan distribusi produknya. Memiliki sertifikat"
+    },
     {
       "source": "LPPOM MUI",
       "title": "Kosmetik Halal Tak Cukup dari Label, Ini Tantangan di Baliknya",
@@ -92,26 +112,6 @@
       "date_exact": true,
       "category": "Berita",
       "summary": "Di balik kosmetik yang digunakan sehari-hari, ada bahan yang tak terlihat tetapi menentukan pemenuhan persyaratan halal. Dari Bangkok, LPPOM mengungkap pentingnya ketertelusuran bahan dan proses produksi menjelang wajib halal kosmetik pada 18 Oktober 2028. BANGKOK – Apa yang memb"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "Waketum MUI Cholil Nafis: Gen Halal Championship Jadi Wadah Dakwah Kultural Anak Muda",
-      "url": "https://halalmui.org/gen-halal-championship-2026-dakwah-kultural/",
-      "date": "2026-11-18",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Gen Halal Championship 2026 menjadi pendekatan dakwah kultural yang dekat dengan generasi muda melalui kompetisi dan edukasi. Inisiatif LPPOM ini diharapkan mampu memperkuat literasi halal sekaligus menanamkan nilai-nilai Islam sebagai bagian dari karakter dan gaya hidup. Wakil K"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "Pemberitahuan Pemulihan Layanan Email Microsoft Outlook",
-      "url": "https://halalmui.org/pemberitahuan-pemulihan-layanan-email-microsoft-outlook/",
-      "date": "2026-11-17",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Artikel & Berita Halal",
-      "summary": "Pelanggan LPPOM Group yang Terhormat, Kami informasikan bahwa layanan komunikasi email LPPOM Group melalui Microsoft Outlook yang sebelumnya mengalami gangguan pada 13 November 2026, kini telah kembali pulih dan dapat digunakan secara normal. Kami mengucapkan terima kasih atas pe"
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."
