@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-26T04:43:48.101Z",
-  "updated_at_wib": "2026-11-26 11:43 WIB",
+  "updated_at": "2026-11-27T04:49:07.609Z",
+  "updated_at_wib": "2026-11-27 11:49 WIB",
   "total": 10,
   "sources": {
     "bpjph": {
@@ -13,6 +13,16 @@
     }
   },
   "items": [
+    {
+      "source": "LPPOM MUI",
+      "title": "Jangkau 15 Provinsi, BRI bersama LPPOM Perkuat Akses Sertifikasi Halal UMKM",
+      "url": "https://halalmui.org/bri-jangkau-sertifikasi-halal-15-provinsi-lppom/",
+      "date": "2026-11-27",
+      "date_label": null,
+      "date_exact": true,
+      "category": "Artikel & Berita Halal",
+      "summary": "Sebanyak 150 UMKM dengan 1.669 produk mendapatkan fasilitasi sertifikasi halal melalui Program BRI Peduli TJSL 2026. Menjangkau 15 provinsi di Indonesia, kolaborasi BRI, BRI Research Institute, dan LPPOM ini menjadi upaya memperluas akses sertifikasi halal sekaligus memperkuat da"
+    },
     {
       "source": "LPPOM MUI",
       "title": "Gangguan Sementara Layanan WhatsApp Customer Service",
@@ -102,16 +112,6 @@
       "date_exact": true,
       "category": "Artikel & Berita Halal",
       "summary": "Di tengah tren kecantikan yang semakin mengutamakan transparansi bahan, keamanan, dan proses produksi yang bertanggung jawab, label halal mulai mendapat perhatian lebih luas. Tak hanya di negara mayoritas Muslim, konsep halal kini menjadi bagian dari percakapan industri kecantika"
-    },
-    {
-      "source": "LPPOM MUI",
-      "title": "Di Bangkok, LPPOM Bongkar Rahasia di Balik Kosmetik Halal",
-      "url": "https://halalmui.org/rahasia-kosmetik-halal-lppom-bangkok/",
-      "date": "2026-11-18",
-      "date_label": null,
-      "date_exact": true,
-      "category": "Berita",
-      "summary": "Di balik kosmetik yang digunakan sehari-hari, ada bahan yang tak terlihat tetapi menentukan pemenuhan persyaratan halal. Dari Bangkok, LPPOM mengungkap pentingnya ketertelusuran bahan dan proses produksi menjelang wajib halal kosmetik pada 18 Oktober 2028. BANGKOK – Apa yang memb"
     }
   ],
   "note": "Tanggal berita BPJPH diperkirakan dari label relatif di situs sumber (mis. '3 hari yang lalu'); tanggal LPPOM MUI absolut dari WordPress REST API."
